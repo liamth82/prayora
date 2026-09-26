@@ -1,0 +1,19 @@
+{
+  "name": "Ora",
+  "short_name": "Ora",
+  "description": "A Catholic companion for a quieter phone: Scripture, the Hours, the saints and a digital fast.",
+  "id": "/app/",
+  "start_url": "/app/",
+  "scope": "/app/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F5EDD6",
+  "theme_color": "#2C1810",
+  "lang": "en-GB",
+  "categories": ["lifestyle", "books", "education"],
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

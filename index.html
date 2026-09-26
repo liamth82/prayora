@@ -1,486 +1,232 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Ora</title>
-<meta name="description" content="Ora: a Catholic app that draws you toward prayer, not the scroll.">
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Ora · A phone that leads you to prayer</title>
+<meta name="description" content="Ora is a Catholic app for a quieter phone: the Douay-Rheims Bible, the Liturgy of the Hours, the saints of the day, and a digital fast that locks the phone when you want to be still.">
+<meta property="og:title" content="Ora">
+<meta property="og:description" content="A phone that leads you to prayer. Scripture, the Hours, the saints, and a digital fast.">
+<meta property="og:image" content="https://prayora.co/icons/icon-512.png">
+<meta property="og:url" content="https://prayora.co/">
+<meta name="theme-color" content="#2C1810">
+<link rel="icon" type="image/png" href="/icons/favicon-48.png">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%226%22 fill=%22%232C1810%22/%3E%3Ctext x=%2216%22 y=%2224%22 text-anchor=%22middle%22 font-family=%22Georgia%22 font-size=%2222%22 fill=%22%23C9A84C%22%3EO%3C/text%3E%3C/svg%3E"></head><body>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 <style>
 :root{
-  --vellum:#F5EDD6; --vellum-2:#ECE0BF; --vellum-3:#E3D4AC;
-  --ink:#2C1810; --ink-soft:#6A5440; --ink-faint:#9A8468;
-  --gold:#C9A84C; --gold-deep:#8F6D1F;
-  --rubric:#A3322A; --lapis:#2E4A7A; --green:#3F6B3A; --violet:#5B3A6E;
-  --desk:#2A1D14; --desk-2:#3A2A1E;
+  --vellum:#F5EDD6;--vellum-2:#ECE0BF;--vellum-3:#E0D0A6;
+  --ink:#2C1810;--ink-soft:#6A5440;--ink-faint:#8E785C;
+  --gold:#C9A84C;--gold-deep:#8F6D1F;--rubric:#A3322A;
   --display:"IM Fell English","Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
   --sc:"IM Fell English SC","IM Fell English",Palatino,Georgia,serif;
   --body:Lora,Georgia,"Times New Roman",serif;
   color-scheme:light;
 }
 *{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;background:var(--desk);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;
-  background-image:radial-gradient(ellipse at 30% 20%,var(--desk-2),var(--desk) 70%);
-  padding-inline:16px;
-}
-button{font:inherit;color:inherit;cursor:pointer}
-button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-.stage{height:100%;display:grid;grid-template-columns:minmax(0,340px) minmax(0,430px);gap:64px;justify-content:center;align-items:center;padding-block:24px}
-.intro{color:#E9DCBC}
-.intro .mark{font-family:var(--display);font-size:88px;line-height:.9;color:var(--gold);letter-spacing:.02em;margin:0}
-.intro .latin{font-family:var(--display);font-style:italic;font-size:20px;color:#CDBB93;margin:6px 0 28px}
-.intro p{font-size:15px;color:#D8C9A6;max-width:34ch;margin:0 0 14px}
-.intro .domain{font-family:var(--sc);letter-spacing:.08em;color:var(--gold);font-size:15px;margin-top:28px;border-top:1px solid #5a4631;padding-top:14px}
-.intro .note{font-size:13px;color:#A8977A}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--vellum);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;
+  background-image:radial-gradient(ellipse at 15% 0%,rgba(255,255,255,.45),transparent 55%),radial-gradient(ellipse at 100% 60%,rgba(143,109,31,.08),transparent 50%)}
+a{color:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:24px}
+@media (max-width:480px){.wrap{padding-inline:20px}}
 
-.phone{height:min(880px,100%);width:100%;background:var(--vellum);border-radius:28px;overflow:hidden;display:flex;flex-direction:column;position:relative;
-  box-shadow:0 0 0 1px #4a3826,0 30px 80px rgba(0,0,0,.5);
-  background-image:radial-gradient(ellipse at 50% 0%,rgba(255,255,255,.35),transparent 60%),radial-gradient(ellipse at 100% 100%,rgba(143,109,31,.10),transparent 55%)}
-@media (max-width:860px){
-  body{padding-inline:0;background:var(--vellum)}
-  .stage{grid-template-columns:1fr;padding-block:0;gap:0}
-  .intro{display:none}
-  .phone{height:100%;border-radius:0;box-shadow:none}
-}
-header.top{padding:18px 20px 12px;border-bottom:1px solid var(--vellum-3);display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
-.wordmark{font-family:var(--display);font-size:34px;line-height:1;margin:0;color:var(--ink)}
+.bar{display:flex;align-items:center;justify-content:space-between;padding-block:calc(18px + env(safe-area-inset-top,0px)) 18px}
+.wordmark{font-family:var(--display);font-size:32px;line-height:1;text-decoration:none}
 .wordmark span{color:var(--rubric)}
-.day{text-align:right;font-size:12.5px;color:var(--ink-soft);line-height:1.35}
-.day b{font-weight:600;color:var(--ink);display:block;font-size:13px}
-.lit{display:inline-flex;align-items:center;gap:6px}
-.dot{width:9px;height:9px;border-radius:50%;display:inline-block;border:1px solid rgba(0,0,0,.2)}
-main{flex:1;overflow-y:auto;overscroll-behavior:contain}
-.screen{padding:18px 20px 28px}
-.eyebrow{font-family:var(--sc);letter-spacing:.12em;font-size:13px;color:var(--rubric);margin:0 0 4px}
-h2{font-family:var(--display);font-weight:400;font-size:30px;line-height:1.1;margin:0 0 6px;text-wrap:balance}
-h3{font-family:var(--display);font-weight:400;font-size:22px;line-height:1.15;margin:0;text-wrap:balance}
-.lede{color:var(--ink-soft);font-size:14.5px;margin:0 0 18px}
-.rule{height:10px;margin:18px 0;background:
-  linear-gradient(var(--gold),var(--gold)) center/100% 1px no-repeat;position:relative}
-.rule::after{content:"✠";position:absolute;left:50%;top:50%;transform:translate(-50%,-52%);background:var(--vellum);padding:0 8px;color:var(--gold-deep);font-size:13px}
+.bar nav{display:flex;gap:22px;align-items:center;font-family:var(--sc);letter-spacing:.08em;font-size:15px}
+.bar nav a{text-decoration:none;color:var(--ink-soft)}
+.bar nav a:hover{color:var(--ink)}
+@media (max-width:480px){.bar nav .hide-sm{display:none}}
 
-nav.tabs{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--vellum-3);background:var(--vellum-2);padding-bottom:env(safe-area-inset-bottom,0px)}
-nav.tabs button{background:none;border:0;padding:9px 2px 10px;display:flex;flex-direction:column;align-items:center;gap:3px;font-family:var(--sc);font-size:12px;letter-spacing:.06em;color:var(--ink-faint)}
-nav.tabs svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.4}
-nav.tabs button[aria-selected="true"]{color:var(--ink)}
-nav.tabs button[aria-selected="true"] svg{stroke:var(--rubric)}
+.eyebrow{font-family:var(--sc);letter-spacing:.14em;font-size:14px;color:var(--rubric);margin:0 0 10px}
+h1,h2,h3{font-family:var(--display);font-weight:400;text-wrap:balance;margin:0}
+h1{font-size:clamp(42px,6.2vw,72px);line-height:1.02;letter-spacing:-.005em}
+h2{font-size:clamp(30px,3.6vw,42px);line-height:1.1}
+h3{font-size:25px;line-height:1.15}
+.lede{font-size:19px;color:var(--ink-soft);max-width:36ch;margin:22px 0 28px}
 
-/* Scripture */
-.books{display:grid;gap:12px}
-.book{display:grid;grid-template-columns:64px 1fr;gap:14px;align-items:center;text-align:left;background:transparent;border:1px solid var(--vellum-3);border-radius:4px;padding:10px;transition:background .15s}
-.book:hover{background:var(--vellum-2)}
-.book .illum{width:64px;height:auto;display:block}
-.book small{display:block;font-size:12.5px;color:var(--ink-soft)}
-.book .ref{font-family:var(--sc);font-size:12px;letter-spacing:.08em;color:var(--rubric)}
-.reader{display:grid;grid-template-columns:118px 1fr;gap:18px;align-items:start}
-.reader .illum{width:118px;height:auto;position:sticky;top:0}
-.back{background:none;border:0;padding:0;font-family:var(--sc);letter-spacing:.08em;font-size:13px;color:var(--ink-soft);margin-bottom:14px}
-.verses{font-size:17px;line-height:1.7}
-.verses p{margin:0 0 10px}
-.vn{font-family:var(--sc);color:var(--rubric);font-size:12px;vertical-align:.35em;margin-right:4px}
-.verses p:first-child::first-letter{font-family:var(--display);color:var(--rubric);font-size:1.5em}
-.src{font-size:12px;color:var(--ink-faint);margin-top:16px;font-style:italic}
-@media (max-width:380px){.reader{grid-template-columns:1fr}.reader .illum{position:static;width:110px}}
-
-/* Hours */
-.hours{display:grid;gap:0;border-top:1px solid var(--vellum-3)}
-.hour{display:grid;grid-template-columns:54px 1fr auto;gap:12px;align-items:center;text-align:left;background:none;border:0;border-bottom:1px solid var(--vellum-3);padding:12px 4px}
-.hour .t{font-family:var(--sc);font-size:13px;color:var(--ink-faint);font-variant-numeric:tabular-nums;letter-spacing:.04em}
-.hour .n{font-family:var(--display);font-size:21px;line-height:1.1}
-.hour .n small{display:block;font-family:var(--body);font-size:12.5px;color:var(--ink-soft)}
-.hour .s{font-size:12px;font-family:var(--sc);letter-spacing:.08em;color:var(--ink-faint)}
-.hour.now{background:linear-gradient(90deg,rgba(201,168,76,.22),transparent)}
-.hour.now .s{color:var(--rubric)}
-.hour.done .s{color:var(--green)}
-.office{font-size:16.5px;line-height:1.7}
-.office .rub{font-family:var(--sc);color:var(--rubric);letter-spacing:.06em;font-size:13px;display:block;margin-top:16px}
-.office p{margin:4px 0}
-.office .vr{color:var(--rubric);font-family:var(--display);margin-right:6px}
-.btn{border:1px solid var(--ink);background:var(--ink);color:var(--vellum);padding:10px 18px;border-radius:3px;font-family:var(--sc);letter-spacing:.1em;font-size:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--ink);background:var(--ink);color:var(--vellum);padding:13px 22px;border-radius:3px;font-family:var(--sc);letter-spacing:.1em;font-size:16px;text-decoration:none;cursor:pointer}
+.btn:hover{background:#43281a}
 .btn.ghost{background:transparent;color:var(--ink)}
-.btn.gold{background:var(--gold);border-color:var(--gold-deep);color:var(--ink)}
+.btn.ghost:hover{background:var(--vellum-2)}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.small{font-size:14px;color:var(--ink-faint);margin:14px 0 0}
 
-/* Saints */
-.feast{border:1px solid var(--gold);padding:18px;position:relative;background:rgba(255,255,255,.25)}
-.feast::before{content:"";position:absolute;inset:4px;border:1px solid rgba(201,168,76,.45);pointer-events:none}
-.feast .rank{font-family:var(--sc);letter-spacing:.1em;font-size:12.5px;display:flex;gap:8px;align-items:center;color:var(--ink-soft)}
-.feast h3{font-size:27px;margin:6px 0 2px}
-.feast .dates{font-size:13px;color:var(--ink-soft);font-style:italic;margin:0 0 10px}
-.feast p{margin:0 0 10px;font-size:15px}
-.feast blockquote{margin:12px 0 0;font-family:var(--display);font-style:italic;font-size:18px;line-height:1.4;color:var(--ink)}
-.feast cite{display:block;font-style:normal;font-family:var(--sc);font-size:12px;letter-spacing:.08em;color:var(--ink-faint);margin-top:4px}
-.coming{display:grid;margin-top:8px}
-.coming button{display:grid;grid-template-columns:52px 1fr 10px;gap:12px;align-items:center;text-align:left;background:none;border:0;border-bottom:1px solid var(--vellum-3);padding:10px 2px}
-.coming .d{font-family:var(--sc);font-size:13px;color:var(--ink-soft);font-variant-numeric:tabular-nums;letter-spacing:.04em}
-.coming .nm{font-size:15px}
+.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:56px;align-items:center;padding-block:40px 72px}
+.device{justify-self:center;width:360px;max-width:100%;aspect-ratio:9/18.5;border-radius:34px;background:var(--ink);padding:10px;box-shadow:0 30px 70px rgba(44,24,16,.28),0 0 0 1px rgba(44,24,16,.4)}
+.device iframe{width:100%;height:100%;border:0;border-radius:26px;display:block;background:var(--vellum)}
+@media (max-width:900px){.hero{grid-template-columns:1fr;padding-block:24px 56px}.device{display:none}}
 
-/* Ask */
-.chat{display:flex;flex-direction:column;gap:12px}
-.msg{max-width:92%;font-size:15px;line-height:1.6}
-.msg.q{align-self:flex-end;background:var(--ink);color:var(--vellum);padding:9px 13px;border-radius:12px 12px 2px 12px}
-.msg.a{align-self:flex-start;border-left:2px solid var(--gold);padding:2px 0 2px 12px}
-.msg.a .cite{display:block;margin-top:6px;font-family:var(--sc);font-size:12.5px;letter-spacing:.06em;color:var(--rubric)}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 14px}
-.chip{border:1px solid var(--gold);background:transparent;padding:6px 11px;border-radius:999px;font-size:13.5px}
-.chip:hover{background:var(--vellum-2)}
-.askbar{display:flex;gap:8px;padding:10px 20px;border-top:1px solid var(--vellum-3);background:var(--vellum)}
-.askbar input{flex:1;min-width:0;border:1px solid var(--vellum-3);background:#FBF6E7;border-radius:3px;padding:10px 12px;font:inherit;font-size:15px;color:var(--ink)}
-.askbar input:focus{outline:2px solid var(--gold);outline-offset:0}
-.typing{color:var(--ink-faint);font-style:italic}
+.rule{height:14px;background:linear-gradient(var(--gold),var(--gold)) center/100% 1px no-repeat;position:relative;margin:0}
+.rule::after{content:"✠";position:absolute;left:50%;top:50%;transform:translate(-50%,-52%);background:var(--vellum);padding:0 12px;color:var(--gold-deep);font-size:15px}
 
-/* Fast */
-.dial-wrap{display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:center;margin-bottom:6px}
-.dial-wrap svg{width:150px;height:auto;display:block}
-.dial-wrap .mins{font-family:var(--display);font-size:40px;line-height:1;font-variant-numeric:tabular-nums}
-.dial-wrap .mins small{font-size:16px;color:var(--ink-soft)}
-.dial-wrap p{margin:6px 0 0;font-size:14px;color:var(--ink-soft)}
-.modes{display:grid;gap:10px}
-.mode{display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:center;text-align:left;border:1px solid var(--vellum-3);background:transparent;padding:14px;border-radius:4px}
-.mode:hover{border-color:var(--gold)}
-.mode h3{font-size:22px}
-.mode .len{font-family:var(--sc);font-size:13px;letter-spacing:.08em;color:var(--rubric);text-align:right}
-.mode p{grid-column:1/-1;margin:0;font-size:14px;color:var(--ink-soft)}
-.veil{position:absolute;inset:0;background:var(--ink);color:var(--vellum);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px 28px;gap:18px;z-index:5}
-.veil .mode-n{font-family:var(--sc);letter-spacing:.2em;color:var(--gold);font-size:14px}
-.veil .clock{font-family:var(--display);font-size:64px;line-height:1;font-variant-numeric:tabular-nums}
-.veil blockquote{font-family:var(--display);font-style:italic;font-size:22px;line-height:1.4;margin:0;max-width:22ch}
-.veil cite{display:block;font-family:var(--sc);font-style:normal;font-size:12px;letter-spacing:.1em;color:#B9A57F;margin-top:6px}
-.veil .allowed{font-size:13px;color:#B9A57F}
-.hold{position:relative;border:1px solid #6d5640;background:transparent;color:#D8C9A6;padding:10px 20px;border-radius:3px;font-family:var(--sc);letter-spacing:.1em;font-size:13px;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none}
-.hold i{position:absolute;inset:0;background:rgba(201,168,76,.35);transform-origin:left;transform:scaleX(0)}
-.hold span{position:relative}
-.proto{font-size:12px;color:var(--ink-faint);font-style:italic;margin-top:14px}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+section{padding-block:72px}
+.inside{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;margin-top:36px}
+.inside article{border-top:2px solid var(--ink);padding-top:16px}
+.inside .tag{font-family:var(--sc);letter-spacing:.1em;font-size:14px;color:var(--rubric)}
+.inside p{margin:10px 0 0;color:var(--ink-soft);font-size:16.5px}
+@media (max-width:800px){.inside{grid-template-columns:1fr;gap:28px}}
+
+.band{background:var(--ink);color:var(--vellum);padding-block:80px}
+.band blockquote{margin:0;font-family:var(--display);font-style:italic;font-size:clamp(26px,3.4vw,38px);line-height:1.3;max-width:28ch}
+.band cite{display:block;margin-top:16px;font-style:normal;font-family:var(--sc);letter-spacing:.1em;font-size:15px;color:var(--gold)}
+.band p{margin:34px 0 0;max-width:46ch;color:#D8C9A6;font-size:18px}
+
+.fasts{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:56px;align-items:start}
+.fasts dl{margin:0;border-top:1px solid var(--vellum-3)}
+.fasts .row{display:grid;grid-template-columns:120px 1fr;gap:6px 20px;padding:18px 0;border-bottom:1px solid var(--vellum-3)}
+.fasts dt{font-family:var(--display);font-size:26px;line-height:1.1}
+.fasts dt small{display:block;font-family:var(--sc);font-size:13.5px;letter-spacing:.1em;color:var(--rubric);margin-top:4px}
+.fasts dd{margin:0;color:var(--ink-soft);font-size:16.5px}
+.fasts .intro p{color:var(--ink-soft);margin:16px 0 0}
+@media (max-width:800px){.fasts{grid-template-columns:1fr;gap:28px}.fasts .row{grid-template-columns:1fr}}
+
+.wait{background:var(--vellum-2);border:1px solid var(--gold);position:relative;padding:48px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}
+.wait::before{content:"";position:absolute;inset:6px;border:1px solid rgba(201,168,76,.5);pointer-events:none}
+.wait p{color:var(--ink-soft);margin:14px 0 0}
+form{display:grid;gap:18px;position:relative}
+label.f{display:grid;gap:6px;font-family:var(--sc);letter-spacing:.08em;font-size:14.5px}
+input[type=email]{font:inherit;font-size:17px;padding:12px 14px;border:1px solid var(--ink-faint);border-radius:3px;background:#FBF6E7;color:var(--ink);width:100%}
+fieldset{border:0;margin:0;padding:0;display:grid;gap:8px}
+legend{font-family:var(--sc);letter-spacing:.08em;font-size:14.5px;padding:0;margin-bottom:6px}
+.choices{display:flex;flex-wrap:wrap;gap:8px}
+.choices label{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--ink-faint);border-radius:999px;padding:7px 14px;font-size:15.5px;cursor:pointer;background:#FBF6E7}
+.choices input{accent-color:var(--rubric);margin:0}
+.choices label:has(input:checked){border-color:var(--ink);background:var(--vellum)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.status{font-size:15.5px;min-height:1.4em;margin:0}
+.status.err{color:var(--rubric)}
+.thanks{font-family:var(--display);font-size:26px;line-height:1.25}
+.fine{font-size:13.5px;color:var(--ink-faint);margin:0}
+@media (max-width:800px){.wait{grid-template-columns:1fr;padding:32px 24px;gap:28px}}
+
+footer{padding-block:48px calc(40px + env(safe-area-inset-bottom,0px));font-size:14px;color:var(--ink-faint);display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between;align-items:baseline}
+footer .amdg{font-family:var(--display);font-style:italic;font-size:17px;color:var(--ink-soft)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
+</head>
+<body>
+<div class="wrap">
+  <header class="bar">
+    <a class="wordmark" href="/" aria-label="Ora home">Or<span>a</span></a>
+    <nav><a class="hide-sm" href="#inside">What's inside</a><a class="hide-sm" href="#waitlist">Waitlist</a><a href="/app/">Open Ora</a></nav>
+  </header>
 
-<div class="stage">
-  <aside class="intro">
-    <p class="mark">Ora</p>
-    <p class="latin">Ora et labora. Pray, and work.</p>
-    <p>A Catholic companion for a phone that has forgotten how to be quiet. Scripture, the Hours and the saints are here. The feed is not.</p>
-    <p>Ora counts the minutes you spend in it and asks you to leave. When you want to put the phone down properly, the digital fast locks it for as long as you choose.</p>
-    <p class="domain">prayora.co</p>
-    <p class="note">Working prototype. Sample content throughout, Douay-Rheims text.</p>
-  </aside>
-
-  <div class="phone" id="phone">
-    <header class="top">
-      <h1 class="wordmark">Or<span>a</span></h1>
-      <div class="day" id="day"></div>
-    </header>
-    <main id="main"></main>
-    <div id="askbar-slot"></div>
-    <nav class="tabs" role="tablist" id="tabs"></nav>
+  <div class="hero">
+    <div>
+      <p class="eyebrow">A Catholic app for a quieter phone</p>
+      <h1>A phone that leads you to prayer.</h1>
+      <p class="lede">Most apps are built to keep you scrolling. Ora is built to send you back to God and then get out of the way. It has the Scriptures, the Hours and the saints of the day, and a digital fast that locks the phone when you want to be still.</p>
+      <div class="ctas"><a class="btn" href="/app/">Try Ora now</a><a class="btn ghost" href="#waitlist">Join the waitlist</a></div>
+      <p class="small">Free to try in your browser. The iPhone and Android app is in development.</p>
+    </div>
+    <div class="device"><iframe src="/app/#scripture" title="Ora, running live" loading="lazy"></iframe></div>
   </div>
+</div>
+
+<div class="wrap"><div class="rule" aria-hidden="true"></div></div>
+
+<section id="inside">
+  <div class="wrap">
+    <p class="eyebrow">What's inside</p>
+    <h2>Everything a day of prayer needs, and nothing else.</h2>
+    <div class="inside">
+      <article><span class="tag">Pray the day</span><h3>Scripture, the Hours, the saints</h3><p>The Douay-Rheims Bible with an illuminated initial for every book. The seven Hours of the Divine Office, from Lauds to Compline. The saint the Church keeps today, with a line to carry with you.</p></article>
+      <article><span class="tag">Ask</span><h3>Questions of faith, answered with sources</h3><p>Ask about purgatory, confession or the Rosary. Answers draw on the Catechism, Scripture and the Fathers, and name every source so you can check it for yourself.</p></article>
+      <article><span class="tag">Fast</span><h3>A lock for the phone, not a feed</h3><p>Ora counts the minutes you spend in it and asks you to leave. When you want real quiet, the digital fast shuts everything but prayer and the people you love.</p></article>
+    </div>
+  </div>
+</section>
+
+<div class="band">
+  <div class="wrap">
+    <blockquote>“…technological products are not neutral, for they create a framework which ends up conditioning lifestyles and shaping social possibilities…”</blockquote>
+    <cite>Pope Francis, Laudato Si' 107</cite>
+    <p>Ora takes that seriously. It measures itself by how soon you put it down, not by how long you stay.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap fasts">
+    <div class="intro">
+      <p class="eyebrow">The digital fast</p>
+      <h2>Three ways to put the phone down.</h2>
+      <p>Pick the one that fits the day. Ending a fast early takes a deliberate three-second hold, long enough to ask yourself whether you mean it.</p>
+    </div>
+    <dl>
+      <div class="row"><dt>Pilgrim<small>20 minutes</small></dt><dd>A gentle limit. After twenty minutes on any app, Ora offers a psalm in its place.</dd></div>
+      <div class="row"><dt>Fast<small>2 hours</small></dt><dd>Only Scripture, the Hours and phone calls. Everything else waits.</dd></div>
+      <div class="row"><dt>Hermit<small>Until dawn</small></dt><dd>The phone rests until six the next morning. Calls from favourites still ring.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section id="waitlist" style="padding-top:0">
+  <div class="wrap">
+    <div class="wait">
+      <div>
+        <p class="eyebrow">Waitlist</p>
+        <h2>Be first to have Ora on your phone.</h2>
+        <p>The full app for iPhone and Android is being built now. Leave your email and we'll tell you the day it's ready.</p>
+      </div>
+      <div id="formbox">
+        <form id="wl" novalidate>
+          <label class="f" for="email">Email address
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com" required>
+          </label>
+          <fieldset>
+            <legend>Your phone</legend>
+            <div class="choices">
+              <label><input type="radio" name="platform" value="iPhone" id="p-ios"> iPhone</label>
+              <label><input type="radio" name="platform" value="Android" id="p-android"> Android</label>
+              <label><input type="radio" name="platform" value="Not sure" id="p-unsure" checked> Not sure</label>
+            </div>
+          </fieldset>
+          <div class="hp" aria-hidden="true"><label for="website">Leave this empty</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
+          <div><button class="btn" type="submit" id="wlbtn">Join the waitlist</button></div>
+          <p class="status" id="wlstatus" role="status"></p>
+          <p class="fine">We'll only use your address to tell you when Ora launches. We never share it.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer>
+    <span>Ora · prayora.co · Scripture from the Douay-Rheims Bible, Challoner revision</span>
+    <span class="amdg">Ad maiorem Dei gloriam</span>
+  </footer>
 </div>
 
 <script>
 (function(){
-"use strict";
-const $=s=>document.querySelector(s);
-const main=$("#main");
-const store={get(k,d){try{const v=localStorage.getItem("ora:"+k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem("ora:"+k,JSON.stringify(v))}catch(e){}}};
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  var ua=navigator.userAgent;
+  if(/iphone|ipad|ipod/i.test(ua))document.getElementById("p-ios").checked=true;
+  else if(/android/i.test(ua))document.getElementById("p-android").checked=true;
 
-/* ---------- Liturgical calendar ---------- */
-const DAY=86400000;
-const mk=(y,m,d)=>new Date(y,m,d);
-function easter(y){const a=y%19,b=Math.floor(y/100),c=y%100,d=Math.floor(b/4),e=b%4,f=Math.floor((b+8)/25),g=Math.floor((b-f+1)/3),h=(19*a+b-d-g+15)%30,i=Math.floor(c/4),k=c%4,l=(32+2*e+2*i-h-k)%7,m=Math.floor((a+11*h+22*l)/451),mo=Math.floor((h+l-7*m+114)/31),da=((h+l-7*m+114)%31)+1;return mk(y,mo-1,da)}
-function advent1(y){const d=mk(y,11,3);return new Date(d-d.getDay()*DAY)}
-function sundayOnOrBefore(d){return new Date(d-d.getDay()*DAY)}
-function ord(n){const s=["th","st","nd","rd"],v=n%100;return n+(s[(v-20)%10]||s[v]||s[0])}
-function season(now){
-  const t=mk(now.getFullYear(),now.getMonth(),now.getDate()),y=t.getFullYear();
-  const E=easter(y),ash=new Date(E-46*DAY),pent=new Date(+E+49*DAY),adv=advent1(y);
-  const epiph=mk(y,0,6),bapt=new Date(+sundayOnOrBefore(new Date(+epiph+6*DAY))+ (epiph.getDay()===0?7*DAY:0));
-  if(t>=adv&&t<mk(y,11,25))return{name:"Advent",color:"var(--violet)"};
-  if(t>=mk(y,11,25)||t<=bapt)return{name:"Christmastide",color:"#F7F3E8"};
-  if(t>=ash&&t<new Date(E-3*DAY))return{name:"Lent",color:"var(--violet)"};
-  if(t>=new Date(E-3*DAY)&&t<E)return{name:"Sacred Triduum",color:"var(--rubric)"};
-  if(t>=E&&t<=pent)return{name:"Eastertide",color:"#F7F3E8"};
-  if(t>pent&&t<adv){const ck=new Date(adv-7*DAY);const w=34-Math.round((ck-sundayOnOrBefore(t))/(7*DAY));return{name:ord(w)+" Week in Ordinary Time",color:"var(--green)"}}
-  return{name:"Ordinary Time",color:"var(--green)"};
-}
-
-/* ---------- Content ---------- */
-const BOOKS=[
- {id:"gen",name:"Genesis",ref:"Genesis 1:1–5",note:"The first day",color:"#2F5D50",emblem:"sun",initial:"I",verses:[
-  [1,"In the beginning God created heaven, and earth."],
-  [2,"And the earth was void and empty, and darkness was upon the face of the deep; and the spirit of God moved over the waters."],
-  [3,"And God said: Be light made. And light was made."],
-  [4,"And God saw the light that it was good; and he divided the light from the darkness."],
-  [5,"And he called the light Day, and the darkness Night; and there was evening and morning one day."]]},
- {id:"ps",name:"Psalms",ref:"Psalm 22 (23)",note:"The Lord ruleth me",color:"#6B2D3A",emblem:"harp",initial:"T",verses:[
-  [1,"The Lord ruleth me: and I shall want nothing."],
-  [2,"He hath set me in a place of pasture. He hath brought me up, on the water of refreshment:"],
-  [3,"He hath converted my soul. He hath led me on the paths of justice, for his own name's sake."],
-  [4,"For though I should walk in the midst of the shadow of death, I will fear no evils, for thou art with me. Thy rod and thy staff, they have comforted me."],
-  [5,"Thou hast prepared a table before me against them that afflict me. Thou hast anointed my head with oil; and my chalice which inebriateth me, how goodly is it!"],
-  [6,"And thy mercy will follow me all the days of my life. And that I may dwell in the house of the Lord unto length of days."]]},
- {id:"mt",name:"Matthew",ref:"Matthew 5:3–10",note:"The Beatitudes",color:"#2E4A7A",emblem:"star",initial:"B",verses:[
-  [3,"Blessed are the poor in spirit: for theirs is the kingdom of heaven."],
-  [4,"Blessed are the meek: for they shall possess the land."],
-  [5,"Blessed are they that mourn: for they shall be comforted."],
-  [6,"Blessed are they that hunger and thirst after justice: for they shall have their fill."],
-  [7,"Blessed are the merciful: for they shall obtain mercy."],
-  [8,"Blessed are the clean of heart: for they shall see God."],
-  [9,"Blessed are the peacemakers: for they shall be called the children of God."],
-  [10,"Blessed are they that suffer persecution for justice' sake: for theirs is the kingdom of heaven."]]},
- {id:"lk",name:"Luke",ref:"Luke 1:46–50",note:"The Magnificat",color:"#7A3B1E",emblem:"lily",initial:"M",verses:[
-  [46,"And Mary said: My soul doth magnify the Lord."],
-  [47,"And my spirit hath rejoiced in God my Saviour."],
-  [48,"Because he hath regarded the humility of his handmaid; for behold from henceforth all generations shall call me blessed."],
-  [49,"Because he that is mighty, hath done great things to me; and holy is his name."],
-  [50,"And his mercy is from generation unto generations, to them that fear him."]]},
- {id:"jn",name:"John",ref:"John 1:1–5",note:"The Word made light",color:"#1F4A6B",emblem:"cross",initial:"I",verses:[
-  [1,"In the beginning was the Word, and the Word was with God, and the Word was God."],
-  [2,"The same was in the beginning with God."],
-  [3,"All things were made by him: and without him was made nothing that was made."],
-  [4,"In him was life, and the life was the light of men."],
-  [5,"And the light shineth in darkness, and the darkness did not comprehend it."]]}
-];
-
-const GLORIA="Glory be to the Father, and to the Son, and to the Holy Spirit. As it was in the beginning, is now, and ever shall be, world without end. Amen.";
-const HOURS=[
- {id:"lauds",name:"Lauds",sub:"Morning Prayer",from:5,to:9,label:"06:00",psalm:["Psalm 62:2–3","O God, my God, to thee do I watch at break of day. For thee my soul hath thirsted; for thee my flesh, O how many ways! In a desert land, and where there is no way, and no water: so in the sanctuary have I come before thee, to see thy power and thy glory."],cant:["Benedictus · Luke 1:78–79","Through the bowels of the mercy of our God, in which the Orient from on high hath visited us: to enlighten them that sit in darkness, and in the shadow of death: to direct our feet into the way of peace."]},
- {id:"terce",name:"Terce",sub:"Mid-morning",from:9,to:12,label:"09:00",psalm:["Psalm 118:105","Thy word is a lamp to my feet, and a light to my paths."]},
- {id:"sext",name:"Sext",sub:"Midday",from:12,to:15,label:"12:00",psalm:["Psalm 54:18","Evening and morning, and at noon I will speak and declare: and he shall hear my voice."]},
- {id:"none",name:"None",sub:"Mid-afternoon",from:15,to:17,label:"15:00",psalm:["Psalm 125:5","They that sow in tears shall reap in joy."]},
- {id:"vespers",name:"Vespers",sub:"Evening Prayer",from:17,to:20,label:"18:00",psalm:["Psalm 140:2","Let my prayer be directed as incense in thy sight; the lifting up of my hands, as evening sacrifice."],cant:["Magnificat · Luke 1:46–47","My soul doth magnify the Lord. And my spirit hath rejoiced in God my Saviour."]},
- {id:"compline",name:"Compline",sub:"Night Prayer",from:20,to:29,label:"21:00",psalm:["Psalm 4:9","In peace in the selfsame I will sleep, and I will rest."],cant:["Nunc Dimittis · Luke 2:29–32","Now thou dost dismiss thy servant, O Lord, according to thy word in peace; because my eyes have seen thy salvation, which thou hast prepared before the face of all peoples: a light to the revelation of the Gentiles, and the glory of thy people Israel."]}
-];
-
-const SAINTS={
- "09-26":{n:"Saints Cosmas and Damian",r:"Optional Memorial · Martyrs",c:"var(--rubric)",d:"Died c. 303, Cyrrhus, Syria",b:"Twin brothers and physicians who treated the sick without charging a fee, and were called the anargyroi, \"the moneyless\". They were martyred under Diocletian. Their names are said in the Roman Canon of the Mass.",q:["Freely have you received, freely give.","Matthew 10:8"]},
- "09-27":{n:"Saint Vincent de Paul",r:"Memorial · Priest",c:"#F7F3E8",d:"1581–1660, France",b:"A country priest who gave his life to the poor of Paris. He founded the Congregation of the Mission and, with Saint Louise de Marillac, the Daughters of Charity.",q:["Charity is certainly greater than any rule.","Saint Vincent de Paul"]},
- "09-28":{n:"Saint Wenceslaus",r:"Optional Memorial · Martyr",c:"var(--rubric)",d:"c. 907–935, Bohemia",b:"Duke of Bohemia who governed as a Christian, cared for the poor and was murdered by his brother on the way to Mass. He is the patron of the Czech people."},
- "09-29":{n:"Saints Michael, Gabriel and Raphael",r:"Feast · Archangels",c:"#F7F3E8",d:"Michaelmas",b:"Michael defends, Gabriel announces, Raphael heals. In England this day was one of the quarter days, when rents fell due and the Michaelmas term began.",q:["Who is like unto God?","The meaning of the name Michael"]},
- "09-30":{n:"Saint Jerome",r:"Memorial · Priest and Doctor",c:"#F7F3E8",d:"c. 342–420, Bethlehem",b:"Scholar and ascetic who translated the Scriptures into Latin. His Vulgate stood behind the Douay-Rheims text that Ora uses.",q:["Ignorance of Scripture is ignorance of Christ.","Saint Jerome"]},
- "10-01":{n:"Saint Thérèse of Lisieux",r:"Memorial · Virgin and Doctor",c:"#F7F3E8",d:"1873–1897, Normandy",b:"A Carmelite nun who died at twenty-four and taught the Little Way: small things done with great love. She was named a Doctor of the Church in 1997.",q:["My vocation is love.","Story of a Soul"]},
- "10-02":{n:"The Holy Guardian Angels",r:"Memorial",c:"#F7F3E8",d:"",b:"The Church teaches that from infancy to death each human life is surrounded by the watchful care and intercession of angels (Catechism 336)."},
- "10-04":{n:"Saint Francis of Assisi",r:"Memorial",c:"#F7F3E8",d:"1181–1226, Umbria",b:"Son of a cloth merchant who gave away everything to live in poverty. His Canticle of the Creatures gave Laudato Si' its name."},
- "10-07":{n:"Our Lady of the Rosary",r:"Memorial",c:"#F7F3E8",d:"",b:"Instituted after the victory at Lepanto in 1571, which Pope Pius V credited to the Rosary prayed across Christendom."},
- "10-09":{n:"Saint John Henry Newman",r:"Memorial in England and Wales",c:"#F7F3E8",d:"1801–1890, Birmingham",b:"Anglican scholar received into the Catholic Church in 1845, later a cardinal. Founder of the Birmingham Oratory, canonised in 2019.",q:["Lead, kindly Light, amid the encircling gloom.","John Henry Newman"]},
- "10-15":{n:"Saint Teresa of Ávila",r:"Memorial · Virgin and Doctor",c:"#F7F3E8",d:"1515–1582, Castile",b:"Reformer of the Carmelites and teacher of mental prayer. Her Interior Castle maps the soul's journey toward God.",q:["Let nothing disturb you. God alone suffices.","Saint Teresa of Ávila"]}
-};
-
-const ANSWERS=[
- {k:/purgator/i,q:"What is purgatory?",a:"Purgatory is the final purification of those who die in God's grace and friendship but are still imperfectly purified. They are assured of their eternal salvation, and are cleansed so as to enter the joy of heaven. From the earliest centuries the Church has prayed for the dead, above all at Mass.",c:"Catechism 1030–1032"},
- {k:/eucharist|real presence|transubstan|body of christ/i,q:"Is Christ really present in the Eucharist?",a:"Yes. In the Eucharist the body and blood, together with the soul and divinity, of our Lord Jesus Christ, and therefore the whole Christ, is truly, really and substantially contained. The Church calls the change of the bread and wine transubstantiation.",c:"Catechism 1374–1376 · John 6:51"},
- {k:/confess|priest|absolution|penance/i,q:"Why confess to a priest?",a:"Christ gave the apostles the power to forgive sins: \"Whose sins you shall forgive, they are forgiven them\" (John 20:23). The Church exercises that power through bishops and priests. Confession reconciles the penitent with the Church as well as with God, and lets you hear forgiveness spoken aloud.",c:"Catechism 1441–1445, 1461"},
- {k:/rosary|hail mary|mysteries/i,q:"How do I pray the Rosary?",a:"Begin with the Sign of the Cross and the Apostles' Creed, then an Our Father, three Hail Marys and a Glory Be. Each of the five decades is one Our Father, ten Hail Marys and a Glory Be, prayed while meditating on a mystery. Today is Saturday, so the Church suggests the Joyful Mysteries.",c:"Catechism 971, 2708"},
- {k:/social|technolog|phone|laudato|dopamine/i,q:"What does the Church say about technology?",a:"Pope Francis warns of a \"technocratic paradigm\" that treats people and creation as things to be used. Technology is good when it serves the person and the common good, and harmful when it makes us its instrument. Ora is built on that distinction.",c:"Laudato Si' 106–114 · Gaudium et Spes 35"}
-];
-
-const MODES=[
- {id:"pilgrim",name:"Pilgrim",len:"20 min",mins:20,d:"A gentle limit. After twenty minutes on any app, Ora offers a psalm in its place.",allow:"Everything, with a pause for prayer."},
- {id:"fast",name:"Fast",len:"2 hours",mins:120,d:"Only Scripture, the Hours and phone calls. Everything else waits.",allow:"Allowed: Scripture, the Hours, calls."},
- {id:"hermit",name:"Hermit",len:"Until dawn",mins:null,d:"The phone rests until six tomorrow morning. Calls from favourites still ring.",allow:"Allowed: calls from favourites."}
-];
-
-/* ---------- Illumination ---------- */
-let uid=0;
-function emblem(t,col){
-  const g="#C9A84C";
-  if(t==="sun"){let r="";for(let i=0;i<12;i++){const a=i*Math.PI/6,x1=Math.cos(a)*10,y1=Math.sin(a)*10,x2=Math.cos(a)*16,y2=Math.sin(a)*16;r+=`<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${g}" stroke-width="2"/>`}return r+`<circle r="7" fill="${g}"/>`}
-  if(t==="star"){let p=[];for(let i=0;i<16;i++){const a=i*Math.PI/8-Math.PI/2,r=i%2?7:16;p.push((Math.cos(a)*r).toFixed(1)+","+(Math.sin(a)*r).toFixed(1))}return `<polygon points="${p.join(" ")}" fill="${g}"/>`}
-  if(t==="harp")return `<path d="M-10 15 L-10 -15 Q 12 -12 12 15 Z" fill="none" stroke="${g}" stroke-width="2.5"/>`+[-5,0,5].map(x=>`<line x1="${x}" y1="${x<0?-11:x===0?-9:-5}" x2="${x}" y2="15" stroke="${g}" stroke-width="1.2"/>`).join("");
-  if(t==="lily")return `<ellipse cx="0" cy="-6" rx="4.5" ry="10" fill="${g}"/><ellipse cx="-8" cy="0" rx="4" ry="9" transform="rotate(-35 -8 0)" fill="${g}"/><ellipse cx="8" cy="0" rx="4" ry="9" transform="rotate(35 8 0)" fill="${g}"/><rect x="-10" y="7" width="20" height="3" fill="${g}"/><line x1="0" y1="10" x2="0" y2="17" stroke="${g}" stroke-width="2"/>`;
-  return `<path d="M-3 -16h6v10h10v6h-10v16h-6v-16h-10v-6h10z" fill="${g}"/>`;
-}
-function illum(b){
-  const id="dp"+(++uid);
-  return `<svg class="illum" viewBox="0 0 200 250" role="img" aria-label="Illuminated initial ${b.initial} for ${esc(b.name)}">
-  <defs><pattern id="${id}" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="7" cy="7" r="1.3" fill="#C9A84C" opacity=".55"/><path d="M0 0L14 14M14 0L0 14" stroke="#000" stroke-opacity=".08" stroke-width="1"/></pattern></defs>
-  <rect x="2" y="2" width="196" height="246" rx="3" fill="#C9A84C"/>
-  <rect x="8" y="8" width="184" height="234" fill="${b.color}"/>
-  <rect x="8" y="8" width="184" height="234" fill="url(#${id})"/>
-  <path d="M22 22 C 40 30, 30 50, 22 60 M178 22 C 160 30, 170 50, 178 60 M22 228 C 40 220, 30 200, 22 190 M178 228 C 160 220, 170 200, 178 190" stroke="#C9A84C" stroke-width="2" fill="none"/>
-  <circle cx="22" cy="22" r="4" fill="#C9A84C"/><circle cx="178" cy="22" r="4" fill="#C9A84C"/><circle cx="22" cy="228" r="4" fill="#C9A84C"/><circle cx="178" cy="228" r="4" fill="#C9A84C"/>
-  <rect x="36" y="32" width="128" height="140" fill="#F5EDD6" stroke="#C9A84C" stroke-width="4"/>
-  <rect x="42" y="38" width="116" height="128" fill="none" stroke="${b.color}" stroke-width="1" opacity=".5"/>
-  <text x="100" y="150" text-anchor="middle" font-family="'IM Fell English',Georgia,serif" font-size="124" fill="${b.color}">${b.initial}</text>
-  <g transform="translate(100 206)">${emblem(b.emblem,b.color)}</g>
-  </svg>`;
-}
-
-/* ---------- Header ---------- */
-function renderDay(){
-  const n=new Date(),s=season(n);
-  const date=n.toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long"});
-  $("#day").innerHTML=`<b>${date}</b><span class="lit"><i class="dot" style="background:${s.color}"></i>${s.name}</span>`;
-}
-
-/* ---------- Tabs ---------- */
-const ICONS={
- scripture:'<path d="M4 5c3-1 6-1 8 1v14c-2-2-5-2-8-1z"/><path d="M20 5c-3-1-6-1-8 1v14c2-2 5-2 8-1z"/>',
- hours:'<circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/>',
- saints:'<circle cx="12" cy="9" r="3.2"/><ellipse cx="12" cy="4.6" rx="4.5" ry="1.4"/><path d="M6 20c1-4 3-6 6-6s5 2 6 6"/>',
- ask:'<path d="M5 5h14v10H10l-4 4v-4H5z"/><path d="M10.3 8.6a1.9 1.9 0 1 1 2.4 1.9c-.5.2-.7.5-.7 1"/>',
- fast:'<path d="M12 3v3M12 18v3M4.5 12h-1.5M21 12h-1.5"/><path d="M12 12L7 8"/><path d="M5 17a8 8 0 1 1 14 0"/>'
-};
-const TABS=[["scripture","Scripture"],["hours","Hours"],["saints","Saints"],["ask","Ask"],["fast","Fast"]];
-let tab="scripture";
-function renderTabs(){
-  $("#tabs").innerHTML=TABS.map(([id,l])=>`<button role="tab" aria-selected="${id===tab}" data-tab="${id}"><svg viewBox="0 0 24 24">${ICONS[id]}</svg>${l}</button>`).join("");
-}
-$("#tabs").addEventListener("click",e=>{const b=e.target.closest("[data-tab]");if(!b)return;go(b.dataset.tab)});
-function go(t,arg){tab=t;store.set("tab",t);renderTabs();$("#askbar-slot").innerHTML="";main.scrollTop=0;VIEWS[t](arg)}
-
-/* ---------- Views ---------- */
-const VIEWS={
- scripture(bookId){
-  if(bookId){
-   const b=BOOKS.find(x=>x.id===bookId);
-   main.innerHTML=`<div class="screen"><button class="back" data-act="books">‹ All books</button>
-   <p class="eyebrow">${esc(b.ref)}</p><h2>${esc(b.note)}</h2><div class="rule"></div>
-   <div class="reader">${illum(b)}<div class="verses">${b.verses.map(([n,t])=>`<p><span class="vn">${n}</span>${esc(t)}</p>`).join("")}
-   <p class="src">Douay-Rheims, Challoner revision. Public domain.</p></div></div></div>`;
-   store.set("lastBook",bookId);return;
-  }
-  const last=store.get("lastBook",null),lb=BOOKS.find(x=>x.id===last);
-  main.innerHTML=`<div class="screen"><p class="eyebrow">Sacred Scripture</p><h2>Take up and read</h2>
-  <p class="lede">${lb?`You were last in <em>${esc(lb.name)}</em>. `:""}Five passages in this prototype. The full app carries all seventy-three books.</p>
-  <div class="books">${BOOKS.map(b=>`<button class="book" data-book="${b.id}">${illum(b)}<span><span class="ref">${esc(b.ref)}</span><h3>${esc(b.name)}</h3><small>${esc(b.note)}</small></span></button>`).join("")}</div></div>`;
- },
- hours(hid){
-  const h=new Date().getHours(),cur=HOURS.find(x=>(h>=x.from&&h<x.to)||(x.id==="compline"&&(h>=20||h<5)));
-  const key="prayed:"+new Date().toDateString(),done=store.get(key,[]);
-  if(hid){
-   const x=HOURS.find(y=>y.id===hid);
-   main.innerHTML=`<div class="screen"><button class="back" data-act="hours">‹ The Hours</button>
-   <p class="eyebrow">${esc(x.sub)}</p><h2>${esc(x.name)}</h2><div class="rule"></div>
-   <div class="office">
-    <span class="rub">Opening</span>
-    <p><span class="vr">℣.</span>O God, come to my assistance.</p><p><span class="vr">℟.</span>O Lord, make haste to help me.</p>
-    <p>${GLORIA}</p>
-    <span class="rub">Psalmody · ${esc(x.psalm[0])}</span><p>${esc(x.psalm[1])}</p>
-    ${x.cant?`<span class="rub">${esc(x.cant[0])}</span><p>${esc(x.cant[1])}</p>`:""}
-    <p>${GLORIA}</p>
-    <span class="rub">Conclusion</span>
-    <p><span class="vr">℣.</span>Let us bless the Lord.</p><p><span class="vr">℟.</span>Thanks be to God.</p>
-   </div>
-   <p style="margin-top:22px"><button class="btn" data-done="${x.id}">${done.includes(x.id)?"Prayed ✓":"Mark as prayed"}</button></p>
-   <p class="proto">Short form for the prototype. The full app follows the day's psalter with romcal.</p></div>`;
-   return;
-  }
-  main.innerHTML=`<div class="screen"><p class="eyebrow">Liturgy of the Hours</p><h2>Seven times a day I have given praise</h2>
-  <p class="lede">Psalm 118:164. It is ${new Date().toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"})}; the Church is praying ${cur.name}.</p>
-  <div class="hours">${HOURS.map(x=>{const now=x===cur,d=done.includes(x.id);return `<button class="hour${now?" now":""}${d?" done":""}" data-hour="${x.id}"><span class="t">${x.label}</span><span class="n">${x.name}<small>${x.sub}</small></span><span class="s">${d?"Prayed":now?"Now":""}</span></button>`}).join("")}</div></div>`;
- },
- saints(k){
-  const n=new Date(),today=String(n.getMonth()+1).padStart(2,"0")+"-"+String(n.getDate()).padStart(2,"0");
-  const keys=Object.keys(SAINTS).sort();
-  let pick=k||(SAINTS[today]?today:(keys.find(x=>x>today)||keys[0]));
-  const s=SAINTS[pick],[mm,dd]=pick.split("-"),label=new Date(2026,+mm-1,+dd).toLocaleDateString("en-GB",{day:"numeric",month:"long"});
-  const upcoming=keys.filter(x=>x>=today&&x!==pick).concat(keys.filter(x=>x<today)).slice(0,6);
-  main.innerHTML=`<div class="screen"><p class="eyebrow">${pick===today?"Today":label} · Saints of the Calendar</p>
-  <article class="feast"><div class="rank"><i class="dot" style="background:${s.c}"></i>${esc(s.r)}</div>
-  <h3>${esc(s.n)}</h3>${s.d?`<p class="dates">${esc(s.d)}</p>`:""}<p>${esc(s.b)}</p>
-  ${s.q?`<blockquote>“${esc(s.q[0])}”<cite>${esc(s.q[1])}</cite></blockquote>`:""}</article>
-  <div class="rule"></div><p class="eyebrow">Coming days</p>
-  <div class="coming">${upcoming.map(x=>{const[m,d]=x.split("-");return `<button data-saint="${x}"><span class="d">${new Date(2026,+m-1,+d).toLocaleDateString("en-GB",{day:"numeric",month:"short"})}</span><span class="nm">${esc(SAINTS[x].n)}</span><i class="dot" style="background:${SAINTS[x].c}"></i></button>`}).join("")}</div></div>`;
- },
- ask(){
-  main.innerHTML=`<div class="screen"><p class="eyebrow">Ask</p><h2>Seek, and you shall find</h2>
-  <p class="lede">Questions of faith, answered from the Catechism, Scripture and the Fathers, with every source named.</p>
-  <div class="chips">${ANSWERS.map((a,i)=>`<button class="chip" data-q="${i}">${esc(a.q)}</button>`).join("")}</div>
-  <div class="chat" id="chat"></div>
-  <p class="proto">Prototype: sample answers only. The live version runs on Claude with a cited Catholic library.</p></div>`;
-  $("#askbar-slot").innerHTML=`<form class="askbar" id="askf"><label for="askin" class="sr" hidden>Your question</label><input id="askin" placeholder="Ask about the faith…" autocomplete="off"><button class="btn" type="submit">Ask</button></form>`;
-  $("#askf").addEventListener("submit",e=>{e.preventDefault();const v=$("#askin").value.trim();if(v){ask(v);$("#askin").value=""}});
- },
- fast(){
-  const active=store.get("fastUntil",null);
-  if(active&&active.until>Date.now()){veil(active);}
-  const mins=Math.floor(inApp()/60);
-  const msg=mins<10?"A good visit. When you are finished, close the app.":mins<30?"Consider closing Ora and praying in silence.":"Put the phone down. God is not in here.";
-  main.innerHTML=`<div class="screen"><p class="eyebrow">Digital Fast</p><h2>Be still</h2>
-  <p class="lede">Ora keeps its own time against you. The shadow lengthens the longer you stay.</p>
-  <div class="dial-wrap">${sundial(mins)}<div><div class="mins" id="mins">${mins}<small> min in Ora today</small></div><p>${msg}</p></div></div>
-  <div class="rule"></div><p class="eyebrow">Begin a fast</p>
-  <div class="modes">${MODES.map(m=>`<button class="mode" data-mode="${m.id}"><h3>${m.name}</h3><span class="len">${m.len}</span><p>${esc(m.d)}</p></button>`).join("")}</div>
-  <p class="proto">In the prototype the fast covers this screen. On Android the full app runs as the launcher; on iPhone it uses Screen Time.</p></div>`;
- }
-};
-
-/* ---------- Ask ---------- */
-function ask(text,idx){
-  const chat=$("#chat");if(!chat)return;
-  const hit=idx!=null?ANSWERS[idx]:ANSWERS.find(a=>a.k.test(text));
-  chat.insertAdjacentHTML("beforeend",`<div class="msg q">${esc(text)}</div><div class="msg a typing">Consulting the Catechism…</div>`);
-  const el=chat.lastElementChild;el.scrollIntoView({block:"nearest"});
-  setTimeout(()=>{
-    el.classList.remove("typing");
-    el.innerHTML=hit?`${esc(hit.a)}<span class="cite">${esc(hit.c)}</span>`:`In the full app this question would be answered from the Catechism, Scripture and the Fathers, with each source cited. This prototype has answers for the five questions above.<span class="cite">Prototype</span>`;
-    el.scrollIntoView({block:"nearest",behavior:"smooth"});
-  },900);
-}
-
-/* ---------- Sundial & time-in-app ---------- */
-const tKey=()=> "secs:"+new Date().toDateString();
-let secs=store.get(tKey(),0);
-function inApp(){return secs}
-setInterval(()=>{if(document.visibilityState==="visible"){secs++;if(secs%5===0)store.set(tKey(),secs);if(tab==="fast"&&secs%60===0&&!document.querySelector(".veil"))VIEWS.fast()}},1000);
-function sundial(mins){
-  const f=Math.min(mins,60)/60,a=Math.PI*(1-f),cx=75,cy=78,r=62;
-  let ticks="";for(let i=0;i<=12;i++){const t=Math.PI*(1-i/12),L=i%3?8:14;ticks+=`<line x1="${(cx+Math.cos(t)*r).toFixed(1)}" y1="${(cy-Math.sin(t)*r).toFixed(1)}" x2="${(cx+Math.cos(t)*(r-L)).toFixed(1)}" y2="${(cy-Math.sin(t)*(r-L)).toFixed(1)}" stroke="#6A5440" stroke-width="1.2"/>`}
-  const sx=cx+Math.cos(a)*(r-6),sy=cy-Math.sin(a)*(r-6);
-  return `<svg viewBox="0 0 150 100" role="img" aria-label="Sundial showing ${mins} minutes in the app today">
-  <path d="M${cx-r} ${cy} A ${r} ${r} 0 0 1 ${cx+r} ${cy} Z" fill="#ECE0BF" stroke="#C9A84C" stroke-width="2"/>
-  ${ticks}
-  <path d="M${cx} ${cy} L ${sx.toFixed(1)} ${sy.toFixed(1)}" stroke="#2C1810" stroke-opacity=".55" stroke-width="7" stroke-linecap="round"/>
-  <path d="M${cx} ${cy} L ${cx} ${cy-34} L ${cx+4} ${cy} Z" fill="#8F6D1F"/>
-  <text x="${cx-r+2}" y="${cy+14}" font-size="9" fill="#6A5440" font-family="'IM Fell English SC',Georgia,serif">0</text>
-  <text x="${cx+r-14}" y="${cy+14}" font-size="9" fill="#6A5440" font-family="'IM Fell English SC',Georgia,serif">60</text>
-  </svg>`;
-}
-
-/* ---------- Fast veil ---------- */
-let veilTimer=null;
-function startFast(id){
-  const m=MODES.find(x=>x.id===id);let until;
-  if(m.mins)until=Date.now()+m.mins*60000;else{const d=new Date();d.setHours(6,0,0,0);if(d<=new Date())d.setDate(d.getDate()+1);until=+d}
-  const f={id,until};store.set("fastUntil",f);veil(f);
-}
-function veil(f){
-  const m=MODES.find(x=>x.id===f.id);
-  document.querySelector(".veil")?.remove();
-  const v=document.createElement("div");v.className="veil";
-  v.innerHTML=`<p class="mode-n">${m.name.toUpperCase()} · IN PROGRESS</p><div class="clock" id="clock"></div>
-  <blockquote>Be still and see that I am God.<cite>Psalm 45:11</cite></blockquote>
-  <p class="allowed">${esc(m.allow)}</p>
-  <button class="hold" id="hold"><i></i><span>Hold to end early</span></button>`;
-  $("#phone").appendChild(v);
-  const tick=()=>{const ms=f.until-Date.now();if(ms<=0){endFast();return}const h=Math.floor(ms/3600000),mi=Math.floor(ms%3600000/60000),s=Math.floor(ms%60000/1000);$("#clock").textContent=(h?h+":":"")+String(mi).padStart(h?2:1,"0")+":"+String(s).padStart(2,"0")};
-  tick();clearInterval(veilTimer);veilTimer=setInterval(tick,1000);
-  const hold=$("#hold"),bar=hold.querySelector("i");let t0=0,raf=0;
-  const step=()=>{const p=Math.min((performance.now()-t0)/3000,1);bar.style.transform=`scaleX(${p})`;if(p>=1){endFast();return}raf=requestAnimationFrame(step)};
-  const down=e=>{e.preventDefault();t0=performance.now();raf=requestAnimationFrame(step)};
-  const up=()=>{cancelAnimationFrame(raf);bar.style.transform="scaleX(0)"};
-  hold.addEventListener("pointerdown",down);["pointerup","pointerleave","pointercancel"].forEach(ev=>hold.addEventListener(ev,up));
-  hold.addEventListener("keydown",e=>{if((e.key===" "||e.key==="Enter")&&!raf){down(e)}});hold.addEventListener("keyup",()=>{up();raf=0});
-}
-function endFast(){clearInterval(veilTimer);store.set("fastUntil",null);document.querySelector(".veil")?.remove();if(tab==="fast")VIEWS.fast()}
-
-/* ---------- Delegated clicks ---------- */
-main.addEventListener("click",e=>{
-  const t=e.target.closest("button");if(!t)return;
-  if(t.dataset.book)return VIEWS.scripture(t.dataset.book),main.scrollTop=0;
-  if(t.dataset.act==="books")return VIEWS.scripture();
-  if(t.dataset.act==="hours")return VIEWS.hours();
-  if(t.dataset.hour)return VIEWS.hours(t.dataset.hour),main.scrollTop=0;
-  if(t.dataset.done){const key="prayed:"+new Date().toDateString(),d=store.get(key,[]);if(!d.includes(t.dataset.done))d.push(t.dataset.done);store.set(key,d);t.textContent="Prayed ✓";return}
-  if(t.dataset.saint)return VIEWS.saints(t.dataset.saint),main.scrollTop=0;
-  if(t.dataset.q!=null)return ask(ANSWERS[+t.dataset.q].q,+t.dataset.q);
-  if(t.dataset.mode)return startFast(t.dataset.mode);
-});
-
-renderDay();
-const saved=store.get("tab","scripture");
-go(location.hash&&VIEWS[location.hash.slice(1)]?location.hash.slice(1):(VIEWS[saved]?saved:"scripture"));
-const af=store.get("fastUntil",null);if(af&&af.until>Date.now())veil(af);
+  var form=document.getElementById("wl"),status=document.getElementById("wlstatus"),btn=document.getElementById("wlbtn");
+  form.addEventListener("submit",function(e){
+    e.preventDefault();
+    var email=form.email.value.trim();
+    status.className="status";
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){status.className="status err";status.textContent="Please enter a valid email address.";form.email.focus();return}
+    btn.disabled=true;btn.textContent="Adding you…";status.textContent="";
+    var platform=(form.querySelector("input[name=platform]:checked")||{}).value||"Not sure";
+    fetch("/api/waitlist",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:email,platform:platform,website:form.website.value,source:"prayora.co"})})
+      .then(function(r){return r.json().catch(function(){return{}}).then(function(j){return{ok:r.ok,j:j}})})
+      .then(function(res){
+        if(!res.ok)throw new Error(res.j.error||"We couldn't save that just now. Please try again in a minute.");
+        document.getElementById("formbox").innerHTML='<p class="thanks">'+(res.j.existing?"You're already on the list.":"Thank you. You're on the list.")+'</p><p>We’ll write when Ora is ready for your '+(platform==="Not sure"?"phone":platform)+'. In the meantime, <a href="/app/">Ora is here to try</a>.</p>';
+      })
+      .catch(function(err){status.className="status err";status.textContent=err.message;btn.disabled=false;btn.textContent="Join the waitlist"});
+  });
 })();
 </script>
-</body></html>
+</body>
+</html>
