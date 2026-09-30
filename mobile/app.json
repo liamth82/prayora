@@ -1,0 +1,50 @@
+{
+  "expo": {
+    "name": "Ora",
+    "slug": "ora",
+    "scheme": "ora",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "backgroundColor": "#F5EDD6",
+    "runtimeVersion": { "policy": "sdkVersion" },
+    "updates": {
+      "url": "https://u.expo.dev/bc5ad831-02d1-4f3a-aedc-e175d8f5cf79"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "co.prayora.ora"
+    },
+    "android": {
+      "package": "co.prayora.ora",
+      "adaptiveIcon": {
+        "backgroundColor": "#2C1810",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-font",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 180,
+          "resizeMode": "contain",
+          "backgroundColor": "#F5EDD6"
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "bc5ad831-02d1-4f3a-aedc-e175d8f5cf79"
+      }
+    }
+  }
+}

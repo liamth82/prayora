@@ -1,0 +1,148 @@
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { AppState, KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import * as SplashScreen from 'expo-splash-screen';
+import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
+import Svg, { Circle, Ellipse, Path } from 'react-native-svg';
+import { useFonts, IMFellEnglish_400Regular, IMFellEnglish_400Regular_Italic } from '@expo-google-fonts/im-fell-english';
+import { IMFellEnglishSC_400Regular } from '@expo-google-fonts/im-fell-english-sc';
+import { Lora_400Regular, Lora_400Regular_Italic, Lora_500Medium, Lora_600SemiBold } from '@expo-google-fonts/lora';
+
+import { C, F } from './src/theme';
+import { season } from './src/liturgy';
+import { load, save, todayKey } from './src/storage';
+import { Mode, MODES } from './src/content';
+import { Dot } from './src/components/ui';
+import Scripture from './src/screens/Scripture';
+import Hours from './src/screens/Hours';
+import Saints from './src/screens/Saints';
+import Ask from './src/screens/Ask';
+import Fast, { Veil } from './src/screens/Fast';
+
+SplashScreen.preventAutoHideAsync().catch(() => {});
+
+type Tab = 'scripture' | 'hours' | 'saints' | 'ask' | 'fast';
+const TABS: [Tab, string][] = [['scripture', 'Scripture'], ['hours', 'Hours'], ['saints', 'Saints'], ['ask', 'Ask'], ['fast', 'Fast']];
+
+function TabIcon({ tab, color }: { tab: Tab; color: string }) {
+  const p = { stroke: color, fill: 'none', strokeWidth: 1.4 };
+  return (
+    <Svg width={22} height={22} viewBox="0 0 24 24">
+      {tab === 'scripture' && (<><Path {...p} d="M4 5c3-1 6-1 8 1v14c-2-2-5-2-8-1z" /><Path {...p} d="M20 5c-3-1-6-1-8 1v14c2-2 5-2 8-1z" /></>)}
+      {tab === 'hours' && (<><Circle {...p} cx={12} cy={12} r={8} /><Path {...p} d="M12 7v5l3 2" /></>)}
+      {tab === 'saints' && (<><Circle {...p} cx={12} cy={9} r={3.2} /><Ellipse {...p} cx={12} cy={4.6} rx={4.5} ry={1.4} /><Path {...p} d="M6 20c1-4 3-6 6-6s5 2 6 6" /></>)}
+      {tab === 'ask' && (<><Path {...p} d="M5 5h14v10H10l-4 4v-4H5z" /><Path {...p} d="M10.3 8.6a1.9 1.9 0 1 1 2.4 1.9c-.5.2-.7.5-.7 1" /></>)}
+      {tab === 'fast' && (<><Path {...p} d="M12 3v3M12 18v3M4.5 12h-1.5M21 12h-1.5" /><Path {...p} d="M12 12L7 8" /><Path {...p} d="M5 17a8 8 0 1 1 14 0" /></>)}
+    </Svg>
+  );
+}
+
+function Main() {
+  const insets = useSafeAreaInsets();
+  const [tab, setTab] = useState<Tab>('scripture');
+  const [secs, setSecs] = useState(0);
+  const [fast, setFast] = useState<{ id: string; until: number } | null>(null);
+  const scroll = useRef<ScrollView>(null);
+  const scrollTop = useCallback(() => scroll.current?.scrollTo({ y: 0, animated: false }), []);
+
+  // Restore state
+  useEffect(() => {
+    load<Tab>('tab', 'scripture').then((t) => setTab(t));
+    load<number>('secs:' + todayKey(), 0).then(setSecs);
+    load<{ id: string; until: number } | null>('fast', null).then((f) => { if (f && f.until > Date.now()) setFast(f); });
+  }, []);
+
+  // Count time spent in Ora while it is in the foreground
+  useEffect(() => {
+    let active = AppState.currentState === 'active';
+    const sub = AppState.addEventListener('change', (st) => { active = st === 'active'; });
+    const t = setInterval(() => {
+      if (!active) return;
+      setSecs((s) => {
+        const n = s + 1;
+        if (n % 5 === 0) save('secs:' + todayKey(), n);
+        return n;
+      });
+    }, 1000);
+    return () => { clearInterval(t); sub.remove(); };
+  }, []);
+
+  const choose = (t: Tab) => { setTab(t); save('tab', t); scrollTop(); };
+
+  const startFast = (m: Mode) => {
+    let until: number;
+    if (m.mins) until = Date.now() + m.mins * 60000;
+    else { const d = new Date(); d.setHours(6, 0, 0, 0); if (d <= new Date()) d.setDate(d.getDate() + 1); until = +d; }
+    const f = { id: m.id, until };
+    setFast(f); save('fast', f);
+  };
+  const endFast = useCallback(() => { setFast(null); save('fast', null); }, []);
+
+  const s = season();
+  const date = new Date().toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
+  const activeMode = fast ? MODES.find((m) => m.id === fast.id) : null;
+
+  return (
+    <View style={[st.root, { paddingTop: insets.top }]}>
+      <StatusBar style={fast ? 'light' : 'dark'} />
+      <View style={st.header}>
+        <Text style={st.wordmark}>Or<Text style={{ color: C.rubric }}>a</Text></Text>
+        <View style={{ alignItems: 'flex-end', flexShrink: 1 }}>
+          <Text style={st.date}>{date}</Text>
+          <View style={st.lit}><Dot color={s.color} /><Text style={st.litText}>{s.name}</Text></View>
+        </View>
+      </View>
+
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        <ScrollView ref={scroll} contentContainerStyle={st.screen} keyboardShouldPersistTaps="handled">
+          {tab === 'scripture' && <Scripture scrollTop={scrollTop} />}
+          {tab === 'hours' && <Hours scrollTop={scrollTop} />}
+          {tab === 'saints' && <Saints scrollTop={scrollTop} />}
+          {tab === 'ask' && <Ask />}
+          {tab === 'fast' && <Fast minutes={Math.floor(secs / 60)} onStart={startFast} />}
+        </ScrollView>
+      </KeyboardAvoidingView>
+
+      <View style={[st.tabs, { paddingBottom: Math.max(insets.bottom, 6) }]}>
+        {TABS.map(([id, label]) => {
+          const on = id === tab;
+          return (
+            <Pressable key={id} onPress={() => choose(id)} style={st.tab} accessibilityRole="tab" accessibilityState={{ selected: on }}>
+              <TabIcon tab={id} color={on ? C.rubric : C.inkFaint} />
+              <Text style={[st.tabText, on && { color: C.ink }]}>{label}</Text>
+            </Pressable>
+          );
+        })}
+      </View>
+
+      {fast && activeMode ? <Veil mode={activeMode} until={fast.until} onEnd={endFast} /> : null}
+    </View>
+  );
+}
+
+export default function App() {
+  const [loaded, error] = useFonts({
+    IMFellEnglish_400Regular, IMFellEnglish_400Regular_Italic, IMFellEnglishSC_400Regular,
+    Lora_400Regular, Lora_400Regular_Italic, Lora_500Medium, Lora_600SemiBold,
+  });
+  useEffect(() => { if (loaded || error) SplashScreen.hideAsync().catch(() => {}); }, [loaded, error]);
+  if (!loaded && !error) return null;
+  return (
+    <SafeAreaProvider>
+      <Main />
+    </SafeAreaProvider>
+  );
+}
+
+const st = StyleSheet.create({
+  root: { flex: 1, backgroundColor: C.vellum },
+  header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end', gap: 12, paddingHorizontal: 20, paddingTop: 10, paddingBottom: 12, borderBottomWidth: 1, borderColor: C.vellum3 },
+  wordmark: { fontFamily: F.display, fontSize: 34, lineHeight: 38, color: C.ink },
+  date: { fontFamily: F.bodySemi, fontSize: 13, color: C.ink },
+  lit: { flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 2 },
+  litText: { fontFamily: F.body, fontSize: 12.5, color: C.inkSoft },
+  screen: { paddingHorizontal: 20, paddingTop: 18, paddingBottom: 32 },
+  tabs: { flexDirection: 'row', borderTopWidth: 1, borderColor: C.vellum3, backgroundColor: C.vellum2, paddingTop: 8 },
+  tab: { flex: 1, alignItems: 'center', gap: 3, paddingBottom: 4 },
+  tabText: { fontFamily: F.sc, fontSize: 12, letterSpacing: 0.6, color: C.inkFaint },
+});
