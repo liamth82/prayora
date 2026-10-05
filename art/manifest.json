@@ -100,25 +100,25 @@
  },
  "martyr": {
   "file": "martyr.jpg",
-  "title": "Book of Hours of Philip of Cleves fol 17v and 18r.jpg",
-  "description": "Getijdenboek van Filips van Kleef. Brussel, KBR, ms. IV 40, fol. 17 verso en 18 recto.",
-  "artist": "Unknown authorUnknown author",
-  "credit": "https://web.archive.org/web/20041224004352/http://www.kbr.be/collections/manu/activites/expositions/decleve_nl.html",
+  "title": "Zanino di Pietro - Book of Hours - Walters W322 - Obverse Detail.jpg",
+  "description": "",
+  "artist": "Zanino di Pietro",
+  "credit": "Walters Art Museum:  Home page  Info about artwork",
   "license": "Public domain",
-  "source": "https://commons.wikimedia.org/wiki/File:Book_of_Hours_of_Philip_of_Cleves_fol_17v_and_18r.jpg",
+  "source": "https://commons.wikimedia.org/wiki/File:Zanino_di_Pietro_-_Book_of_Hours_-_Walters_W322_-_Obverse_Detail.jpg",
   "w": 1000,
-  "h": 666
+  "h": 1485
  },
  "allsaints": {
   "file": "allsaints.jpg",
-  "title": "Les Très Riches Heures du duc de Berry juin.jpg",
-  "description": "C'est une illustration des travaux paysans avec une scène de fenaison. Tandis qu'au premier plan une femme râtelle du foin et qu'une autre le met en meule à l'aide d'une fourche, trois faucheurs forment des andains au second plan à droite. D'autres personnages minuscules sont représentés dans une ba",
-  "artist": "Limbourg brothers / Barthélemy d'Eyck / Jean Colombe",
-  "credit": "R.M.N. / R.-G. Ojéda",
+  "title": "Christ and Mary enthroned in heaven with saints (All Saints) - Book of hours Simon de Varie - KB 74 G37a - 083r min.jpg",
+  "description": "Christ and Mary enthroned in heaven with saints (All Saints) - miniature from folio 083r from the Book of Hours of Simon de Varie - KB 74 G37a\n\nTopics depicted in this miniature\nAdult christ with mary (11D331)\nAngel(s) represented as youth(s) or adult(s) (11G192)\nAll saints, 'all who are redeemed an",
+  "artist": "Master of Jean Rolin II",
+  "credit": "This digital media file - and/or the physical objects depicted on it - originates from the digital and/or physical collections of the Koninklijke Bibliotheek, national library of the Netherlands.",
   "license": "Public domain",
-  "source": "https://commons.wikimedia.org/wiki/File:Les_Tr%C3%A8s_Riches_Heures_du_duc_de_Berry_juin.jpg",
+  "source": "https://commons.wikimedia.org/wiki/File:Christ_and_Mary_enthroned_in_heaven_with_saints_(All_Saints)_-_Book_of_hours_Simon_de_Varie_-_KB_74_G37a_-_083r_min.jpg",
   "w": 1000,
-  "h": 1614
+  "h": 1533
  },
  "angels": {
   "file": "angels.jpg",
@@ -131,27 +131,16 @@
   "w": 1000,
   "h": 1262
  },
- "apostles": {
-  "file": "apostles.jpg",
-  "title": "Zanino di Pietro - Book of Hours - Walters W322 - Obverse Detail.jpg",
-  "description": "",
-  "artist": "Zanino di Pietro",
-  "credit": "Walters Art Museum:  Home page  Info about artwork",
-  "license": "Public domain",
-  "source": "https://commons.wikimedia.org/wiki/File:Zanino_di_Pietro_-_Book_of_Hours_-_Walters_W322_-_Obverse_Detail.jpg",
-  "w": 1000,
-  "h": 1485
- },
  "default": {
   "file": "default.jpg",
-  "title": "Anatomical Man.jpg",
-  "description": "The signs of the zodiac correspond to each part of the body, starting with Pisces, the feet, and working up their way to the head, with Aries, the ram. In each top corner are painted the arms of the Duke of Berry. Each area is complemented by four Latin inscriptions describing the properties of each",
-  "artist": "Limbourg brothers",
-  "credit": "Réunion des musées nationaux – Grand Palais",
+  "title": "Heures de Louis de Laval - BNF Lat920 f253r (Sauveur bénissant).jpg",
+  "description": "",
+  "artist": "Jean Colombe / Master of the Yale Missal",
+  "credit": "This file comes from Gallica Digital Library and is available under the digital ID btv1b52501620s/f513.item",
   "license": "Public domain",
-  "source": "https://commons.wikimedia.org/wiki/File:Anatomical_Man.jpg",
+  "source": "https://commons.wikimedia.org/wiki/File:Heures_de_Louis_de_Laval_-_BNF_Lat920_f253r_(Sauveur_b%C3%A9nissant).jpg",
   "w": 1000,
-  "h": 1299
+  "h": 1462
  },
  "m01": {
   "file": "m01.jpg",
