@@ -1,14 +1,16 @@
 {
   "expo": {
     "name": "Ora",
-    "slug": "ora",
+    "slug": "prayora",
     "scheme": "ora",
     "version": "0.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "backgroundColor": "#F5EDD6",
-    "runtimeVersion": { "policy": "sdkVersion" },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
     "updates": {
       "url": "https://u.expo.dev/bc5ad831-02d1-4f3a-aedc-e175d8f5cf79"
     },
@@ -45,6 +47,7 @@
       "eas": {
         "projectId": "bc5ad831-02d1-4f3a-aedc-e175d8f5cf79"
       }
-    }
+    },
+    "owner": "ljthompsons-team"
   }
 }
