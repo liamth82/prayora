@@ -8,7 +8,7 @@ COLORS = {"w": "white", "r": "red", "g": "green", "v": "violet", "b": "black", "
 
 def color_of(cid):
     try:
-        return COLORS.get(cid.split(":")[-1], "")
+        return COLORS.get(cid.split(":")[-1][:1], "")
     except Exception:
         return ""
 
@@ -27,13 +27,18 @@ def export(date_):
             "la": sl.get_body() if sl else [],
         })
     cid = day.get_celebration_id() or ""
+    tid = day.get_tempora_id() or ""
+    col = color_of(tid) if (cid.startswith(":feria") or not color_of(cid)) and tid else color_of(cid)
+    title = day.get_celebration_name()
+    if title == "Feria" and day.get_tempora_name():
+        title = day.get_tempora_name()
     return {
         "form": "EF",
         "date": date_.isoformat(),
-        "title": day.get_celebration_name(),
+        "title": title,
         "tempora": day.get_tempora_name(),
         "rank": day.get_celebration_rank(),
-        "color": color_of(cid),
+        "color": col or color_of(cid),
         "id": cid,
         "commemorations": list(day.get_commemorations_titles() or []),
         "sections": sections,

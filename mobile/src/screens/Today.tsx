@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { ActivityIndicator, Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Image, Pressable, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import { C, F } from '../theme';
 import { currentHour } from '../content';
 import { useSettings } from '../settings';
@@ -10,7 +10,7 @@ import {
 import { load, save } from '../storage';
 import { Eyebrow, Proto, Rule } from '../components/ui';
 
-type Saint = { name: string; dates?: string; history: string; prayer?: string; prayerSource?: string; fast?: string; meditation?: string; image?: string; imageCredit?: string };
+type Saint = { name: string; dates?: string; history: string; prayer?: string; prayerSource?: string; fast?: string; meditation?: string; image?: string; imageCredit?: string; imageRatio?: number };
 
 async function getSaint(date: string): Promise<Saint | null> {
   const md = date.slice(5);
@@ -27,6 +27,7 @@ async function getSaint(date: string): Promise<Saint | null> {
 
 export default function Today({ openHours }: { openHours: () => void }) {
   const { form, latin } = useSettings();
+  const { width: winW } = useWindowDimensions();
   const [day, setDay] = useState<Day | null>(null);
   const [art, setArt] = useState<ArtManifest>({});
   const [saint, setSaint] = useState<Saint | null>(null);
@@ -47,7 +48,7 @@ export default function Today({ openHours }: { openHours: () => void }) {
   const key = artKeyFor(day, now);
   const item = art[key] ?? art.default;
   const imageUri = saint?.image ? `${BASE}/saints/${saint.image}` : item ? `${BASE}/art/${item.file}` : null;
-  const ratio = saint?.image ? 0.8 : item && item.w && item.h ? item.w / item.h : 0.75;
+  const ratio = saint?.image ? (saint.imageRatio ?? 0.8) : item && item.w && item.h ? item.w / item.h : 0.75;
   const dateLabel = now.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
   const hour = currentHour(now);
 
@@ -56,7 +57,7 @@ export default function Today({ openHours }: { openHours: () => void }) {
       {imageUri ? (
         <View style={[st.artWrap, { backgroundColor: lc.bg }]}>
           <View style={st.frame}>
-            <Image source={{ uri: imageUri }} style={{ width: '100%', aspectRatio: ratio, maxHeight: 420 }} resizeMode="cover" accessibilityLabel={saint?.name ?? item?.title ?? 'Manuscript illumination'} />
+            <Image source={{ uri: imageUri }} style={{ width: '100%', height: Math.min((winW - 54) / ratio, 300) }} resizeMode="cover" accessibilityLabel={saint?.name ?? item?.title ?? 'Manuscript illumination'} />
           </View>
           <Text style={[st.credit, { color: lc.fg, opacity: 0.7 }]} numberOfLines={2}>
             {saint?.image ? saint.imageCredit : item ? `${item.title.replace(/\.jpe?g$/i, '')}. ${item.license || 'Public domain'}, via Wikimedia Commons.` : ''}
