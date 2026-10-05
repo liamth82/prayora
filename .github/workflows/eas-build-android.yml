@@ -1,0 +1,21 @@
+# Builds an installable Android app (APK) of Ora on Expo's servers. Run it from the Actions tab.
+name: Ora Android test build
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: mobile } }
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v6
+        with: { node-version: 22 }
+      - uses: expo/expo-github-action@v8
+        with: { eas-version: latest, token: '${{ secrets.EXPO_TOKEN }}' }
+      - run: npm ci
+      - name: Start build
+        run: |
+          eas build --platform android --profile preview --non-interactive --no-wait --json > build.json 2> err.txt; code=$?
+          echo "::notice::exit $code"
+          echo "::notice::err $(tail -c 800 err.txt | tr '\n' ' ')"
+          node -e "try{const b=require('./build.json');const x=Array.isArray(b)?b[0]:b;console.log('::notice::build https://expo.dev/accounts/ljthompsons-team/projects/prayora/builds/'+x.id+' status='+x.status)}catch(e){console.log('::notice::no build json')}"
+          exit $code
