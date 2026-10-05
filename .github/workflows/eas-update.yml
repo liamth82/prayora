@@ -1,0 +1,39 @@
+# Publishes the Ora app to the "preview" branch on Expo whenever mobile/ changes on main.
+# Needs the EXPO_TOKEN repository secret (expo.dev → Account settings → Access tokens).
+name: Ora preview update
+
+on:
+  push:
+    branches: [main]
+    paths: ['mobile/**', '.github/workflows/eas-update.yml']
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mobile
+    steps:
+      - name: Check for EXPO_TOKEN
+        run: |
+          if [ -z "${{ secrets.EXPO_TOKEN }}" ]; then
+            echo "Add an EXPO_TOKEN repository secret (expo.dev → Account settings → Access tokens)."
+            exit 1
+          fi
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: mobile/package-lock.json
+      - uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+      - run: npm ci
+      - name: Publish update
+        env:
+          MSG: ${{ github.event.head_commit.message || 'Manual preview' }}
+        run: |
+          eas update --branch preview --message "$(printf '%s' "$MSG" | head -n1)" --environment preview --non-interactive
