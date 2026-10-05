@@ -22,9 +22,11 @@ jobs:
           GROUP=$(node -e "const j=require('./list.json');const u=(j.currentPage||j)[0];console.log(u.group||u.id||'')")
           echo "::notice::group $GROUP"
           URL="https://u.expo.dev/bc5ad831-02d1-4f3a-aedc-e175d8f5cf79/group/$GROUP"
-          curl -s -D h.txt -o m.txt -H 'expo-platform: android' -H 'expo-runtime-version: exposdk:57.0.0' -H 'expo-protocol-version: 0' -H 'accept: application/expo+json,application/json' -H 'expo-expect-signature: false' "$URL"
+          curl -s -D h.txt -o m.txt -H 'expo-platform: android' -H 'expo-runtime-version: exposdk:57.0.0' -H 'expo-protocol-version: 1' -H 'accept: multipart/mixed,application/expo+json,application/json' "$URL"
           echo "::notice::manifest $(head -1 h.txt) $(grep -i content-type h.txt | tr -d '\r')"
           echo "::notice::body $(head -c 1200 m.txt | tr '\n' ' ')"
+          echo "::notice::headers $(tr '\r\n' '  ' < h.txt | head -c 1500)"
+          awk '/^\{/{print; exit}' m.txt > mj.txt; [ -s mj.txt ] && cp mj.txt m.txt
           node -e "
             const fs=require('fs');let t=fs.readFileSync('m.txt','utf8');let m;try{m=JSON.parse(t)}catch(e){console.log('::notice::not json');process.exit(0)}
             const as=[m.launchAsset,...(m.assets||[])].filter(Boolean);
