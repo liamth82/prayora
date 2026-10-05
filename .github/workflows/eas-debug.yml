@@ -28,5 +28,5 @@ jobs:
             const fs=require('fs');let t=fs.readFileSync('m.txt','utf8');let m;try{m=JSON.parse(t)}catch(e){console.log('::notice::not json');process.exit(0)}
             const as=[m.launchAsset,...(m.assets||[])].filter(Boolean);
             fs.writeFileSync('urls.txt',as.map(a=>a.url).join('\n'));console.log('::notice::assets '+as.length);" 
-          [ -f urls.txt ] && head -2 urls.txt | while read u; do a=$(curl -s -o b1 -w '%{http_code}' -A okhttp/4.12.0 "$u"); b=$(curl -s -o b2 -w '%{http_code}' -H "Authorization: Bearer $EXPO_TOKEN" "$u"); echo "::notice::asset plain=$a auth=$b body=$(head -c 200 b1 | tr '\n' ' ')"; done
+          [ -f urls.txt ] && head -2 urls.txt | while read u; do a=$(curl -s -o b1 -w '%{http_code}' -A okhttp/4.12.0 "$u"); b=$(curl -s -o b2 -w '%{http_code}' -H "Authorization: Bearer $EXPO_TOKEN" "$u"); echo "::notice::asset plain=$a auth=$b body=$(sed -e 's/<[^>]*>/ /g' b1 | tr -s ' \n' ' ' | tail -c 900)"; done
           true
