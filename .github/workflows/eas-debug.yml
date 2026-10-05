@@ -15,12 +15,8 @@ jobs:
       - name: Inspect update
         run: |
           set +e
-          eas whoami | sed 's/^/::notice::whoami /'
           eas update:list --branch preview --json --non-interactive > list.json 2>err.txt
-          echo "::notice::list exit $? $(head -c 300 err.txt | tr '\n' ' ')"
-          echo "::notice::list $(head -c 900 list.json | tr '\n' ' ')"
           GROUP=$(node -e "const j=require('./list.json');const u=(j.currentPage||j)[0];console.log(u.group||u.id||'')")
-          echo "::notice::group $GROUP"
           URL="https://u.expo.dev/bc5ad831-02d1-4f3a-aedc-e175d8f5cf79/group/$GROUP"
           curl -s -D h.txt -o m.txt -H 'expo-platform: android' -H 'expo-runtime-version: exposdk:57.0.0' -H 'expo-protocol-version: 1' -H 'accept: multipart/mixed,application/expo+json,application/json' "$URL"
           echo "::notice::manifest $(head -1 h.txt) $(grep -i content-type h.txt | tr -d '\r')"
