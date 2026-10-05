@@ -18,16 +18,20 @@ import Hours from './src/screens/Hours';
 import Saints from './src/screens/Saints';
 import Ask from './src/screens/Ask';
 import Fast, { Veil } from './src/screens/Fast';
+import Today from './src/screens/Today';
+import Settings from './src/screens/Settings';
+import { SettingsProvider } from './src/settings';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
 
-type Tab = 'scripture' | 'hours' | 'saints' | 'ask' | 'fast';
-const TABS: [Tab, string][] = [['scripture', 'Scripture'], ['hours', 'Hours'], ['saints', 'Saints'], ['ask', 'Ask'], ['fast', 'Fast']];
+type Tab = 'today' | 'scripture' | 'hours' | 'saints' | 'ask' | 'fast';
+const TABS: [Tab, string][] = [['today', 'Today'], ['scripture', 'Scripture'], ['hours', 'Hours'], ['saints', 'Saints'], ['ask', 'Ask'], ['fast', 'Fast']];
 
 function TabIcon({ tab, color }: { tab: Tab; color: string }) {
   const p = { stroke: color, fill: 'none', strokeWidth: 1.4 };
   return (
     <Svg width={22} height={22} viewBox="0 0 24 24">
+      {tab === 'today' && (<><Path {...p} d="M12 3v4M10 5h4" /><Path {...p} d="M6 21V11a6 6 0 0 1 12 0v10z" /><Path {...p} d="M10 21v-5a2 2 0 0 1 4 0v5" /></>)}
       {tab === 'scripture' && (<><Path {...p} d="M4 5c3-1 6-1 8 1v14c-2-2-5-2-8-1z" /><Path {...p} d="M20 5c-3-1-6-1-8 1v14c2-2 5-2 8-1z" /></>)}
       {tab === 'hours' && (<><Circle {...p} cx={12} cy={12} r={8} /><Path {...p} d="M12 7v5l3 2" /></>)}
       {tab === 'saints' && (<><Circle {...p} cx={12} cy={9} r={3.2} /><Ellipse {...p} cx={12} cy={4.6} rx={4.5} ry={1.4} /><Path {...p} d="M6 20c1-4 3-6 6-6s5 2 6 6" /></>)}
@@ -39,7 +43,8 @@ function TabIcon({ tab, color }: { tab: Tab; color: string }) {
 
 function Main() {
   const insets = useSafeAreaInsets();
-  const [tab, setTab] = useState<Tab>('scripture');
+  const [tab, setTab] = useState<Tab>('today');
+  const [settingsOpen, setSettingsOpen] = useState(false);
   const [secs, setSecs] = useState(0);
   const [fast, setFast] = useState<{ id: string; until: number } | null>(null);
   const scroll = useRef<ScrollView>(null);
@@ -47,7 +52,7 @@ function Main() {
 
   // Restore state
   useEffect(() => {
-    load<Tab>('tab', 'scripture').then((t) => setTab(t));
+    load<Tab>('tab', 'today').then((t) => setTab(t));
     load<number>('secs:' + todayKey(), 0).then(setSecs);
     load<{ id: string; until: number } | null>('fast', null).then((f) => { if (f && f.until > Date.now()) setFast(f); });
   }, []);
@@ -87,14 +92,20 @@ function Main() {
       <StatusBar style={fast ? 'light' : 'dark'} />
       <View style={st.header}>
         <Text style={st.wordmark}>Or<Text style={{ color: C.rubric }}>a</Text></Text>
-        <View style={{ alignItems: 'flex-end', flexShrink: 1 }}>
-          <Text style={st.date}>{date}</Text>
-          <View style={st.lit}><Dot color={s.color} /><Text style={st.litText}>{s.name}</Text></View>
+        <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 12, flexShrink: 1 }}>
+          <View style={{ alignItems: 'flex-end', flexShrink: 1 }}>
+            <Text style={st.date}>{date}</Text>
+            <View style={st.lit}><Dot color={s.color} /><Text style={st.litText}>{s.name}</Text></View>
+          </View>
+          <Pressable onPress={() => setSettingsOpen(true)} hitSlop={10} accessibilityRole="button" accessibilityLabel="Settings" style={{ paddingBottom: 2 }}>
+            <Svg width={22} height={22} viewBox="0 0 24 24"><Circle cx={12} cy={12} r={3} stroke={C.inkSoft} strokeWidth={1.5} fill="none" /><Path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1" stroke={C.inkSoft} strokeWidth={1.5} /></Svg>
+          </Pressable>
         </View>
       </View>
 
       <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <ScrollView ref={scroll} contentContainerStyle={st.screen} keyboardShouldPersistTaps="handled">
+          {tab === 'today' && <Today openHours={() => choose('hours')} />}
           {tab === 'scripture' && <Scripture scrollTop={scrollTop} />}
           {tab === 'hours' && <Hours scrollTop={scrollTop} />}
           {tab === 'saints' && <Saints scrollTop={scrollTop} />}
@@ -115,6 +126,7 @@ function Main() {
         })}
       </View>
 
+      {settingsOpen ? <View style={{ position: 'absolute', top: insets.top, left: 0, right: 0, bottom: 0 }}><Settings onClose={() => setSettingsOpen(false)} /></View> : null}
       {fast && activeMode ? <Veil mode={activeMode} until={fast.until} onEnd={endFast} /> : null}
     </View>
   );
@@ -129,7 +141,9 @@ export default function App() {
   if (!loaded && !error) return null;
   return (
     <SafeAreaProvider>
-      <Main />
+      <SettingsProvider>
+        <Main />
+      </SettingsProvider>
     </SafeAreaProvider>
   );
 }
@@ -144,5 +158,5 @@ const st = StyleSheet.create({
   screen: { paddingHorizontal: 20, paddingTop: 18, paddingBottom: 32 },
   tabs: { flexDirection: 'row', borderTopWidth: 1, borderColor: C.vellum3, backgroundColor: C.vellum2, paddingTop: 8 },
   tab: { flex: 1, alignItems: 'center', gap: 3, paddingBottom: 4 },
-  tabText: { fontFamily: F.sc, fontSize: 12, letterSpacing: 0.6, color: C.inkFaint },
+  tabText: { fontFamily: F.sc, fontSize: 11, letterSpacing: 0.3, color: C.inkFaint },
 });

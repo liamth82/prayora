@@ -15,12 +15,12 @@ QUERIES = {
     "ascension": "Book of Hours Ascension miniature",
     "pentecost": "Très Riches Heures Pentecost",
     "marian": "Book of Hours Virgin and Child miniature",
-    "martyr": "Book of Hours martyrdom of saint miniature",
-    "allsaints": "Très Riches Heures All Saints",
-    "souls": "Office of the Dead Book of Hours miniature",
+    "martyr": "File:Zanino di Pietro - Book of Hours - Walters W322 - Obverse Detail.jpg",
+    "allsaints": "Book of Hours All Saints miniature",
+    "souls": "Book of Hours Office of the Dead funeral miniature",
     "angels": "Très Riches Heures Saint Michael",
-    "apostles": "Book of Hours Saint Peter miniature",
-    "default": "Très Riches Heures",
+    "apostles": "Book of Hours Saint Andrew apostle miniature",
+    "default": "Book of Hours Christ in Majesty miniature",
     "m01": "Très Riches Heures janvier", "m02": "Très Riches Heures février", "m03": "Très Riches Heures mars",
     "m04": "Très Riches Heures avril", "m05": "Très Riches Heures mai", "m06": "Très Riches Heures juin",
     "m07": "Très Riches Heures juillet", "m08": "Très Riches Heures août", "m09": "Très Riches Heures septembre",
@@ -39,9 +39,11 @@ def main(out):
     os.makedirs(out, exist_ok=True)
     manifest = {}
     for key, q in QUERIES.items():
-        r = get({"action": "query", "format": "json", "generator": "search", "gsrsearch": q + " filetype:bitmap",
-                 "gsrnamespace": 6, "gsrlimit": 10, "prop": "imageinfo", "iiprop": "url|extmetadata|mime|size",
-                 "iiurlwidth": 1000})
+        common = {"action": "query", "format": "json", "prop": "imageinfo", "iiprop": "url|extmetadata|mime|size", "iiurlwidth": 1000}
+        if q.startswith("File:"):
+            r = get({**common, "titles": q})
+        else:
+            r = get({**common, "generator": "search", "gsrsearch": q + " filetype:bitmap", "gsrnamespace": 6, "gsrlimit": 10})
         pages = sorted(r.get("query", {}).get("pages", {}).values(), key=lambda p: p.get("index", 99))
         chosen = None
         for p in pages:

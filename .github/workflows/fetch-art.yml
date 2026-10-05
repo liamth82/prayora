@@ -9,10 +9,11 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - run: python3 tools/fetch_art.py art
+      - run: python3 tools/fetch_saint_art.py saints
       - name: Commit
         run: |
           git config user.name "ora-bot"
           git config user.email "ora-bot@users.noreply.github.com"
-          git add art
+          git add art saints
           git commit -m "Update manuscript art" || echo "no changes"
           git push
