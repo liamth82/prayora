@@ -38,7 +38,7 @@ export default function Fast({ minutes, prayerMinutes, onStart }: { minutes: num
   );
 }
 
-type Sym = { name: string; caption: string; paths: string[]; circles?: number[][]; dots?: number[][] };
+type Sym = { name: string; caption: string; paths: string[]; fills?: string[]; circles?: number[][]; dots?: number[][] };
 const SYMBOLS = require('../symbols.json') as Sym[];
 
 function SacredSymbol({ sym, size }: { sym: Sym; size: number }) {
@@ -47,12 +47,16 @@ function SacredSymbol({ sym, size }: { sym: Sym; size: number }) {
     <Svg width={size} height={size} viewBox="0 0 200 200">
       <G fill="none" stroke={ink} strokeOpacity={0.12} strokeWidth={5} strokeLinecap="round" strokeLinejoin="round">
         {sym.paths.map((d, i) => <Path key={'g' + i} d={d} />)}
+        {(sym.fills ?? []).map((d, i) => <Path key={'gf' + i} d={d} />)}
         {(sym.circles ?? []).map(([cx, cy, r], i) => <Circle key={'gc' + i} cx={cx} cy={cy} r={r} />)}
       </G>
-      <G fill="none" stroke={ink} strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+      <G fill="none" stroke={ink} strokeWidth={1.4} strokeLinecap="round" strokeLinejoin="round">
         {sym.paths.map((d, i) => <Path key={i} d={d} />)}
         {(sym.circles ?? []).map(([cx, cy, r], i) => <Circle key={'c' + i} cx={cx} cy={cy} r={r} />)}
-        {(sym.dots ?? []).map(([cx, cy, r], i) => <Circle key={'d' + i} cx={cx} cy={cy} r={r} fill={ink} />)}
+      </G>
+      <G fill={ink} stroke="none">
+        {(sym.fills ?? []).map((d, i) => <Path key={'f' + i} d={d} />)}
+        {(sym.dots ?? []).map(([cx, cy, r], i) => <Circle key={'d' + i} cx={cx} cy={cy} r={r} />)}
       </G>
     </Svg>
   );
