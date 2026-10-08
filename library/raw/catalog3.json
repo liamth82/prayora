@@ -1,1128 +1,204 @@
 {
- "dialogue": [
+ "francis": [
   {
-   "id": "254",
-   "title": "The Second Story of Meno\r\nA Continuation of Socrates' Dialogue with Meno in Which the Boy Proves Root 2 is Irrational",
-   "authors": "Unknown"
+   "id": "165",
+   "title": "McTeague: A Story of San Francisco",
+   "authors": "Norris, Frank, 1870-1902"
   },
   {
-   "id": "1203",
-   "title": "Dolly Dialogues",
-   "authors": "Hope, Anthony, 1863-1933"
+   "id": "843",
+   "title": "The Life of Francis Marion",
+   "authors": "Simms, William Gilmore, 1806-1870"
   },
   {
-   "id": "4583",
-   "title": "Dialogues Concerning Natural Religion",
-   "authors": "Hume, David, 1711-1776"
+   "id": "846",
+   "title": "The Life of General Francis Marion",
+   "authors": "Weems, M. L. (Mason Locke), 1759-1825"
   },
   {
-   "id": "4724",
-   "title": "Three Dialogues Between Hylas and Philonous in Opposition to Sceptics and Atheists",
-   "authors": "Berkeley, George, 1685-1753"
+   "id": "923",
+   "title": "A Sketch of the Life of Brig. Gen. Francis Marion and a History of His Brigade",
+   "authors": "James, William Dobein, 1764-1830"
   },
   {
-   "id": "10833",
-   "title": "The Essays of Arthur Schopenhauer; Religion, a Dialogue, Etc.",
-   "authors": "Schopenhauer, Arthur, 1788-1860; Saunders, T. Bailey (Thomas Bailey), 1860-1928 [Translator]"
+   "id": "1560",
+   "title": "The San Francisco Calamity by Earthquake and Fire",
+   "authors": "Morris, Charles, 1833-1922"
   },
   {
-   "id": "10981",
-   "title": "Child's New Story Book;\r\nOr, Tales and Dialogues for Little Folks",
-   "authors": "Anonymous"
+   "id": "2504",
+   "title": "Some Cities and San Francisco, and Resurgam",
+   "authors": "Bancroft, Hubert Howe, 1832-1918"
   },
   {
-   "id": "12508",
-   "title": "The Meaning of Good—A Dialogue",
-   "authors": "Dickinson, G. Lowes (Goldsworthy Lowes), 1862-1932"
+   "id": "2854",
+   "title": "Sir Francis Drake Revived",
+   "authors": "Nichols, Philip, active 1562 [Editor]"
   },
   {
-   "id": "14282",
-   "title": "A Merry Dialogue Declaringe the Properties of Shrowde Shrews and Honest Wives",
-   "authors": "Erasmus, Desiderius, 1469-1536"
+   "id": "2991",
+   "title": "Sir Francis Drake's Famous Voyage Round the World",
+   "authors": "Pretty, Francis"
   },
   {
-   "id": "15017",
-   "title": "A Dialogue Concerning Oratory, or the Causes of Corrupt Eloquence\r\nThe Works of Cornelius Tacitus, Volume 8 (of 8); With",
-   "authors": "Tacitus, Cornelius, 56-117; Murphy, Arthur, 1727-1805 [Editor]"
+   "id": "3314",
+   "title": "The City That Was: A Requiem of Old San Francisco",
+   "authors": "Irwin, Will, 1873-1948"
   },
   {
-   "id": "17075",
-   "title": "Dialogue of Comfort Against Tribulation\nWith Modifications To Obsolete Language By Monica Stevens",
-   "authors": "More, Thomas, Saint, 1478-1535; Stevens, Monica [Editor]"
+   "id": "4640",
+   "title": "San Francisco During the Eventful Days of April 1906",
+   "authors": "Stetson, James B. (James Burgess), 1832-1909"
   },
   {
-   "id": "17667",
-   "title": "Dialogues of the Dead",
-   "authors": "Lyttelton, George Lyttelton, Baron, 1709-1773; Montagu, Mrs. (Elizabeth), 1718-1800; Morley, Henry, 1822-1894 [Editor]"
+   "id": "4643",
+   "title": "Vignettes of San Francisco",
+   "authors": "Morey, Almira, 1819-"
   },
   {
-   "id": "19332",
-   "title": "Michael Angelo Buonarroti\r\nWith Translations Of The Life Of The Master By His Scholar, Ascanio Condivi, And Three Dialog",
-   "authors": "Holroyd, Charles, 1861-1917; Condivi, Ascanio, 1520?-1574 [Contributor]; Hollanda, Francisco de, 1517-1584 [Contributor]"
+   "id": "4978",
+   "title": "The March of Portola and the Discovery of the Bay of San Francisco",
+   "authors": "Eldredge, Zoeth Skinner, 1846-1915; Molera, E. J. (Eusebius Joseph), 1846?-1932"
   },
   {
-   "id": "25235",
-   "title": "A Dialogue Between Dean Swift and Tho. Prior, Esq.\nIn the Isles of St. Patrick's Church, Dublin, On that\nMemorable Day, ",
-   "authors": "Anonymous"
+   "id": "5136",
+   "title": "Around the World on a Bicycle - Volume I\r\nFrom San Francisco to Teheran",
+   "authors": "Stevens, Thomas, 1854-1935"
   },
   {
-   "id": "29214",
-   "title": "Dialogues in French and English",
-   "authors": "Caxton, William, 1422?-1492?; Bradley, Henry, 1845-1923 [Editor]"
+   "id": "5712",
+   "title": "Sculpture of the Exposition Palaces and Courts\r\nDescriptive Notes on the Art of the Statuary at the Panama-Pacific Inter",
+   "authors": "James, Juliet Helena Lumbard, 1864-"
   },
   {
-   "id": "33742",
-   "title": "Dialogues on the Supersensual Life",
-   "authors": "Böhme, Jakob, 1575-1624; Holland, Bernard [Editor]; Law, William, 1686-1761 [Translator]"
+   "id": "5755",
+   "title": "The Fool Errant\r\nBeing the Memoirs of Francis-Anthony Strelley, Esq., Citizen of Lucca",
+   "authors": "Hewlett, Maurice, 1861-1923"
   },
   {
-   "id": "35790",
-   "title": "A Fantasy of Far Japan; Or, Summer Dream Dialogues",
-   "authors": "Suematsu, Kencho, 1855-1920"
+   "id": "5802",
+   "title": "A Sketch of the Causes, Operations and Results of the San Francisco Vigilance Committee of 1856",
+   "authors": "Webb, Stephen Palfrey, 1804-1879"
   },
   {
-   "id": "39038",
-   "title": "One dialogue, or Colloquye of Erasmus (entituled Diuersoria)\r\nTranslated oute of Latten into Englyshe: And Imprinted, to",
-   "authors": "Erasmus, Desiderius, 1469-1536; Hake, Edward, active 1560-1604 [Translator]"
+   "id": "6076",
+   "title": "The Legends of San Francisco",
+   "authors": "Caldwell, George W. (George Walter), 1866-1946"
   },
-  {
-   "id": "39478",
-   "title": "The Levellers\nA Dialogue Between Two Young Ladies, Concerning Matrimony, Proposing an Act for Enforcing Marriage, for th",
-   "authors": "Anonymous"
-  },
-  {
-   "id": "39929",
-   "title": "A Dialogue upon the Gardens of the Right Honorouble the Lord Viscount Cobham at Stow in Buckinghamshire",
-   "authors": "Gilpin, William, 1724-1804; Hunt, John Dixon, 1936- [Editor]"
-  },
-  {
-   "id": "41383",
-   "title": "Punch and Judy, with Instructions How to Manage the Little Wooden Actors\r\nContaining New and Easy Dialogues Arranged for",
-   "authors": "Ward, Thomas A. M."
-  },
-  {
-   "id": "41915",
-   "title": "Hossfeld's Spanish Dialogues, and Idiomatic Phrases Indispensible for a Rapid Acquisition of the Spanish Language",
-   "authors": "Cornett, W. N. (William N.); Hossfeld, C."
-  },
-  {
-   "id": "43983",
-   "title": "Wanted: A Cook\nDomestic Dialogues",
-   "authors": "Dale, Alan, 1861-1928"
-  },
-  {
-   "id": "44381",
-   "title": "A Dialogue in Hades\r\nA Parallel of Military Errors, of Which the French and English Armies Were Guilty, During the Campa",
-   "authors": "Johnstone, James Johnstone, chevalier de, 1719-1800?"
-  },
-  {
-   "id": "48273",
-   "title": "Lincoln Day Entertainments\r\nRecitations, Plays, Dialogues, Drills, Tableaux, Pantomimes, Quotations, Songs, Tributes, St",
-   "authors": "Sindelar, Joseph C. (Joseph Charles), 1885- [Editor]"
-  },
-  {
-   "id": "49450",
-   "title": "Petrarch's Secret; or, the Soul's Conflict with Passion\r\nThree Dialogues Between Himself and S. Augustine",
-   "authors": "Petrarca, Francesco, 1304-1374; Draper, William H., 1855-1933 [Translator]"
-  },
-  {
-   "id": "49949",
-   "title": "The Logic of Vegetarianism: Essays and Dialogues",
-   "authors": "Salt, Henry S., 1851-1939"
-  },
-  {
-   "id": "52356",
-   "title": "Essays and Dialogues",
-   "authors": "Leopardi, Giacomo, 1798-1837; Edwardes, Charles [Translator]"
-  },
-  {
-   "id": "53513",
-   "title": "Hands Around [Reigen]: A Cycle of Ten Dialogues",
-   "authors": "Schnitzler, Arthur, 1862-1931; Edwards, L. D. [Translator]; Glaser, F. L. [Translator]"
-  },
-  {
-   "id": "56286",
-   "title": "Tudor school-boy life: the dialogues of Juan Luis Vives",
-   "authors": "Vives, Juan Luis, 1492-1540; Watson, Foster, 1860-1929 [Translator]"
-  },
-  {
-   "id": "56289",
-   "title": "The Study of Astronomy, adapted to the capacities of youth\r\nIn twelve familiar dialogues, between a tutor and his pupil:",
-   "authors": "Stedman, John, teacher of astronomy"
-  },
-  {
-   "id": "60186",
-   "title": "Polite Conversation in Three Dialogues",
-   "authors": "Swift, Jonathan, 1667-1745; Saintsbury, George, 1845-1933 [Editor]"
-  },
-  {
-   "id": "60917",
-   "title": "Dialogue between John and Thomas, on the Corn Laws, the Charter, Teetotalism, and the Probable Remedy for the Present Di",
-   "authors": "Unknown"
-  },
-  {
-   "id": "62004",
-   "title": "The Church Rate: A Dialogue Between a Churchman and a Dissenter",
-   "authors": "Richings, B. (Benjamin), 1788?-1872"
-  },
-  {
-   "id": "62856",
-   "title": "A Treatise of Human Nature\r\nBeing an Attempt to Introduce the Experimental Method Into Moral Subjects; and Dialogues Con",
-   "authors": "Hume, David, 1711-1776; Green, Thomas Hill, 1836-1882 [Editor]; Grose, Thomas Hodge, 1845-1906 [Editor]"
-  },
-  {
-   "id": "63292",
-   "title": "Familiar dialogues",
-   "authors": "Bellot, Jacques"
-  },
-  {
-   "id": "64576",
-   "title": "Minor Dialogues, Together With the Dialogue on Clemency",
-   "authors": "Seneca, Lucius Annaeus, 5? BCE-65; Stewart, Aubrey, 1844-1918 [Translator]"
-  },
-  {
-   "id": "64607",
-   "title": "Seeking his fortune, and other dialogues",
-   "authors": "Alger, Horatio, Jr., 1832-1899; Cheney, O. Augusta (Olive Augusta), 1833-1916"
-  },
-  {
-   "id": "67645",
-   "title": "Dialogue",
-   "authors": "Hope, Anthony, 1863-1933"
-  },
-  {
-   "id": "70443",
-   "title": "Governor Bradford's first dialogue",
-   "authors": "Bradford, William, 1590-1657"
-  },
-  {
-   "id": "76464",
-   "title": "The dialogues of Plato in five volumes, Vol. 2 (of 5)",
-   "authors": "Plato, 428? BCE-348? BCE; Jowett, Benjamin, 1817-1893 [Translator]"
-  }
- ],
- "desert": [
-  {
-   "id": "502",
-   "title": "Desert Gold",
-   "authors": "Grey, Zane, 1872-1939"
-  },
-  {
-   "id": "1168",
-   "title": "The Pool in the Desert",
-   "authors": "Duncan, Sara Jeannette, 1861-1922"
-  },
-  {
-   "id": "1262",
-   "title": "The Heritage of the Desert: A Novel",
-   "authors": "Grey, Zane, 1872-1939"
-  },
-  {
-   "id": "1555",
-   "title": "A Passion in the Desert",
-   "authors": "Balzac, Honoré de, 1799-1850; Dowson, Ernest Christopher, 1867-1900 [Translator]"
-  },
-  {
-   "id": "1729",
-   "title": "The Deserted Woman",
-   "authors": "Balzac, Honoré de, 1799-1850; Marriage, Ellen, 1865-1946 [Translator]"
-  },
-  {
-   "id": "5404",
-   "title": "Grace Harlowe's Overland Riders on the Great American Desert",
-   "authors": "Chase, Josephine, -1931"
-  },
-  {
-   "id": "6285",
-   "title": "You Never Know Your Luck; being the story of a matrimonial deserter. Volume 1.",
-   "authors": "Parker, Gilbert, 1862-1932"
-  },
-  {
-   "id": "6286",
-   "title": "You Never Know Your Luck; being the story of a matrimonial deserter. Volume 2.",
-   "authors": "Parker, Gilbert, 1862-1932"
-  },
-  {
-   "id": "6287",
-   "title": "You Never Know Your Luck; being the story of a matrimonial deserter. Volume 3.",
-   "authors": "Parker, Gilbert, 1862-1932"
-  },
-  {
-   "id": "6288",
-   "title": "You Never Know Your Luck; being the story of a matrimonial deserter. Complete",
-   "authors": "Parker, Gilbert, 1862-1932"
-  },
-  {
-   "id": "8219",
-   "title": "The Desert and the Sown",
-   "authors": "Foote, Mary Hallock, 1847-1938"
-  },
-  {
-   "id": "9661",
-   "title": "Mormon Settlement in Arizona\nA Record of Peaceful Conquest of the Desert",
-   "authors": "McClintock, James H., 1864-1934"
-  },
-  {
-   "id": "9958",
-   "title": "Explorations in Australia\r\n1.-Explorations in search of Dr. Leichardt and party. 2.-From Perth to Adelaide, around the g",
-   "authors": "Forrest, John Forrest, Baron, 1847-1918"
-  },
-  {
-   "id": "10201",
-   "title": "The Desert of Wheat",
-   "authors": "Grey, Zane, 1872-1939"
-  },
-  {
-   "id": "10608",
-   "title": "The Turquoise Cup, and, the Desert",
-   "authors": "Smith, Arthur Cosslett, 1852-1926"
-  },
-  {
-   "id": "10781",
-   "title": "Deserted\nSailor's Knots, Part 1.",
-   "authors": "Jacobs, W. W. (William Wymark), 1863-1943; Owen, Will, 1869-1957 [Illustrator]"
-  },
-  {
-   "id": "11703",
-   "title": "The Swiss Family Robinson; or Adventures in a Desert Island",
-   "authors": "Wyss, Johann David, 1743-1818; Gilbert, John, 1817-1897 [Illustrator]"
-  },
-  {
-   "id": "11772",
-   "title": "Narrative of a Voyage to Senegal in 1816\r\nUndertaken by Order of the French Government, Comprising an Account of the Shi",
-   "authors": "Savigny, Jean Baptiste Henri, 1793-1843; Corréard, Alexandre, 1788-1857"
-  },
-  {
-   "id": "12570",
-   "title": "Starr, of the Desert",
-   "authors": "Bower, B. M., 1871-1940"
-  },
-  {
-   "id": "13343",
-   "title": "The Rim of the Desert",
-   "authors": "Anderson, Ada Woodruff, 1860-1956"
-  },
-  {
-   "id": "13763",
-   "title": "The Lamp in the Desert",
-   "authors": "Dell, Ethel M. (Ethel May), 1881-1939"
-  },
-  {
-   "id": "15089",
-   "title": "The Deserter",
-   "authors": "Davis, Richard Harding, 1864-1916"
-  },
-  {
-   "id": "15242",
-   "title": "Desert Love",
-   "authors": "Conquest, Joan, 1883-1941"
-  },
-  {
-   "id": "15420",
-   "title": "Broken Homes: A Study of Family Desertion and its Social Treatment",
-   "authors": "Colcord, Joanna C. (Joanna Carver), 1882-1960"
-  },
-  {
-   "id": "15502",
-   "title": "The Desert Valley",
-   "authors": "Gregory, Jackson, 1882-1943"
-  },
-  {
-   "id": "16557",
-   "title": "The Deserter",
-   "authors": "King, Charles, 1844-1933"
-  },
-  {
-   "id": "16777",
-   "title": "The Heart of the Desert (Kut-Le of the Desert)",
-   "authors": "Morrow, Honoré, 1880-1940; Dunton, W. Herbert, 1878-1936 [Illustrator]"
-  },
-  {
-   "id": "20155",
-   "title": "The White Desert",
-   "authors": "Cooper, Courtney Ryley, 1886-1940; Fischer, Anton Otto, 1882-1962 [Illustrator]"
-  },
-  {
-   "id": "21633",
-   "title": "The Man of the Desert",
-   "authors": "Hill, Grace Livingston, 1865-1947"
-  },
-  {
-   "id": "21768",
-   "title": "A desert drama",
-   "authors": "Doyle, Arthur Conan, 1859-1930; Paget, Sidney, 1860-1908 [Illustrator]"
-  },
-  {
-   "id": "22094",
-   "title": "Travels in the Great Desert of Sahara, in the Years of 1845 and 1846",
-   "authors": "Richardson, James, 1806-1851"
-  },
-  {
-   "id": "22714",
-   "title": "Deserted\n1898",
-   "authors": "Bellamy, Edward, 1850-1898"
-  },
-  {
-   "id": "23122",
-   "title": "The Well in the Desert\nAn Old Legend of the House of Arundel",
-   "authors": "Holt, Emily Sarah, 1836-1893; Irwin, M. (Madelaine) [Illustrator]"
-  },
-  {
-   "id": "23417",
-   "title": "The Desert Drum\n1905",
-   "authors": "Hichens, Robert, 1864-1950"
-  },
-  {
-   "id": "23418",
-   "title": "Desert Air\n1905",
-   "authors": "Hichens, Robert, 1864-1950"
-  },
-  {
-   "id": "24268",
-   "title": "The desert home",
-   "authors": "Reid, Mayne, 1818-1883"
-  },
-  {
-   "id": "25728",
-   "title": "Desert Conquest; or, Precious Waters",
-   "authors": "Chisholm, A. M. (Arthur Murray), 1872-1960; Rowe, Clarence, 1878-1930 [Illustrator]"
-  },
-  {
-   "id": "25960",
-   "title": "The Desert Fiddler",
-   "authors": "Hamby, William H. (William Henry), 1876-1928"
-  },
-  {
-   "id": "26193",
-   "title": "The Rover Boys in Southern Waters; or, The Deserted Steam Yacht",
-   "authors": "Stratemeyer, Edward, 1862-1930"
-  },
-  {
-   "id": "26550",
-   "title": "Children of the desert",
-   "authors": "Dodge, Louis, 1870-1952"
-  },
-  {
-   "id": "27437",
-   "title": "Desert Dust",
-   "authors": "Sabin, Edwin L. (Edwin Legrand), 1870-1952; Shepherd, J. Clinton (Joseph Clinton), 1888-1975 [Illustrator]"
-  },
-  {
-   "id": "30365",
-   "title": "In Desert and Wilderness",
-   "authors": "Sienkiewicz, Henryk, 1846-1916; Drezmal, Max A. (Max Anthony), 1867-1947 [Translator]"
-  },
-  {
-   "id": "30686",
-   "title": "Little Tales of The Desert",
-   "authors": "Foster, Ethel Twycross; Villa, Hernando G. [Illustrator]"
-  },
-  {
-   "id": "31380",
-   "title": "Bred of the Desert: A Horse and a Romance",
-   "authors": "Horton, Charles M. (Charles Marcus), 1879-"
-  },
-  {
-   "id": "31556",
-   "title": "Dick in the Desert",
-   "authors": "Otis, James, 1848-1912"
-  },
-  {
-   "id": "31646",
-   "title": "Through Our Unknown Southwest\r\nThe Wonderland of the United States—Little Known and Unappreciated—The Home of the Cliff ",
-   "authors": "Laut, Agnes C., 1871-1936"
-  },
-  {
-   "id": "33684",
-   "title": "On the Trail of Deserters; A Phenomenal Capture",
-   "authors": "Carter, Robert Goldthwaite, 1845-1936"
-  },
-  {
-   "id": "34002",
-   "title": "Dick's Desertion: A Boy's Adventures in Canadian Forests\r\nA Tale of the Early Settlement of Ontario",
-   "authors": "Pickthall, Marjorie L. C. (Marjorie Lowry Christie), 1883-1922"
-  },
-  {
-   "id": "34808",
-   "title": "The Swiss Family Robinson; or, Adventures on a Desert Island",
-   "authors": "Wyss, Johann David, 1743-1818; Wyss, Johann Rudolf, 1782-1830 [Dubious author]; Winter, Milo, 1888-1956 [Illustrator]"
-  },
-  {
-   "id": "36420",
-   "title": "Between Sun and Sand: A Tale of an African Desert",
-   "authors": "Scully, W. C. (William Charles), 1855-1943"
-  },
-  {
-   "id": "36423",
-   "title": "The Pony Rider Boys in the Alkali; Or, Finding a Key to the Desert Maze",
-   "authors": "Patchin, Frank Gee, 1861-1925"
-  },
-  {
-   "id": "36601",
-   "title": "A Vendetta of the Desert",
-   "authors": "Scully, W. C. (William Charles), 1855-1943"
-  },
-  {
-   "id": "38319",
-   "title": "By Desert Ways to Baghdad",
-   "authors": "Wilkins, Louisa Jebb"
-  },
-  {
-   "id": "38891",
-   "title": "The Cruise of the 'Alerte'\nThe narrative of a search for treasure on the desert island of Trinidad",
-   "authors": "Knight, E. F. (Edward Frederick), 1852-1925"
-  },
-  {
-   "id": "40042",
-   "title": "The Deserted Yacht\nMadge Sterling Series, #2",
-   "authors": "Wirt, Mildred A. (Mildred Augustine), 1905-2002"
-  },
-  {
-   "id": "41333",
-   "title": "The Awakening of the Desert",
-   "authors": "Birge, Julius Charles, 1839-1923"
-  },
-  {
-   "id": "41447",
-   "title": "Curly: A Tale of the Arizona Desert",
-   "authors": "Pocock, Roger, 1865-1941"
-  },
-  {
-   "id": "41751",
-   "title": "Travels in Central Asia\r\nBeing the Account of a Journey from Teheran Across the Turkoman Desert on the Eastern Shore of ",
-   "authors": "Vámbéry, Ármin, 1832-1913"
-  },
-  {
-   "id": "41955",
-   "title": "The Ship in the Desert",
-   "authors": "Miller, Joaquin, 1837-1913"
-  },
-  {
-   "id": "42117",
-   "title": "The Pirates of the Prairies: Adventures in the American Desert",
-   "authors": "Aimard, Gustave, 1818-1883; Wraxall, Lascelles, Sir, 1828-1865 [Translator]"
-  },
-  {
-   "id": "42361",
-   "title": "The Mystic Mid-Region: The Deserts of the Southwest",
-   "authors": "Burdick, Arthur J. (Arthur Jerome), 1858-"
-  },
-  {
-   "id": "42535",
-   "title": "The Tiger-Slayer: A Tale of the Indian Desert",
-   "authors": "Aimard, Gustave, 1818-1883; Wraxall, Lascelles, Sir, 1828-1865 [Translator]"
-  },
-  {
-   "id": "42667",
-   "title": "The Deserted City",
-   "authors": "Sherman, Francis, 1871-1926"
-  },
-  {
-   "id": "42721",
-   "title": "A German deserter's war experience",
-   "authors": "Anonymous; Koettgen, Julius [Translator]"
-  },
-  {
-   "id": "43396",
-   "title": "The Desert World",
-   "authors": "Mangin, Arthur, 1824-1887; Dargent, Yan, 1824-1899 [Illustrator]; Foulquier, Jean Antoine Valentin, 1822-1896 [Illustrator]; Freeman, William Henry, active 1839"
-  },
-  {
-   "id": "44304",
-   "title": "The Deserter, and Other Stories: A Book of Two Wars",
-   "authors": "Frederic, Harold, 1856-1898; Barnes, George Foster, 1869-1914 [Illustrator]; Gaul, Gilbert William, 1855-1919 [Illustrator]; Merrill, Frank T., 1848-1923 [Illus"
-  },
-  {
-   "id": "44627",
-   "title": "The Indians of the Painted Desert Region: Hopis, Navahoes, Wallapais, Havasupais",
-   "authors": "James, George Wharton, 1858-1923"
-  },
-  {
-   "id": "44691",
-   "title": "Dust of the Desert",
-   "authors": "Ritchie, Robert Welles, 1879-1942"
-  },
-  {
-   "id": "45167",
-   "title": "The Siberian Overland Route from Peking to Petersburg,\nThrough the Deserts and Steppes of Mongolia, Tartary, &c.",
-   "authors": "Michie, Alexander, 1833-1902"
-  },
-  {
-   "id": "45401",
-   "title": "The Guide of the Desert",
-   "authors": "Aimard, Gustave, 1818-1883; St. John, Percy B. (Percy Bolingbroke), 1821-1889 [Editor]"
-  },
-  {
-   "id": "47108",
-   "title": "Deserts: Geology and Resources",
-   "authors": "Walker, A. S. (Alta Sharon), 1942-"
-  },
-  {
-   "id": "48126",
-   "title": "Ancient Landscapes of the Grand Canyon Region\nThe Geology of Grand Canyon, Zion, Bryce, Petrified Forest & Painted Deser",
-   "authors": "McKee, Edwin D. (Edwin Dinwiddie), 1906-1984"
-  },
-  {
-   "id": "48373",
-   "title": "From Paris to Pekin over Siberian Snows\nA Narrative of a Journey by Sledge over the Snows of European Russia and Siberia",
-   "authors": "Meignan, Victor, 1846-1938"
-  },
-  {
-   "id": "49454",
-   "title": "The Mentor: Reclaiming the Desert, Vol. 6, Num. 17, Serial No. 165, October 15, 1918",
-   "authors": "Blanchard, C. J. (Clarence John), 1863-1945"
-  },
-  {
-   "id": "50500",
-   "title": "The Deserted Village",
-   "authors": "Goldsmith, Oliver, 1730?-1774; Etching Club (London, England) [Illustrator]"
-  },
-  {
-   "id": "50700",
-   "title": "The Story Teller of the Desert—\"Backsheesh!\"\nor, Life and Adventures in the Orient",
-   "authors": "Knox, Thomas Wallace, 1835-1896"
-  },
-  {
-   "id": "51041",
-   "title": "The Horses of the Sahara and the Manners of the Desert",
-   "authors": "Daumas, E.‏ (Eugène), 1803-1871; Hutton, James, 1818-1893 [Translator]"
-  },
-  {
-   "id": "52358",
-   "title": "The Desert Trail",
-   "authors": "Coolidge, Dane, 1873-1940; Duer, Douglas, 1887-1964 [Illustrator]; Monahan, P. J., 1882-1931 [Illustrator]"
-  },
-  {
-   "id": "53432",
-   "title": "Flowers of the Southwest Deserts",
-   "authors": "Dodge, Natt N. (Natt Noyes), 1900-1982; Janish, Jeanne R. [Illustrator]"
-  },
-  {
-   "id": "53684",
-   "title": "In the Desert of Waiting: The Legend of Camel-back Mountain",
-   "authors": "Johnston, Annie F. (Annie Fellows), 1863-1931"
-  },
-  {
-   "id": "54548",
-   "title": "Poisonous Dwellers of the Desert",
-   "authors": "Dodge, Natt N. (Natt Noyes), 1900-1982"
-  },
-  {
-   "id": "54631",
-   "title": "100 Desert Wildflowers in Natural Color",
-   "authors": "Dodge, Natt N. (Natt Noyes), 1900-1982"
-  },
-  {
-   "id": "54964",
-   "title": "The Desert Mounted Corps\r\nAn Account of the Cavalry Operations in Palestine and Syria 1917-1918",
-   "authors": "Preston, R. M. P. (Richard Martin Peter), 1884-1965; Chauvel, Henry George, Sir, 1865-1945 [Author of introduction, etc.]"
-  },
-  {
-   "id": "56478",
-   "title": "Old Mines of Southern California\r\nDesert-Mountain-Coastal Areas Including the Calico-Salton Sea Colorado River Districts",
-   "authors": "Storms, William H., 1859-; Fairbanks, Harold W. (Harold Wellman), 1860-1952"
-  },
-  {
-   "id": "57244",
-   "title": "The Lost Explorers: A Story of the Trackless Desert",
-   "authors": "MacDonald, Alexander, 1878-1939; Buckland, Arthur H., 1870-1927 [Illustrator]"
-  },
-  {
-   "id": "59199",
-   "title": "The Desert Healer",
-   "authors": "Hull, E. M. (Edith Maude), 1880-1947"
-  },
-  {
-   "id": "59807",
-   "title": "With Carson and Frémont\r\nBeing the Adventures, in the Years 1842-'43-'44, on Trail Over Mountains and Through Deserts Fr",
-   "authors": "Sabin, Edwin L. (Edwin Legrand), 1870-1952; Stephens, Charles H., 1851-1931 [Illustrator]"
-  },
-  {
-   "id": "60078",
-   "title": "The White Heart of Mojave: An Adventure with the Outdoors of the Desert",
-   "authors": "Perkins, Edna Brush, 1880-1930"
-  },
-  {
-   "id": "60177",
-   "title": "Through the Desert",
-   "authors": "Sienkiewicz, Henryk, 1846-1916; Artois, Mary W. (Mary Webb), 1852-1935 [Translator]"
-  },
-  {
-   "id": "61285",
-   "title": "The Desert and the Stars",
-   "authors": "Laumer, Keith, 1925-1993; Gaughan, Jack, 1930-1985 [Illustrator]"
-  },
-  {
-   "id": "62573",
-   "title": "The Edge of the Desert",
-   "authors": "Dunbar, Ianthe M."
-  },
-  {
-   "id": "63014",
-   "title": "Masterpieces of Adventure—Stories of Desert Places",
-   "authors": "Braddy, Nella, 1894-1973 [Editor]"
-  },
-  {
-   "id": "63124",
-   "title": "Pirate Princes and Yankee Jacks\nSetting forth David Forsyth's Adventures in America's Battles on Sea and Desert with the",
-   "authors": "Henderson, Daniel, 1880-1955"
-  },
-  {
-   "id": "63731",
-   "title": "Syria, the Desert & the Sown",
-   "authors": "Bell, Gertrude Lowthian, 1868-1926; Sargent, John Singer, 1856-1925 [Illustrator]"
-  },
-  {
-   "id": "64284",
-   "title": "Spawn of the Desert",
-   "authors": "Tuttle, W. C. (Wilbur C.), 1883-1969"
-  },
-  {
-   "id": "66341",
-   "title": "The Mystery of the Deserted Village",
-   "authors": "Hoppenstedt, Elbert M."
-  },
-  {
-   "id": "67347",
-   "title": "The Loom of the Desert",
-   "authors": "Strobridge, Idah Meacham, 1855-1932; Dixon, Maynard, 1875-1946 [Illustrator]"
-  },
-  {
-   "id": "67500",
-   "title": "A Copper Harvest; or, The Boys who Worked a Deserted Mine",
-   "authors": "Self-made man, 1853-1915"
-  },
-  {
-   "id": "68067",
-   "title": "Frank Reade, Jr., with his new steam horse in the great American desert\r\nor, The sandy trail of death",
-   "authors": "Senarens, Luis, 1863-1939"
-  },
-  {
-   "id": "68279",
-   "title": "The well in the desert",
-   "authors": "Knapp, Adeline, 1860-1909"
-  },
-  {
-   "id": "68445",
-   "title": "Indians of the Enchanted Desert",
-   "authors": "Crane, Leo, 1881-1960"
-  },
-  {
-   "id": "69806",
-   "title": "The Circe of the deserts",
-   "authors": "Henry-Bordeaux, Paule, 1903-1999"
-  },
-  {
-   "id": "69847",
-   "title": "Travels through Central Africa to Timbuctoo; and across the Great Desert, to Morocco, performed in the years 1824-1828, ",
-   "authors": "Caillié, René, 1799-1838"
-  },
-  {
-   "id": "70011",
-   "title": "Travels through Central Africa to Timbuctoo; and across the Great Desert, to Morocco, performed in the years 1824-1828, ",
-   "authors": "Caillié, René, 1799-1838; Jomard, M. (Edme-François), 1777-1862"
-  },
-  {
-   "id": "70171",
-   "title": "North Africa and the desert",
-   "authors": "Woodberry, George Edward, 1855-1930"
-  },
-  {
-   "id": "70394",
-   "title": "Travels in the Upper Egyptian deserts",
-   "authors": "Weigall, Arthur E. P. Brome (Arthur Edward Pearse Brome), 1880-1934"
-  },
-  {
-   "id": "71230",
-   "title": "Desert and water gardens of the Red Sea",
-   "authors": "Crossland, Cyril, 1878-1943"
-  },
-  {
-   "id": "72141",
-   "title": "Mysteries of the Libyan Desert",
-   "authors": "King, W. J. Harding, 1869-1933"
-  },
-  {
-   "id": "72150",
-   "title": "Narrative of the residence of Fatalla Sayeghir among the wandering Arabs of the great desert",
-   "authors": "Lamartine, Alphonse de, 1790-1869"
-  },
-  {
-   "id": "72319",
-   "title": "The secret of the Australian desert",
-   "authors": "Favenc, Ernest, 1846-1908; Spence, Percy F. S. (Percy Frederick Seaton), 1868-1933 [Illustrator]"
-  },
-  {
-   "id": "72632",
-   "title": "The Camp Fire Girls on the edge of the desert",
-   "authors": "Vandercook, Margaret, 1876-1958"
-  },
-  {
-   "id": "72916",
-   "title": "Through deserts and oases of central Asia",
-   "authors": "Sykes, Ella, 1863-1939; Sykes, Percy, Sir, 1867-1945"
-  },
-  {
-   "id": "73080",
-   "title": "Under the desert stars",
-   "authors": "Koester, Frank, 1876-1927; Van Benscoten, L. C. [Illustrator]"
-  },
-  {
-   "id": "73778",
-   "title": "The desert",
-   "authors": "Van Dyke, John C., 1856-1932"
-  },
-  {
-   "id": "75436",
-   "title": "The Desert Moon mystery",
-   "authors": "Strahan, Kay Cleaver, 1888-1941"
-  },
-  {
-   "id": "75705",
-   "title": "Desert",
-   "authors": "Armstrong, Martin, 1882-1974; Ravilious, Eric, 1903-1942 [Illustrator]"
-  },
-  {
-   "id": "76591",
-   "title": "The deserted wife",
-   "authors": "Southworth, Emma Dorothy Eliza Nevitte, 1819-1899"
-  },
-  {
-   "id": "77091",
-   "title": "Problems of the Libyan Desert",
-   "authors": "Ball, John, 1872-1941"
-  }
- ],
- "fathers": [
-  {
-   "id": "1655",
-   "title": "The God of His Fathers: Tales of the Klondyke",
-   "authors": "London, Jack, 1876-1916"
-  },
-  {
-   "id": "3032",
-   "title": "The Fathers of the Constitution: A Chronicle of the Establishment of the Union",
-   "authors": "Farrand, Max, 1869-1945; Johnson, Allen, 1870-1931 [Editor]"
-  },
-  {
-   "id": "8547",
-   "title": "Pirke Avot: The Sayings of the Jewish Fathers",
-   "authors": "Gorfinkle, Joseph I. (Joseph Isaac), 1880- [Translator]"
-  },
-  {
-   "id": "8548",
-   "title": "Pirke Avot: The Sayings of the Jewish Fathers",
-   "authors": "Gorfinkle, Joseph I. (Joseph Isaac), 1880- [Translator]"
-  },
-  {
-   "id": "16542",
-   "title": "\"Imperialism\" and \"The Tracks of Our Forefathers\"",
-   "authors": "Adams, Charles Francis, 1835-1915"
-  },
-  {
-   "id": "18755",
-   "title": "Summa Theologica, Part II-II (Secunda Secundae)\r\nTranslated by Fathers of the English Dominican Province",
-   "authors": "Thomas, Aquinas, Saint, 1225?-1274"
-  },
-  {
-   "id": "20450",
-   "title": "The Lives of the Fathers, Martyrs, and Other Principal Saints. January, February, March",
-   "authors": "Butler, Alban, 1711-1773"
-  },
-  {
-   "id": "24428",
-   "title": "Our Fathers Have Told Us\nPart I. The Bible of Amiens",
-   "authors": "Ruskin, John, 1819-1900"
-  },
-  {
-   "id": "24456",
-   "title": "Fathers of Biology",
-   "authors": "McRae, Charles"
-  },
-  {
-   "id": "26853",
-   "title": "Vice Versa; or, A Lesson to Fathers",
-   "authors": "Anstey, F., 1856-1934"
-  },
-  {
-   "id": "27435",
-   "title": "The Faith of Our Fathers",
-   "authors": "Gibbons, James, 1834-1921"
-  },
-  {
-   "id": "28634",
-   "title": "Religious Life of Virginia in the Seventeenth Century\nThe Faith of Our Fathers",
-   "authors": "Brydon, G. MacLaren (George MacLaren), 1875-1963"
-  },
-  {
-   "id": "29853",
-   "title": "The Fathers of New England: A Chronicle of the Puritan Commonwealths",
-   "authors": "Andrews, Charles McLean, 1863-1943; Johnson, Allen, 1870-1931 [Editor]"
-  },
-  {
-   "id": "29972",
-   "title": "The Fathers of Confederation: A Chronicle of the Birth of the Dominion",
-   "authors": "Colquhoun, A. H. U. (Arthur Hugh Urquhart), 1861-1936"
-  },
-  {
-   "id": "30723",
-   "title": "Fathers and Children",
-   "authors": "Turgenev, Ivan Sergeevich, 1818-1883; Neilson, William Allan, 1869-1946 [Editor]; Garnett, Constance, 1861-1946 [Translator]"
-  },
-  {
-   "id": "33765",
-   "title": "The Church of England cleared from the charge of Schism\nUpon Testimonies of Councils and Fathers of the first six centur",
-   "authors": "Allies, T. W. (Thomas William), 1813-1903"
-  },
-  {
-   "id": "33892",
-   "title": "Regina, or the Sins of the Fathers",
-   "authors": "Sudermann, Hermann, 1857-1928; Marshall, Beatrice, 1861-1944 [Translator]"
-  },
-  {
-   "id": "36112",
-   "title": "Sons and Fathers",
-   "authors": "Edwards, Harry Stillwell, 1855-1938"
-  },
-  {
-   "id": "37230",
-   "title": "Frauds and Follies of the Fathers\r\nA Review of the Worth of Their Testimony to the Four Gospels",
-   "authors": "Wheeler, J. M. (Joseph Mazzini), 1850-1898"
-  },
-  {
-   "id": "41664",
-   "title": "Old Time Wall Papers\r\nAn Account of the Pictorial Papers on Our Forefathers' Walls with a Study of the Historical Develo",
-   "authors": "Sanborn, Kate, 1839-1917"
-  },
-  {
-   "id": "45177",
-   "title": "Americana Ebrietatis\r\nThe Favorite Tipple of our Forefathers and the Laws and Customs Relating Thereto",
-   "authors": "Peeke, Hewson L. (Hewson Lindsley), 1861-1942"
-  },
-  {
-   "id": "46170",
-   "title": "Fathers of Men",
-   "authors": "Hornung, E. W. (Ernest William), 1866-1921"
-  },
-  {
-   "id": "47520",
-   "title": "Our Pilgrim Forefathers: Thanksgiving Studies",
-   "authors": "Nelson, Loveday A."
-  },
-  {
-   "id": "47935",
-   "title": "Fathers and Sons",
-   "authors": "Turgenev, Ivan Sergeevich, 1818-1883; Hogarth, C. J. (Charles James), 1869-1942 [Translator]"
-  },
-  {
-   "id": "49604",
-   "title": "The Lives of the Fathers, Martyrs, and Other Principal Saints, Vol. 7. July",
-   "authors": "Butler, Alban, 1711-1773"
-  },
-  {
-   "id": "51942",
-   "title": "The Three Godfathers",
-   "authors": "Kyne, Peter B. (Peter Bernard), 1880-1957; Cornwell, Dean, 1892-1960 [Illustrator]"
-  },
-  {
-   "id": "55818",
-   "title": "The Complete Testimony of the Fathers of the First Three Centuries Concerning the Sabbath and First Day",
-   "authors": "Andrews, John Nevins, 1829-1883"
-  },
-  {
-   "id": "56109",
-   "title": "Bringing up the Boy\r\nA Message to Fathers and Mothers from a Boy of Yesterday Concerning the Men of To-morrow",
-   "authors": "Werner, Carl Avery, 1873-"
-  },
-  {
-   "id": "59991",
-   "title": "Sermons by the Fathers of the Congregation of St. Paul the Apostle, Volume VI.",
-   "authors": "Paulist Fathers; Church of St. Paul the Apostle (New York, N.Y.)"
-  },
-  {
-   "id": "65910",
-   "title": "Norse mythology; or, The religion of our forefathers, containing all the myths of the Eddas, systematized and interprete",
-   "authors": "Anderson, Rasmus Björn, 1846-1936"
-  },
-  {
-   "id": "70610",
-   "title": "The grandfathers' war",
-   "authors": "Leinster, Murray, 1896-1975; Van Dongen, H. R., 1920-2010 [Illustrator]"
-  },
-  {
-   "id": "72018",
-   "title": "The Pilgrim fathers of New England",
-   "authors": "Martyn, W. Carlos (William Carlos), 1841-1917"
-  },
-  {
-   "id": "77576",
-   "title": "The writings of the Apostolic Fathers",
-   "authors": "Clement I, Pope, -100?; Hermas, active 2nd century; Ignatius, Saint, Bishop of Antioch, -110?; Papias, Saint, Bishop of Hierapolis, -120?; Polycarp, Saint, Bish"
-  },
-  {
-   "id": "79007",
-   "title": "Founding fathers",
-   "authors": "Bloch, Robert, 1917-1994; Moritz, Edward, 1903-1975 [Illustrator]"
-  }
- ],
- "dark night": [
-  {
-   "id": "2522",
-   "title": "A Dark Night's Work",
-   "authors": "Gaskell, Elizabeth Cleghorn, 1810-1865"
-  },
-  {
-   "id": "72021",
-   "title": "The dark night",
-   "authors": "Guernsey, Lucy Ellen, 1826-1899"
-  }
- ],
- "rule of": [
-  {
-   "id": "4225",
-   "title": "First and Last Things: A Confession of Faith and Rule of Life",
-   "authors": "Wells, H. G. (Herbert George), 1866-1946"
-  },
-  {
-   "id": "4680",
-   "title": "Manuel Pereira; Or, The Sovereign Rule of South Carolina",
-   "authors": "Adams, F. Colburn (Francis Colburn), 1850-1891"
-  },
-  {
-   "id": "13871",
-   "title": "The Practice of the Presence of God the Best Rule of a Holy Life",
-   "authors": "Lawrence, of the Resurrection, Brother, 1611-1691"
-  },
-  {
-   "id": "38486",
-   "title": "Rule of the Monk; Or, Rome in the Nineteenth Century",
-   "authors": "Garibaldi, Giuseppe, 1807-1882"
-  },
-  {
-   "id": "57268",
-   "title": "Oliver Cromwell and the Rule of the Puritans in England",
-   "authors": "Firth, C. H. (Charles Harding), 1857-1936"
-  },
-  {
-   "id": "59444",
-   "title": "William the Conqueror and the Rule of the Normans",
-   "authors": "Stenton, F. M. (Frank Merry), 1880-1967"
-  },
-  {
-   "id": "62898",
-   "title": "With Sam Houston in Texas\r\nA Boy Volunteer in the Texas Struggles for Independence, When in the Years 1835-1836 the Texa",
-   "authors": "Sabin, Edwin L. (Edwin Legrand), 1870-1952; Stephens, Charles H., 1851-1931 [Illustrator]"
-  },
-  {
-   "id": "72669",
-   "title": "The mis-rule of three",
-   "authors": "Warden, Florence, 1857-1929"
-  }
- ],
- "presence of god": [
-  {
-   "id": "5657",
-   "title": "The Practice of the Presence of God",
-   "authors": "Lawrence, of the Resurrection, Brother, 1611-1691"
-  },
-  {
-   "id": "13871",
-   "title": "The Practice of the Presence of God the Best Rule of a Holy Life",
-   "authors": "Lawrence, of the Resurrection, Brother, 1611-1691"
-  }
- ],
- "ladder": [
-  {
-   "id": "5977",
-   "title": "Bound to Rise; Or, Up the Ladder",
-   "authors": "Alger, Horatio, Jr., 1832-1899"
-  },
-  {
-   "id": "6250",
-   "title": "Michel and Angele [A Ladder of Swords] — Volume 1",
-   "authors": "Parker, Gilbert, 1862-1932"
-  },
-  {
-   "id": "6251",
-   "title": "Michel and Angele [A Ladder of Swords] — Volume 2",
-   "authors": "Parker, Gilbert, 1862-1932"
-  },
-  {
-   "id": "6252",
-   "title": "Michel and Angele [A Ladder of Swords] — Volume 3",
-   "authors": "Parker, Gilbert, 1862-1932"
-  },
-  {
-   "id": "6253",
-   "title": "Michel and Angele [A Ladder of Swords] — Complete",
-   "authors": "Parker, Gilbert, 1862-1932"
-  },
-  {
-   "id": "14184",
-   "title": "The Ladder to Learning",
-   "authors": "Lovechild, Miss"
-  },
-  {
-   "id": "14903",
-   "title": "The Knights of the White Shield\nUp-the-Ladder Club Series, Round One Play",
-   "authors": "Rand, Edward A. (Edward Augustus), 1837-1903"
-  },
-  {
-   "id": "20608",
-   "title": "How to Get on in the World: A Ladder to Practical Success",
-   "authors": "Calhoun, A. R. (Alfred Rochefort), 1844-1912"
-  },
-  {
-   "id": "21565",
-   "title": "The Queen's Matrimonial Ladder\r\nA National Toy, With Fourteen Step Scenes; and Illustrations in Verse, With Eighteen oth",
-   "authors": "Hone, William, 1780-1842; Cruikshank, George, 1792-1878 [Illustrator]"
-  },
-  {
-   "id": "24644",
-   "title": "Harry's Ladder to Learning",
-   "authors": "Anonymous"
-  },
-  {
-   "id": "32732",
-   "title": "Jacob's Ladder",
-   "authors": "Oppenheim, E. Phillips (Edward Phillips), 1866-1946; Wilson, F. Vaux (Francis Vaux), 1874-1938 [Illustrator]"
-  },
-  {
-   "id": "34591",
-   "title": "Clue of the Silken Ladder",
-   "authors": "Wirt, Mildred A. (Mildred Augustine), 1905-2002"
-  },
-  {
-   "id": "41303",
-   "title": "A Ladder of Swords: A Tale of Love, Laughter and Tears",
-   "authors": "Parker, Gilbert, 1862-1932; Kinney, Margaret West, 1872-1952 [Illustrator]; Kinney, Troy, 1871-1938 [Illustrator]"
-  },
-  {
-   "id": "48808",
-   "title": "Top of the Ladder: Marine Operations in the Northern Solomons",
-   "authors": "Chapin, John C. (John Carsten), 1920-2008"
-  },
-  {
-   "id": "64635",
-   "title": "Frank Merriwell's First Job; Or, At the Foot of the Ladder",
-   "authors": "Standish, Burt L., 1866-1945"
-  },
-  {
-   "id": "65026",
-   "title": "The Social Ladder\nDrawings by Charles Dana Gibson",
-   "authors": "Gibson, Charles Dana, 1867-1944"
-  },
-  {
-   "id": "70168",
-   "title": "Up the ladder;",
-   "authors": "Leslie, Madeline, 1815-1893; Hyde, John N., 1837-1895 [Illustrator]"
-  }
- ],
- "francis of assisi": [
   {
    "id": "6367",
    "title": "The Life and Legends of Saint Francis of Assisi",
    "authors": "Chalippe, Candide, 1684-1757; Duerk, Hilarion, 1883-1954 [Editor]"
+  },
+  {
+   "id": "7305",
+   "title": "Memoir and Letters of Francis W. Newman",
+   "authors": "Sieveking, I. Giberne (Isabel Giberne); Newman, Francis William, 1805-1897 [Contributor]"
+  },
+  {
+   "id": "8789",
+   "title": "The vision of hell. \r\nBy Dante Alighieri.\r\nTranslated by Rev. Henry Francis Cary, M.A.\r\nand illustrated with the seventy",
+   "authors": "Dante Alighieri, 1265-1321; Doré, Gustave, 1832-1883 [Illustrator]; Cary, Henry Francis, 1772-1844 [Translator]"
+  },
+  {
+   "id": "9184",
+   "title": "The Spirit of St. Francis de Sales",
+   "authors": "Camus, Jean-Pierre, 1584-1652; Francis, de Sales, Saint, 1567-1622 [Contributor]"
+  },
+  {
+   "id": "9464",
+   "title": "Bohemian San Francisco\nIts restaurants and their most famous recipes—The elegant art of dining.",
+   "authors": "Edwords, Clarence E. (Clarence Edgar), 1856-1941"
+  },
+  {
+   "id": "9996",
+   "title": "\"'Tis Sixty Years Since\"\r\nAddress of Charles Francis Adams; Founders' Day, January 16, 1913",
+   "authors": "Adams, Charles Francis, 1835-1915"
+  },
+  {
+   "id": "10620",
+   "title": "The Works of Francis Beaumont and John Fletcher in Ten Volumes: Volume 01.",
+   "authors": "Beaumont, Francis, 1584-1616; Fletcher, John, 1579-1625; Glover, Arnold, 1865-1905 [Editor]"
+  },
+  {
+   "id": "11507",
+   "title": "The Lure of San Francisco: A Romance Amid Old Landmarks",
+   "authors": "Potter, Elizabeth Gray; Gray, Mabel Thayer"
+  },
+  {
+   "id": "11510",
+   "title": "Fascinating San Francisco",
+   "authors": "Brandt, Fred; Wood, Andrew Y."
+  },
+  {
+   "id": "12010",
+   "title": "The Fourth-Dimensional Reaches of the Exposition: San Francisco, 1915",
+   "authors": "Williams, Cora Lenore, 1865-1937"
+  },
+  {
+   "id": "12098",
+   "title": "The Elder Brother\r\nThe Works of Francis Beaumont and John Fletcher (Volume 2 of 10)",
+   "authors": "Fletcher, John, 1579-1625; Beaumont, Francis, 1584-1616; Massinger, Philip, 1583-1640; Glover, Arnold, 1865-1905 [Editor]"
+  },
+  {
+   "id": "12221",
+   "title": "Beggars Bush: A Comedy\r\nFrom the Works of Francis Beaumont and John Fletcher (Volume 2 of 10)",
+   "authors": "Fletcher, John, 1579-1625; Beaumont, Francis, 1584-1616"
+  },
+  {
+   "id": "12222",
+   "title": "The Faithful Shepherdess\nThe Works of Francis Beaumont and John Fletcher (Volume 2 of 10).",
+   "authors": "Fletcher, John, 1579-1625; Beaumont, Francis, 1584-1616"
+  },
+  {
+   "id": "12415",
+   "title": "Byways Around San Francisco Bay",
+   "authors": "Hutchinson, William E., 1856-"
+  },
+  {
+   "id": "12518",
+   "title": "The Adventures of a Forty-niner\r\nAn Historic Description of California, with Events and Ideas of San Francisco and Its P",
+   "authors": "Knower, Daniel; Ivanowski, Sigismond de, 1875-1944 [Illustrator]"
+  },
+  {
+   "id": "12548",
+   "title": "The Secret Memoirs of the Courts of Europe: William II, Germany; Francis Joseph, Austria-Hungary, Volume I. (of 2)",
+   "authors": "Fontenoy, marquise de"
+  },
+  {
+   "id": "12560",
+   "title": "Port O' Gold\r\nA History-Romance of the San Francisco Argonauts",
+   "authors": "Stellman, Louis J. (Louis John), 1877-1961"
+  },
+  {
+   "id": "12883",
+   "title": "By the Golden Gate; Or, San Francisco, the Queen City of the Pacific Coast\r\nWith Scenes and Incidents Characteristic of ",
+   "authors": "Carey, Joseph, -1913"
+  },
+  {
+   "id": "13001",
+   "title": "Four Months Among the Gold-Finders in Alta California\r\nBeing the Diary of an Expedition From San Francisco to the Gold D",
+   "authors": "Vizetelly, Henry, 1820-1894"
+  },
+  {
+   "id": "13112",
+   "title": "Speeches from the Dock; Or, Protests of Irish Patriotism. Part I\r\nSpeeches delivered after conviction by Theobald Wolfe ",
+   "authors": "Sullivan, T. D. (Timothy Daniel), 1827-1914 [Commentator]; Sullivan, A. M. (Alexander Martin), 1830-1884 [Commentator]; Sullivan, D. B. (Denis Baylor), -1909 [C"
+  },
+  {
+   "id": "13425",
+   "title": "Wit Without Money; A Comedy\r\nThe Works of Francis Beaumont and John Fletcher",
+   "authors": "Fletcher, John, 1579-1625"
+  },
+  {
+   "id": "13854",
+   "title": "The Old Franciscan Missions Of California",
+   "authors": "James, George Wharton, 1858-1923"
+  },
+  {
+   "id": "17735",
+   "title": "Eyes of Youth\r\nA Book of Verse by Padraic Colum, Shane Leslie, Viola Meynell, Ruth Lindsay, Hugh Austin, Judith Lytton, ",
+   "authors": "Various"
   },
   {
    "id": "18787",
@@ -1130,9 +206,624 @@
    "authors": "Sabatier, Paul, 1858-1928; Houghton, Louise Seymour, 1838-1920 [Translator]"
   },
   {
+   "id": "19332",
+   "title": "Michael Angelo Buonarroti\r\nWith Translations Of The Life Of The Master By His Scholar, Ascanio Condivi, And Three Dialog",
+   "authors": "Holroyd, Charles, 1861-1917; Condivi, Ascanio, 1520?-1574 [Contributor]; Hollanda, Francisco de, 1517-1584 [Contributor]"
+  },
+  {
+   "id": "19895",
+   "title": "The American Revolution and the Boer War, An Open Letter to Mr. Charles Francis Adams on His Pamphlet \"The Confederacy a",
+   "authors": "Fisher, Sydney George, 1856-1927"
+  },
+  {
+   "id": "25723",
+   "title": "The Voyage of the Oregon from San Francisco to Santiago in 1898",
+   "authors": "Cross, R., active 1898"
+  },
+  {
+   "id": "26380",
+   "title": "Complete Story of the San Francisco Horror",
+   "authors": "Linthicum, Richard, 1859-1934; Fallows, Samuel, 1835-1922; White, Trumbull, 1868-1941"
+  },
+  {
+   "id": "27727",
+   "title": "Within the Golden Gate\r\nA Souvenir of San Francisco Bay",
+   "authors": "Pinney, Laura Ann Young, 1849-; Pierce, Ella N. [Illustrator]"
+  },
+  {
+   "id": "33448",
+   "title": "Saint Bonaventure: The Seraphic Doctor Minister-General of the Franciscan Order",
+   "authors": "Costelloe, Laurence, 1870-1909"
+  },
+  {
+   "id": "33614",
+   "title": "Encyclopaedia Britannica, 11th Edition, \"Bohemia\" to \"Borgia, Francis\"\r\nVolume 4, Slice 2",
+   "authors": "Various"
+  },
+  {
+   "id": "33950",
+   "title": "Brother Francis; Or, Less than the Least",
+   "authors": "Douglas, Eileen; Booth, William, 1829-1912 [Author of introduction, etc.]"
+  },
+  {
+   "id": "34214",
+   "title": "Francis Beaumont: Dramatist\r\nA Portrait, with Some Account of His Circle, Elizabethan and Jacobean,\r\nAnd of His Associat",
+   "authors": "Gayley, Charles Mills, 1858-1932"
+  },
+  {
+   "id": "34334",
+   "title": "The Numerical Strength of the Confederate Army\r\nAn examination of the argument of the Hon. Charles Francis Adams and oth",
+   "authors": "McKim, Randolph H. (Randolph Harrison), 1842-1920"
+  },
+  {
+   "id": "35000",
+   "title": "The Mad Lover, a Tragi-Comedy\r\nThe Works of Francis Beaumont and John Fletcher (3 of 10)",
+   "authors": "Beaumont, Francis, 1584-1616; Fletcher, John, 1579-1625"
+  },
+  {
+   "id": "35537",
+   "title": "Do the Dead Return? A True Story of Startling Seances in San Francisco",
+   "authors": "Anonymous"
+  },
+  {
+   "id": "36201",
+   "title": "Francis Drake and the California Indians, 1579",
+   "authors": "Heizer, Robert F. (Robert Fleming), 1915-1979"
+  },
+  {
+   "id": "36226",
+   "title": "Encyclopaedia Britannica, 11th Edition, \"France\" to \"Francis Joseph I.\"\r\nVolume 10, Slice 8",
+   "authors": "Various"
+  },
+  {
+   "id": "36650",
+   "title": "The Mystery of Francis Bacon",
+   "authors": "Smedley, William T. (William Thomas), 1851-"
+  },
+  {
+   "id": "37537",
+   "title": "San Francisco in Ruins\r\nA Pictorial History of Eight Score Photo-Views of the Earthquake Effects, Flames' Havoc, Ruins E",
+   "authors": "Givens, J. D. (James David), 1863- [Illustrator]; Allison, A. M. [Editor]"
+  },
+  {
+   "id": "37806",
+   "title": "Encyclopaedia Britannica, 11th Edition, \"Franciscans\" to \"French Language\"\r\nVolume 11, Slice 1",
+   "authors": "Various"
+  },
+  {
+   "id": "39112",
+   "title": "The Blessed Hope: A Sermon on the Death of Mrs. Francis Cunningham",
+   "authors": "Hoare, Edward, 1812-1894"
+  },
+  {
+   "id": "39296",
+   "title": "The Story of Francis Cludde",
+   "authors": "Weyman, Stanley John, 1855-1928"
+  },
+  {
+   "id": "39550",
+   "title": "The Hotel St. Francis Cook Book",
+   "authors": "Hirtzler, Victor, 1875?-1935"
+  },
+  {
+   "id": "39642",
+   "title": "Kashmir, described by Sir Francis Younghusband, painted by Major E. Molyneux",
+   "authors": "Younghusband, Francis Edward, Sir, 1863-1942; Molyneux, E. (Edward), 1866- [Illustrator]"
+  },
+  {
+   "id": "41215",
+   "title": "Selected Poems of Francis Thompson",
+   "authors": "Thompson, Francis, 1859-1907; Meynell, Wilfrid, 1852-1948 [Annotator]"
+  },
+  {
+   "id": "41357",
+   "title": "The works of Francis Maitland Balfour, Volume 1 (of 4)",
+   "authors": "Balfour, Francis M. (Francis Maitland), 1851-1882; Foster, M. (Michael), Sir, 1836-1907 [Editor]; Sedgwick, Adam, 1854-1913 [Editor]"
+  },
+  {
+   "id": "41808",
+   "title": "The San Francisco Fairy: A Tale of Early Times",
+   "authors": "Anonymous"
+  },
+  {
+   "id": "41908",
+   "title": "The Visions of Dom Francisco de Quevedo Villegas",
+   "authors": "Quevedo, Francisco de, 1580-1645; L'Estrange, Roger, Sir, 1616-1704 [Translator]"
+  },
+  {
+   "id": "42210",
+   "title": "Bancroft's Tourist's Guide. Yosemite. San Francisco and around the Bay, (South.)",
+   "authors": "A.L. Bancroft & Company [Publisher]"
+  },
+  {
+   "id": "42582",
+   "title": "A Little Girl in Old San Francisco",
+   "authors": "Douglas, Amanda M., 1831-1916"
+  },
+  {
+   "id": "42603",
+   "title": "San Francisco and the Nicaragua Canal",
+   "authors": "Merry, William L. (William Lawrence), 1842-1911"
+  },
+  {
+   "id": "43103",
+   "title": "\"The System,\" As Uncovered by the San Francisco Graft Prosecution",
+   "authors": "Hichborn, Franklin, 1869-1963"
+  },
+  {
+   "id": "43424",
+   "title": "Francisco, Our Little Argentine Cousin",
+   "authors": "Brooks, Eva Cannon; Goss, John, 1886-1963 [Illustrator]"
+  },
+  {
+   "id": "44019",
+   "title": "A Course of Mechanical, Magnetical, Optical, Hydrostatical and Pneumatical Experiments\r\nperform'd by Francis Hauksbee, a",
+   "authors": "Whiston, William, 1667-1752; Hauksbee, Francis, 1687-1763"
+  },
+  {
+   "id": "44998",
+   "title": "The Gentleman from San Francisco, and Other Stories",
+   "authors": "Bunin, Ivan Alekseevich, 1870-1953; Koteliansky, S. S. (Samuel Solomonovitch), 1880-1955 [Translator]; Lawrence, D. H. (David Herbert), 1885-1930 [Translator]; "
+  },
+  {
+   "id": "45018",
+   "title": "The works of Francis Maitland Balfour, Volume 2 (of 4)",
+   "authors": "Balfour, Francis M. (Francis Maitland), 1851-1882; Foster, M. (Michael), Sir, 1836-1907 [Editor]; Sedgwick, Adam, 1854-1913 [Editor]"
+  },
+  {
+   "id": "45019",
+   "title": "The works of Francis Maitland Balfour, Volume 3 (of 4)",
+   "authors": "Balfour, Francis M. (Francis Maitland), 1851-1882; Foster, M. (Michael), Sir, 1836-1907 [Editor]; Sedgwick, Adam, 1854-1913 [Editor]"
+  },
+  {
+   "id": "45106",
+   "title": "The Life of Francis Thompson",
+   "authors": "Meynell, Everard, 1882-1926"
+  },
+  {
+   "id": "46095",
+   "title": "Private Journal of Henry Francis Brooke\r\nLate Brigadier-General Commanding 2nd Infantry Brigade, Kandahar Field Force, S",
+   "authors": "Brooke, Henry Francis, 1836-1880; Brooke, Annie, Mrs. [Editor]"
+  },
+  {
+   "id": "46362",
+   "title": "The works of Francis Maitland Balfour, Volume 4 (of 4)",
+   "authors": "Balfour, Francis M. (Francis Maitland), 1851-1882; Foster, M. (Michael), Sir, 1836-1907 [Editor]; Sedgwick, Adam, 1854-1913 [Editor]"
+  },
+  {
+   "id": "47815",
+   "title": "Francisco the Filipino",
+   "authors": "Little, Burtis McGie, 1884-"
+  },
+  {
+   "id": "48407",
+   "title": "The Road of a Thousand Wonders\r\nThe Coast Line—Shasta Route of the Southern Pacific Company from Los Angeles Through San",
+   "authors": "Southern Pacific Company. Passenger Department"
+  },
+  {
+   "id": "48887",
+   "title": "The Month of Mary, According to the Spirit of St. Francis of Sales\nThirty-One Considerations With Examples, Prayers, Etc",
+   "authors": "Gilli, Gaspar; Francis, de Sales, Saint, 1567-1622"
+  },
+  {
+   "id": "48984",
+   "title": "The Heart Line: A Drama of San Francisco",
+   "authors": "Burgess, Gelett, 1866-1951; Ralph, Lester [Illustrator]"
+  },
+  {
+   "id": "50738",
+   "title": "Geneva\nPainted by J. Hardwicke Lewis & May Hardwicke Lewis.\nDescribed by Francis Gribble.",
+   "authors": "Gribble, Francis Henry, 1862-1946; Lewis, J. Hardwicke (John Hardwicke), 1840-1927 [Illustrator]; Lewis, May Hardwicke [Illustrator]"
+  },
+  {
+   "id": "51849",
+   "title": "The Overland Route to the Road of a Thousand Wonders\r\nThe Route of the Union Pacific & The Southern Pacific Railroads fr",
+   "authors": "Union Pacific Railroad Company. Passenger Department; Southern Pacific Company. Passenger Department"
+  },
+  {
+   "id": "52729",
+   "title": "Round the Corner\r\nBeing the Life and Death of Francis Christopher Folyat, Bachelor of Divinity, and Father of a Large Fa",
+   "authors": "Cannan, Gilbert, 1884-1955"
+  },
+  {
+   "id": "52768",
+   "title": "Memorials of Francis Storr: Sermons",
+   "authors": "Hoare, Edward, 1812-1894; May, W., Rev.; Storr, Francis, 1808-1888 [Contributor]"
+  },
+  {
+   "id": "53621",
+   "title": "The Complete Poems of Francis Ledwidge\nwith Introductions by Lord Dunsany",
+   "authors": "Ledwidge, Francis, 1887-1917; Dunsany, Lord, 1878-1957 [Editor]"
+  },
+  {
+   "id": "55424",
+   "title": "Francis Parkman",
+   "authors": "Little, Brown and Company [Publisher]"
+  },
+  {
+   "id": "56217",
+   "title": "San Francisco Relief Survey; the organization and methods of relief used after the earthquake and fire of April 18, 1906",
+   "authors": "O'Connor, Charles J. (Charles James), 1870- [Contributor]; Artieda, Helen Swett, 1875-1938 [Contributor]; Coolidge, Mary Roberts, 1860-1945 [Contributor]; McLea"
+  },
+  {
+   "id": "56988",
+   "title": "Franciscus Columna\nThe Last Novella of Charles Nodier",
+   "authors": "Nodier, Charles, 1780-1844; Wooff, Michael [Translator]"
+  },
+  {
+   "id": "58778",
+   "title": "Index of the Project Gutenberg Works of Francis Parkman",
+   "authors": "Parkman, Francis, 1823-1893; Widger, David, 1932-2021 [Editor]"
+  },
+  {
+   "id": "58812",
+   "title": "Sermons of the Rev. Francis A. Baker, Priest of the Congregation of St. Paul\r\nWith a Memoir of His Life",
+   "authors": "Baker, Francis A. (Francis Aloysius), 1820-1865; Hewit, A. F. (Augustine Francis), 1820-1897 [Contributor]"
+  },
+  {
+   "id": "58890",
+   "title": "The Mysteries and Miseries of San Francisco\r\nShowing up all the various characters and notabilities, (both in high and l",
+   "authors": "A Californian"
+  },
+  {
+   "id": "59163",
+   "title": "Index of the Project Gutenberg Works of Francis Bacon",
+   "authors": "Bacon, Francis, 1561-1626; Widger, David, 1932-2021 [Editor]"
+  },
+  {
    "id": "63084",
    "title": "St. Francis of Assisi",
    "authors": "Chesterton, G. K. (Gilbert Keith), 1874-1936"
+  },
+  {
+   "id": "67864",
+   "title": "The Story of Sir Francis Drake",
+   "authors": "Elton, Letitia MacColl, 1865-1947; Robinson, T. H. (Thomas Heath), 1869-1954 [Illustrator]"
+  },
+  {
+   "id": "68494",
+   "title": "The Shasta route in all of its grandeur\r\nA scenic guide book from San Francisco, California, to Portland, Oregon on the ",
+   "authors": "Southern Pacific Company"
+  },
+  {
+   "id": "68805",
+   "title": "Water and power for San Francisco from Hetch-Hetchy Valley in Yosemite National Park",
+   "authors": "Vilas, Martin Samuel, 1870-1953"
+  },
+  {
+   "id": "68907",
+   "title": "The true prophecies or prognostications of Michael Nostradamus, physician to Henry II. Francis II. and Charles IX. Kings",
+   "authors": "Nostradamus, 1503-1566; Garencières, Theophilus, 1610-1680 [Translator]"
+  },
+  {
+   "id": "70119",
+   "title": "Concerning the bi-literal cypher of Francis Bacon discovered in his works",
+   "authors": "Gallup, Elizabeth Wells, 1846-1933"
+  },
+  {
+   "id": "73661",
+   "title": "Maxims and counsels of St. Francis de Sales for every day of the year",
+   "authors": "Francis, de Sales, Saint, 1567-1622; McMahon, Ella [Translator]"
+  },
+  {
+   "id": "74682",
+   "title": "The life of the emperor Francis Joseph",
+   "authors": "Gribble, Francis Henry, 1862-1946"
+  },
+  {
+   "id": "77293",
+   "title": "An overland journey, from New York to San Francisco in the summer of 1859",
+   "authors": "Greeley, Horace, 1811-1872"
+  },
+  {
+   "id": "77309",
+   "title": "Francis and Riversdale Grenfell",
+   "authors": "Buchan, John, 1875-1940"
+  }
+ ],
+ "bede": [
+  {
+   "id": "507",
+   "title": "Adam Bede",
+   "authors": "Eliot, George, 1819-1880"
+  },
+  {
+   "id": "25465",
+   "title": "Skippy Bedelle\r\nHis Sentimental Progress From the Urchin to the Complete Man of the World",
+   "authors": "Johnson, Owen, 1878-1952; Fuhr, E. (Ernest), 1874-1933 [Illustrator]"
+  },
+  {
+   "id": "38326",
+   "title": "Bede's Ecclesiastical History of England",
+   "authors": "Bede, the Venerable, Saint, 673-735; Sellar, A. M. [Translator]"
+  },
+  {
+   "id": "58819",
+   "title": "The Choir School of St. Bede's",
+   "authors": "Harrison, Frederick, 1884-; Cook, E. A. (Emily Annie), 1857-1928 [Illustrator]"
+  }
+ ],
+ "catherine": [
+  {
+   "id": "1854",
+   "title": "Catherine De Medici",
+   "authors": "Balzac, Honoré de, 1799-1850; Wormeley, Katharine Prescott, 1830-1908 [Translator]"
+  },
+  {
+   "id": "1969",
+   "title": "Catherine: A Story",
+   "authors": "Thackeray, William Makepeace, 1811-1863"
+  },
+  {
+   "id": "3488",
+   "title": "Great Catherine (Whom Glory Still Adores)",
+   "authors": "Shaw, Bernard, 1856-1950"
+  },
+  {
+   "id": "7125",
+   "title": "Catherine Booth — a Sketch",
+   "authors": "Duff, Mildred, 1860-1932"
+  },
+  {
+   "id": "7403",
+   "title": "Letters of Catherine Benincasa",
+   "authors": "Catherine, of Siena, Saint, 1347-1380; Scudder, Vida Dutton, 1861-1954 [Translator]"
+  },
+  {
+   "id": "12967",
+   "title": "Memoirs and Historical Chronicles of the Courts of Europe\r\nMemoirs of Marguerite de Valois, Queen of France, Wife of Hen",
+   "authors": "Marguerite, Queen, consort of Henry IV, King of France, 1553-1615; Brantôme, Pierre de Bourdeille, -1614; Du Hausset, Mme., 1713-1801"
+  },
+  {
+   "id": "33113",
+   "title": "The Divorce of Catherine of Aragon\r\nThe Story as Told by the Imperial Ambassadors Resident at the Court of Henry VIII",
+   "authors": "Froude, James Anthony, 1818-1894"
+  },
+  {
+   "id": "36880",
+   "title": "Niece Catherine",
+   "authors": "Hampden, Mary"
+  },
+  {
+   "id": "37285",
+   "title": "The Works of Honoré de Balzac: About Catherine de' Medici, Seraphita, and Other Stories",
+   "authors": "Balzac, Honoré de, 1799-1850; Bell, Clara, 1834-1927 [Translator]; Waring, James [Translator]"
+  },
+  {
+   "id": "46407",
+   "title": "Memoirs of the Empress Catherine II.\nWritten by Herself",
+   "authors": "Catherine II, Empress of Russia, 1729-1796; Herzen, Aleksandr, 1812-1870 [Translator]"
+  },
+  {
+   "id": "49266",
+   "title": "The Wars of Religion in France 1559-1576\nThe Huguenots, Catherine de Medici and Philip II",
+   "authors": "Thompson, James Westfall, 1869-1941"
+  },
+  {
+   "id": "50205",
+   "title": "The Mystical Element of Religion, as studied in Saint Catherine of Genoa and her friends, Volume 1 (of 2)",
+   "authors": "Hügel, Friedrich, Freiherr von, 1852-1925"
+  },
+  {
+   "id": "50206",
+   "title": "The Mystical Element of Religion, as studied in Saint Catherine of Genoa and her friends, Volume 2 (of 2)",
+   "authors": "Hügel, Friedrich, Freiherr von, 1852-1925"
+  },
+  {
+   "id": "53446",
+   "title": "The Maréchale (Catherine Booth-Clibborn)",
+   "authors": "Strahan, James, 1863-1926"
+  },
+  {
+   "id": "53852",
+   "title": "Letters to Catherine E. Beecher, in reply to an essay on slavery and abolitionism, addressed to A. E. Grimké",
+   "authors": "Grimké, Angelina Emily, 1805-1879"
+  },
+  {
+   "id": "57503",
+   "title": "Irresolute Catherine",
+   "authors": "Jacob, Violet, 1863-1946"
+  },
+  {
+   "id": "68727",
+   "title": "The emerald of Catherine the Great",
+   "authors": "Belloc, Hilaire, 1870-1953; Chesterton, G. K. (Gilbert Keith), 1874-1936 [Illustrator]"
+  },
+  {
+   "id": "70172",
+   "title": "Catherine's coquetries",
+   "authors": "Debans, Camille, 1832-1919; Mead, Leon, 1861-1927 [Translator]"
+  },
+  {
+   "id": "71786",
+   "title": "Catherine herself",
+   "authors": "Hilton, James, 1900-1954"
+  },
+  {
+   "id": "77133",
+   "title": "Catherine the Great",
+   "authors": "Anthony, Katharine Susan, 1877-1965"
+  }
+ ],
+ "augustine": [
+  {
+   "id": "3296",
+   "title": "The Confessions of St. Augustine",
+   "authors": "Augustine, of Hippo, Saint, 354-430; Pusey, E. B. (Edward Bouverie), 1800-1882 [Translator]"
+  },
+  {
+   "id": "19589",
+   "title": "A Svmmarie and Trve Discovrse of Sir Frances Drakes VVest Indian Voyage\r\nWherein were taken, the townes of Saint Iago, S",
+   "authors": "Bigges, Walter, -1586"
+  },
+  {
+   "id": "24335",
+   "title": "Margaret Tudor: A Romance of Old St. Augustine",
+   "authors": "Colcock, Annie T. (Annie Toomer), 1871-1923; Gilbert, W. B., active 1902 [Illustrator]"
+  },
+  {
+   "id": "31872",
+   "title": "The Christian Church in These Islands before the Coming of Augustine\nThree Lectures Delivered at St. Paul's in January 1",
+   "authors": "Browne, G. F. (George Forrest), 1833-1930"
+  },
+  {
+   "id": "37507",
+   "title": "The Spaniards in Florida\r\nComprising the Notable Settlement of the Huguenots in 1564, and the History and Antiquities of",
+   "authors": "Fairbanks, George R. (George Rainsford), 1820-1906"
+  },
+  {
+   "id": "40341",
+   "title": "King Alfred's Old English Version of St. Augustine's Soliloquies\nTurned into Modern English",
+   "authors": "Augustine, of Hippo, Saint, 354-430; Alfred, King of England, 849-899 [Translator]; Hargrove, Henry Lee [Translator]"
+  },
+  {
+   "id": "49450",
+   "title": "Petrarch's Secret; or, the Soul's Conflict with Passion\r\nThree Dialogues Between Himself and S. Augustine",
+   "authors": "Petrarca, Francesco, 1304-1374; Draper, William H., 1855-1933 [Translator]"
+  },
+  {
+   "id": "52708",
+   "title": "A Confession of St. Augustine",
+   "authors": "Howells, William Dean, 1837-1920"
+  },
+  {
+   "id": "52853",
+   "title": "Sketches of St. Augustine\r\nWith a view of its history and advantages as a resort for invalids",
+   "authors": "Sewall, Rufus King, 1814-1903"
+  },
+  {
+   "id": "53608",
+   "title": "The History of Saint Augustine, Florida",
+   "authors": "Dewhurst, William W. (William Whitwell), 1850-1927"
+  },
+  {
+   "id": "54804",
+   "title": "The unwritten history of old St. Augustine",
+   "authors": "Brooks, A. M. (Abbie M.), 1830-1914 [Editor]; Averette, Annie [Translator]"
+  },
+  {
+   "id": "59484",
+   "title": "St. Augustine, Florida's Colonial Capital",
+   "authors": "Campen, J. T. Van"
+  },
+  {
+   "id": "77585",
+   "title": "Confessions of St. Augustine",
+   "authors": "Augustine, of Hippo, Saint, 354-430; Haldeman-Julius, E. (Emanuel), 1888-1951 [Editor]; Smith, Lloyd E. (Lloyd Edwin), 1902-1971 [Editor]; Pusey, E. B. (Edward "
+  }
+ ],
+ "bernard": [
+  {
+   "id": "4004",
+   "title": "On the Prospects of Christianity\r\nBernard Shaw's Preface to Androcles and the Lion",
+   "authors": "Shaw, Bernard, 1856-1950"
+  },
+  {
+   "id": "7569",
+   "title": "Widger's Quotes and Images from Gerfaut by Charles de Bernard\r\nThe French Immortals: Quotes And Images",
+   "authors": "Bernard, Charles de, 1804-1850; Widger, David, 1932-2021 [Editor]"
+  },
+  {
+   "id": "14893",
+   "title": "Prince Jan, St. Bernard",
+   "authors": "Hooker, Forrestine C. (Forrestine Cooper), 1867-1932"
+  },
+  {
+   "id": "19535",
+   "title": "George Bernard Shaw",
+   "authors": "Chesterton, G. K. (Gilbert Keith), 1874-1936"
+  },
+  {
+   "id": "23406",
+   "title": "Dog of St. Bernard and Other Stories",
+   "authors": "Anonymous"
+  },
+  {
+   "id": "25761",
+   "title": "St. Bernard of Clairvaux's Life of St. Malachy of Armagh",
+   "authors": "Bernard, of Clairvaux, Saint, 1091?-1153; Lawlor, Hugh Jackson, 1860-1938 [Editor]"
+  },
+  {
+   "id": "40131",
+   "title": "Early Travels in Palestine\r\nComprising the Narratives of Arculf, Willibald, Bernard, Sæwulf, Sigurd, Benjamin of Tudela,",
+   "authors": "Wright, Thomas, 1810-1877 [Compiler]"
+  },
+  {
+   "id": "40266",
+   "title": "The Punster's Pocket-book\r\nor, the Art of Punning Enlarged by Bernard Blackmantle, illustrated with numerous original de",
+   "authors": "Westmacott, C. M. (Charles Molloy), 1788?-1868; Cruikshank, Robert, 1789-1856 [Illustrator]"
+  },
+  {
+   "id": "42163",
+   "title": "Bernardino Luini",
+   "authors": "Mason, James; Hare, T. Leman (Thomas Leman), 1872-1935 [Editor]"
+  },
+  {
+   "id": "42459",
+   "title": "Bernard Treves's Boots: A Novel of the Secret Service",
+   "authors": "Clarke, Laurence (Laurence Ayscough), 1873-1942"
+  },
+  {
+   "id": "45022",
+   "title": "Bernard Brooks' Adventures: The Experience of a Plucky Boy",
+   "authors": "Alger, Horatio, Jr., 1832-1899; Davis, J. Watson, 1870-1959 [Illustrator]"
+  },
+  {
+   "id": "46431",
+   "title": "St. Bernard's: The Romance of a Medical Student",
+   "authors": "Berdoe, Edward, 1836-1916"
+  },
+  {
+   "id": "46992",
+   "title": "Three Plays by Brieux\r\nWith a Preface by Bernard Shaw",
+   "authors": "Brieux, Eugène, 1858-1932; Shaw, Bernard, 1856-1950 [Author of introduction, etc.]; Hankin, St. John, 1869-1909 [Translator]; Pollock, John, 1878-1963 [Translat"
+  },
+  {
+   "id": "47546",
+   "title": "Iconoclasts: A Book of Dramatists\r\nIbsen, Strindberg, Becque, Hauptmann, Sudermann, Hervieu, Gorky, Duse and D'Annunzio,",
+   "authors": "Huneker, James, 1857-1921"
+  },
+  {
+   "id": "58723",
+   "title": "Bernardin de St. Pierre",
+   "authors": "Barine, Arvède, 1840-1908; Birrell, Augustine, 1850-1933 [Contributor]; Gordon, James Edward [Translator]"
+  },
+  {
+   "id": "61889",
+   "title": "Lectures on the Principles of Political Obligation\r\nReprinted from Green's Philosophical Works, vol. II., with Preface b",
+   "authors": "Green, Thomas Hill, 1836-1882; Bosanquet, Bernard, 1848-1923 [Author of introduction, etc.]; Nettleship, Richard Lewis, 1846-1892 [Editor]"
+  },
+  {
+   "id": "68209",
+   "title": "George Bernard Shaw: His Plays",
+   "authors": "Mencken, H. L. (Henry Louis), 1880-1956"
+  },
+  {
+   "id": "74591",
+   "title": "George Bernard Shaw, his life and works",
+   "authors": "Henderson, Archibald, 1877-1963"
+  }
+ ],
+ "cassian": [
+  {
+   "id": "4795",
+   "title": "The Circassian Slave, or, the Sultan's favorite : a story of Constantinople and the Caucasus",
+   "authors": "Ballou, Maturin M. (Maturin Murray), 1820-1895"
+  },
+  {
+   "id": "22533",
+   "title": "Life of Schamyl\nAnd Narrative of the Circassian War of Independence Against Russia",
+   "authors": "Mackie, J. Milton (John Milton), 1813-1894"
+  },
+  {
+   "id": "34485",
+   "title": "The Circassian Chief: A Romance of Russia",
+   "authors": "Kingston, William Henry Giles, 1814-1880"
+  },
+  {
+   "id": "48737",
+   "title": "Turkish Harems & Circassian Homes",
+   "authors": "Hope, Andrée, -1898"
   }
  ],
  "patrick": [
@@ -1252,11 +943,709 @@
    "authors": "Bury, J. B. (John Bagnell), 1861-1927"
   }
  ],
- "story of a soul": [
+ "ignatius": [
   {
-   "id": "16772",
-   "title": "The Story of a Soul (L'Histoire d'une Âme): The Autobiography of St. Thérèse of Lisieux\nWith Additional Writings and Say",
-   "authors": "Thérèse, de Lisieux, Saint, 1873-1897; Taylor, Thomas N. (Thomas Nimmo), 1873-1963 [Translator]"
+   "id": "6514",
+   "title": "The suppressed Gospels and Epistles of the original New Testament of Jesus the Christ, Volume 8, Ignatius",
+   "authors": "Wake, William, 1657-1737"
+  },
+  {
+   "id": "24534",
+   "title": "The Autobiography of St. Ignatius",
+   "authors": "Ignatius, of Loyola, Saint, 1491-1556; O'Conor, J. F. X. (John Francis Xavier), 1852-1920 [Editor]"
+  },
+  {
+   "id": "46464",
+   "title": "The Little Cryptogram\r\nA Literal Application to the Play of Hamlet of the Cipher System of Mr. Ignatius Donnelly.",
+   "authors": "Pyle, Joseph Gilpin, 1853-"
+  },
+  {
+   "id": "51370",
+   "title": "Life of Father Ignatius of St. Paul, Passionist (The Hon. & Rev. George Spencer).",
+   "authors": "Pius a Sp. Sancto (Pius a Spiritu Sancto)"
+  },
+  {
+   "id": "56468",
+   "title": "Nunnery life in the Church of England; or, Seventeen years with Father Ignatius",
+   "authors": "Mary Agnes, Sister, O.S.B.; Holland, W. Lancelot (Walter Lancelot) [Editor]"
+  },
+  {
+   "id": "66908",
+   "title": "Letters of the Late Ignatius Sancho, an African\r\nTo Which Are Prefixed, Memoirs of His Life",
+   "authors": "Sancho, Ignatius, 1729-1780; Jekyll, Joseph, 1754-1837 [Contributor]"
+  },
+  {
+   "id": "70790",
+   "title": "The spiritual exercises of St. Ignatius",
+   "authors": "Ignatius, of Loyola, Saint, 1491-1556; Coppens, Charles, 1835-1920"
+  }
+ ],
+ "newman": [
+  {
+   "id": "7305",
+   "title": "Memoir and Letters of Francis W. Newman",
+   "authors": "Sieveking, I. Giberne (Isabel Giberne); Newman, Francis William, 1805-1897 [Contributor]"
+  },
+  {
+   "id": "23758",
+   "title": "Work and Win; Or, Noddy Newman on a Cruise",
+   "authors": "Optic, Oliver, 1822-1897"
+  },
+  {
+   "id": "26427",
+   "title": "Cardinal Newman as a Musician",
+   "authors": "Bellasis, Edward, 1852-1922"
+  },
+  {
+   "id": "41310",
+   "title": "Selections from the Prose Writings of John Henry Cardinal Newman\nFor the Use of Schools",
+   "authors": "Newman, John Henry, 1801-1890"
+  }
+ ],
+ "teresa": [
+  {
+   "id": "8120",
+   "title": "The Life of St. Teresa of Jesus, of the Order of Our Lady of Carmel",
+   "authors": "Teresa, of Avila, Saint, 1515-1582; Lewis, David, 1814-1895 [Translator]"
+  },
+  {
+   "id": "14614",
+   "title": "Sister Teresa",
+   "authors": "Moore, George, 1852-1933"
+  },
+  {
+   "id": "19185",
+   "title": "Santa Teresa: An Appreciation\r\nWith Some of the Best Passages of the Saint's Writings",
+   "authors": "Whyte, Alexander, 1836-1921; Teresa, of Avila, Saint, 1515-1582"
+  },
+  {
+   "id": "43153",
+   "title": "Donna Teresa",
+   "authors": "Peard, Frances Mary, 1835-1923"
+  },
+  {
+   "id": "55114",
+   "title": "Teresa of Watling Street: A Fantasia on Modern Themes",
+   "authors": "Bennett, Arnold, 1867-1931; Gillett, Frank, 1874-1927 [Illustrator]"
+  }
+ ],
+ "challoner": [
+  {
+   "id": "8300",
+   "title": "The Bible, Douay-Rheims, Complete\r\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8301",
+   "title": "The Bible, Douay-Rheims, Book 01: Genesis\r\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8302",
+   "title": "The Bible, Douay-Rheims, Book 02: Exodus\r\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8303",
+   "title": "The Bible, Douay-Rheims, Book 03: Leviticus\r\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8304",
+   "title": "The Bible, Douay-Rheims, Book 04: Numbers\r\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8305",
+   "title": "The Bible, Douay-Rheims, Book 05: Deuteronomy\r\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8306",
+   "title": "The Bible, Douay-Rheims, Book 06: Josue\r\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8307",
+   "title": "The Bible, Douay-Rheims, Book 07: Judges\r\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8308",
+   "title": "The Bible, Douay-Rheims, Book 08: Ruth\r\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8309",
+   "title": "The Bible, Douay-Rheims, Book 09: 1 Kings\r\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8310",
+   "title": "The Bible, Douay-Rheims, Book 10: 2 Kings\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8311",
+   "title": "The Bible, Douay-Rheims, Book 11: 3 Kings\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8312",
+   "title": "The Bible, Douay-Rheims, Book 12: 4 Kings\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8313",
+   "title": "The Bible, Douay-Rheims, Book 13: 1 Paralipomenon\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8314",
+   "title": "The Bible, Douay-Rheims, Book 14: 2 Paralipomenon\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8315",
+   "title": "The Bible, Douay-Rheims, Book 15: 1 Esdras\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8316",
+   "title": "The Bible, Douay-Rheims, Book 16: 2 Esdras\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8317",
+   "title": "The Bible, Douay-Rheims, Book 17: Tobias\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8318",
+   "title": "The Bible, Douay-Rheims, Book 18: Judith\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8319",
+   "title": "The Bible, Douay-Rheims, Book 19: Esther\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8320",
+   "title": "The Bible, Douay-Rheims, Book 20: Job\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8321",
+   "title": "The Bible, Douay-Rheims, Book 21: Psalms\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8322",
+   "title": "The Bible, Douay-Rheims, Book 22: Proverbs\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8323",
+   "title": "The Bible, Douay-Rheims, Book 23: Ecclesiastes\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8324",
+   "title": "The Bible, Douay-Rheims, Book 24: Canticle of Canticles\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8325",
+   "title": "The Bible, Douay-Rheims, Book 25: Wisdom\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8326",
+   "title": "The Bible, Douay-Rheims, Book 26: Ecclesiasticus\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8327",
+   "title": "The Bible, Douay-Rheims, Book 27: Isaias\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8328",
+   "title": "The Bible, Douay-Rheims, Book 28: Jeremias\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8329",
+   "title": "The Bible, Douay-Rheims, Book 29: Lamentations of Jeremias\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8330",
+   "title": "The Bible, Douay-Rheims, Book 30: Baruch\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8331",
+   "title": "The Bible, Douay-Rheims, Book 31: Ezechiel\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8332",
+   "title": "The Bible, Douay-Rheims, Book 32: Daniel\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8333",
+   "title": "The Bible, Douay-Rheims, Book 33: Osee\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8334",
+   "title": "The Bible, Douay-Rheims, Book 34: Joel\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8335",
+   "title": "The Bible, Douay-Rheims, Book 35: Amos\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8336",
+   "title": "The Bible, Douay-Rheims, Book 36: Abdias\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8337",
+   "title": "The Bible, Douay-Rheims, Book 37: Jonas\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8338",
+   "title": "The Bible, Douay-Rheims, Book 38: Micheas\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8339",
+   "title": "The Bible, Douay-Rheims, Book 39: Nahum\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8340",
+   "title": "The Bible, Douay-Rheims, Book 40: Habacuc\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8341",
+   "title": "The Bible, Douay-Rheims, Book 41: Sophonias\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8342",
+   "title": "The Bible, Douay-Rheims, Book 42: Aggeus\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8343",
+   "title": "The Bible, Douay-Rheims, Book 43: Zacharias\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8344",
+   "title": "The Bible, Douay-Rheims, Book 44: Malachias\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8345",
+   "title": "The Bible, Douay-Rheims, Book 45: 1 Machabees\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8346",
+   "title": "The Bible, Douay-Rheims, Book 46: 2 Machabees\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8347",
+   "title": "The Bible, Douay-Rheims, Book 47: Matthew\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8348",
+   "title": "The Bible, Douay-Rheims, Book 48: Mark\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8349",
+   "title": "The Bible, Douay-Rheims, Book 49: Luke\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8350",
+   "title": "The Bible, Douay-Rheims, Book 50: John\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8351",
+   "title": "The Bible, Douay-Rheims, Book 51: Acts\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8352",
+   "title": "The Bible, Douay-Rheims, Book 52: Romans\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8353",
+   "title": "The Bible, Douay-Rheims, Book 53: 1 Corinthians\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8354",
+   "title": "The Bible, Douay-Rheims, Book 54: 2 Corinthians\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8355",
+   "title": "The Bible, Douay-Rheims, Book 55: Galatians\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8356",
+   "title": "The Bible, Douay-Rheims, Book 56: Ephesians\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8357",
+   "title": "The Bible, Douay-Rheims, Book 57: Philippians\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8358",
+   "title": "The Bible, Douay-Rheims, Book 58: Colossians\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8359",
+   "title": "The Bible, Douay-Rheims, Book 59: 1 Thessalonians\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8360",
+   "title": "The Bible, Douay-Rheims, Book 60: 2 Thessalonians\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8361",
+   "title": "The Bible, Douay-Rheims, Book 61: 1 Timothy\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8362",
+   "title": "The Bible, Douay-Rheims, Book 62: 2 Timothy\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8363",
+   "title": "The Bible, Douay-Rheims, Book 63: Titus\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8364",
+   "title": "The Bible, Douay-Rheims, Book 64: Philemon\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8365",
+   "title": "The Bible, Douay-Rheims, Book 65: Hebrews\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8366",
+   "title": "The Bible, Douay-Rheims, Book 66: James\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8367",
+   "title": "The Bible, Douay-Rheims, Book 67: 1 Peter\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8368",
+   "title": "The Bible, Douay-Rheims, Book 68: 2 Peter\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8369",
+   "title": "The Bible, Douay-Rheims, Book 69: 1 John\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8370",
+   "title": "The Bible, Douay-Rheims, Book 70: 2 John\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8371",
+   "title": "The Bible, Douay-Rheims, Book 71: 3 John\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8372",
+   "title": "The Bible, Douay-Rheims, Book 72: Jude\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "8373",
+   "title": "The Bible, Douay-Rheims, Book 73: Apocalypse\nThe Challoner Revision",
+   "authors": ""
+  },
+  {
+   "id": "57002",
+   "title": "The Challoners",
+   "authors": "Benson, E. F. (Edward Frederic), 1867-1940"
+  }
+ ],
+ "sales": [
+  {
+   "id": "9184",
+   "title": "The Spirit of St. Francis de Sales",
+   "authors": "Camus, Jean-Pierre, 1584-1652; Francis, de Sales, Saint, 1567-1622 [Contributor]"
+  },
+  {
+   "id": "32636",
+   "title": "The Salesman",
+   "authors": "Boyd, Waldo T., 1918-2012"
+  },
+  {
+   "id": "41510",
+   "title": "The Psychology of Salesmanship",
+   "authors": "Atkinson, William Walker, 1862-1932"
+  },
+  {
+   "id": "45872",
+   "title": "Pretty Geraldine, the New York Salesgirl; or, Wedded to Her Choice",
+   "authors": "Miller, Alex. McVeigh, Mrs., 1850-1937"
+  },
+  {
+   "id": "46591",
+   "title": "The Strange Voyage and Adventures of Domingo Gonsales, to the World in the Moon",
+   "authors": "Godwin, Francis, 1562-1633"
+  },
+  {
+   "id": "48887",
+   "title": "The Month of Mary, According to the Spirit of St. Francis of Sales\nThirty-One Considerations With Examples, Prayers, Etc",
+   "authors": "Gilli, Gaspar; Francis, de Sales, Saint, 1567-1622"
+  },
+  {
+   "id": "50819",
+   "title": "A Bad Day for Sales",
+   "authors": "Leiber, Fritz, 1910-1992"
+  },
+  {
+   "id": "51616",
+   "title": "Sales talk",
+   "authors": "Blomberg, Con; Morrow, Gray, 1934-2001 [Illustrator]"
+  },
+  {
+   "id": "54962",
+   "title": "Retail Shoe Salesmanship",
+   "authors": "Hamilton, George F.; Butterworth, Frank; Conner, H. T.; Geuting, A. H."
+  },
+  {
+   "id": "56798",
+   "title": "The Young Salesman",
+   "authors": "Alger, Horatio, Jr., 1832-1899"
+  },
+  {
+   "id": "59505",
+   "title": "Sales Resistance",
+   "authors": "Still, Henry, 1920-; Emshwiller, Ed, 1925-1990 [Illustrator]"
+  },
+  {
+   "id": "60150",
+   "title": "Selling Latin America: A Problem in International Salesmanship.\r\nWhat to Sell and How to Sell It",
+   "authors": "Aughinbaugh, William Edmund, 1870-1940"
+  },
+  {
+   "id": "64277",
+   "title": "Letters From an Old Time Salesman to His Son",
+   "authors": "James, Roy Lester, 1884-; Aspley, John Cameron, 1888-1969 [Author of introduction, etc.]"
+  },
+  {
+   "id": "64334",
+   "title": "Sales Talk",
+   "authors": "Cente, H. F."
+  },
+  {
+   "id": "73661",
+   "title": "Maxims and counsels of St. Francis de Sales for every day of the year",
+   "authors": "Francis, de Sales, Saint, 1567-1622; McMahon, Ella [Translator]"
+  }
+ ],
+ "jerome": [
+  {
+   "id": "12223",
+   "title": "The Idler, Volume III., Issue XIII., February 1893\nAn Illustrated Monthly. Edited By Jerome K. Jerome & Robert Barr",
+   "authors": "Various; Barr, Robert, 1850-1912 [Editor]; Jerome, Jerome K. (Jerome Klapka), 1859-1927 [Editor]"
+  },
+  {
+   "id": "12694",
+   "title": "History of the American Clock Business for the Past Sixty Years, and Life of Chauncey Jerome\r\nBarnum's Connection with t",
+   "authors": "Jerome, Chauncey, 1793-1868"
+  },
+  {
+   "id": "17886",
+   "title": "Jerome, A Poor Man: A Novel",
+   "authors": "Freeman, Mary Eleanor Wilkins, 1852-1930"
+  },
+  {
+   "id": "19600",
+   "title": "Jerome Cardan: A Biographical Study",
+   "authors": "Waters, W. G. (William George), 1844-1928"
+  },
+  {
+   "id": "33148",
+   "title": "My First Book:\r\nthe experiences of Walter Besant, James Payn, W. Clark Russell, Grant Allen, Hall Caine, George R. Sims,",
+   "authors": "Various"
+  },
+  {
+   "id": "71307",
+   "title": "Slang and cant in Jerome K. Jerome's works",
+   "authors": "Bosson, Olof E., 1871-"
+  }
+ ],
+ "faber": [
+  {
+   "id": "12387",
+   "title": "Paul Faber, Surgeon",
+   "authors": "MacDonald, George, 1824-1905"
+  },
+  {
+   "id": "52256",
+   "title": "The Lead Pencil Manufactory of A. W. Faber at Stein near Nürnberg, Bavaria\r\nAn Historical Sketch",
+   "authors": "Faber-Castell (Firm)"
+  }
+ ],
+ "ambrose": [
+  {
+   "id": "13334",
+   "title": "The Collected Works of Ambrose Bierce, Volume 02\r\nIn the Midst of Life: Tales of Soldiers and Civilians",
+   "authors": "Bierce, Ambrose, 1842-1914?"
+  },
+  {
+   "id": "13541",
+   "title": "The Collected Works of Ambrose Bierce, Volume 01",
+   "authors": "Bierce, Ambrose, 1842-1914?"
+  },
+  {
+   "id": "15599",
+   "title": "The Collected Works of Ambrose Bierce, Volume 08\r\nNegligible Tales, On With the Dance, Epigrams",
+   "authors": "Bierce, Ambrose, 1842-1914?"
+  },
+  {
+   "id": "33289",
+   "title": "The Loves of Ambrose",
+   "authors": "Vandercook, Margaret, 1876-1958; Grant, Gordon, 1875-1962 [Illustrator]"
+  },
+  {
+   "id": "36218",
+   "title": "The Letters of Ambrose Bierce, With a Memoir by George Sterling",
+   "authors": "Bierce, Ambrose, 1842-1914?; Sterling, George, 1869-1926 [Contributor]; Pope, Bertha Clark [Editor]"
+  },
+  {
+   "id": "45057",
+   "title": "Ambrose Gwinett; or, a sea-side story: a melo-drama, in three acts",
+   "authors": "Jerrold, Douglas William, 1803-1857; Daniel, George, 1789-1864 [Author of introduction, etc.]"
+  },
+  {
+   "id": "55760",
+   "title": "Ambrose Lavendale, Diplomat",
+   "authors": "Oppenheim, E. Phillips (Edward Phillips), 1866-1946"
+  },
+  {
+   "id": "58783",
+   "title": "The Letters of S. Ambrose, Bishop of Milan",
+   "authors": "Ambrose, Saint, Bishop of Milan, -397"
+  },
+  {
+   "id": "58807",
+   "title": "Index of the Project Gutenberg Works of Ambrose Bierce",
+   "authors": "Bierce, Ambrose, 1842-1914?; Widger, David, 1932-2021 [Editor]"
+  },
+  {
+   "id": "66345",
+   "title": "The Collected Works of Ambrose Bierce, Volume 12\r\nIn Motley",
+   "authors": "Bierce, Ambrose, 1842-1914?"
+  },
+  {
+   "id": "66490",
+   "title": "The Collected Works of Ambrose Bierce, Volume 09\r\nTangential Views",
+   "authors": "Bierce, Ambrose, 1842-1914?"
+  },
+  {
+   "id": "66576",
+   "title": "The Collected Works of Ambrose Bierce, Volume 10\r\nThe Opinionator",
+   "authors": "Bierce, Ambrose, 1842-1914?"
+  },
+  {
+   "id": "66905",
+   "title": "The Collected Works of Ambrose Bierce, Volume 11\r\nAntepenultimata",
+   "authors": "Bierce, Ambrose, 1842-1914?"
+  }
+ ],
+ "gregory": [
+  {
+   "id": "14465",
+   "title": "Gods and Fighting Men\r\nThe story of the Tuatha de Danaan and of the Fianna of Ireland, arranged and put into English by ",
+   "authors": "Gregory, Lady, 1852-1932; Yeats, W. B. (William Butler), 1865-1939 [Author of introduction, etc.]"
+  },
+  {
+   "id": "23673",
+   "title": "The St. Gregory Hymnal and Catholic Choir Book",
+   "authors": "Montani, Nicola A. (Nicola Aloysius), 1880-1948 [Editor]"
+  },
+  {
+   "id": "29268",
+   "title": "The Holy See and the Wandering of the Nations, from St. Leo I to St. Gregory I",
+   "authors": "Allies, T. W. (Thomas William), 1813-1903"
+  },
+  {
+   "id": "31582",
+   "title": "St. Gregory and the Gregorian Music",
+   "authors": "Wyatt, E. G. P. (Edward Gerald Penfold), 1869-"
+  },
+  {
+   "id": "34172",
+   "title": "Peter's Rock in Mohammed's Flood, from St. Gregory the Great to St. Leo III",
+   "authors": "Allies, T. W. (Thomas William), 1813-1903"
+  },
+  {
+   "id": "36983",
+   "title": "The Life of Mr. Richard Savage\r\nWho was Condemn'd with Mr. James Gregory, the last Sessions at the Old Baily, for the Mu",
+   "authors": "Beckingham, Mr. (Charles), 1699-1731 [Dubious author]; Defoe, Daniel, 1661?-1731 [Dubious author]"
+  },
+  {
+   "id": "72296",
+   "title": "Trial of Jane Leigh Perrot, at Taunton Assizes, on Saturday the 29th day of March, 1800; charged with stealing a card of",
+   "authors": "Leigh Perrot, Jane Cholmeley, 1746-1836"
+  }
+ ],
+ "bonaventure": [
+  {
+   "id": "24078",
+   "title": "Bonaventure: A Prose Pastoral of Acadian Louisiana",
+   "authors": "Cable, George Washington, 1844-1925"
+  },
+  {
+   "id": "33448",
+   "title": "Saint Bonaventure: The Seraphic Doctor Minister-General of the Franciscan Order",
+   "authors": "Costelloe, Laurence, 1870-1909"
+  },
+  {
+   "id": "38144",
+   "title": "The Mistress of Bonaventure",
+   "authors": "Bindloss, Harold, 1866-1945"
   }
  ],
  "benedict": [
@@ -1306,25 +1695,35 @@
    "authors": "Sargent, George E. (George Eliel), 1809-1883"
   }
  ],
- "abandonment": [
+ "columba": [
   {
-   "id": "52057",
-   "title": "Abandonment; or, Absolute Surrender to Divine Providence",
-   "authors": "Caussade, Jean Pierre de, -1751; McMahon, Ella [Translator]; Ramière, Henri, 1821-1884 [Editor]"
+   "id": "36065",
+   "title": "The Life of Saint Columba, Apostle of Scotland",
+   "authors": "Forbes, F. A. (Frances Alice), 1869-1936"
+  },
+  {
+   "id": "38682",
+   "title": "The Life of Saint Columba, Abbot, and Apostle of the Northern Picts",
+   "authors": "Anonymous"
   }
  ],
- "revelations of divine love": [
+ "chrysostom": [
   {
-   "id": "52958",
-   "title": "Revelations of Divine Love",
-   "authors": "Julian, of Norwich, 1343-; Warrack, G. (Grace Harriet), 1855-1932 [Editor]"
+   "id": "53809",
+   "title": "Saint John Chrysostom, His Life and Times\r\nA sketch of the church and the empire in the fourth century",
+   "authors": "Stephens, W. R. W. (William Richard Wood), 1839-1902"
+  },
+  {
+   "id": "62447",
+   "title": "Leaves from St. John Chrysostom",
+   "authors": "John Chrysostom, Saint, -407; Allies, T. W. (Thomas William), 1813-1903 [Editor]; Allies, Mary H. (Mary Helen), 1852-1927 [Translator]"
   }
  ],
- "spiritual exercises": [
+ "kempis": [
   {
-   "id": "70790",
-   "title": "The spiritual exercises of St. Ignatius",
-   "authors": "Ignatius, of Loyola, Saint, 1491-1556; Coppens, Charles, 1835-1920"
+   "id": "60377",
+   "title": "The Following of Christ, in Four Books\r\nTranslated from the Original Latin of Thomas a Kempis",
+   "authors": "Thomas, à Kempis, 1380-1471; Challoner, Richard, 1691-1781 [Translator]"
   }
  ]
 }
