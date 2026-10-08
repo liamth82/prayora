@@ -7,8 +7,8 @@ KEYWORDS_OLD = ["devout life", "little flowers", "unknowing", "spiritual combat"
             "ascent of mount carmel", "story of a soul", "abandonment", "rule of", "patrick", "desert", "fathers",
             "presence of god", "way of perfection", "love of god", "francis of assisi", "scupoli", "julian of norwich",
             "revelations of divine love"]
-KEYWORDS = ["sales", "teresa", "john of the cross", "bernard", "bonaventure", "aquinas", "newman", "kempis", "augustine", "catherine", "francis", "jerome", "gregory", "ambrose", "chrysostom", "cassian", "benedict", "anselm", "bede", "patrick", "columba", "brigid", "liguori", "faber", "challoner", "scupoli", "ignatius"]
-IDS = {"julian": 52958, "exercises": 70790}
+KEYWORDS = []
+IDS = {"teresa": 8120, "ignatiuslife": 24534, "chrysostom": 62447, "malachy": 25761}
 ARCHIVE = {}
 
 def fetch(url, timeout=120):
