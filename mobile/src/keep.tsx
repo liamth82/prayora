@@ -1,5 +1,5 @@
 import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Modal, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import * as Haptics from 'expo-haptics';
 import { C, F } from './theme';
 import { load, save } from './storage';
@@ -52,6 +52,7 @@ export function KeepProvider({ children }: { children: React.ReactNode }) {
     const item: Kept = { id: String(Date.now()), text: draft.text, source: draft.source, theme, savedAt: new Date().toISOString() };
     persist([item, ...items]);
     setDraft(null);
+    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => {});
     setToast(`Kept in ${theme}`);
     setTimeout(() => setToast(null), 1800);
   };
@@ -66,7 +67,9 @@ export function KeepProvider({ children }: { children: React.ReactNode }) {
   return (
     <Ctx.Provider value={{ items, themes, keep, remove, move, addTheme, removeTheme }}>
       {children}
-      {draft ? <KeepSheet draft={draft} themes={themes} onPick={confirm} onAddTheme={addTheme} onCancel={() => setDraft(null)} /> : null}
+      <Modal visible={!!draft} transparent animationType="fade" onRequestClose={() => setDraft(null)} statusBarTranslucent>
+        {draft ? <KeepSheet draft={draft} themes={themes} onPick={confirm} onAddTheme={addTheme} onCancel={() => setDraft(null)} /> : null}
+      </Modal>
       {toast ? <View style={st.toast} pointerEvents="none"><Text style={st.toastText}>{toast}</Text></View> : null}
     </Ctx.Provider>
   );

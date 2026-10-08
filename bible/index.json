@@ -1,0 +1,586 @@
+[
+{
+"id": "gen",
+"name": "Genesis",
+"modern": "Genesis",
+"testament": "OT",
+"group": "The Law",
+"chapters": 50
+},
+{
+"id": "exo",
+"name": "Exodus",
+"modern": "Exodus",
+"testament": "OT",
+"group": "The Law",
+"chapters": 40
+},
+{
+"id": "lev",
+"name": "Leviticus",
+"modern": "Leviticus",
+"testament": "OT",
+"group": "The Law",
+"chapters": 27
+},
+{
+"id": "num",
+"name": "Numbers",
+"modern": "Numbers",
+"testament": "OT",
+"group": "The Law",
+"chapters": 36
+},
+{
+"id": "deu",
+"name": "Deuteronomy",
+"modern": "Deuteronomy",
+"testament": "OT",
+"group": "The Law",
+"chapters": 34
+},
+{
+"id": "jos",
+"name": "Josue",
+"modern": "Joshua",
+"testament": "OT",
+"group": "History",
+"chapters": 24
+},
+{
+"id": "jdg",
+"name": "Judges",
+"modern": "Judges",
+"testament": "OT",
+"group": "History",
+"chapters": 21
+},
+{
+"id": "rut",
+"name": "Ruth",
+"modern": "Ruth",
+"testament": "OT",
+"group": "History",
+"chapters": 4
+},
+{
+"id": "1sa",
+"name": "1 Kings",
+"modern": "1 Samuel",
+"testament": "OT",
+"group": "History",
+"chapters": 31
+},
+{
+"id": "2sa",
+"name": "2 Kings",
+"modern": "2 Samuel",
+"testament": "OT",
+"group": "History",
+"chapters": 24
+},
+{
+"id": "1ki",
+"name": "3 Kings",
+"modern": "1 Kings",
+"testament": "OT",
+"group": "History",
+"chapters": 22
+},
+{
+"id": "2ki",
+"name": "4 Kings",
+"modern": "2 Kings",
+"testament": "OT",
+"group": "History",
+"chapters": 25
+},
+{
+"id": "1ch",
+"name": "1 Paralipomenon",
+"modern": "1 Chronicles",
+"testament": "OT",
+"group": "History",
+"chapters": 29
+},
+{
+"id": "2ch",
+"name": "2 Paralipomenon",
+"modern": "2 Chronicles",
+"testament": "OT",
+"group": "History",
+"chapters": 36
+},
+{
+"id": "ezr",
+"name": "1 Esdras",
+"modern": "Ezra",
+"testament": "OT",
+"group": "History",
+"chapters": 10
+},
+{
+"id": "neh",
+"name": "2 Esdras",
+"modern": "Nehemiah",
+"testament": "OT",
+"group": "History",
+"chapters": 13
+},
+{
+"id": "tob",
+"name": "Tobias",
+"modern": "Tobit",
+"testament": "OT",
+"group": "History",
+"chapters": 14
+},
+{
+"id": "jdt",
+"name": "Judith",
+"modern": "Judith",
+"testament": "OT",
+"group": "History",
+"chapters": 16
+},
+{
+"id": "est",
+"name": "Esther",
+"modern": "Esther",
+"testament": "OT",
+"group": "History",
+"chapters": 16
+},
+{
+"id": "1ma",
+"name": "1 Machabees",
+"modern": "1 Maccabees",
+"testament": "OT",
+"group": "History",
+"chapters": 16
+},
+{
+"id": "2ma",
+"name": "2 Machabees",
+"modern": "2 Maccabees",
+"testament": "OT",
+"group": "History",
+"chapters": 15
+},
+{
+"id": "job",
+"name": "Job",
+"modern": "Job",
+"testament": "OT",
+"group": "Wisdom",
+"chapters": 42
+},
+{
+"id": "psa",
+"name": "Psalms",
+"modern": "Psalms",
+"testament": "OT",
+"group": "Wisdom",
+"chapters": 150
+},
+{
+"id": "pro",
+"name": "Proverbs",
+"modern": "Proverbs",
+"testament": "OT",
+"group": "Wisdom",
+"chapters": 31
+},
+{
+"id": "ecc",
+"name": "Ecclesiastes",
+"modern": "Ecclesiastes",
+"testament": "OT",
+"group": "Wisdom",
+"chapters": 12
+},
+{
+"id": "sng",
+"name": "Canticles",
+"modern": "Song of Songs",
+"testament": "OT",
+"group": "Wisdom",
+"chapters": 8
+},
+{
+"id": "wis",
+"name": "Wisdom",
+"modern": "Wisdom",
+"testament": "OT",
+"group": "Wisdom",
+"chapters": 19
+},
+{
+"id": "sir",
+"name": "Ecclesiasticus",
+"modern": "Sirach",
+"testament": "OT",
+"group": "Wisdom",
+"chapters": 52
+},
+{
+"id": "isa",
+"name": "Isaias",
+"modern": "Isaiah",
+"testament": "OT",
+"group": "The Prophets",
+"chapters": 66
+},
+{
+"id": "jer",
+"name": "Jeremias",
+"modern": "Jeremiah",
+"testament": "OT",
+"group": "The Prophets",
+"chapters": 52
+},
+{
+"id": "lam",
+"name": "Lamentations",
+"modern": "Lamentations",
+"testament": "OT",
+"group": "The Prophets",
+"chapters": 5
+},
+{
+"id": "bar",
+"name": "Baruch",
+"modern": "Baruch",
+"testament": "OT",
+"group": "The Prophets",
+"chapters": 6
+},
+{
+"id": "ezk",
+"name": "Ezechiel",
+"modern": "Ezekiel",
+"testament": "OT",
+"group": "The Prophets",
+"chapters": 48
+},
+{
+"id": "dan",
+"name": "Daniel",
+"modern": "Daniel",
+"testament": "OT",
+"group": "The Prophets",
+"chapters": 14
+},
+{
+"id": "hos",
+"name": "Osee",
+"modern": "Hosea",
+"testament": "OT",
+"group": "The Prophets",
+"chapters": 14
+},
+{
+"id": "jol",
+"name": "Joel",
+"modern": "Joel",
+"testament": "OT",
+"group": "The Prophets",
+"chapters": 3
+},
+{
+"id": "amo",
+"name": "Amos",
+"modern": "Amos",
+"testament": "OT",
+"group": "The Prophets",
+"chapters": 9
+},
+{
+"id": "oba",
+"name": "Abdias",
+"modern": "Obadiah",
+"testament": "OT",
+"group": "The Prophets",
+"chapters": 1
+},
+{
+"id": "jon",
+"name": "Jonas",
+"modern": "Jonah",
+"testament": "OT",
+"group": "The Prophets",
+"chapters": 4
+},
+{
+"id": "mic",
+"name": "Micheas",
+"modern": "Micah",
+"testament": "OT",
+"group": "The Prophets",
+"chapters": 7
+},
+{
+"id": "nam",
+"name": "Nahum",
+"modern": "Nahum",
+"testament": "OT",
+"group": "The Prophets",
+"chapters": 3
+},
+{
+"id": "hab",
+"name": "Habacuc",
+"modern": "Habakkuk",
+"testament": "OT",
+"group": "The Prophets",
+"chapters": 3
+},
+{
+"id": "zep",
+"name": "Sophonias",
+"modern": "Zephaniah",
+"testament": "OT",
+"group": "The Prophets",
+"chapters": 3
+},
+{
+"id": "hag",
+"name": "Aggeus",
+"modern": "Haggai",
+"testament": "OT",
+"group": "The Prophets",
+"chapters": 2
+},
+{
+"id": "zec",
+"name": "Zacharias",
+"modern": "Zechariah",
+"testament": "OT",
+"group": "The Prophets",
+"chapters": 14
+},
+{
+"id": "mal",
+"name": "Malachias",
+"modern": "Malachi",
+"testament": "OT",
+"group": "The Prophets",
+"chapters": 4
+},
+{
+"id": "mat",
+"name": "Matthew",
+"modern": "Matthew",
+"testament": "NT",
+"group": "The Gospels",
+"chapters": 28
+},
+{
+"id": "mrk",
+"name": "Mark",
+"modern": "Mark",
+"testament": "NT",
+"group": "The Gospels",
+"chapters": 16
+},
+{
+"id": "luk",
+"name": "Luke",
+"modern": "Luke",
+"testament": "NT",
+"group": "The Gospels",
+"chapters": 24
+},
+{
+"id": "jhn",
+"name": "John",
+"modern": "John",
+"testament": "NT",
+"group": "The Gospels",
+"chapters": 21
+},
+{
+"id": "act",
+"name": "Acts",
+"modern": "Acts of the Apostles",
+"testament": "NT",
+"group": "Acts",
+"chapters": 28
+},
+{
+"id": "rom",
+"name": "Romans",
+"modern": "Romans",
+"testament": "NT",
+"group": "Letters of Saint Paul",
+"chapters": 16
+},
+{
+"id": "1co",
+"name": "1 Corinthians",
+"modern": "1 Corinthians",
+"testament": "NT",
+"group": "Letters of Saint Paul",
+"chapters": 16
+},
+{
+"id": "2co",
+"name": "2 Corinthians",
+"modern": "2 Corinthians",
+"testament": "NT",
+"group": "Letters of Saint Paul",
+"chapters": 13
+},
+{
+"id": "gal",
+"name": "Galatians",
+"modern": "Galatians",
+"testament": "NT",
+"group": "Letters of Saint Paul",
+"chapters": 6
+},
+{
+"id": "eph",
+"name": "Ephesians",
+"modern": "Ephesians",
+"testament": "NT",
+"group": "Letters of Saint Paul",
+"chapters": 6
+},
+{
+"id": "php",
+"name": "Philippians",
+"modern": "Philippians",
+"testament": "NT",
+"group": "Letters of Saint Paul",
+"chapters": 4
+},
+{
+"id": "col",
+"name": "Colossians",
+"modern": "Colossians",
+"testament": "NT",
+"group": "Letters of Saint Paul",
+"chapters": 4
+},
+{
+"id": "1th",
+"name": "1 Thessalonians",
+"modern": "1 Thessalonians",
+"testament": "NT",
+"group": "Letters of Saint Paul",
+"chapters": 5
+},
+{
+"id": "2th",
+"name": "2 Thessalonians",
+"modern": "2 Thessalonians",
+"testament": "NT",
+"group": "Letters of Saint Paul",
+"chapters": 3
+},
+{
+"id": "1ti",
+"name": "1 Timothy",
+"modern": "1 Timothy",
+"testament": "NT",
+"group": "Letters of Saint Paul",
+"chapters": 6
+},
+{
+"id": "2ti",
+"name": "2 Timothy",
+"modern": "2 Timothy",
+"testament": "NT",
+"group": "Letters of Saint Paul",
+"chapters": 4
+},
+{
+"id": "tit",
+"name": "Titus",
+"modern": "Titus",
+"testament": "NT",
+"group": "Letters of Saint Paul",
+"chapters": 3
+},
+{
+"id": "phm",
+"name": "Philemon",
+"modern": "Philemon",
+"testament": "NT",
+"group": "Letters of Saint Paul",
+"chapters": 1
+},
+{
+"id": "heb",
+"name": "Hebrews",
+"modern": "Hebrews",
+"testament": "NT",
+"group": "Letters of Saint Paul",
+"chapters": 13
+},
+{
+"id": "jas",
+"name": "James",
+"modern": "James",
+"testament": "NT",
+"group": "Catholic Letters",
+"chapters": 5
+},
+{
+"id": "1pe",
+"name": "1 Peter",
+"modern": "1 Peter",
+"testament": "NT",
+"group": "Catholic Letters",
+"chapters": 5
+},
+{
+"id": "2pe",
+"name": "2 Peter",
+"modern": "2 Peter",
+"testament": "NT",
+"group": "Catholic Letters",
+"chapters": 3
+},
+{
+"id": "1jn",
+"name": "1 John",
+"modern": "1 John",
+"testament": "NT",
+"group": "Catholic Letters",
+"chapters": 5
+},
+{
+"id": "2jn",
+"name": "2 John",
+"modern": "2 John",
+"testament": "NT",
+"group": "Catholic Letters",
+"chapters": 1
+},
+{
+"id": "3jn",
+"name": "3 John",
+"modern": "3 John",
+"testament": "NT",
+"group": "Catholic Letters",
+"chapters": 1
+},
+{
+"id": "jud",
+"name": "Jude",
+"modern": "Jude",
+"testament": "NT",
+"group": "Catholic Letters",
+"chapters": 1
+},
+{
+"id": "rev",
+"name": "Apocalypse",
+"modern": "Revelation",
+"testament": "NT",
+"group": "Apocalypse",
+"chapters": 22
+}
+]

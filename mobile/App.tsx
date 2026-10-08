@@ -29,7 +29,7 @@ import Refuge from './src/screens/Refuge';
 SplashScreen.preventAutoHideAsync().catch(() => {});
 
 type Tab = 'today' | 'scripture' | 'hours' | 'saints' | 'ask' | 'fast';
-const TABS: [Tab, string][] = [['today', 'Today'], ['scripture', 'Scripture'], ['hours', 'Hours'], ['saints', 'Saints'], ['ask', 'Ask'], ['fast', 'Fast']];
+const TABS: [Tab, string][] = [['today', 'Today'], ['scripture', 'Read'], ['hours', 'Hours'], ['saints', 'Saints'], ['ask', 'Ask'], ['fast', 'Fast']];
 
 function TabIcon({ tab, color }: { tab: Tab; color: string }) {
   const p = { stroke: color, fill: 'none', strokeWidth: 1.4 };
