@@ -72,6 +72,7 @@ export default function Scripture({ scrollTop }: { scrollTop: () => void }) {
       key: `library:${open.id}:${open.chapter}`,
       heading: libText.title,
       title: ch?.title ?? '',
+      section: ch?.section,
       units: (ch?.paras ?? []).map((text) => ({ text })),
       mode: 'prose',
       sourceFor: () => `${libText!.title}, ${libText!.author} · ${ch?.title ?? ''}`,

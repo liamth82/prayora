@@ -1,0 +1,20 @@
+[
+ {
+  "id": "imitation",
+  "title": "The Imitation of Christ",
+  "author": "Thomas à Kempis",
+  "translator": "William Benham",
+  "year": "c. 1418",
+  "blurb": "After the Bible, perhaps the most widely read book in Christian history. Four short books on the inner life, humility and the love of Jesus.",
+  "chapters": 114
+ },
+ {
+  "id": "confessions",
+  "title": "The Confessions",
+  "author": "Saint Augustine of Hippo",
+  "translator": "E. B. Pusey",
+  "year": "397–400",
+  "blurb": "Augustine's prayer to God about his restless youth, his long search and his conversion. 'Our heart is restless, until it repose in Thee.'",
+  "chapters": 13
+ }
+]

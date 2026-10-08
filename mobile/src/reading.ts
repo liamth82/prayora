@@ -4,7 +4,7 @@ import { BASE } from './today';
 export type BibleBook = { id: string; name: string; modern: string; testament: 'OT' | 'NT'; group: string; chapters: number };
 export type BibleText = { id: string; name: string; modern: string; chapters: [number, string][][] };
 export type LibraryBook = { id: string; title: string; author: string; translator?: string; year?: string; blurb?: string; chapters: number };
-export type LibraryText = { id: string; title: string; author: string; translator?: string; source?: string; chapters: { title: string; paras: string[] }[] };
+export type LibraryText = { id: string; title: string; author: string; translator?: string; source?: string; chapters: { title: string; section?: string; paras: string[] }[] };
 
 async function cached<T>(key: string, url: string, lru?: string): Promise<T | null> {
   try {

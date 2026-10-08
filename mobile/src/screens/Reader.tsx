@@ -13,6 +13,7 @@ export type ReaderChapter = {
   key: string;            // stable id for remembering scroll position
   heading: string;        // e.g. "Luke" or "The Imitation of Christ"
   title: string;          // e.g. "Chapter 10" or "Of the Imitation of Christ"
+  section?: string;       // e.g. "Book I · Admonitions profitable for the spiritual life"
   units: ReaderUnit[];    // verses or paragraphs
   mode: 'verses' | 'prose';
   sourceFor: (u: ReaderUnit) => string; // label saved with kept passages
@@ -84,6 +85,7 @@ export default function Reader({ chapter, loading, onClose, onPrev, onNext }: {
           <ActivityIndicator color={T.soft} style={{ marginTop: 60 }} />
         ) : (
           <ScrollView ref={scroll} onScroll={onScroll} scrollEventThrottle={64} contentContainerStyle={st.page}>
+            {chapter.section ? <Text style={[st.chSection, { color: T.soft }]}>{chapter.section}</Text> : null}
             <Text style={[st.chTitle, { color: T.ink }]}>{chapter.title}</Text>
             <Text style={[st.chPos, { color: T.accent }]}>{chapter.position.toUpperCase()}</Text>
             {chapter.illumination ? (
@@ -144,6 +146,7 @@ const st = StyleSheet.create({
   sizeBtn: { borderWidth: 1, borderRadius: 999, width: 44, height: 36, alignItems: 'center', justifyContent: 'center' },
   tone: { borderWidth: 1.5, borderRadius: 6, paddingHorizontal: 16, paddingVertical: 8 },
   page: { paddingHorizontal: 26, paddingTop: 26, paddingBottom: 40 },
+  chSection: { fontFamily: F.bodyItalic, fontSize: 13.5, textAlign: 'center', marginBottom: 8 },
   chTitle: { fontFamily: F.display, fontSize: 30, lineHeight: 36, textAlign: 'center' },
   chPos: { fontFamily: F.sc, fontSize: 12, letterSpacing: 2, textAlign: 'center', marginTop: 6 },
   ornament: { height: 1, width: 80, alignSelf: 'center', marginTop: 18 },
