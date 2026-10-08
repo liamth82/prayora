@@ -73,10 +73,38 @@ def confessions():
     if cur: chapters.append(cur)
     return [{"title": c["title"], "paras": [tidy(p) for p in paragraphs(c["lines"]) if keep(p) and p.strip() != "GRATIAS TIBI DOMINE"]} for c in chapters]
 
+def presence():
+    L = gutenberg_body("presence.txt").split("\n")
+    chapters, cur, section = [], None, None
+    for l in L:
+        s = l.strip()
+        if s == "NOTES:": break
+        if s in ("CONVERSATIONS.", "LETTERS."):
+            section = s.rstrip(".").capitalize(); continue
+        m = re.match(r"^([A-Z]+) (CONVERSATION|LETTER)\.$", s)
+        if m:
+            if cur: chapters.append(cur)
+            cur = {"section": section, "title": f"{m.group(1).capitalize()} {m.group(2).capitalize()}", "lines": []}; continue
+        if cur is not None: cur["lines"].append(l)
+    if cur: chapters.append(cur)
+    return [{"section": c["section"], "title": c["title"], "paras": [tidy(p) for p in paragraphs(c["lines"]) if keep(p)]} for c in chapters]
+
+ROMANS = ["I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV"]
+def desert():
+    say = json.load(open(os.path.join(RAW, "desert_sayings.json")))
+    n = 16
+    return [{"title": f"Sayings {ROMANS[i // n]}", "paras": say[i:i + n]} for i in range(0, len(say), n)]
+
 BOOKS = [
     dict(id="imitation", title="The Imitation of Christ", author="Thomas à Kempis", translator="William Benham", year="c. 1418",
          blurb="After the Bible, perhaps the most widely read book in Christian history. Four short books on the inner life, humility and the love of Jesus.",
          source="Project Gutenberg #1653", parse=imitation),
+    dict(id="desert", title="The Sayings of the Desert Fathers", author="The Fathers of the Egyptian desert", translator="E. A. Wallis Budge", year="4th–5th century",
+         blurb="Short, sharp and often funny words of the monks and nuns who went into the deserts of Egypt to seek God. A selection from The Paradise of the Holy Fathers (1907).",
+         source="The Paradise of the Holy Fathers, vol. II (1907), archive.org", parse=desert, raw="desert_sayings.json"),
+    dict(id="presence", title="The Practice of the Presence of God", author="Brother Lawrence of the Resurrection", translator="anonymous (1895)", year="1692",
+         blurb="A Carmelite lay brother who worked in the monastery kitchen and found God among the pots and pans. Four conversations and fifteen letters.",
+         source="Project Gutenberg #13871", parse=presence),
     dict(id="confessions", title="The Confessions", author="Saint Augustine of Hippo", translator="E. B. Pusey", year="397–400",
          blurb="Augustine's prayer to God about his restless youth, his long search and his conversion. 'Our heart is restless, until it repose in Thee.'",
          source="Project Gutenberg #3296", parse=confessions),
@@ -89,7 +117,7 @@ def main():
     if os.path.exists(ip):
         existing = {b["id"]: b for b in json.load(open(ip))}
     for b in BOOKS:
-        if not os.path.exists(os.path.join(RAW, b["id"] + ".txt")):
+        if not os.path.exists(os.path.join(RAW, b.get("raw", b["id"] + ".txt"))):
             print("missing", b["id"]); continue
         chapters = b["parse"]()
         chapters = [c for c in chapters if c["paras"]]

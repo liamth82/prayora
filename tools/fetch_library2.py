@@ -3,12 +3,13 @@ import csv, io, json, os, sys, time, urllib.request
 
 UA = {"User-Agent": "OraApp/0.1 (https://prayora.co)"}
 OUT = sys.argv[1]
-KEYWORDS = ["devout life", "little flowers", "unknowing", "spiritual combat", "interior castle", "dark night",
+KEYWORDS_OLD = ["devout life", "little flowers", "unknowing", "spiritual combat", "interior castle", "dark night",
             "ascent of mount carmel", "story of a soul", "abandonment", "rule of", "patrick", "desert", "fathers",
             "presence of god", "way of perfection", "love of god", "francis of assisi", "scupoli", "julian of norwich",
-            "revelations of divine love", "ladder", "philokalia", "benedict", "catherine of siena", "dialogue", "spiritual exercises"]
-IDS = {"presence": 13871, "soul": 16772}
-ARCHIVE = {"benedict": "TheRuleOfStBenedict"}
+            "revelations of divine love"]
+KEYWORDS = ["sales", "teresa", "john of the cross", "bernard", "bonaventure", "aquinas", "newman", "kempis", "augustine", "catherine", "francis", "jerome", "gregory", "ambrose", "chrysostom", "cassian", "benedict", "anselm", "bede", "patrick", "columba", "brigid", "liguori", "faber", "challoner", "scupoli", "ignatius"]
+IDS = {"julian": 52958, "exercises": 70790}
+ARCHIVE = {}
 
 def fetch(url, timeout=120):
     return urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=timeout).read()

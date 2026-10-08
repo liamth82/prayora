@@ -9,6 +9,24 @@
   "chapters": 114
  },
  {
+  "id": "desert",
+  "title": "The Sayings of the Desert Fathers",
+  "author": "The Fathers of the Egyptian desert",
+  "translator": "E. A. Wallis Budge",
+  "year": "4th–5th century",
+  "blurb": "Short, sharp and often funny words of the monks and nuns who went into the deserts of Egypt to seek God. A selection from The Paradise of the Holy Fathers (1907).",
+  "chapters": 11
+ },
+ {
+  "id": "presence",
+  "title": "The Practice of the Presence of God",
+  "author": "Brother Lawrence of the Resurrection",
+  "translator": "anonymous (1895)",
+  "year": "1692",
+  "blurb": "A Carmelite lay brother who worked in the monastery kitchen and found God among the pots and pans. Four conversations and fifteen letters.",
+  "chapters": 19
+ },
+ {
   "id": "confessions",
   "title": "The Confessions",
   "author": "Saint Augustine of Hippo",
