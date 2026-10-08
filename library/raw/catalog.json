@@ -1,0 +1,234 @@
+{
+ "imitation": [
+  {
+   "id": 1653,
+   "title": "The Imitation of Christ",
+   "authors": [
+    [
+     "Thomas, à Kempis",
+     1380,
+     1471
+    ]
+   ],
+   "translators": [
+    [
+     "Benham, William",
+     1831,
+     1910
+    ]
+   ],
+   "txt": "https://www.gutenberg.org/ebooks/1653.txt.utf-8",
+   "downloads": 5284
+  },
+  {
+   "id": 26222,
+   "title": "The Imitation of Christ",
+   "authors": [
+    [
+     "Thomas, à Kempis",
+     1380,
+     1471
+    ]
+   ],
+   "translators": [
+    [
+     "Benham, William",
+     1831,
+     1910
+    ]
+   ],
+   "txt": "https://www.gutenberg.org/files/26222/26222-readme.txt",
+   "downloads": 2093
+  }
+ ],
+ "confessions": [
+  {
+   "id": 3296,
+   "title": "The Confessions of St. Augustine",
+   "authors": [
+    [
+     "Augustine, of Hippo, Saint",
+     354,
+     430
+    ]
+   ],
+   "translators": [
+    [
+     "Pusey, E. B. (Edward Bouverie)",
+     1800,
+     1882
+    ]
+   ],
+   "txt": "https://www.gutenberg.org/ebooks/3296.txt.utf-8",
+   "downloads": 39021
+  },
+  {
+   "id": 77585,
+   "title": "Confessions of St. Augustine",
+   "authors": [
+    [
+     "Augustine, of Hippo, Saint",
+     354,
+     430
+    ]
+   ],
+   "translators": [
+    [
+     "Pusey, E. B. (Edward Bouverie)",
+     1800,
+     1882
+    ]
+   ],
+   "txt": "https://www.gutenberg.org/ebooks/77585.txt.utf-8",
+   "downloads": 1014
+  }
+ ],
+ "presence": [
+  {
+   "id": 5657,
+   "title": "The Practice of the Presence of God",
+   "authors": [
+    [
+     "Lawrence, of the Resurrection, Brother",
+     1611,
+     1691
+    ]
+   ],
+   "translators": [],
+   "txt": "https://www.gutenberg.org/ebooks/5657.txt.utf-8",
+   "downloads": 4569
+  },
+  {
+   "id": 13871,
+   "title": "The Practice of the Presence of God the Best Rule of a Holy Life",
+   "authors": [
+    [
+     "Lawrence, of the Resurrection, Brother",
+     1611,
+     1691
+    ]
+   ],
+   "translators": [],
+   "txt": "https://www.gutenberg.org/ebooks/13871.txt.utf-8",
+   "downloads": 1739
+  }
+ ],
+ "devout": [],
+ "darknight": [
+  {
+   "id": 72021,
+   "title": "The dark night : $b or, The fear of man bringeth a snare",
+   "authors": [
+    [
+     "Guernsey, Lucy Ellen",
+     1826,
+     1899
+    ]
+   ],
+   "translators": [],
+   "txt": "https://www.gutenberg.org/ebooks/72021.txt.utf-8",
+   "downloads": 386
+  }
+ ],
+ "benedict": [
+  {
+   "id": 50040,
+   "title": "St. Benedict's Rule for Monasteries",
+   "authors": [
+    [
+     "Benedict, Saint, Abbot of Monte Cassino",
+     480,
+     547
+    ]
+   ],
+   "translators": [
+    [
+     "Doyle, Leonard J. (Leonard Joseph)",
+     1914,
+     1970
+    ]
+   ],
+   "txt": "https://www.gutenberg.org/ebooks/50040.txt.utf-8",
+   "downloads": 2297
+  }
+ ],
+ "cloud": [],
+ "abandonment": [
+  {
+   "id": 52057,
+   "title": "Abandonment; or, Absolute Surrender to Divine Providence",
+   "authors": [
+    [
+     "Caussade, Jean Pierre de",
+     null,
+     1751
+    ]
+   ],
+   "translators": [
+    [
+     "McMahon, Ella",
+     null,
+     null
+    ]
+   ],
+   "txt": "https://www.gutenberg.org/ebooks/52057.txt.utf-8",
+   "downloads": 729
+  }
+ ],
+ "combat": [],
+ "desert": [],
+ "paradise": [],
+ "patrick": [],
+ "archive_desert": [
+  {
+   "identifier": "ParadiseOfTheHolyFathersV1",
+   "title": "The Paradise or Garden of the Holy Fathers, being histories of the anchorites, recluses, monks, coenobites and ascetic fathers of the deserts of Egypt between A.D. CCL and A.D. CCCC circiter. Compiled by Athanasius, Archbishop of Alexandria: Palladius, Bishop of Helenopolis: Saint Jerome, and others. [Another edition of \"The Book of Paradise\" of 'Ǎnān Īshō'.] Now translated out of the Syriac with notes & introduction by E.A. Wallis Budge. Volume 1",
+   "year": 1907
+  },
+  {
+   "identifier": "theparadiseorgar01unkwuoft",
+   "title": "The paradise, or garden of the holy fathers : being histories of the anchorites, recluses, monks, coenobites, and ascetic fathers of the deserts of Egypt between A.D. CCL and A.D. CCCC circiter",
+   "year": 1907
+  },
+  {
+   "identifier": "theparadiseorgar00unkwuoft",
+   "title": "The paradise, or garden of the holy fathers : being histories of the anchorites, recluses, monks, coenobites, and ascetic fathers of the deserts of Egypt between A.D. CCL and A.D. CCCC circiter",
+   "year": 1907
+  },
+  {
+   "identifier": "ParadiseOfTheHolyFathersV2",
+   "title": "The Paradise or Garden of the Holy Fathers, being histories of the anchorites, recluses, monks, coenobites and ascetic fathers of the deserts of Egypt between A.D. CCL and A.D. CCCC circiter. Compiled by Athanasius, Archbishop of Alexandria: Palladius, Bishop of Helenopolis: Saint Jerome, and others. [Another edition of \"The Book of Paradise\" of 'Ǎnān Īshō'.] Now translated out of the Syriac with notes & introduction by E.A. Wallis Budge. Volume 2",
+   "year": 1907
+  },
+  {
+   "identifier": "paradiseorgarde03budggoog",
+   "title": "The paradise or garden of the holy fathers: being histories of the ..., Volume 2",
+   "year": 1907
+  },
+  {
+   "identifier": "paradiseofholyfa0000erne",
+   "title": "Paradise of the Holy Fathers, Part 1",
+   "year": 2003
+  },
+  {
+   "identifier": "paradiseorgarde02budggoog",
+   "title": "The paradise or garden of the holy fathers : being histories of the anchorites, recluses, monks, Coenobites, and ascetic fathers of the deserts of Egypt between A.D. CCL and A.D. CCCC circiter",
+   "year": 1907
+  },
+  {
+   "identifier": "paradiseorgarden01ann",
+   "title": "The paradise, or garden of the holy fathers : being histories of the anchorites, recluses, monks, coenobites, and ascetic fathers of the deserts of Egypt between A.D. CCL and A.D. CCCC circiter",
+   "year": 1907
+  },
+  {
+   "identifier": "paradiseorgarden02anan",
+   "title": "The Paradise, or Garden of the Holy Fathers, being histories of the anchorites, recluses, monks, coenobites and ascetic fathers of the deserts of Egypt between A.D.CCL and A.D.CCCC circiter, comp. by Athanasius ... Palladius ... St. Jerome and others [version of Abba ̂An̂an-̂Isĥo]",
+   "year": 1907
+  },
+  {
+   "identifier": "paradiseorgarden01anan",
+   "title": "The Paradise, or Garden of the Holy Fathers, being histories of the anchorites, recluses, monks, coenobites and ascetic fathers of the deserts of Egypt between A.D.CCL and A.D.CCCC circiter, comp. by Athanasius ... Palladius ... St. Jerome and others [version of Abba ̂An̂an-̂Isĥo]",
+   "year": 1907
+  }
+ ]
+}
