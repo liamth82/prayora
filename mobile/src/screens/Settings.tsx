@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import * as Updates from 'expo-updates';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { C, F } from '../theme';
 import { LatinMode, useSettings } from '../settings';
@@ -17,6 +18,19 @@ const LATIN: { id: LatinMode; label: string }[] = [
 
 export default function Settings({ onClose }: { onClose: () => void }) {
   const { form, setForm, latin, setLatin } = useSettings();
+  const [upd, setUpd] = useState<string>('');
+  const checkUpdates = async () => {
+    if (!Updates.isEnabled) { setUpd('Updates are not available in this version.'); return; }
+    try {
+      setUpd('Checking…');
+      const r = await Updates.checkForUpdateAsync();
+      if (!r.isAvailable) { setUpd('Ora is up to date.'); return; }
+      setUpd('Downloading the new version…');
+      await Updates.fetchUpdateAsync();
+      await Updates.reloadAsync();
+    } catch { setUpd('Could not check just now. Make sure you are online and try again.'); }
+  };
+  const built = Updates.createdAt ? Updates.createdAt.toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) : null;
   return (
     <View style={st.wrap}>
       <ScrollView contentContainerStyle={{ padding: 20, paddingBottom: 40 }}>
@@ -52,6 +66,11 @@ export default function Settings({ onClose }: { onClose: () => void }) {
             </View>
           </>
         ) : null}
+        <Rule />
+        <Eyebrow>About this version</Eyebrow>
+        <Text style={st.optDesc}>{built ? `Published ${built}.` : 'The version installed with the app.'}</Text>
+        <Pressable onPress={checkUpdates} style={[st.segBtn, { alignSelf: 'flex-start', marginTop: 10 }]}><Text style={st.segText}>Check for updates</Text></Pressable>
+        {upd ? <Text style={[st.optDesc, { marginTop: 8 }]}>{upd}</Text> : null}
       </ScrollView>
     </View>
   );

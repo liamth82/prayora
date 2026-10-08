@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { AppState, KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import * as SplashScreen from 'expo-splash-screen';
+import * as Updates from 'expo-updates';
 import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, Ellipse, Path } from 'react-native-svg';
 import { useFonts, IMFellEnglish_400Regular, IMFellEnglish_400Regular_Italic } from '@expo-google-fonts/im-fell-english';
@@ -55,6 +56,17 @@ function Main() {
   const [fast, setFast] = useState<{ id: string; until: number; start?: number } | null>(null);
   const scroll = useRef<ScrollView>(null);
   const scrollTop = useCallback(() => scroll.current?.scrollTo({ y: 0, animated: false }), []);
+
+  // Fetch any new version as soon as the app opens and restart into it.
+  useEffect(() => {
+    if (!Updates.isEnabled || __DEV__) return;
+    (async () => {
+      try {
+        const r = await Updates.checkForUpdateAsync();
+        if (r.isAvailable) { await Updates.fetchUpdateAsync(); await Updates.reloadAsync(); }
+      } catch {}
+    })();
+  }, []);
 
   // Restore state
   useEffect(() => {
