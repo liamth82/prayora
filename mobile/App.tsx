@@ -52,7 +52,7 @@ function Main() {
   const [prayerSecs, setPrayerSecs] = useState(0);
   const tabRef = useRef<Tab>('today');
   const overlayRef = useRef(false);
-  const [fast, setFast] = useState<{ id: string; until: number } | null>(null);
+  const [fast, setFast] = useState<{ id: string; until: number; start?: number } | null>(null);
   const scroll = useRef<ScrollView>(null);
   const scrollTop = useCallback(() => scroll.current?.scrollTo({ y: 0, animated: false }), []);
 
@@ -61,7 +61,7 @@ function Main() {
     load<Tab>('tab', 'today').then((t) => setTab(t));
     load<number>('browse:' + todayKey(), 0).then(setSecs);
     load<number>('prayer:' + todayKey(), 0).then(setPrayerSecs);
-    load<{ id: string; until: number } | null>('fast', null).then((f) => { if (f && f.until > Date.now()) setFast(f); });
+    load<{ id: string; until: number; start?: number } | null>('fast', null).then((f) => { if (f && f.until > Date.now()) setFast(f); });
   }, []);
 
   // Count time spent in Ora while it is in the foreground
@@ -90,7 +90,7 @@ function Main() {
     let until: number;
     if (m.mins) until = Date.now() + m.mins * 60000;
     else { const d = new Date(); d.setHours(6, 0, 0, 0); if (d <= new Date()) d.setDate(d.getDate() + 1); until = +d; }
-    const f = { id: m.id, until };
+    const f = { id: m.id, until, start: Date.now() };
     setFast(f); save('fast', f);
   };
   const endFast = useCallback(() => { setFast(null); save('fast', null); }, []);
@@ -143,7 +143,7 @@ function Main() {
 
       {wisdomOpen ? <View style={{ position: 'absolute', top: insets.top, left: 0, right: 0, bottom: 0 }}><Wisdom onClose={() => setWisdomOpen(false)} /></View> : null}
       {settingsOpen ? <View style={{ position: 'absolute', top: insets.top, left: 0, right: 0, bottom: 0 }}><Settings onClose={() => setSettingsOpen(false)} /></View> : null}
-      {fast && activeMode ? <Veil mode={activeMode} until={fast.until} onEnd={endFast} /> : null}
+      {fast && activeMode ? <Veil mode={activeMode} until={fast.until} start={fast.start} onEnd={endFast} /> : null}
     </View>
   );
 }
