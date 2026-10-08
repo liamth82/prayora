@@ -27,6 +27,15 @@
   "chapters": 19
  },
  {
+  "id": "julian",
+  "title": "Revelations of Divine Love",
+  "author": "Julian of Norwich",
+  "translator": "Grace Warrack",
+  "year": "c. 1373–1393",
+  "blurb": "The first book in English known to be written by a woman: sixteen 'shewings' of the love of God given to an anchoress of Norwich. 'All shall be well, and all manner of thing shall be well.'",
+  "chapters": 86
+ },
+ {
   "id": "confessions",
   "title": "The Confessions",
   "author": "Saint Augustine of Hippo",

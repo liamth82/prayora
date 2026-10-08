@@ -89,6 +89,29 @@ def presence():
     if cur: chapters.append(cur)
     return [{"section": c["section"], "title": c["title"], "paras": [tidy(p) for p in paragraphs(c["lines"]) if keep(p)]} for c in chapters]
 
+def julian():
+    L = gutenberg_body("julian.txt").split("\n")
+    start = [i for i, l in enumerate(L) if l.strip() == "REVELATIONS OF DIVINE LOVE"][-1]
+    chapters, cur, section = [], None, "Introduction"
+    for l in L[start + 1:]:
+        s = l.strip()
+        if s.startswith("POSTSCRIPT BY A SCRIBE"): break
+        m = re.match(r"^_(THE [A-Z]+ REVELATION|ANENT .*)\.?_$", s)
+        if m:
+            section = m.group(1).rstrip(".").capitalize(); continue
+        m = re.match(r"^CHAPTER ([IVXLC]+)$", s)
+        if m:
+            if cur: chapters.append(cur)
+            cur = {"section": section, "title": f"Chapter {m.group(1)}", "lines": []}; continue
+        if cur is not None: cur["lines"].append(l)
+    if cur: chapters.append(cur)
+    out = []
+    for c in chapters:
+        paras = [tidy(p) for p in paragraphs(c["lines"]) if keep(p)]
+        paras = [re.sub(r"\[(\d+)\]", "", p) for p in paras if not re.match(r"^\[\d+\]", p)]
+        out.append({"section": c["section"], "title": c["title"], "paras": paras})
+    return out
+
 ROMANS = ["I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV"]
 def desert():
     say = json.load(open(os.path.join(RAW, "desert_sayings.json")))
@@ -105,6 +128,9 @@ BOOKS = [
     dict(id="presence", title="The Practice of the Presence of God", author="Brother Lawrence of the Resurrection", translator="anonymous (1895)", year="1692",
          blurb="A Carmelite lay brother who worked in the monastery kitchen and found God among the pots and pans. Four conversations and fifteen letters.",
          source="Project Gutenberg #13871", parse=presence),
+    dict(id="julian", title="Revelations of Divine Love", author="Julian of Norwich", translator="Grace Warrack", year="c. 1373–1393",
+         blurb="The first book in English known to be written by a woman: sixteen 'shewings' of the love of God given to an anchoress of Norwich. 'All shall be well, and all manner of thing shall be well.'",
+         source="Project Gutenberg #52958", parse=julian),
     dict(id="confessions", title="The Confessions", author="Saint Augustine of Hippo", translator="E. B. Pusey", year="397–400",
          blurb="Augustine's prayer to God about his restless youth, his long search and his conversion. 'Our heart is restless, until it repose in Thee.'",
          source="Project Gutenberg #3296", parse=confessions),
