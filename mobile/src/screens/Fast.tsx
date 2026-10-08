@@ -40,6 +40,7 @@ export default function Fast({ minutes, prayerMinutes, onStart }: { minutes: num
 
 type Sym = { name: string; caption: string; paths: string[]; fills?: string[]; circles?: number[][]; dots?: number[][] };
 const SYMBOLS = require('../symbols.json') as Sym[];
+const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
 function SacredSymbol({ sym, size }: { sym: Sym; size: number }) {
   const ink = '#EFE6D2';
@@ -47,7 +48,6 @@ function SacredSymbol({ sym, size }: { sym: Sym; size: number }) {
     <Svg width={size} height={size} viewBox="0 0 200 200">
       <G fill="none" stroke={ink} strokeOpacity={0.12} strokeWidth={5} strokeLinecap="round" strokeLinejoin="round">
         {sym.paths.map((d, i) => <Path key={'g' + i} d={d} />)}
-        {(sym.fills ?? []).map((d, i) => <Path key={'gf' + i} d={d} />)}
         {(sym.circles ?? []).map(([cx, cy, r], i) => <Circle key={'gc' + i} cx={cx} cy={cy} r={r} />)}
       </G>
       <G fill="none" stroke={ink} strokeWidth={1.4} strokeLinecap="round" strokeLinejoin="round">
@@ -107,7 +107,7 @@ export function Veil({ mode, until, start, onEnd }: { mode: Mode; until: number;
   const h = Math.floor(left / 3600000), mi = Math.floor((left % 3600000) / 60000);
   const remaining = h ? `${h} h ${mi} min left` : `${Math.max(1, mi)} min left`;
   const frac = Math.min(1, Math.max(0, 1 - left / total));
-  const R = 16, CIRC = 2 * Math.PI * R;
+
 
   const pressIn = () => {
     held.current = false;
@@ -129,37 +129,39 @@ export function Veil({ mode, until, start, onEnd }: { mode: Mode; until: number;
 
   const sym = SYMBOLS[symIdx];
   const [quote, cite] = QUOTES[0];
-  const size = Math.min(width - 80, 280);
+  const size = Math.min(width - 110, 260);
+  const ring = size + 44;
+  const RR = ring / 2 - 3, CIRC = 2 * Math.PI * RR;
   const glow = breathe.interpolate({ inputRange: [0, 1], outputRange: [0.78, 1] });
 
   return (
     <View style={st.veil}>
-      <View style={st.corner}>
-        {showTime ? <Text style={st.left}>{remaining}</Text> : null}
-        <Pressable onPress={tap} onPressIn={pressIn} onPressOut={pressOut} hitSlop={16} accessibilityRole="button"
-          accessibilityLabel={`${remaining}. Hold for three seconds to end the fast early`}>
-          <Svg width={44} height={44} viewBox="0 0 44 44">
-            <Circle cx={22} cy={22} r={R} stroke="#FFFFFF" strokeOpacity={0.14} strokeWidth={2} fill="none" />
-            <Circle cx={22} cy={22} r={R} stroke="#E9DFC8" strokeWidth={2} fill="none" strokeLinecap="round"
-              strokeDasharray={`${CIRC} ${CIRC}`} strokeDashoffset={CIRC * (1 - frac)} transform="rotate(-90 22 22)" />
+      <View style={{ alignItems: 'center' }}>
+        <Pressable onPress={tap} onPressIn={pressIn} onPressOut={pressOut} style={{ width: ring, height: ring, alignItems: 'center', justifyContent: 'center' }}
+          accessibilityRole="button" accessibilityLabel={`${remaining}. Hold the symbol for three seconds to end the fast early`}>
+          <Svg width={ring} height={ring} style={StyleSheet.absoluteFill}>
+            <Circle cx={ring / 2} cy={ring / 2} r={RR} stroke="#FFFFFF" strokeOpacity={0.07} strokeWidth={1.2} fill="none" />
+            <Circle cx={ring / 2} cy={ring / 2} r={RR} stroke="#E9DFC8" strokeOpacity={0.38} strokeWidth={1.2} fill="none" strokeLinecap="round"
+              strokeDasharray={`${CIRC} ${CIRC}`} strokeDashoffset={CIRC * (1 - frac)} transform={`rotate(-90 ${ring / 2} ${ring / 2})`} />
+            <AnimatedCircle cx={ring / 2} cy={ring / 2} r={RR} stroke="#C9A84C" strokeWidth={2.4} fill="none" strokeLinecap="round"
+              strokeDasharray={`${CIRC} ${CIRC}`} strokeDashoffset={hold.interpolate({ inputRange: [0, 1], outputRange: [CIRC, 0] })}
+              transform={`rotate(-90 ${ring / 2} ${ring / 2})`} />
           </Svg>
-          <Animated.View style={[st.holdRing, { opacity: hold, transform: [{ scale: hold.interpolate({ inputRange: [0, 1], outputRange: [0.6, 1.25] }) }] }]} />
+          <Animated.View style={{ opacity: Animated.multiply(fade, glow) }}>
+            <SacredSymbol sym={sym} size={size} />
+          </Animated.View>
         </Pressable>
+        <Animated.Text style={[st.caption, { opacity: fade }]}>{showTime ? remaining : sym.caption}</Animated.Text>
       </View>
 
-      <Animated.View style={{ opacity: Animated.multiply(fade, glow), alignItems: 'center' }}>
-        <SacredSymbol sym={sym} size={size} />
-        <Text style={st.caption}>{sym.caption}</Text>
-      </Animated.View>
-
-      <View style={{ alignItems: 'center', marginTop: 40 }}>
+      <View style={{ alignItems: 'center', marginTop: 34 }}>
         <Text style={st.quote}>{quote}</Text>
         <Text style={st.cite}>{cite.toUpperCase()}</Text>
       </View>
 
       <View style={st.foot}>
         <Text style={st.allowed}>{mode.name} · {mode.allow}</Text>
-        <Text style={st.hint}>Hold the circle to end early</Text>
+        <Text style={st.hint}>Hold the symbol to end early · tap to see the time</Text>
       </View>
     </View>
   );
@@ -179,7 +181,7 @@ const st = StyleSheet.create({
   corner: { position: 'absolute', top: 52, right: 22, flexDirection: 'row', alignItems: 'center', gap: 10 },
   left: { fontFamily: F.sc, fontSize: 13, letterSpacing: 1.4, color: '#A8946C' },
   holdRing: { position: 'absolute', top: 2, left: 2, width: 40, height: 40, borderRadius: 20, borderWidth: 2, borderColor: '#C9A84C' },
-  caption: { fontFamily: F.displayItalic, fontSize: 15, color: '#8C7B5C', marginTop: 14, letterSpacing: 0.4 },
+  caption: { fontFamily: F.displayItalic, fontSize: 15, color: '#8C7B5C', marginTop: 16, letterSpacing: 0.4 },
   foot: { position: 'absolute', bottom: 40, alignItems: 'center', gap: 4 },
   hint: { fontFamily: F.sc, fontSize: 11.5, letterSpacing: 1.6, color: '#4F4636' },
   modeN: { fontFamily: F.sc, letterSpacing: 3, color: C.gold, fontSize: 14 },
