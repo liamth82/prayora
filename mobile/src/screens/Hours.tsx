@@ -5,6 +5,8 @@ import { load, save, todayKey } from '../storage';
 import { C, F } from '../theme';
 import { Back, Button, Eyebrow, H2, Lede, Proto, Rule } from '../components/ui';
 import { useKeepable } from '../keep';
+import PrayerSession, { PrayerLine, toLines } from './PrayerSession';
+import type { Hour } from '../content';
 
 export default function Hours({ scrollTop }: { scrollTop: () => void }) {
   const [open, setOpen] = useState<string | null>(null);
@@ -13,6 +15,21 @@ export default function Hours({ scrollTop }: { scrollTop: () => void }) {
   const key = 'prayed:' + todayKey();
   useEffect(() => { load<string[]>(key, []).then(setDone); }, [key]);
   const cur = currentHour();
+  const [praying, setPraying] = useState<Hour | null>(null);
+  const linesFor = (x: Hour): PrayerLine[] => [
+    { text: 'O God, come to my assistance.', secs: 5, label: 'Opening' },
+    { text: 'O Lord, make haste to help me.', secs: 5 },
+    ...toLines(GLORIA),
+    ...toLines(x.psalm[1], x.psalm[0]),
+    ...(x.cant ? toLines(x.cant[1], x.cant[0]) : []),
+    ...toLines(GLORIA),
+    { text: 'Let us bless the Lord.', secs: 4.5, label: 'Conclusion' },
+    { text: 'Thanks be to God.', secs: 5 },
+  ];
+  const session = praying ? (
+    <PrayerSession visible title={praying.name} subtitle={praying.sub} lines={linesFor(praying)}
+      onFinish={() => markDone(praying.id)} onClose={() => setPraying(null)} />
+  ) : null;
 
   const markDone = (id: string) => {
     const next = done.includes(id) ? done : [...done, id];
@@ -28,6 +45,7 @@ export default function Hours({ scrollTop }: { scrollTop: () => void }) {
         <Back label="The Hours" onPress={() => go(null)} />
         <Eyebrow>{x.sub}</Eyebrow>
         <H2>{x.name}</H2>
+        <Button style={{ marginTop: 8 }} label={`Pray ${x.name}`} onPress={() => setPraying(x)} />
         <Rule />
         <Rub>Opening</Rub>
         <VR v="℣." t="O God, come to my assistance." />
@@ -42,6 +60,7 @@ export default function Hours({ scrollTop }: { scrollTop: () => void }) {
         <VR v="℟." t="Thanks be to God." />
         <Button style={{ marginTop: 22 }} label={done.includes(x.id) ? 'Prayed ✓' : 'Mark as prayed'} onPress={() => markDone(x.id)} />
         <Proto>Short form for the preview. The full app follows the day's psalter.</Proto>
+        {session}
       </View>
     );
   }
@@ -52,6 +71,11 @@ export default function Hours({ scrollTop }: { scrollTop: () => void }) {
       <Eyebrow>Liturgy of the Hours</Eyebrow>
       <H2>Seven times a day I have given praise</H2>
       <Lede>Psalm 118:164. It is {now}; the Church is praying {cur.name}.</Lede>
+      <Pressable onPress={() => setPraying(cur)} style={st.prayNow} accessibilityRole="button">
+        <Text style={st.prayNowSmall}>{done.includes(cur.id) ? 'PRAY AGAIN' : 'NOW'}</Text>
+        <Text style={st.prayNowText}>Pray {cur.name}</Text>
+        <Text style={st.prayNowSub}>A few minutes of stillness and prayer</Text>
+      </Pressable>
       <View style={{ borderTopWidth: 1, borderColor: C.vellum3 }}>
         {HOURS.map((x) => {
           const isNow = x.id === cur.id, d = done.includes(x.id);
@@ -67,6 +91,7 @@ export default function Hours({ scrollTop }: { scrollTop: () => void }) {
           );
         })}
       </View>
+      {session}
     </View>
   );
 }
@@ -77,6 +102,10 @@ const VR = ({ v, t }: { v: string; t: string }) => (
 );
 
 const st = StyleSheet.create({
+  prayNow: { backgroundColor: '#0E0B0A', borderRadius: 4, paddingVertical: 18, paddingHorizontal: 18, marginBottom: 20, borderWidth: 1, borderColor: C.gold },
+  prayNowSmall: { fontFamily: F.sc, fontSize: 12, letterSpacing: 2, color: C.gold },
+  prayNowText: { fontFamily: F.display, fontSize: 28, color: C.vellum, marginTop: 2 },
+  prayNowSub: { fontFamily: F.bodyItalic, fontSize: 13.5, color: '#B9A57F', marginTop: 2 },
   hour: { flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 12, paddingHorizontal: 4, borderBottomWidth: 1, borderColor: C.vellum3 },
   t: { width: 50, fontFamily: F.sc, fontSize: 13, color: C.inkFaint },
   n: { fontFamily: F.display, fontSize: 21, color: C.ink },

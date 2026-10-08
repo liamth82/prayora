@@ -48,7 +48,10 @@ function Main() {
   const [tab, setTab] = useState<Tab>('today');
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [wisdomOpen, setWisdomOpen] = useState(false);
-  const [secs, setSecs] = useState(0);
+  const [secs, setSecs] = useState(0); // browsing
+  const [prayerSecs, setPrayerSecs] = useState(0);
+  const tabRef = useRef<Tab>('today');
+  const overlayRef = useRef(false);
   const [fast, setFast] = useState<{ id: string; until: number } | null>(null);
   const scroll = useRef<ScrollView>(null);
   const scrollTop = useCallback(() => scroll.current?.scrollTo({ y: 0, animated: false }), []);
@@ -56,7 +59,8 @@ function Main() {
   // Restore state
   useEffect(() => {
     load<Tab>('tab', 'today').then((t) => setTab(t));
-    load<number>('secs:' + todayKey(), 0).then(setSecs);
+    load<number>('browse:' + todayKey(), 0).then(setSecs);
+    load<number>('prayer:' + todayKey(), 0).then(setPrayerSecs);
     load<{ id: string; until: number } | null>('fast', null).then((f) => { if (f && f.until > Date.now()) setFast(f); });
   }, []);
 
@@ -66,15 +70,20 @@ function Main() {
     const sub = AppState.addEventListener('change', (st) => { active = st === 'active'; });
     const t = setInterval(() => {
       if (!active) return;
-      setSecs((s) => {
+      // Reading and prayer count as time in prayer; everything else is browsing, which the sundial measures.
+      const praying = !overlayRef.current && ['today', 'scripture', 'hours', 'saints'].includes(tabRef.current);
+      const [setter, key] = praying ? [setPrayerSecs, 'prayer:'] as const : [setSecs, 'browse:'] as const;
+      setter((s) => {
         const n = s + 1;
-        if (n % 5 === 0) save('secs:' + todayKey(), n);
+        if (n % 5 === 0) save(key + todayKey(), n);
         return n;
       });
     }, 1000);
     return () => { clearInterval(t); sub.remove(); };
   }, []);
 
+  useEffect(() => { tabRef.current = tab; }, [tab]);
+  useEffect(() => { overlayRef.current = settingsOpen || wisdomOpen; }, [settingsOpen, wisdomOpen]);
   const choose = (t: Tab) => { setTab(t); save('tab', t); scrollTop(); };
 
   const startFast = (m: Mode) => {
@@ -116,7 +125,7 @@ function Main() {
           {tab === 'hours' && <Hours scrollTop={scrollTop} />}
           {tab === 'saints' && <Saints scrollTop={scrollTop} />}
           {tab === 'ask' && <Ask />}
-          {tab === 'fast' && <Fast minutes={Math.floor(secs / 60)} onStart={startFast} />}
+          {tab === 'fast' && <Fast minutes={Math.floor(secs / 60)} prayerMinutes={Math.floor(prayerSecs / 60)} onStart={startFast} />}
         </ScrollView>
       </KeyboardAvoidingView>
 

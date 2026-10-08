@@ -5,7 +5,7 @@ import { Mode, MODES } from '../content';
 import { C, F } from '../theme';
 import { Eyebrow, H2, H3, Lede, Proto, Rule, Sundial } from '../components/ui';
 
-export default function Fast({ minutes, onStart }: { minutes: number; onStart: (m: Mode) => void }) {
+export default function Fast({ minutes, prayerMinutes, onStart }: { minutes: number; prayerMinutes: number; onStart: (m: Mode) => void }) {
   const msg = minutes < 10 ? 'A good visit. When you are finished, close the app.'
     : minutes < 30 ? 'Consider closing Ora and praying in silence.'
     : 'Put the phone down. God is not in here.';
@@ -13,11 +13,12 @@ export default function Fast({ minutes, onStart }: { minutes: number; onStart: (
     <View>
       <Eyebrow>Digital Fast</Eyebrow>
       <H2>Be still</H2>
-      <Lede>Ora keeps its own time against you. The shadow lengthens the longer you stay.</Lede>
+      <Lede>Time spent praying and reading is never counted against you. The sundial measures only the rest; its shadow lengthens the longer you browse.</Lede>
       <View style={st.dial}>
         <Sundial mins={minutes} width={140} />
         <View style={{ flex: 1 }}>
-          <Text style={st.mins}>{minutes}<Text style={st.minsSmall}> min in Ora today</Text></Text>
+          <Text style={st.mins}>{minutes}<Text style={st.minsSmall}> min browsing today</Text></Text>
+          <Text style={st.prayer}>{prayerMinutes} min in prayer and reading</Text>
           <Text style={st.msg}>{msg}</Text>
         </View>
       </View>
@@ -88,6 +89,7 @@ const st = StyleSheet.create({
   dial: { flexDirection: 'row', alignItems: 'center', gap: 14 },
   mins: { fontFamily: F.display, fontSize: 40, color: C.ink },
   minsSmall: { fontFamily: F.body, fontSize: 14, color: C.inkSoft },
+  prayer: { fontFamily: F.bodyItalic, fontSize: 14, color: C.green, marginTop: 2 },
   msg: { fontFamily: F.body, fontSize: 14, lineHeight: 20, color: C.inkSoft, marginTop: 4 },
   mode: { borderWidth: 1, borderColor: C.vellum3, borderRadius: 4, padding: 14 },
   modeTop: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' },
