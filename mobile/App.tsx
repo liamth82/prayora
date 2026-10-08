@@ -24,6 +24,7 @@ import Settings from './src/screens/Settings';
 import { SettingsProvider } from './src/settings';
 import { KeepProvider } from './src/keep';
 import Wisdom from './src/screens/Wisdom';
+import Refuge from './src/screens/Refuge';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
 
@@ -49,6 +50,7 @@ function Main() {
   const [tab, setTab] = useState<Tab>('today');
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [wisdomOpen, setWisdomOpen] = useState(false);
+  const [refugeOpen, setRefugeOpen] = useState(false);
   const [secs, setSecs] = useState(0); // browsing
   const [prayerSecs, setPrayerSecs] = useState(0);
   const tabRef = useRef<Tab>('today');
@@ -121,6 +123,9 @@ function Main() {
             <Text style={st.date}>{date}</Text>
             <View style={st.lit}><Dot color={s.color} /><Text style={st.litText}>{s.name}</Text></View>
           </View>
+          <Pressable onPress={() => setRefugeOpen(true)} hitSlop={10} accessibilityRole="button" accessibilityLabel="Refuge, when temptation comes" style={{ paddingBottom: 2 }}>
+            <Svg width={20} height={22} viewBox="0 0 20 24"><Path d="M10 1.5 L18 4.5 V11 C18 16.5 14.5 20.5 10 22.5 C5.5 20.5 2 16.5 2 11 V4.5 Z" stroke={C.inkSoft} strokeWidth={1.5} fill="none" /><Path d="M10 6.5 V17 M6.5 10 H13.5" stroke={C.inkSoft} strokeWidth={1.5} /></Svg>
+          </Pressable>
           <Pressable onPress={() => setWisdomOpen(true)} hitSlop={10} accessibilityRole="button" accessibilityLabel="My Wisdom" style={{ paddingBottom: 2 }}>
             <Svg width={20} height={22} viewBox="0 0 20 24"><Path d="M3 2h14v20l-7-5-7 5z" stroke={C.inkSoft} strokeWidth={1.5} fill="none" /></Svg>
           </Pressable>
@@ -137,7 +142,7 @@ function Main() {
           {tab === 'hours' && <Hours scrollTop={scrollTop} />}
           {tab === 'saints' && <Saints scrollTop={scrollTop} />}
           {tab === 'ask' && <Ask />}
-          {tab === 'fast' && <Fast minutes={Math.floor(secs / 60)} prayerMinutes={Math.floor(prayerSecs / 60)} onStart={startFast} />}
+          {tab === 'fast' && <Fast minutes={Math.floor(secs / 60)} prayerMinutes={Math.floor(prayerSecs / 60)} onStart={startFast} onRefuge={() => setRefugeOpen(true)} />}
         </ScrollView>
       </KeyboardAvoidingView>
 
@@ -153,6 +158,7 @@ function Main() {
         })}
       </View>
 
+      <Refuge visible={refugeOpen} onClose={() => setRefugeOpen(false)} />
       {wisdomOpen ? <View style={{ position: 'absolute', top: insets.top, left: 0, right: 0, bottom: 0 }}><Wisdom onClose={() => setWisdomOpen(false)} /></View> : null}
       {settingsOpen ? <View style={{ position: 'absolute', top: insets.top, left: 0, right: 0, bottom: 0 }}><Settings onClose={() => setSettingsOpen(false)} /></View> : null}
       {fast && activeMode ? <Veil mode={activeMode} until={fast.until} start={fast.start} onEnd={endFast} /> : null}

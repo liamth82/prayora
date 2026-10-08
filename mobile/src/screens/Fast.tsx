@@ -6,7 +6,7 @@ import { Mode, MODES } from '../content';
 import { C, F } from '../theme';
 import { Eyebrow, H2, H3, Lede, Proto, Rule, Sundial } from '../components/ui';
 
-export default function Fast({ minutes, prayerMinutes, onStart }: { minutes: number; prayerMinutes: number; onStart: (m: Mode) => void }) {
+export default function Fast({ minutes, prayerMinutes, onStart, onRefuge }: { minutes: number; prayerMinutes: number; onStart: (m: Mode) => void; onRefuge: () => void }) {
   const msg = minutes < 10 ? 'A good visit. When you are finished, close the app.'
     : minutes < 30 ? 'Consider closing Ora and praying in silence.'
     : 'Put the phone down. God is not in here.';
@@ -23,6 +23,11 @@ export default function Fast({ minutes, prayerMinutes, onStart }: { minutes: num
           <Text style={st.msg}>{msg}</Text>
         </View>
       </View>
+      <Pressable onPress={onRefuge} style={st.refuge} accessibilityRole="button">
+        <Text style={st.refugeSmall}>WHEN TEMPTATION COMES</Text>
+        <Text style={st.refugeTitle}>Refuge</Text>
+        <Text style={st.refugeSub}>Five minutes with God, whenever you need them</Text>
+      </Pressable>
       <Rule />
       <Eyebrow>Begin a fast</Eyebrow>
       <View style={{ gap: 10 }}>
@@ -172,6 +177,10 @@ const st = StyleSheet.create({
   mins: { fontFamily: F.display, fontSize: 40, color: C.ink },
   minsSmall: { fontFamily: F.body, fontSize: 14, color: C.inkSoft },
   prayer: { fontFamily: F.bodyItalic, fontSize: 14, color: C.green, marginTop: 2 },
+  refuge: { backgroundColor: '#07060A', borderRadius: 4, padding: 18, marginTop: 18, borderWidth: 1, borderColor: C.gold },
+  refugeSmall: { fontFamily: F.sc, fontSize: 12, letterSpacing: 2, color: C.gold },
+  refugeTitle: { fontFamily: F.display, fontSize: 30, color: '#EFE6D2', marginTop: 2 },
+  refugeSub: { fontFamily: F.bodyItalic, fontSize: 13.5, color: '#A8946C', marginTop: 2 },
   msg: { fontFamily: F.body, fontSize: 14, lineHeight: 20, color: C.inkSoft, marginTop: 4 },
   mode: { borderWidth: 1, borderColor: C.vellum3, borderRadius: 4, padding: 14 },
   modeTop: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' },

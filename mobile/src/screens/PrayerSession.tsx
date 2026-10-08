@@ -75,11 +75,12 @@ function Light() {
   );
 }
 
-export default function PrayerSession({ visible, title, subtitle, lines, onFinish, onClose }: {
+export default function PrayerSession({ visible, title, subtitle, lines, onFinish, onClose, settle, rest, intro, skipIntro }: {
   visible: boolean; title: string; subtitle?: string; lines: PrayerLine[];
   onFinish: () => void; onClose: () => void;
+  settle?: PrayerLine[]; rest?: PrayerLine[]; intro?: string; skipIntro?: boolean;
 }) {
-  const [phase, setPhase] = useState<Phase>('intro');
+  const [phase, setPhase] = useState<Phase>(skipIntro ? 'settle' : 'intro');
   const [idx, setIdx] = useState(0);
   const [paused, setPaused] = useState(false);
   const [aloud, setAloud] = useState(false);
@@ -87,13 +88,13 @@ export default function PrayerSession({ visible, title, subtitle, lines, onFinis
   const run = useRef(0);
 
   const script: Record<Exclude<Phase, 'intro' | 'end'>, PrayerLine[]> = {
-    settle: SETTLE,
+    settle: settle ?? SETTLE,
     prayer: lines,
-    rest: [...REST, { text: blessing(), secs: 7 }],
+    rest: rest ?? [...REST, { text: blessing(), secs: 7 }],
   };
 
   useEffect(() => {
-    if (!visible) { setPhase('intro'); setIdx(0); setPaused(false); }
+    if (!visible) { setPhase(skipIntro ? 'settle' : 'intro'); setIdx(0); setPaused(false); }
   }, [visible]);
 
   useEffect(() => {
@@ -152,7 +153,7 @@ export default function PrayerSession({ visible, title, subtitle, lines, onFinis
           <View style={st.intro}>
             <Text style={st.introEyebrow}>{subtitle?.toUpperCase()}</Text>
             <Text style={st.introTitle}>{title}</Text>
-            <Text style={st.introText}>Find a quiet place. The prayer begins with a minute of stillness, then the words of the Hour, then a moment of rest.</Text>
+            <Text style={st.introText}>{intro ?? 'Find a quiet place. The prayer begins with a minute of stillness, then the words of the Hour, then a moment of rest.'}</Text>
             {Speech ? (
               <Pressable onPress={() => setAloud(!aloud)} style={st.toggle} accessibilityRole="switch" accessibilityState={{ checked: aloud }}>
                 <View style={[st.box, aloud && st.boxOn]}>{aloud ? <Text style={st.tick}>✓</Text> : null}</View>
