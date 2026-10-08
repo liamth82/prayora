@@ -36,6 +36,24 @@
   "chapters": 86
  },
  {
+  "id": "teresa",
+  "title": "The Life of Saint Teresa of Jesus",
+  "author": "Saint Teresa of Ávila",
+  "translator": "David Lewis",
+  "year": "1565",
+  "blurb": "Teresa's own story, written at her confessors' command: her lukewarm years, her conversion, and the 'four waters' of prayer. Honest, funny and on fire.",
+  "chapters": 40
+ },
+ {
+  "id": "ignatius",
+  "title": "The Autobiography of Saint Ignatius",
+  "author": "Saint Ignatius of Loyola",
+  "translator": "J. F. X. O'Conor",
+  "year": "1553–1555",
+  "blurb": "The wounded soldier who read the lives of the saints on his sickbed and became the founder of the Jesuits, told in his own words to a companion.",
+  "chapters": 8
+ },
+ {
   "id": "confessions",
   "title": "The Confessions",
   "author": "Saint Augustine of Hippo",

@@ -41,7 +41,7 @@ def imitation():
         s = L[i].strip()
         m = re.match(r"^THE (FIRST|SECOND|THIRD|FOURTH) BOOK$", s)
         if m:
-            book = f"Book {ROMAN[m.group(1)]} · {L[i + 1].strip().capitalize()}"
+            book = f"Book {ROMAN[m.group(1)]} · {smart_title(L[i + 1].strip())}"
             i += 2; continue
         if re.match(r"^CHAPTER [IVXLC]+$", s):
             if cur: chapters.append(cur)
@@ -112,6 +112,72 @@ def julian():
         out.append({"section": c["section"], "title": c["title"], "paras": paras})
     return out
 
+def teresa():
+    L = gutenberg_body("teresa.txt").split("\n")
+    chapters, cur = [], None
+    i = 0
+    while i < len(L):
+        s = L[i].strip()
+        if s == "I.H.S.": break
+        m = re.match(r"^Chapter ([IVXL]+)\.$", s)
+        if m:
+            if cur: chapters.append(cur)
+            j = i + 1
+            while not L[j].strip(): j += 1
+            title = []
+            while L[j].strip(): title.append(L[j].strip()); j += 1
+            cur = {"title": f"Chapter {m.group(1)}", "summary": re.sub(r"\s+", " ", " ".join(title)), "lines": []}
+            i = j; continue
+        if cur is not None: cur["lines"].append(L[i])
+        i += 1
+    if cur: chapters.append(cur)
+    out = []
+    for c in chapters:
+        raw = paragraphs(c["lines"])
+        kept, last = [], 0
+        for p in raw:
+            m = re.match(r"^(\d+)\.\s", p)
+            if m:
+                n = int(m.group(1))
+                if n == 1 and last > 1: break      # footnotes start again at 1
+                last = n
+            kept.append(p)
+        paras = [re.sub(r"\s*\[\d+\]", "", tidy(p)) for p in kept if keep(p)]
+        out.append({"section": c["summary"], "title": c["title"], "paras": [p for p in paras if p]})
+    return out
+
+SMALL = {"of", "the", "and", "at", "in", "to", "a", "an", "on", "for", "by", "with", "from", "into", "his", "her", "is", "are", "be"}
+def smart_title(t):
+    words = t.lower().split()
+    return " ".join(w if (i and w in SMALL) else w[:1].upper() + w[1:] for i, w in enumerate(words))
+
+def caps_chapters(name, stop=None, start_nth=-1):
+    """Books laid out as 'CHAPTER I' followed by a capitalised summary paragraph."""
+    L = gutenberg_body(name).split("\n")
+    starts = [i for i, l in enumerate(L) if l.strip() == "CHAPTER I"]
+    i = starts[start_nth]
+    chapters, cur = [], None
+    while i < len(L):
+        s = L[i].strip()
+        if stop and s.startswith(stop): break
+        m = re.match(r"^CHAPTER ([IVXLC]+)\.?$", s)
+        if m:
+            if cur: chapters.append(cur)
+            j = i + 1
+            while not L[j].strip(): j += 1
+            title = []
+            while L[j].strip(): title.append(L[j].strip()); j += 1
+            summary = smart_title(re.sub(r"\s+", " ", " ".join(title)).replace("--", " · "))
+            cur = {"section": summary, "title": f"Chapter {m.group(1)}", "lines": []}
+            i = j; continue
+        if cur is not None: cur["lines"].append(L[i])
+        i += 1
+    if cur: chapters.append(cur)
+    return [{"section": c["section"], "title": c["title"], "paras": [tidy(p) for p in paragraphs(c["lines"]) if keep(p)]} for c in chapters]
+
+def ignatius():
+    return caps_chapters("ignatiuslife.txt", stop="APPENDIX")
+
 ROMANS = ["I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV"]
 def desert():
     say = json.load(open(os.path.join(RAW, "desert_sayings.json")))
@@ -131,6 +197,12 @@ BOOKS = [
     dict(id="julian", title="Revelations of Divine Love", author="Julian of Norwich", translator="Grace Warrack", year="c. 1373–1393",
          blurb="The first book in English known to be written by a woman: sixteen 'shewings' of the love of God given to an anchoress of Norwich. 'All shall be well, and all manner of thing shall be well.'",
          source="Project Gutenberg #52958", parse=julian),
+    dict(id="teresa", title="The Life of Saint Teresa of Jesus", author="Saint Teresa of Ávila", translator="David Lewis", year="1565",
+         blurb="Teresa's own story, written at her confessors' command: her lukewarm years, her conversion, and the 'four waters' of prayer. Honest, funny and on fire.",
+         source="Project Gutenberg #8120", parse=teresa),
+    dict(id="ignatius", title="The Autobiography of Saint Ignatius", author="Saint Ignatius of Loyola", translator="J. F. X. O'Conor", year="1553–1555",
+         blurb="The wounded soldier who read the lives of the saints on his sickbed and became the founder of the Jesuits, told in his own words to a companion.",
+         source="Project Gutenberg #24534", parse=ignatius, raw="ignatiuslife.txt"),
     dict(id="confessions", title="The Confessions", author="Saint Augustine of Hippo", translator="E. B. Pusey", year="397–400",
          blurb="Augustine's prayer to God about his restless youth, his long search and his conversion. 'Our heart is restless, until it repose in Thee.'",
          source="Project Gutenberg #3296", parse=confessions),
