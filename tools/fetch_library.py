@@ -4,22 +4,21 @@ import json, os, sys, time, urllib.parse, urllib.request
 
 UA = {"User-Agent": "OraApp/0.1 (https://prayora.co)"}
 SEARCHES = {
-    "imitation": "imitation of christ kempis",
-    "confessions": "confessions augustine",
-    "presence": "practice of the presence of god",
-    "devout": "introduction to the devout life",
-    "soul": "story of a soul therese",
-    "darknight": "dark night of the soul",
-    "flowers": "little flowers of st francis",
-    "benedict": "rule of saint benedict",
-    "cloud": "cloud of unknowing",
-    "abandonment": "abandonment to divine providence",
-    "combat": "spiritual combat scupoli",
-    "desert": "desert fathers",
-    "paradise": "paradise of the holy fathers",
-    "patrick": "saint patrick confession",
-    "interiorcastle": "interior castle teresa",
-    "philothea": "francis de sales love of god",
+    "devout": "devout life",
+    "soul": "story of a soul",
+    "flowers": "little flowers",
+    "cloud": "unknowing",
+    "combat": "spiritual combat",
+    "interiorcastle": "interior castle",
+    "darknight": "dark night soul cross",
+    "ascent": "ascent of mount carmel",
+    "patrick": "patrick",
+    "benedict2": "rule benedict",
+    "philothea": "love of god sales",
+    "garden": "garden of the soul",
+}
+ARCHIVE = {  # key: archive.org identifier (plain-text OCR)
+    "desert2": "ParadiseOfTheHolyFathersV2",
 }
 
 def get(url):
@@ -31,6 +30,7 @@ def main(out):
     for key, q in SEARCHES.items():
         try:
             r = get("https://gutendex.com/books/?languages=en&search=" + urllib.parse.quote(q))
+            r["results"] = sorted(r.get("results", []), key=lambda b: -b.get("download_count", 0))
         except Exception as e:
             print("search failed", key, e); continue
         cands = []
@@ -50,14 +50,20 @@ def main(out):
             except Exception as e:
                 print("download failed", key, e)
         time.sleep(1)
-    # archive.org candidates for the Desert Fathers (Budge, 1907)
+    for key, ident in ARCHIVE.items():
+        try:
+            data = urllib.request.urlopen(urllib.request.Request(f"https://archive.org/download/{ident}/{ident}_djvu.txt", headers=UA), timeout=180).read()
+            open(os.path.join(out, key + ".txt"), "wb").write(data); print("ok", key, ident)
+        except Exception as e:
+            print("archive download failed", key, e)
+    # archive.org candidates for the Rule of St Benedict (Gasquet, 1909)
     try:
-        q = urllib.parse.quote('title:(paradise holy fathers) AND creator:(budge)')
+        q = urllib.parse.quote('title:(rule benedict) AND (creator:(gasquet) OR creator:(hunter-blair)) AND date:[1880-01-01 TO 1930-12-31]')
         r = get(f"https://archive.org/advancedsearch.php?q={q}&fl[]=identifier&fl[]=title&fl[]=year&rows=10&output=json")
-        catalog["archive_desert"] = r.get("response", {}).get("docs", [])
+        catalog["archive_benedict"] = r.get("response", {}).get("docs", [])
     except Exception as e:
         print("archive search failed", e)
-    json.dump(catalog, open(os.path.join(out, "catalog.json"), "w"), indent=1, ensure_ascii=False)
+    json.dump(catalog, open(os.path.join(out, "catalog2.json"), "w"), indent=1, ensure_ascii=False)
 
 if __name__ == "__main__":
     main(sys.argv[1])
