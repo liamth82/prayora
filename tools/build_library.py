@@ -25,6 +25,7 @@ def tidy(p):
     p = re.sub(r"\(\d+\)", "", p)            # footnote markers
     p = p.replace("_", "")                    # italics
     p = re.sub(r"^\d+\.\s+", "", p)           # paragraph numbers
+    p = p.replace("--", "—")
     return re.sub(r"\s+", " ", p).strip()
 
 def keep(p):

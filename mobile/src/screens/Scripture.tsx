@@ -16,6 +16,8 @@ export default function Scripture({ scrollTop }: { scrollTop: () => void }) {
   const [index, setIndex] = useState<BibleBook[]>([]);
   const [library, setLibrary] = useState<LibraryBook[] | null>(null);
   const [book, setBook] = useState<BibleBook | null>(null);
+  const [libBook, setLibBook] = useState<LibraryBook | null>(null);
+  const [contents, setContents] = useState<LibraryText | null>(null);
   const [place, setPlace] = useState<Place | null>(null);
   const [open, setOpen] = useState<Open | null>(null);
   const [bibleText, setBibleText] = useState<BibleText | null>(null);
@@ -86,6 +88,36 @@ export default function Scripture({ scrollTop }: { scrollTop: () => void }) {
       onPrev={open.chapter > 0 ? () => go(-1) : undefined}
       onNext={total && open.chapter < total - 1 ? () => go(1) : undefined} />
   ) : null;
+
+  // Contents of a library book
+  if (libBook) {
+    return (
+      <View>
+        <Back label="The Library" onPress={() => { setLibBook(null); scrollTop(); }} />
+        <Eyebrow>{libBook.author}</Eyebrow>
+        <H2>{libBook.title}</H2>
+        {libBook.translator ? <Text style={st.modern}>Translated by {libBook.translator}</Text> : null}
+        {libBook.blurb ? <Lede>{libBook.blurb}</Lede> : null}
+        <Pressable onPress={() => openAt({ kind: 'library', id: libBook.id, chapter: 0 })} style={st.continue}>
+          <Text style={st.contSmall}>BEGIN</Text>
+          <Text style={st.contTitle}>Read from the start</Text>
+        </Pressable>
+        {!contents ? <ActivityIndicator color={C.goldDeep} style={{ marginTop: 20 }} /> : null}
+        {(contents?.chapters ?? []).map((c, i) => {
+          const showSection = c.section && c.section !== contents!.chapters[i - 1]?.section;
+          return (
+            <View key={i}>
+              {showSection ? <Text style={[st.group, { marginTop: 14 }]}>{c.section!.toUpperCase()}</Text> : null}
+              <Pressable onPress={() => openAt({ kind: 'library', id: libBook.id, chapter: i })} style={({ pressed }) => [st.row, pressed && { backgroundColor: C.vellum2 }]}>
+                <Text style={[st.bookModern, { fontFamily: F.body, color: C.ink, fontSize: 15 }]}>{c.title}</Text>
+              </Pressable>
+            </View>
+          );
+        })}
+        {reader}
+      </View>
+    );
+  }
 
   // Chapter grid for a chosen book
   if (book) {
@@ -161,7 +193,7 @@ export default function Scripture({ scrollTop }: { scrollTop: () => void }) {
           {library === null ? <ActivityIndicator color={C.goldDeep} /> : null}
           {library && !library.length ? <Text style={st.modern}>The first shelf of classics is being prepared.</Text> : null}
           {(library ?? []).map((b) => (
-            <Pressable key={b.id} onPress={() => openAt({ kind: 'library', id: b.id, chapter: 0 })} style={({ pressed }) => [st.lib, pressed && { backgroundColor: C.vellum2 }]}>
+            <Pressable key={b.id} onPress={() => { setLibBook(b); setContents(null); getLibraryBook(b.id).then((t) => { setContents(t); if (t) setLibText(t); }); scrollTop(); }} style={({ pressed }) => [st.lib, pressed && { backgroundColor: C.vellum2 }]}>
               <Text style={st.libTitle}>{b.title}</Text>
               <Text style={st.libAuthor}>{b.author}{b.translator ? ` · translated by ${b.translator}` : ''}</Text>
               {b.blurb ? <Text style={st.libBlurb}>{b.blurb}</Text> : null}

@@ -108,8 +108,11 @@ export default function Reader({ chapter, loading, onClose, onPrev, onNext }: {
                 chapter.units.map((u, i) => (
                   <Text key={i} {...kp(u.text, chapter.sourceFor(u))}
                     style={{ fontFamily: F.body, fontSize: size, lineHeight: line, color: T.ink, marginBottom: line * 0.6, textIndent: undefined } as any}>
-                    {i === 0 ? <Text style={{ fontFamily: F.display, fontSize: size * 1.9, color: T.accent }}>{u.text[0]}</Text> : null}
-                    {i === 0 ? u.text.slice(1) : u.text}
+                    {i === 0 ? (() => {
+                      const k = u.text.search(/[A-Za-z]/);
+                      if (k < 0) return u.text;
+                      return (<>{u.text.slice(0, k)}<Text style={{ fontFamily: F.display, fontSize: size * 1.9, color: T.accent }}>{u.text[k]}</Text>{u.text.slice(k + 1)}</>);
+                    })() : u.text}
                   </Text>
                 ))
               )}
