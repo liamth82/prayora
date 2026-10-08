@@ -151,3 +151,64 @@ SAINTS = {
   meditation="Willing to die for the Church: what would you be willing to give up for her?",
   query="Murder of Thomas Becket miniature manuscript"),
 }
+
+# Fuller entries: a longer life, a prayer to the saint and a fast or penance.
+# 'always' shows the entry whatever the calendar data says (used for national feasts such as Newman in England and Wales).
+SAINTS["10-08"] = dict(name="Saint Bridget of Sweden", dates="1303–1373 · Sweden and Rome", efMatch="Bridget", calendars=["EF"],
+  history="A Swedish noblewoman, wife and mother of eight, who after her husband's death founded the Order of the Most Holy Saviour and spent her last twenty-four years in Rome, praying and pleading for the reform of the Church.",
+  query="Saint Bridget of Sweden painting")
+
+EXTRA = {
+ "10-06": dict(
+  life="Born in Cologne around 1030, Bruno became master of the cathedral school at Reims, where one of his pupils later became Pope Urban II. He stood against a simoniac archbishop and lost his post for it. In 1084, with six companions, he went to Bishop Hugh of Grenoble, who had dreamed of seven stars guiding him to a wild valley in the Alps. There they built the Grande Chartreuse. Called to Rome by his old pupil, Bruno longed for solitude and was allowed to found a second hermitage at La Torre in Calabria, where he died in 1101. He was never formally canonised; his cult was approved in 1514.",
+  prayerTo="Saint Bruno, you left honours and learning to seek God alone in the silence of the mountains. Teach me to love silence, to guard my heart from noise and distraction, and to find in stillness the God who speaks there. Pray for me, that I may seek Him first. Amen.",
+  penance="Keep an hour of silence today: no phone, no music, no news. The Carthusians also abstain from meat for life; consider a meatless day."),
+ "10-07": dict(
+  life="Tradition links the Rosary to Saint Dominic in the thirteenth century; it grew into its familiar form of fifteen decades by the sixteenth. Before the Battle of Lepanto in 1571, Pope Pius V asked all Christendom to pray it, and credited the victory to Our Lady's intercession. Gregory XIII gave the feast its present name in 1573. Popes since Leo XIII have written on the Rosary, and in 2002 John Paul II added the Luminous Mysteries.",
+  prayerTo="Queen of the Most Holy Rosary, you walked with your Son from the crib to the cross to the glory of heaven. Take my hand as I pray, and let the mysteries of His life become the pattern of mine. Pray for us, that we may be made worthy of the promises of Christ. Amen.",
+  penance="Pray all five decades today, kneeling if you can, for an intention bigger than yourself: peace, or the conversion of someone you love."),
+ "10-08": dict(
+  life="Bridget Birgersdotter was married at thirteen to Ulf Gudmarsson and bore eight children, among them Saint Catherine of Sweden. She served at the royal court and, after Ulf died in 1344, gave herself wholly to prayer. Her visions, recorded as the Revelations, called kings and popes to repentance and urged the papacy to return from Avignon to Rome. She founded a double monastery at Vadstena, went to Rome for the Jubilee of 1350 and never went home, dying there in 1373 after a pilgrimage to the Holy Land. John Paul II named her a patron saint of Europe in 1999.",
+  prayerTo="Saint Bridget, wife, mother and widow, you loved Christ crucified and were not afraid to speak the truth to the powerful. Help me to meditate on His Passion, to serve my family faithfully, and to pray for the renewal of the Church. Amen.",
+  penance="Bridget meditated daily on the Passion. Spend fifteen minutes today with a crucifix, and make a small sacrifice in honour of the wounds of Christ."),
+ "10-09": dict(
+  life="Newman was the leading light of the Oxford Movement, which sought to recover the Catholic heritage of the Church of England. His study of the Fathers led him, slowly and painfully, to conclude that the Catholic Church was the Church they knew. On 9 October 1845, the date of his feast, he was received by Blessed Dominic Barberi at Littlemore. He lost friends, position and income. As an Oratorian in Birmingham he preached, taught, founded a school and wrote the Apologia pro Vita Sua in reply to a public attack on his honesty. Leo XIII made him a cardinal in 1879; his motto was Cor ad cor loquitur, heart speaks to heart. Benedict XVI beatified him in Birmingham in 2010.",
+  prayerTo="Saint John Henry, you followed the kindly Light through doubt and loss to the fullness of the faith. Pray for all who search for truth, for those who have drifted from the Church, and for me, that I may take the next step God shows me, and trust Him with the rest. Amen.",
+  penance="Newman gave up everything for conscience. Give up something you lean on today, and pray for someone you know who is searching.",
+  always=True),
+ "10-15": dict(
+  life="Teresa de Ahumada entered the Carmelite convent of the Incarnation at Ávila in 1535. For nearly twenty years her prayer was half-hearted, until in 1554 she was overcome before an image of the wounded Christ. From then on she lived a life of deep prayer and mystical graces. In 1562 she founded the small convent of Saint Joseph, returning to the strict original rule, and with Saint John of the Cross she carried the reform to the friars. She travelled Spain in a covered cart, founding convents in spite of illness and opposition, and wrote with humour and honesty about the soul's journey to God. She died at Alba de Tormes in 1582 and was canonised in 1622.",
+  prayerTo="Saint Teresa, you learned that God alone suffices. Teach me to pray as a friend speaks with a friend, to persevere when prayer is dry, and to keep a good humour on the way. Pray for me, that nothing may disturb me and nothing frighten me. Amen.",
+  penance="Teresa insisted on daily mental prayer. Give God fifteen minutes of quiet prayer today, even if it feels like nothing happens."),
+ "10-16": dict(
+  life="Margaret Mary entered the Visitation monastery at Paray-le-Monial in 1671. In a series of revelations Christ showed her His Heart, burning with love and wounded by ingratitude, and asked for a feast in its honour, for Communion on the first Friday of each month, and for an hour of prayer on Thursday nights in memory of His agony in Gethsemane. Her community thought her deluded until the Jesuit Saint Claude de la Colombière recognised the visions as genuine. The devotion she spread became one of the most widely loved in the Church. She was canonised in 1920.",
+  prayerTo="Saint Margaret Mary, you saw the Heart that has so loved the world. Pray that my cold heart may be warmed by it, that I may make reparation for my sins and the sins of the world, and that I may rest in that Heart at the hour of my death. Amen.",
+  penance="Keep the Holy Hour tonight or next Thursday, an hour of prayer with Christ in Gethsemane, and plan to receive Communion on the next First Friday."),
+ "10-17": dict(
+  life="Ignatius was the third bishop of Antioch, where the disciples were first called Christians. Arrested under Trajan around 107, he was taken in chains across Asia Minor to Rome. On the way he wrote seven letters, to the Ephesians, Magnesians, Trallians, Romans, Philadelphians and Smyrnaeans, and to Bishop Polycarp. They are the earliest writings we have that speak of bishops, priests and deacons, of the Eucharist as the flesh of Christ, and of 'the Catholic Church'. He begged the Christians of Rome not to try to save him. He died in the arena.",
+  prayerTo="Saint Ignatius, you went to your death longing to be wheat ground into the bread of Christ. Pray that I may love the Eucharist as you did, stay close to the Church, and not shrink from what following Christ will cost. Amen.",
+  penance="Go to a weekday Mass if you can, or make a spiritual communion, offering it for Christians persecuted for their faith today."),
+ "10-18": dict(
+  life="Saint Paul calls him 'Luke, the most dear physician'. A Gentile, probably from Antioch, Luke travelled with Paul, and the 'we' passages of Acts are his eyewitness account. He wrote his Gospel 'in order', having carefully traced everything from the beginning, and his pages carry the infancy of Christ, the parables of mercy and the canticles the Church still prays every day. He is the patron of physicians, surgeons and artists.",
+  prayerTo="Saint Luke, physician and evangelist, you wrote of the mercy of God for the poor and the lost. Pray for all who care for the sick, for doctors and nurses, and for me, that I may know myself found by the Shepherd who came to seek the lost. Amen.",
+  penance="Visit or call someone who is ill today, or pray for the doctors and nurses who care for them."),
+ "10-22": dict(
+  life="Born in Wadowice in 1920, Karol Wojtyła lost his mother, brother and father by the age of twenty. Under Nazi occupation he worked in a quarry, acted in an underground theatre and studied secretly for the priesthood. As bishop and archbishop of Kraków he defended the Church against the communist regime. Elected pope in 1978, he travelled the world, began World Youth Day, survived an assassin's bullet in 1981 and visited the gunman in prison to forgive him. He established Divine Mercy Sunday, gave the Church the Catechism, and died on its vigil in 2005. He was canonised in 2014.",
+  prayerTo="Saint John Paul, you told the world not to be afraid. Pray for me in my fears, for families and young people, and for the Church you loved. Help me to open wide the doors of my life to Christ, and to trust in His mercy. Amen.",
+  penance="Pray the Divine Mercy Chaplet at three o'clock today, and forgive someone who has wronged you, in your heart if not yet in person."),
+ "10-28": dict(
+  life="Simon is called the Zealot, perhaps because he had belonged to the party that resisted Rome, perhaps for his zeal. Jude, also called Thaddeus, is the apostle who asked Christ at the Last Supper why He would show Himself to them and not to the world. He wrote the short Letter of Jude, urging the faithful to 'contend for the faith once delivered to the saints'. Western tradition holds that the two preached together in Persia and were martyred there.",
+  prayerTo="Saint Jude, faithful apostle and patron of things despaired of, I bring you what I cannot fix. Pray for me in this need, and teach me to trust in the God for whom nothing is impossible. Saint Simon, pray that my zeal may be for Christ alone. Amen.",
+  penance="Offer a small fast today, perhaps a skipped meal or something you would usually enjoy, for a cause that seems hopeless."),
+ "11-01": dict(
+  life="The early Church kept the feasts of the martyrs on the anniversaries of their deaths. As their number grew beyond counting, a common feast emerged. In 609 Pope Boniface IV dedicated the Pantheon in Rome to Our Lady and all the martyrs, and in the eighth century Gregory III dedicated a chapel in Saint Peter's to all the saints on 1 November. Gregory IV extended the feast to the whole Church. It honours the saints we know and the vast company we do not, many of them ordinary men and women.",
+  prayerTo="All you holy men and women, saints of God, pray for us. You have finished the race; help us to run it. Win for us the grace to become what God made us to be, and to join you in the vision of His face. Amen.",
+  penance="Go to Mass, a holy day of obligation, and choose one saint to read about and imitate this month."),
+ "11-02": dict(
+  life="The custom of praying for the dead is older than Christianity; Judas Maccabeus 'made atonement for the dead, that they might be delivered from their sin'. Saint Odilo, abbot of Cluny, ordered a day of prayer for all the faithful departed around 998, and it spread through the whole Church. In 1915 Benedict XV allowed every priest to offer three Masses today, because of the dead of the First World War.",
+  prayerTo="O Lord, by whose mercy the souls of the faithful find rest, grant to all my family, friends and benefactors who have died the forgiveness of their sins and the light of your face. Holy souls in purgatory, pray for us, and remember us when you come into your kingdom. Amen.",
+  penance="Visit a cemetery and pray for the dead between 1 and 8 November; a plenary indulgence may be gained for the holy souls on each day."),
+}
+for _md, _x in EXTRA.items():
+    if _md in SAINTS:
+        SAINTS[_md].update(_x)

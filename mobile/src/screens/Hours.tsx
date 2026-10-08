@@ -4,10 +4,12 @@ import { currentHour, GLORIA, HOURS } from '../content';
 import { load, save, todayKey } from '../storage';
 import { C, F } from '../theme';
 import { Back, Button, Eyebrow, H2, Lede, Proto, Rule } from '../components/ui';
+import { useKeepable } from '../keep';
 
 export default function Hours({ scrollTop }: { scrollTop: () => void }) {
   const [open, setOpen] = useState<string | null>(null);
   const [done, setDone] = useState<string[]>([]);
+  const kp = useKeepable();
   const key = 'prayed:' + todayKey();
   useEffect(() => { load<string[]>(key, []).then(setDone); }, [key]);
   const cur = currentHour();
@@ -32,8 +34,8 @@ export default function Hours({ scrollTop }: { scrollTop: () => void }) {
         <VR v="℟." t="O Lord, make haste to help me." />
         <Text style={st.office}>{GLORIA}</Text>
         <Rub>Psalmody · {x.psalm[0]}</Rub>
-        <Text style={st.office}>{x.psalm[1]}</Text>
-        {x.cant ? (<><Rub>{x.cant[0]}</Rub><Text style={st.office}>{x.cant[1]}</Text></>) : null}
+        <Text style={st.office} {...kp(x.psalm[1], `${x.psalm[0]} · ${x.name}`)}>{x.psalm[1]}</Text>
+        {x.cant ? (<><Rub>{x.cant[0]}</Rub><Text style={st.office} {...kp(x.cant[1], `${x.cant[0]} · ${x.name}`)}>{x.cant[1]}</Text></>) : null}
         <Text style={st.office}>{GLORIA}</Text>
         <Rub>Conclusion</Rub>
         <VR v="℣." t="Let us bless the Lord." />

@@ -2,5 +2,8 @@
  "name": "Dedication of the Lateran Basilica",
  "dates": "Rome, 324",
  "history": "Saint John Lateran, not Saint Peter's, is the cathedral of the Pope as Bishop of Rome, 'mother and head of all the churches of the city and the world'. It was dedicated by Pope Sylvester in 324, soon after the Church was freed from persecution.",
- "meditation": "You are God's temple. Pray for your own parish church and its priest today."
+ "meditation": "You are God's temple. Pray for your own parish church and its priest today.",
+ "match": [
+  "lateran"
+ ]
 }

@@ -21,6 +21,8 @@ import Fast, { Veil } from './src/screens/Fast';
 import Today from './src/screens/Today';
 import Settings from './src/screens/Settings';
 import { SettingsProvider } from './src/settings';
+import { KeepProvider } from './src/keep';
+import Wisdom from './src/screens/Wisdom';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
 
@@ -45,6 +47,7 @@ function Main() {
   const insets = useSafeAreaInsets();
   const [tab, setTab] = useState<Tab>('today');
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [wisdomOpen, setWisdomOpen] = useState(false);
   const [secs, setSecs] = useState(0);
   const [fast, setFast] = useState<{ id: string; until: number } | null>(null);
   const scroll = useRef<ScrollView>(null);
@@ -97,6 +100,9 @@ function Main() {
             <Text style={st.date}>{date}</Text>
             <View style={st.lit}><Dot color={s.color} /><Text style={st.litText}>{s.name}</Text></View>
           </View>
+          <Pressable onPress={() => setWisdomOpen(true)} hitSlop={10} accessibilityRole="button" accessibilityLabel="My Wisdom" style={{ paddingBottom: 2 }}>
+            <Svg width={20} height={22} viewBox="0 0 20 24"><Path d="M3 2h14v20l-7-5-7 5z" stroke={C.inkSoft} strokeWidth={1.5} fill="none" /></Svg>
+          </Pressable>
           <Pressable onPress={() => setSettingsOpen(true)} hitSlop={10} accessibilityRole="button" accessibilityLabel="Settings" style={{ paddingBottom: 2 }}>
             <Svg width={22} height={22} viewBox="0 0 24 24"><Circle cx={12} cy={12} r={3} stroke={C.inkSoft} strokeWidth={1.5} fill="none" /><Path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1" stroke={C.inkSoft} strokeWidth={1.5} /></Svg>
           </Pressable>
@@ -126,6 +132,7 @@ function Main() {
         })}
       </View>
 
+      {wisdomOpen ? <View style={{ position: 'absolute', top: insets.top, left: 0, right: 0, bottom: 0 }}><Wisdom onClose={() => setWisdomOpen(false)} /></View> : null}
       {settingsOpen ? <View style={{ position: 'absolute', top: insets.top, left: 0, right: 0, bottom: 0 }}><Settings onClose={() => setSettingsOpen(false)} /></View> : null}
       {fast && activeMode ? <Veil mode={activeMode} until={fast.until} onEnd={endFast} /> : null}
     </View>
@@ -142,7 +149,9 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <SettingsProvider>
-        <Main />
+        <KeepProvider>
+          <Main />
+        </KeepProvider>
       </SettingsProvider>
     </SafeAreaProvider>
   );

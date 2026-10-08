@@ -97,3 +97,47 @@ export function rankLabelEF(rank: number) {
 export function rankLabelOF(rank: string) {
   return ({ SOLEMNITY: 'Solemnity', FEAST: 'Feast', MEMORIAL: 'Memorial', OPT_MEMORIAL: 'Optional memorial', SUNDAY: 'Sunday', FERIA: 'Weekday', COMMEMORATION: 'Commemoration', TRIDUUM: 'Sacred Triduum', HOLY_WEEK: 'Holy Week' } as Record<string, string>)[rank] ?? '';
 }
+
+export type Saint = {
+  name: string; dates?: string; history: string; life?: string; prayer?: string; prayerSource?: string; prayerTo?: string;
+  fast?: string; penance?: string; meditation?: string; image?: string; imageCredit?: string; imageRatio?: number;
+  match?: string[]; always?: boolean;
+};
+
+export async function getSaint(md: string): Promise<Saint | null> {
+  try {
+    const r = await fetch(`${BASE}/saints/${md}.json`, { headers: { 'Cache-Control': 'no-cache' } });
+    if (r.status === 404) { save('saint:' + md, null); return null; }
+    if (!r.ok) throw new Error(String(r.status));
+    const s = (await r.json()) as Saint;
+    save('saint:' + md, s);
+    return s;
+  } catch {
+    return load<Saint | null>('saint:' + md, null);
+  }
+}
+
+export async function getSaintIndex(): Promise<{ md: string; name: string }[]> {
+  try {
+    const r = await fetchJson<{ md: string; name: string }[]>(`${BASE}/saints/index.json`);
+    save('saint:index', r);
+    return r;
+  } catch {
+    return load('saint:index', []);
+  }
+}
+
+/** True when this saint is actually kept today in the chosen calendar. */
+export function saintKept(s: Saint | null, day: Day | null): boolean {
+  if (!s) return false;
+  if (s.always || !day) return true;
+  const t = day.title.toLowerCase();
+  return (s.match ?? []).some((m) => t.includes(m));
+}
+
+/** True when the day is a saint's day or feast rather than a plain weekday or Sunday. */
+export function isSanctoral(day: Day | null): boolean {
+  if (!day) return false;
+  if (day.form === 'OF') return ['MEMORIAL', 'OPT_MEMORIAL', 'FEAST', 'SOLEMNITY', 'COMMEMORATION'].includes(day.rank);
+  return day.title !== day.tempora && !/sunday|feria|week|octave|ember|vigil/i.test(day.title);
+}

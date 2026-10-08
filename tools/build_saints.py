@@ -23,7 +23,8 @@ def main():
         images = json.load(open(p))
     n = 0
     for md, s in SAINTS.items():
-        out = {k: v for k, v in s.items() if k not in ("efMatch", "query")}
+        out = {k: v for k, v in s.items() if k not in ("efMatch", "query", "calendars")}
+        out["match"] = [s["efMatch"].lower()] if s.get("efMatch") else [w.lower() for w in s["name"].replace("Saints ", "").replace("Saint ", "").replace("The ", "").split() if len(w) > 3][:2]
         if "prayer" not in out and s.get("efMatch"):
             c = ef_collect(md, s["efMatch"])
             if c:
@@ -37,6 +38,8 @@ def main():
             out["imageRatio"] = round(img["w"] / img["h"], 3) if img.get("w") and img.get("h") else 0.8
         json.dump(out, open(os.path.join(ROOT, "saints", md + ".json"), "w"), ensure_ascii=False, indent=1)
         n += 1
+    index = [{"md": md, "name": s["name"]} for md, s in sorted(SAINTS.items())]
+    json.dump(index, open(os.path.join(ROOT, "saints", "index.json"), "w"), ensure_ascii=False)
     print("built", n)
 
 if __name__ == "__main__":

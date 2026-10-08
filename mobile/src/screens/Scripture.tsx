@@ -4,10 +4,12 @@ import { BOOKS } from '../content';
 import { load, save } from '../storage';
 import { C, F } from '../theme';
 import { Back, Eyebrow, H2, H3, Illumination, Lede, Rule } from '../components/ui';
+import { useKeepable } from '../keep';
 
 export default function Scripture({ scrollTop }: { scrollTop: () => void }) {
   const [open, setOpen] = useState<string | null>(null);
   const [last, setLast] = useState<string | null>(null);
+  const kp = useKeepable();
   useEffect(() => { load<string | null>('lastBook', null).then(setLast); }, []);
 
   const go = (id: string | null) => {
@@ -28,7 +30,7 @@ export default function Scripture({ scrollTop }: { scrollTop: () => void }) {
           <Illumination book={b} width={96} />
           <View style={{ flex: 1 }}>
             {b.verses.map(([n, t], i) => (
-              <Text key={n} style={st.verse}>
+              <Text key={n} style={st.verse} {...kp(t, `${b.ref.split(/\s\d/)[0].replace('Psalm', 'Psalm')} ${b.ref.match(/\d+/)?.[0] ?? ''}:${n} · Douay-Rheims`)}>
                 <Text style={st.vn}>{n} </Text>
                 {i === 0 ? <Text style={st.firstLetter}>{t[0]}</Text> : null}
                 {i === 0 ? t.slice(1) : t}
