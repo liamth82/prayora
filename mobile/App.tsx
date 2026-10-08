@@ -25,6 +25,7 @@ import { SettingsProvider } from './src/settings';
 import { KeepProvider } from './src/keep';
 import Wisdom from './src/screens/Wisdom';
 import Refuge from './src/screens/Refuge';
+import Gratitude from './src/screens/Gratitude';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
 
@@ -51,6 +52,10 @@ function Main() {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [wisdomOpen, setWisdomOpen] = useState(false);
   const [refugeOpen, setRefugeOpen] = useState(false);
+  const [thanksOpen, setThanksOpen] = useState(false);
+  const [lectioSecs, setLectioSecs] = useState(0);
+  const prayerOverlayRef = useRef(false);
+  const readingOverlayRef = useRef(false);
   const [secs, setSecs] = useState(0); // browsing
   const [prayerSecs, setPrayerSecs] = useState(0);
   const tabRef = useRef<Tab>('today');
@@ -74,7 +79,8 @@ function Main() {
   useEffect(() => {
     load<Tab>('tab', 'today').then((t) => setTab(t));
     load<number>('browse:' + todayKey(), 0).then(setSecs);
-    load<number>('prayer:' + todayKey(), 0).then(setPrayerSecs);
+    load<number>('prayer2:' + todayKey(), 0).then(setPrayerSecs);
+    load<number>('lectio:' + todayKey(), 0).then(setLectioSecs);
     load<{ id: string; until: number; start?: number } | null>('fast', null).then((f) => { if (f && f.until > Date.now()) setFast(f); });
   }, []);
 
@@ -85,8 +91,10 @@ function Main() {
     const t = setInterval(() => {
       if (!active) return;
       // Reading and prayer count as time in prayer; everything else is browsing, which the sundial measures.
-      const praying = !overlayRef.current && ['today', 'scripture', 'hours', 'saints'].includes(tabRef.current);
-      const [setter, key] = praying ? [setPrayerSecs, 'prayer:'] as const : [setSecs, 'browse:'] as const;
+      // Prayer: the Hours, Refuge and thanksgiving. Lectio (sacred reading): Today, Read, Saints and My Wisdom. Everything else is browsing.
+      const praying = prayerOverlayRef.current || (!overlayRef.current && tabRef.current === 'hours');
+      const reading = !praying && (readingOverlayRef.current || (!overlayRef.current && ['today', 'scripture', 'saints'].includes(tabRef.current)));
+      const [setter, key] = praying ? [setPrayerSecs, 'prayer2:'] as const : reading ? [setLectioSecs, 'lectio:'] as const : [setSecs, 'browse:'] as const;
       setter((s) => {
         const n = s + 1;
         if (n % 5 === 0) save(key + todayKey(), n);
@@ -97,7 +105,9 @@ function Main() {
   }, []);
 
   useEffect(() => { tabRef.current = tab; }, [tab]);
-  useEffect(() => { overlayRef.current = settingsOpen || wisdomOpen; }, [settingsOpen, wisdomOpen]);
+  useEffect(() => { overlayRef.current = settingsOpen; }, [settingsOpen]);
+  useEffect(() => { prayerOverlayRef.current = refugeOpen || thanksOpen; }, [refugeOpen, thanksOpen]);
+  useEffect(() => { readingOverlayRef.current = wisdomOpen; }, [wisdomOpen]);
   const choose = (t: Tab) => { setTab(t); save('tab', t); scrollTop(); };
 
   const startFast = (m: Mode) => {
@@ -137,12 +147,12 @@ function Main() {
 
       <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <ScrollView ref={scroll} contentContainerStyle={st.screen} keyboardShouldPersistTaps="handled">
-          {tab === 'today' && <Today openHours={() => choose('hours')} />}
+          {tab === 'today' && <Today openHours={() => choose('hours')} onThanks={() => setThanksOpen(true)} onRefuge={() => setRefugeOpen(true)} />}
           {tab === 'scripture' && <Scripture scrollTop={scrollTop} />}
           {tab === 'hours' && <Hours scrollTop={scrollTop} />}
           {tab === 'saints' && <Saints scrollTop={scrollTop} />}
           {tab === 'ask' && <Ask />}
-          {tab === 'fast' && <Fast minutes={Math.floor(secs / 60)} prayerMinutes={Math.floor(prayerSecs / 60)} onStart={startFast} onRefuge={() => setRefugeOpen(true)} />}
+          {tab === 'fast' && <Fast minutes={Math.floor(secs / 60)} prayerMinutes={Math.floor(prayerSecs / 60)} lectioMinutes={Math.floor(lectioSecs / 60)} onStart={startFast} onRefuge={() => setRefugeOpen(true)} onThanks={() => setThanksOpen(true)} />}
         </ScrollView>
       </KeyboardAvoidingView>
 
@@ -159,6 +169,7 @@ function Main() {
       </View>
 
       <Refuge visible={refugeOpen} onClose={() => setRefugeOpen(false)} />
+      <Gratitude visible={thanksOpen} onClose={() => setThanksOpen(false)} />
       {wisdomOpen ? <View style={{ position: 'absolute', top: insets.top, left: 0, right: 0, bottom: 0 }}><Wisdom onClose={() => setWisdomOpen(false)} /></View> : null}
       {settingsOpen ? <View style={{ position: 'absolute', top: insets.top, left: 0, right: 0, bottom: 0 }}><Settings onClose={() => setSettingsOpen(false)} /></View> : null}
       {fast && activeMode ? <Veil mode={activeMode} until={fast.until} start={fast.start} onEnd={endFast} /> : null}

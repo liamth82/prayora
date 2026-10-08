@@ -6,7 +6,7 @@ import { Mode, MODES } from '../content';
 import { C, F } from '../theme';
 import { Eyebrow, H2, H3, Lede, Proto, Rule, Sundial } from '../components/ui';
 
-export default function Fast({ minutes, prayerMinutes, onStart, onRefuge }: { minutes: number; prayerMinutes: number; onStart: (m: Mode) => void; onRefuge: () => void }) {
+export default function Fast({ minutes, prayerMinutes, lectioMinutes, onStart, onRefuge, onThanks }: { minutes: number; prayerMinutes: number; lectioMinutes: number; onStart: (m: Mode) => void; onRefuge: () => void; onThanks: () => void }) {
   const msg = minutes < 10 ? 'A good visit. When you are finished, close the app.'
     : minutes < 30 ? 'Consider closing Ora and praying in silence.'
     : 'Put the phone down. God is not in here.';
@@ -14,12 +14,13 @@ export default function Fast({ minutes, prayerMinutes, onStart, onRefuge }: { mi
     <View>
       <Eyebrow>Digital Fast</Eyebrow>
       <H2>Be still</H2>
-      <Lede>Time spent praying and reading is never counted against you. The sundial measures only the rest; its shadow lengthens the longer you browse.</Lede>
+      <Lede>Time in prayer and in lectio, the slow, prayerful reading of Scripture and the saints, is never counted against you. The sundial measures only the rest; its shadow lengthens the longer you browse.</Lede>
       <View style={st.dial}>
         <Sundial mins={minutes} width={140} />
         <View style={{ flex: 1 }}>
           <Text style={st.mins}>{minutes}<Text style={st.minsSmall}> min browsing today</Text></Text>
-          <Text style={st.prayer}>{prayerMinutes} min in prayer and reading</Text>
+          <Text style={st.prayer}>{prayerMinutes} min in prayer</Text>
+          <Text style={st.prayer}>{lectioMinutes} min in lectio, sacred reading</Text>
           <Text style={st.msg}>{msg}</Text>
         </View>
       </View>
@@ -27,6 +28,11 @@ export default function Fast({ minutes, prayerMinutes, onStart, onRefuge }: { mi
         <Text style={st.refugeSmall}>WHEN TEMPTATION COMES</Text>
         <Text style={st.refugeTitle}>Refuge</Text>
         <Text style={st.refugeSub}>Five minutes with God, whenever you need them</Text>
+      </Pressable>
+      <Pressable onPress={onThanks} style={[st.refuge, { backgroundColor: '#0D0A06', marginTop: 10 }]} accessibilityRole="button">
+        <Text style={st.refugeSmall}>WHEN SOMETHING GOOD HAPPENS</Text>
+        <Text style={st.refugeTitle}>Deo gratias</Text>
+        <Text style={st.refugeSub}>Give thanks, and remember it</Text>
       </Pressable>
       <Rule />
       <Eyebrow>Begin a fast</Eyebrow>

@@ -57,6 +57,7 @@ function Light() {
   const pulse = beat.interpolate({ inputRange: [0, 1], outputRange: [0, 0.18] });
   return (
     <View style={st.lightWrap} pointerEvents="none">
+      <View style={{ width: 320, height: 320 }}>
       <Animated.View style={{ transform: [{ scale }], opacity: glow }}>
         <Svg width={320} height={320}>
           <Defs>
@@ -71,6 +72,7 @@ function Light() {
         </Svg>
       </Animated.View>
       <Animated.View style={[st.pulse, { opacity: pulse }]} />
+      </View>
     </View>
   );
 }
@@ -188,7 +190,7 @@ export default function PrayerSession({ visible, title, subtitle, lines, onFinis
 const st = StyleSheet.create({
   root: { flex: 1, backgroundColor: '#07060A' },
   lightWrap: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, alignItems: 'center', justifyContent: 'flex-start', paddingTop: '14%' },
-  pulse: { position: 'absolute', top: '14%', marginTop: 115, width: 90, height: 90, borderRadius: 45, backgroundColor: '#FFF6DC' },
+  pulse: { position: 'absolute', top: 115, left: 115, width: 90, height: 90, borderRadius: 45, backgroundColor: '#FFF6DC' },
   stage: { flex: 1, alignItems: 'center', justifyContent: 'flex-end', paddingHorizontal: 30, paddingBottom: 150 },
   label: { fontFamily: F.sc, fontSize: 12.5, letterSpacing: 2.4, color: '#A8946C', marginBottom: 14, textAlign: 'center' },
   line: { textAlign: 'center', color: '#F7EFDC', textShadowColor: 'rgba(0,0,0,0.85)', textShadowRadius: 14, textShadowOffset: { width: 0, height: 0 } },

@@ -12,7 +12,7 @@ import {
 import { load, save } from '../storage';
 import { Eyebrow, Proto, Rule } from '../components/ui';
 
-export default function Today({ openHours }: { openHours: () => void }) {
+export default function Today({ openHours, onThanks, onRefuge }: { openHours: () => void; onThanks: () => void; onRefuge: () => void }) {
   const { form, latin } = useSettings();
   const { width: winW } = useWindowDimensions();
   const [day, setDay] = useState<Day | null>(null);
@@ -95,6 +95,17 @@ export default function Today({ openHours }: { openHours: () => void }) {
 
       <View style={{ paddingHorizontal: 20, paddingTop: 20 }}>
         {saint ? <SaintCard s={saint} accent={lc.bg === LIT_COLORS.white.bg ? C.goldDeep : lc.bg} /> : null}
+
+        <View style={st.quick}>
+          <Pressable onPress={onThanks} style={({ pressed }) => [st.quickBtn, pressed && { backgroundColor: C.vellum2 }]} accessibilityRole="button">
+            <Text style={st.quickSmall}>SOMETHING GOOD?</Text>
+            <Text style={st.quickTitle}>Give thanks</Text>
+          </Pressable>
+          <Pressable onPress={onRefuge} style={({ pressed }) => [st.quickBtn, pressed && { backgroundColor: C.vellum2 }]} accessibilityRole="button">
+            <Text style={st.quickSmall}>TEMPTED?</Text>
+            <Text style={st.quickTitle}>Take refuge</Text>
+          </Pressable>
+        </View>
 
         <Pressable onPress={openHours} style={st.hourRow}>
           <Text style={st.hourLabel}>THE CHURCH IS PRAYING</Text>
@@ -231,6 +242,10 @@ const st = StyleSheet.create({
   lbTitle: { fontFamily: F.display, fontSize: 22, color: '#F5EDD6' },
   lbCredit: { fontFamily: F.bodyItalic, fontSize: 12.5, lineHeight: 18, color: '#B9A57F', marginTop: 4 },
   lbHint: { fontFamily: F.sc, fontSize: 11.5, letterSpacing: 1.4, color: '#7E6E55', marginTop: 10 },
+  quick: { flexDirection: 'row', gap: 10, marginBottom: 12 },
+  quickBtn: { flex: 1, borderWidth: 1, borderColor: C.vellum3, borderRadius: 3, paddingVertical: 10, paddingHorizontal: 12 },
+  quickSmall: { fontFamily: F.sc, fontSize: 11, letterSpacing: 1.4, color: C.inkFaint },
+  quickTitle: { fontFamily: F.display, fontSize: 20, color: C.ink, marginTop: 1 },
   readBox: { alignItems: 'center', marginTop: 26, marginBottom: 6, gap: 8 },
   readBtn: { borderWidth: 1, borderColor: C.ink, borderRadius: 3, paddingHorizontal: 22, paddingVertical: 12 },
   readBtnOn: { backgroundColor: C.green, borderColor: C.green },
