@@ -14,6 +14,7 @@ import { season } from './src/liturgy';
 import { load, save, todayKey } from './src/storage';
 import { Mode, MODES } from './src/content';
 import { Dot } from './src/components/ui';
+import { GearIcon, RefugeIcon, ThanksIcon, WisdomIcon } from './src/components/icons';
 import Scripture from './src/screens/Scripture';
 import Hours from './src/screens/Hours';
 import Saints from './src/screens/Saints';
@@ -128,33 +129,32 @@ function Main() {
       <StatusBar style="light" />
       <View style={st.header}>
         <View style={st.headTop}>
+          <Pressable onPress={() => setRefugeOpen(true)} hitSlop={10} style={st.corner} accessibilityRole="button" accessibilityLabel="Refuge, when temptation comes">
+            <RefugeIcon color={C.goldDeep} />
+            <Text style={st.cornerText}>REFUGE</Text>
+          </Pressable>
           <Text style={st.wordmark}>Or<Text style={{ color: C.gold, fontFamily: F.displayItalic }}>a</Text></Text>
-          <View style={st.icons}>
-            <Pressable onPress={() => setRefugeOpen(true)} hitSlop={10} accessibilityRole="button" accessibilityLabel="Refuge, when temptation comes">
-            <Svg width={20} height={22} viewBox="0 0 20 24"><Path d="M10 1.5 L18 4.5 V11 C18 16.5 14.5 20.5 10 22.5 C5.5 20.5 2 16.5 2 11 V4.5 Z" stroke={C.inkSoft} strokeWidth={1.5} fill="none" /><Path d="M10 6.5 V17 M6.5 10 H13.5" stroke={C.inkSoft} strokeWidth={1.5} /></Svg>
-            </Pressable>
-            <Pressable onPress={() => setWisdomOpen(true)} hitSlop={10} accessibilityRole="button" accessibilityLabel="My Wisdom">
-            <Svg width={20} height={22} viewBox="0 0 20 24"><Path d="M3 2h14v20l-7-5-7 5z" stroke={C.inkSoft} strokeWidth={1.5} fill="none" /></Svg>
-            </Pressable>
-            <Pressable onPress={() => setSettingsOpen(true)} hitSlop={10} accessibilityRole="button" accessibilityLabel="Settings">
-            <Svg width={22} height={22} viewBox="0 0 24 24"><Circle cx={12} cy={12} r={3} stroke={C.inkSoft} strokeWidth={1.5} fill="none" /><Path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1" stroke={C.inkSoft} strokeWidth={1.5} /></Svg>
-            </Pressable>
-          </View>
+          <Pressable onPress={() => setThanksOpen(true)} hitSlop={10} style={st.corner} accessibilityRole="button" accessibilityLabel="Deo gratias, give thanks">
+            <ThanksIcon color={C.goldDeep} />
+            <Text style={st.cornerText}>THANKS</Text>
+          </Pressable>
         </View>
         <View style={st.lit}>
           <Dot color={s.color} size={7} />
           <Text style={st.litText} numberOfLines={1}><Text style={st.date}>{date}</Text>{'  ·  '}{s.name}</Text>
+          <Pressable onPress={() => setWisdomOpen(true)} hitSlop={10} accessibilityRole="button" accessibilityLabel="My Wisdom"><WisdomIcon color={C.inkSoft} /></Pressable>
+          <Pressable onPress={() => setSettingsOpen(true)} hitSlop={10} accessibilityRole="button" accessibilityLabel="Settings"><GearIcon color={C.inkSoft} /></Pressable>
         </View>
       </View>
 
       <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-        <ScrollView ref={scroll} contentContainerStyle={st.screen} keyboardShouldPersistTaps="handled">
-          {tab === 'today' && <Today openHours={() => choose('hours')} onThanks={() => setThanksOpen(true)} onRefuge={() => setRefugeOpen(true)} />}
-          {tab === 'scripture' && <Scripture scrollTop={scrollTop} />}
-          {tab === 'hours' && <Hours scrollTop={scrollTop} />}
-          {tab === 'saints' && <Saints scrollTop={scrollTop} />}
+        <ScrollView ref={scroll} contentContainerStyle={st.screen} keyboardShouldPersistTaps="handled" bounces={false} showsVerticalScrollIndicator={false} >
+          {tab === 'today' && <Today openHours={() => choose('hours')} openSaints={() => choose('saints')} />}
+          {tab === 'scripture' && <Scripture />}
+          {tab === 'hours' && <Hours />}
+          {tab === 'saints' && <Saints />}
           {tab === 'ask' && <Ask />}
-          {tab === 'fast' && <Fast minutes={Math.floor(secs / 60)} prayerMinutes={Math.floor(prayerSecs / 60)} lectioMinutes={Math.floor(lectioSecs / 60)} onStart={startFast} onRefuge={() => setRefugeOpen(true)} onThanks={() => setThanksOpen(true)} />}
+          {tab === 'fast' && <Fast minutes={Math.floor(secs / 60)} prayerMinutes={Math.floor(prayerSecs / 60)} lectioMinutes={Math.floor(lectioSecs / 60)} onStart={startFast} />}
         </ScrollView>
       </KeyboardAvoidingView>
 
@@ -174,7 +174,7 @@ function Main() {
       <Gratitude visible={thanksOpen} onClose={() => setThanksOpen(false)} />
       {wisdomOpen ? <View style={{ position: 'absolute', top: insets.top, left: 0, right: 0, bottom: 0 }}><Wisdom onClose={() => setWisdomOpen(false)} /></View> : null}
       {settingsOpen ? <View style={{ position: 'absolute', top: insets.top, left: 0, right: 0, bottom: 0 }}><Settings onClose={() => setSettingsOpen(false)} /></View> : null}
-      {fast && activeMode ? <Veil mode={activeMode} until={fast.until} start={fast.start} onEnd={endFast} /> : null}
+      {fast && activeMode ? <Veil mode={activeMode} until={fast.until} start={fast.start} onEnd={endFast} onRefuge={() => setRefugeOpen(true)} onThanks={() => setThanksOpen(true)} /> : null}
     </View>
   );
 }
@@ -202,12 +202,13 @@ const st = StyleSheet.create({
   root: { flex: 1, backgroundColor: C.vellum },
   header: { paddingHorizontal: 20, paddingTop: 4, paddingBottom: 12, borderBottomWidth: StyleSheet.hairlineWidth, borderColor: C.vellum3 },
   headTop: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
-  icons: { flexDirection: 'row', alignItems: 'center', gap: 22 },
+  corner: { width: 56, alignItems: 'center', gap: 3 },
+  cornerText: { fontFamily: F.sc, fontSize: 7.5, letterSpacing: 1.2, color: C.inkFaint },
   wordmark: { fontFamily: F.display, fontSize: 36, lineHeight: 40, color: C.ink, letterSpacing: 0.5 },
   date: { fontFamily: F.sc, color: C.ink },
-  lit: { flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 2 },
-  litText: { flexShrink: 1, fontFamily: F.ui, fontSize: 11.5, color: C.inkSoft },
-  screen: { paddingHorizontal: 20, paddingTop: 18, paddingBottom: 32 },
+  lit: { flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 6 },
+  litText: { flex: 1, fontFamily: F.ui, fontSize: 11.5, color: C.inkSoft },
+  screen: { flexGrow: 1, paddingHorizontal: 14, paddingTop: 12, paddingBottom: 12 },
   tabs: { flexDirection: 'row', borderTopWidth: StyleSheet.hairlineWidth, borderColor: C.vellum3, backgroundColor: C.deep, paddingTop: 10 },
   tab: { flex: 1, alignItems: 'center', gap: 3, paddingBottom: 4 },
   tabText: { fontFamily: F.sc, fontSize: 9.5, letterSpacing: 1.1, color: C.inkFaint },

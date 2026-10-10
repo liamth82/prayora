@@ -1,16 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Animated, Easing, Image, Pressable, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, G, Path } from 'react-native-svg';
 import * as Haptics from 'expo-haptics';
 import { Mode, MODES } from '../content';
 import { C, F } from '../theme';
-import { Eyebrow, H2, H3, Lede, Proto, Rule, Sundial } from '../components/ui';
+import { Sundial } from '../components/ui';
+import { Panel, Segments, Small, Title } from '../components/panels';
+import { RefugeIcon, ThanksIcon } from '../components/icons';
 import { load, save } from '../storage';
 import { artForDay, DayArt, getArtLibrary, getArtManifest, libArt } from '../today';
 
 export type FastView = 'symbol' | 'art';
 
-export default function Fast({ minutes, prayerMinutes, lectioMinutes, onStart, onRefuge, onThanks }: { minutes: number; prayerMinutes: number; lectioMinutes: number; onStart: (m: Mode) => void; onRefuge: () => void; onThanks: () => void }) {
+export default function Fast({ minutes, prayerMinutes, lectioMinutes, onStart }: { minutes: number; prayerMinutes: number; lectioMinutes: number; onStart: (m: Mode) => void }) {
   const [view, setView] = useState<FastView>('symbol');
   useEffect(() => { load<FastView>('fast:view', 'symbol').then(setView); }, []);
   const pick = (v: FastView) => { setView(v); save('fast:view', v); };
@@ -18,58 +21,37 @@ export default function Fast({ minutes, prayerMinutes, lectioMinutes, onStart, o
     : minutes < 30 ? 'Consider closing Ora and praying in silence.'
     : 'Put the phone down. God is not in here.';
   return (
-    <View>
-      <Eyebrow>Digital Fast</Eyebrow>
-      <H2>Be still</H2>
-      <Lede>Time in prayer and in lectio, the slow, prayerful reading of Scripture and the saints, is never counted against you. The sundial measures only the rest; its shadow lengthens the longer you browse.</Lede>
-      <View style={st.dial}>
-        <Sundial mins={minutes} width={140} />
+    <View style={{ flex: 1, gap: 10 }}>
+      <Panel style={st.dialPanel}>
+        <Sundial mins={minutes} width={118} />
         <View style={{ flex: 1 }}>
-          <Text style={st.mins}>{minutes}<Text style={st.minsSmall}> min browsing today</Text></Text>
-          <Text style={st.prayer}>{prayerMinutes} min in prayer</Text>
-          <Text style={st.prayer}>{lectioMinutes} min in lectio, sacred reading</Text>
-          <Text style={st.msg}>{msg}</Text>
+          <Small>Today</Small>
+          <Text style={st.mins}>{minutes}<Text style={st.minsSmall}> min browsing</Text></Text>
+          <Text style={st.prayer}>{prayerMinutes} min in prayer · {lectioMinutes} in lectio</Text>
+          <Text style={st.msg} numberOfLines={2}>{msg}</Text>
         </View>
+      </Panel>
+      <View style={st.beginHead}>
+        <Small>Begin a fast</Small>
+        <Segments value={view} onChange={pick} options={[['symbol', 'Symbol'], ['art', 'Sacred art']]} style={{ width: 190 }} />
       </View>
-      <Pressable onPress={onRefuge} style={st.refuge} accessibilityRole="button">
-        <Text style={st.refugeSmall}>WHEN TEMPTATION COMES</Text>
-        <Text style={st.refugeTitle}>Refuge</Text>
-        <Text style={st.refugeSub}>Five minutes with God, whenever you need them</Text>
-      </Pressable>
-      <Pressable onPress={onThanks} style={[st.refuge, { marginTop: 10 }]} accessibilityRole="button">
-        <Text style={st.refugeSmall}>WHEN SOMETHING GOOD HAPPENS</Text>
-        <Text style={st.refugeTitle}>Deo gratias</Text>
-        <Text style={st.refugeSub}>Give thanks, and remember it</Text>
-      </Pressable>
-      <Rule />
-      <Eyebrow>Begin a fast</Eyebrow>
-      <Text style={st.viewLabel}>While you fast, show</Text>
-      <View style={st.seg}>
-        {([['symbol', 'A sacred symbol'], ['art', 'Sacred art']] as [FastView, string][]).map(([v, label]) => (
-          <Pressable key={v} onPress={() => pick(v)} style={[st.segBtn, view === v && st.segOn]} accessibilityRole="radio" accessibilityState={{ selected: view === v }}>
-            <Text style={[st.segText, view === v && { color: C.deep }]}>{label}</Text>
-          </Pressable>
-        ))}
-      </View>
-      <View style={{ gap: 10 }}>
-        {MODES.map((m) => (
-          <Pressable key={m.id} onPress={() => onStart(m)} style={({ pressed }) => [st.mode, pressed && { borderColor: C.gold }]}>
-            <View style={st.modeTop}><H3>{m.name}</H3><Text style={st.len}>{m.len}</Text></View>
-            <Text style={st.modeD}>{m.d}</Text>
-          </Pressable>
-        ))}
-      </View>
-      <Proto>In this preview the fast covers Ora's own screen. The real lock on other apps comes with the standalone build: as the home screen on Android, and through Screen Time on iPhone.</Proto>
+      {MODES.map((m) => (
+        <Panel key={m.id} onPress={() => onStart(m)} style={st.mode} label={`Begin ${m.name}, ${m.len}`}>
+          <View style={st.modeTop}><Title style={{ fontSize: 24 }}>{m.name}</Title><Text style={st.len}>{m.len}</Text></View>
+          <Text style={st.modeD} numberOfLines={2}>{m.d}</Text>
+        </Panel>
+      ))}
+      <Text style={st.note}>Time in prayer and lectio is never counted against you; the sundial measures only browsing.</Text>
     </View>
   );
 }
 
 type Sym = { name: string; caption: string; paths: string[]; fine?: string[]; circles?: number[][]; fineCircles?: number[][]; fills?: string[]; dots?: number[][] };
-const SYMBOLS = require('../symbols.json') as Sym[];
+export const SYMBOLS = require('../symbols.json') as Sym[];
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
 /** Gothic line drawings: a firm contour with a hairline just inside it, as an engraver would cut them. */
-function SacredSymbol({ sym, size }: { sym: Sym; size: number }) {
+export function SacredSymbol({ sym, size }: { sym: Sym; size: number }) {
   const ink = '#EEE7DA';
   const k = 200 / size; // keep the hairlines crisp whatever size the symbol is drawn at
   return (
@@ -99,7 +81,7 @@ const QUOTES: [string, string][] = [
 ];
 const SYMBOL_SECS = 40;
 
-export function Veil({ mode, until, start, onEnd }: { mode: Mode; until: number; start?: number; onEnd: () => void }) {
+export function Veil({ mode, until, start, onEnd, onRefuge, onThanks }: { mode: Mode; until: number; start?: number; onEnd: () => void; onRefuge: () => void; onThanks: () => void }) {
   const { width, height } = useWindowDimensions();
   const total = Math.max(60000, until - (start ?? (mode.mins ? until - mode.mins * 60000 : until - 8 * 3600000)));
   const [left, setLeft] = useState(until - Date.now());
@@ -183,7 +165,7 @@ export function Veil({ mode, until, start, onEnd }: { mode: Mode; until: number;
   const RR = ring / 2 - 3, CIRC = 2 * Math.PI * RR;
   const glow = breathe.interpolate({ inputRange: [0, 1], outputRange: [0.78, 1] });
 
-  if (!ready) return <View style={st.veil} />;
+  if (!ready) return <View style={st.veil}><Corners onRefuge={onRefuge} onThanks={onThanks} /></View>;
   if (view === 'art' && art.length) {
     const item = art[artIdx % art.length];
     const ratio = item.ratio || 0.75;
@@ -191,6 +173,7 @@ export function Veil({ mode, until, start, onEnd }: { mode: Mode; until: number;
     const w = Math.min(maxW, maxH * ratio), hgt = w / ratio;
     return (
       <View style={st.veil}>
+        <Corners onRefuge={onRefuge} onThanks={onThanks} />
         <Pressable onPress={tap} onPressIn={pressIn} onPressOut={pressOut} style={{ alignItems: 'center' }}
           accessibilityRole="button" accessibilityLabel={`${item.title}. ${remaining}. Hold the painting for three seconds to end the fast early`}>
           <Animated.View style={{ opacity: Animated.multiply(fade, glow) }}>
@@ -218,6 +201,7 @@ export function Veil({ mode, until, start, onEnd }: { mode: Mode; until: number;
 
   return (
     <View style={st.veil}>
+        <Corners onRefuge={onRefuge} onThanks={onThanks} />
       <View style={{ alignItems: 'center' }}>
         <Pressable onPress={tap} onPressIn={pressIn} onPressOut={pressOut} style={{ width: ring, height: ring, alignItems: 'center', justifyContent: 'center' }}
           accessibilityRole="button" accessibilityLabel={`${remaining}. Hold the symbol for three seconds to end the fast early`}>
@@ -249,20 +233,41 @@ export function Veil({ mode, until, start, onEnd }: { mode: Mode; until: number;
   );
 }
 
+/** Refuge and Deo gratias stay within reach during a fast. */
+function Corners({ onRefuge, onThanks }: { onRefuge: () => void; onThanks: () => void }) {
+  const insets = useSafeAreaInsets();
+  return (
+    <View style={[st.corners, { top: insets.top + 10 }]} pointerEvents="box-none">
+      <Pressable onPress={onRefuge} hitSlop={12} style={st.cornerBtn} accessibilityRole="button" accessibilityLabel="Refuge">
+        <RefugeIcon color="#8A8290" /><Text style={st.cornerText}>REFUGE</Text>
+      </Pressable>
+      <Pressable onPress={onThanks} hitSlop={12} style={st.cornerBtn} accessibilityRole="button" accessibilityLabel="Deo gratias">
+        <ThanksIcon color="#8A8290" /><Text style={st.cornerText}>THANKS</Text>
+      </Pressable>
+    </View>
+  );
+}
+
 const st = StyleSheet.create({
+  corners: { position: 'absolute', left: 14, right: 14, flexDirection: 'row', justifyContent: 'space-between', zIndex: 5 },
+  cornerBtn: { width: 56, alignItems: 'center', gap: 3, opacity: 0.8 },
+  cornerText: { fontFamily: F.sc, fontSize: 7.5, letterSpacing: 1.2, color: '#6E6876' },
+  dialPanel: { flexDirection: 'row', alignItems: 'center', gap: 14 },
+  beginHead: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 4 },
+  note: { fontFamily: F.bodyItalic, fontSize: 12, lineHeight: 17, color: C.inkFaint, textAlign: 'center', marginTop: 'auto', paddingHorizontal: 10 },
   dial: { flexDirection: 'row', alignItems: 'center', gap: 14 },
-  mins: { fontFamily: F.display, fontSize: 44, color: C.ink },
+  mins: { fontFamily: F.display, fontSize: 36, lineHeight: 40, color: C.ink },
   minsSmall: { fontFamily: F.body, fontSize: 14, color: C.inkSoft },
-  prayer: { fontFamily: F.bodyItalic, fontSize: 14, color: C.green, marginTop: 2 },
+  prayer: { fontFamily: F.bodyItalic, fontSize: 13, color: C.green },
   refuge: { backgroundColor: '#241F29', borderRadius: 16, padding: 18, marginTop: 18, borderWidth: StyleSheet.hairlineWidth, borderColor: 'rgba(196,168,112,0.45)' },
   refugeSmall: { fontFamily: F.sc, fontSize: 10, letterSpacing: 2, color: C.gold },
   refugeTitle: { fontFamily: F.display, fontSize: 33, color: '#EEE7DA', marginTop: 2 },
   refugeSub: { fontFamily: F.bodyItalic, fontSize: 13.5, color: '#B4A890', marginTop: 2 },
-  msg: { fontFamily: F.body, fontSize: 14, lineHeight: 20, color: C.inkSoft, marginTop: 4 },
-  mode: { borderWidth: 1, borderColor: C.vellum3, borderRadius: 12, padding: 14 },
+  msg: { fontFamily: F.body, fontSize: 12.5, lineHeight: 17, color: C.inkSoft, marginTop: 4 },
+  mode: { paddingVertical: 12 },
   modeTop: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' },
   len: { fontFamily: F.sc, fontSize: 11, letterSpacing: 1, color: C.rubric },
-  modeD: { fontFamily: F.body, fontSize: 14, lineHeight: 20, color: C.inkSoft, marginTop: 4 },
+  modeD: { fontFamily: F.body, fontSize: 13, lineHeight: 18, color: C.inkSoft, marginTop: 2 },
   veil: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: '#0F0E13', alignItems: 'center', justifyContent: 'center', paddingHorizontal: 32, zIndex: 10 },
   corner: { position: 'absolute', top: 52, right: 22, flexDirection: 'row', alignItems: 'center', gap: 10 },
   left: { fontFamily: F.sc, fontSize: 11, letterSpacing: 1.4, color: '#B4A890' },

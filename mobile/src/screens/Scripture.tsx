@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-native';
 import { C, F } from '../theme';
-import { Back, Eyebrow, H2, Lede, Proto } from '../components/ui';
+import { fitGrid, PagedList, Panel, Segments, Small, smooth, Title } from '../components/panels';
 import Reader, { ReaderChapter } from './Reader';
 import {
   BibleBook, BibleText, getBibleBook, getBibleIndex, getLibraryBook, getLibraryIndex, illuminationFor,
@@ -10,7 +10,8 @@ import {
 
 type Open = { kind: 'bible' | 'library'; id: string; chapter: number };
 
-export default function Scripture({ scrollTop }: { scrollTop: () => void }) {
+export default function Scripture() {
+  const [area, setArea] = useState({ w: 300, h: 300 });
   const [shelf, setShelf] = useState<'bible' | 'library'>('bible');
   const [testament, setTestament] = useState<'OT' | 'NT'>('NT');
   const [index, setIndex] = useState<BibleBook[]>([]);
@@ -89,147 +90,145 @@ export default function Scripture({ scrollTop }: { scrollTop: () => void }) {
       onNext={total && open.chapter < total - 1 ? () => go(1) : undefined} />
   ) : null;
 
-  // Contents of a library book
-  if (libBook) {
-    return (
-      <View>
-        <Back label="The Library" onPress={() => { setLibBook(null); scrollTop(); }} />
-        <Eyebrow>{libBook.author}</Eyebrow>
-        <H2>{libBook.title}</H2>
-        {libBook.translator ? <Text style={st.modern}>Translated by {libBook.translator}</Text> : null}
-        {libBook.blurb ? <Lede>{libBook.blurb}</Lede> : null}
-        <Pressable onPress={() => openAt({ kind: 'library', id: libBook.id, chapter: 0 })} style={st.continue}>
-          <Text style={st.contSmall}>BEGIN</Text>
-          <Text style={st.contTitle}>Read from the start</Text>
-        </Pressable>
-        {!contents ? <ActivityIndicator color={C.goldDeep} style={{ marginTop: 20 }} /> : null}
-        {(contents?.chapters ?? []).map((c, i) => {
-          const showSection = c.section && c.section !== contents!.chapters[i - 1]?.section;
-          return (
-            <View key={i}>
-              {showSection ? <Text style={[st.group, { marginTop: 14 }]}>{c.section!.toUpperCase()}</Text> : null}
-              <Pressable onPress={() => openAt({ kind: 'library', id: libBook.id, chapter: i })} style={({ pressed }) => [st.row, pressed && { backgroundColor: C.vellum2 }]}>
-                <Text style={[st.bookModern, { fontFamily: F.body, color: C.ink, fontSize: 15 }]}>{c.title}</Text>
-              </Pressable>
-            </View>
-          );
-        })}
-        {reader}
-      </View>
-    );
-  }
+  const pickLib = (b: LibraryBook) => {
+    smooth(); setLibBook(b); setContents(null);
+    getLibraryBook(b.id).then((t) => { setContents(t); if (t) setLibText(t); });
+  };
+  const books = index.filter((b) => b.testament === testament);
+  const abbr = abbreviations(index);
+  const grid = (n: number, minCols = 4) => fitGrid(n, area.w, area.h - 4, 6, minCols, 10);
 
-  // Chapter grid for a chosen book
-  if (book) {
-    return (
-      <View>
-        <Back label="All books" onPress={() => { setBook(null); scrollTop(); }} />
-        <Eyebrow>{book.group}</Eyebrow>
-        <H2>{book.name}</H2>
-        {book.modern !== book.name ? <Text style={st.modern}>Called {book.modern} in most modern Bibles</Text> : null}
-        <View style={st.grid}>
-          {Array.from({ length: book.chapters }, (_, i) => (
-            <Pressable key={i} onPress={() => openAt({ kind: 'bible', id: book.id, chapter: i })} style={({ pressed }) => [st.cell, pressed && { backgroundColor: C.vellum2 }]}>
-              <Text style={st.cellText}>{i + 1}</Text>
-            </Pressable>
-          ))}
+  let body: React.ReactNode = null;
+  if (shelf === 'bible' && book) {
+    const g = grid(book.chapters, 5);
+    body = (
+      <>
+        <View style={st.bodyHead}>
+          <Pressable onPress={() => { smooth(); setBook(null); }} hitSlop={10}><Text style={st.back}>‹ Books</Text></Pressable>
+          <Text style={st.bodyTitle} numberOfLines={1}>{book.name}</Text>
+          <Text style={st.bodyNote} numberOfLines={1}>{book.modern !== book.name ? book.modern : `${book.chapters} chapters`}</Text>
         </View>
-        {reader}
-      </View>
-    );
-  }
-
-  const groups = index.filter((b) => b.testament === testament).reduce<Record<string, BibleBook[]>>((acc, b) => {
-    (acc[b.group] ??= []).push(b); return acc;
-  }, {});
-
-  return (
-    <View>
-      <Eyebrow>Sacred Scripture and spiritual classics</Eyebrow>
-      <H2>Take up and read</H2>
-      <View style={st.seg}>
-        {(['bible', 'library'] as const).map((s) => (
-          <Pressable key={s} onPress={() => setShelf(s)} style={[st.segBtn, shelf === s && st.segOn]}>
-            <Text style={[st.segText, shelf === s && { color: C.vellum }]}>{s === 'bible' ? 'The Bible' : 'The Library'}</Text>
-          </Pressable>
-        ))}
-      </View>
-
-      {place ? (
-        <Pressable onPress={() => openAt({ kind: place.kind, id: place.id, chapter: place.chapter })} style={st.continue}>
-          <Text style={st.contSmall}>CONTINUE READING</Text>
-          <Text style={st.contTitle} numberOfLines={1}>{place.title}</Text>
-        </Pressable>
-      ) : null}
-
-      {shelf === 'bible' ? (
-        <>
-          <View style={[st.seg, { marginTop: 4 }]}>
-            {(['OT', 'NT'] as const).map((t) => (
-              <Pressable key={t} onPress={() => setTestament(t)} style={[st.tBtn, testament === t && st.tOn]}>
-                <Text style={[st.tText, testament === t && { color: C.rubric }]}>{t === 'OT' ? 'Old Testament' : 'New Testament'}</Text>
+        <View style={st.area} onLayout={(e) => setArea({ w: e.nativeEvent.layout.width, h: e.nativeEvent.layout.height })}>
+          <View style={st.grid}>
+            {Array.from({ length: book.chapters }, (_, i) => (
+              <Pressable key={i} onPress={() => openAt({ kind: 'bible', id: book.id, chapter: i })}
+                style={({ pressed }) => [st.cell, { width: g.size, height: g.rowH }, pressed && { backgroundColor: C.vellum3 }]}>
+                <Text style={[st.cellText, { fontSize: Math.min(17, g.rowH * 0.45) }]}>{i + 1}</Text>
               </Pressable>
             ))}
           </View>
+        </View>
+      </>
+    );
+  } else if (shelf === 'bible') {
+    const g = grid(books.length, 4);
+    body = (
+      <>
+        <Segments value={testament} onChange={setTestament} options={[['OT', 'Old Testament'], ['NT', 'New Testament']]} style={{ marginBottom: 10 }} />
+        <View style={st.area} onLayout={(e) => setArea({ w: e.nativeEvent.layout.width, h: e.nativeEvent.layout.height })}>
           {!index.length ? <ActivityIndicator color={C.goldDeep} style={{ marginTop: 30 }} /> : null}
-          {Object.entries(groups).map(([g, books]) => (
-            <View key={g} style={{ marginTop: 14 }}>
-              <Text style={st.group}>{g.toUpperCase()}</Text>
-              {books.map((b) => (
-                <Pressable key={b.id} onPress={() => (b.chapters === 1 ? openAt({ kind: 'bible', id: b.id, chapter: 0 }) : (setBook(b), scrollTop()))}
-                  style={({ pressed }) => [st.row, pressed && { backgroundColor: C.vellum2 }]}>
-                  <Text style={st.bookName}>{b.name}</Text>
-                  {b.modern !== b.name ? <Text style={st.bookModern}>{b.modern}</Text> : null}
-                  <Text style={st.count}>{b.chapters}</Text>
-                </Pressable>
-              ))}
-            </View>
-          ))}
-          <Proto>The Douay-Rheims Bible, Challoner revision (1749–52). Public domain.</Proto>
-        </>
-      ) : (
-        <>
-          <Lede>Classics of the spiritual life, in translations old enough to be free for everyone.</Lede>
-          {library === null ? <ActivityIndicator color={C.goldDeep} /> : null}
-          {library && !library.length ? <Text style={st.modern}>The first shelf of classics is being prepared.</Text> : null}
-          {(library ?? []).map((b) => (
-            <Pressable key={b.id} onPress={() => { setLibBook(b); setContents(null); getLibraryBook(b.id).then((t) => { setContents(t); if (t) setLibText(t); }); scrollTop(); }} style={({ pressed }) => [st.lib, pressed && { backgroundColor: C.vellum2 }]}>
-              <Text style={st.libTitle}>{b.title}</Text>
-              <Text style={st.libAuthor}>{b.author}{b.translator ? ` · translated by ${b.translator}` : ''}</Text>
-              {b.blurb ? <Text style={st.libBlurb}>{b.blurb}</Text> : null}
-              <Text style={st.libCount}>{b.chapters} {b.chapters === 1 ? 'part' : 'chapters'}</Text>
+          <View style={st.grid}>
+            {books.map((b) => (
+              <Pressable key={b.id} onPress={() => (b.chapters === 1 ? openAt({ kind: 'bible', id: b.id, chapter: 0 }) : (smooth(), setBook(b)))}
+                accessibilityLabel={b.name} style={({ pressed }) => [st.cell, { width: g.size, height: g.rowH }, pressed && { backgroundColor: C.vellum3 }]}>
+                <Text style={[st.bookAbbr, { fontSize: Math.min(17, g.rowH * 0.42) }]} numberOfLines={1}>{abbr[b.id]}</Text>
+              </Pressable>
+            ))}
+          </View>
+        </View>
+      </>
+    );
+  } else if (libBook) {
+    const chs = contents?.chapters ?? [];
+    body = (
+      <>
+        <View style={st.bodyHead}>
+          <Pressable onPress={() => { smooth(); setLibBook(null); }} hitSlop={10}><Text style={st.back}>‹ Library</Text></Pressable>
+          <Text style={st.bodyTitle} numberOfLines={1}>{libBook.title}</Text>
+          <Pressable onPress={() => openAt({ kind: 'library', id: libBook.id, chapter: 0 })} hitSlop={10}><Text style={st.begin}>Begin ›</Text></Pressable>
+        </View>
+        {!contents ? <ActivityIndicator color={C.goldDeep} style={{ marginTop: 20 }} /> : (
+          <PagedList items={chs} rowH={50} render={(c, i) => (
+            <Pressable onPress={() => openAt({ kind: 'library', id: libBook.id, chapter: i })} style={st.chRow}>
+              <Text style={st.chNum}>{i + 1}</Text>
+              <View style={{ flex: 1 }}>
+                {c.section && c.section !== chs[i - 1]?.section ? <Text style={st.chSection} numberOfLines={1}>{c.section}</Text> : null}
+                <Text style={st.chTitle} numberOfLines={1}>{c.title}</Text>
+              </View>
             </Pressable>
-          ))}
-        </>
-      )}
+          )} />
+        )}
+      </>
+    );
+  } else {
+    body = (
+      <PagedList items={library ?? []} rowH={62} empty={library === null ? '' : 'The first shelf of classics is being prepared.'} render={(b) => (
+        <Pressable onPress={() => pickLib(b)} style={st.libRow}>
+          <View style={{ flex: 1 }}>
+            <Text style={st.libTitle} numberOfLines={1}>{b.title}</Text>
+            <Text style={st.libAuthor} numberOfLines={1}>{b.author}{b.translator ? ` · tr. ${b.translator}` : ''}</Text>
+          </View>
+          <Text style={st.chev}>›</Text>
+        </Pressable>
+      )} />
+    );
+  }
+
+  return (
+    <View style={{ flex: 1, gap: 10 }}>
+      <Panel accent label="Continue reading" style={st.cont}
+        onPress={() => (place ? openAt({ kind: place.kind, id: place.id, chapter: place.chapter }) : openAt({ kind: 'bible', id: 'jhn', chapter: 0 }))}>
+        <View style={{ flex: 1 }}>
+          <Small>{place ? 'Continue reading' : 'Begin here'}</Small>
+          <Title lines={1}>{place ? place.title : 'The Gospel of John'}</Title>
+        </View>
+        <Text style={st.contArrow}>›</Text>
+      </Panel>
+      <Segments value={shelf} onChange={(v) => { setShelf(v); }} options={[['bible', 'The Bible'], ['library', 'The Library']]} />
+      <Panel style={{ flex: 1, paddingBottom: 10 }}>{body}</Panel>
       {reader}
     </View>
   );
 }
 
+/** Short names for the book grid: a number prefix and three letters, more where two would clash. */
+function abbreviations(books: BibleBook[]): Record<string, string> {
+  const make = (name: string, n: number) => {
+    const m = name.match(/^(\d)\s+(.*)$/);
+    const base = (m ? m[2] : name).replace(/^(The|Book of|Canticle of) /i, '');
+    return (m ? m[1] + ' ' : '') + base.slice(0, n);
+  };
+  const fixed: Record<string, string> = { Ecclesiasticus: 'Sir', Ecclesiastes: 'Eccl', 'Canticle of Canticles': 'Cant', Apocalypse: 'Apoc',
+    Philippians: 'Phil', Philemon: 'Phlm', Judith: 'Jdt', Judges: 'Judg', Lamentations: 'Lam' };
+  const out: Record<string, string> = {};
+  books.forEach((b) => { out[b.id] = fixed[b.name] ?? make(b.name, 3); });
+  for (let n = 4; n <= 6; n++) {
+    const seen: Record<string, number> = {};
+    Object.values(out).forEach((v) => { seen[v] = (seen[v] ?? 0) + 1; });
+    books.forEach((b) => { if (seen[out[b.id]] > 1 && !fixed[b.name]) out[b.id] = make(b.name, n); });
+  }
+  return out;
+}
+
 const st = StyleSheet.create({
-  seg: { flexDirection: 'row', gap: 8, marginTop: 10, marginBottom: 12 },
-  segBtn: { flex: 1, borderWidth: 1, borderColor: C.ink, borderRadius: 999, paddingVertical: 9, alignItems: 'center' },
-  segOn: { backgroundColor: C.ink },
-  segText: { fontFamily: F.sc, fontSize: 12.5, letterSpacing: 1.2, color: C.ink },
-  tBtn: { paddingVertical: 6, paddingHorizontal: 4, marginRight: 14, borderBottomWidth: 2, borderColor: 'transparent' },
-  tOn: { borderColor: C.rubric },
-  tText: { fontFamily: F.sc, fontSize: 12.5, letterSpacing: 1, color: C.inkSoft },
-  continue: { backgroundColor: '#241F29', borderRadius: 16, padding: 14, marginBottom: 10, borderWidth: StyleSheet.hairlineWidth, borderColor: 'rgba(196,168,112,0.45)' },
-  contSmall: { fontFamily: F.sc, fontSize: 10, letterSpacing: 2, color: C.gold },
-  contTitle: { fontFamily: F.display, fontSize: 24, color: C.ink, marginTop: 2 },
-  group: { fontFamily: F.sc, fontSize: 10.5, letterSpacing: 1.8, color: C.rubric, marginBottom: 2 },
-  row: { flexDirection: 'row', alignItems: 'baseline', gap: 10, paddingVertical: 10, borderBottomWidth: 1, borderColor: C.vellum3 },
-  bookName: { fontFamily: F.display, fontSize: 22, color: C.ink },
-  bookModern: { flex: 1, fontFamily: F.bodyItalic, fontSize: 13, color: C.inkFaint },
-  count: { marginLeft: 'auto', fontFamily: F.body, fontSize: 13, color: C.inkFaint },
-  modern: { fontFamily: F.bodyItalic, fontSize: 14, color: C.inkSoft, marginBottom: 10 },
-  grid: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 10 },
-  cell: { width: 52, height: 46, borderWidth: 1, borderColor: C.vellum3, borderRadius: 12, alignItems: 'center', justifyContent: 'center' },
-  cellText: { fontFamily: F.body, fontSize: 16, color: C.ink },
-  lib: { borderTopWidth: 1, borderColor: C.vellum3, paddingVertical: 14 },
-  libTitle: { fontFamily: F.display, fontSize: 25.5, lineHeight: 29, color: C.ink },
-  libAuthor: { fontFamily: F.sc, fontSize: 10.5, letterSpacing: 0.8, color: C.rubric, marginTop: 3 },
-  libBlurb: { fontFamily: F.body, fontSize: 14.5, lineHeight: 22, color: C.inkSoft, marginTop: 6 },
-  libCount: { fontFamily: F.bodyItalic, fontSize: 12.5, color: C.inkFaint, marginTop: 4 },
+  cont: { flexDirection: 'row', alignItems: 'center', paddingVertical: 14 },
+  contArrow: { fontFamily: F.display, fontSize: 32, color: C.gold, marginLeft: 8 },
+  area: { flex: 1 },
+  grid: { flexDirection: 'row', flexWrap: 'wrap', gap: 6 },
+  cell: { borderRadius: 10, backgroundColor: C.vellum, alignItems: 'center', justifyContent: 'center' },
+  cellText: { fontFamily: F.body, color: C.ink },
+  bookAbbr: { fontFamily: F.display, color: C.ink },
+  bodyHead: { flexDirection: 'row', alignItems: 'baseline', gap: 10, marginBottom: 10 },
+  back: { fontFamily: F.sc, fontSize: 12.5, color: C.inkSoft },
+  bodyTitle: { flex: 1, fontFamily: F.display, fontSize: 24, color: C.ink },
+  bodyNote: { fontFamily: F.bodyItalic, fontSize: 12, color: C.inkFaint, maxWidth: 110 },
+  begin: { fontFamily: F.sc, fontSize: 12.5, color: C.gold },
+  chRow: { flexDirection: 'row', alignItems: 'center', gap: 12, height: '100%', borderBottomWidth: StyleSheet.hairlineWidth, borderColor: C.vellum3 },
+  chNum: { width: 26, fontFamily: F.sc, fontSize: 11, color: C.inkFaint, textAlign: 'right' },
+  chSection: { fontFamily: F.sc, fontSize: 8.5, letterSpacing: 1, color: C.gold, textTransform: 'uppercase' },
+  chTitle: { fontFamily: F.body, fontSize: 15, color: C.ink },
+  libRow: { flexDirection: 'row', alignItems: 'center', height: '100%', borderBottomWidth: StyleSheet.hairlineWidth, borderColor: C.vellum3 },
+  libTitle: { fontFamily: F.display, fontSize: 21, color: C.ink },
+  libAuthor: { fontFamily: F.ui, fontSize: 11.5, color: C.inkSoft, marginTop: 1 },
+  chev: { fontFamily: F.display, fontSize: 22, color: C.goldDeep, marginLeft: 8 },
 });
