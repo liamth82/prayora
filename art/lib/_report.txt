@@ -1,0 +1,447 @@
+kept 220
+{"ordinary": 156, "marian": 124, "saints": 87, "advent": 28, "pentecost": 1, "angels": 52, "holyweek": 27, "epiphany": 12, "christmas": 15, "lent": 12, "easter": 5, "allsaints": 1}
+
+- Q321303 avoided subject: The Garden of Earthly Delights
+- Q2727560 avoided subject: The Beheading of Saint John the Baptist
+- Q2470123 avoided subject: Judith Beheading Holofernes
+- Q568847 avoided subject: The Descent from the Cross
+- Q597114 avoided subject: Death of the Virgin
+- Q1516449 avoided subject: Madonna of Chancellor Rolin
+- Q1167932 no liturgical tag: Belshazzar's Feast [turban|Hebrew|pearl|knife|Belshazzar]
+- Q2627056 no liturgical tag: David with the Head of Goliath [sword|Caravaggio|David|beheaded head|David with the head of Goliath]
+- Q2247406 avoided subject: Judith Slaying Holofernes
+- Q2653851 avoided subject: The Elevation of the Cross
+- Q701035 avoided subject: The Last Judgment
+- Q701035 avoided subject: The Last Judgment
+- Q1217288 avoided subject: Temptation of Saint Anthony
+- Q2338417 avoided subject: The Martyrdom of Saint Matthew
+- Q2304870 no liturgical tag: The Seven Deadly Sins and the Four Last Things [seven deadly sins|Four last things]
+- Q2213811 no liturgical tag: The Haywain Triptych [hay wagon|Religion]
+- Q2324643 avoided subject: Judith I
+- Q18686031 avoided subject: Portinari Triptych
+- Q1213151 avoided subject: The Entombment of Christ
+- Q80869 no liturgical tag: Dull Gret [hell|giant]
+- Q2052008 no liturgical tag: Jacob’s Dream [tree|Jacob's Ladder]
+- Q1220013 avoided subject: Opening of the Fifth Seal
+- Q1169199 avoided subject: The Last Judgment (Beaune Altarpiece)
+- Q1134250 avoided subject: The Massacre of the Innocents
+- Q2732274 avoided subject: Penitent Magdalene
+- Q2594673 no liturgical tag: Samson and Delilah [Samson|Delilah]
+- Q27157216 no liturgical tag: After the Deluge [Sun|sky|cloud|ocean|horizon|Genesis flood narrative]
+- Q32496 avoided subject: Bathsheba at Her Bath
+- Q2665840 avoided subject: Pietà
+- Q2626595 no liturgical tag: The Seven Works of Mercy [Roman Charity|works of mercy]
+- Q369810 no liturgical tag: The First Mourning [woman|sky|mother|father|rock|cloud|man|family|nudity|waist-length hair|navel|cor]
+- Q325267 no liturgical tag: Moses Smashing the Tablets of the Law [Moses|Ten Commandments]
+- Q598913 avoided subject: Mond Crucifixion
+- Q4157667 avoided subject: The Demon Seated
+- Q2537695 avoided subject: Judith
+- Q5967091 no liturgical tag: The Maiden [flower|woman]
+- Q532486 avoided subject: Judith and Her Maidservant
+- Q2343939 avoided subject: Saint Sebastian
+- Q3978274 avoided subject: Susanna and the Elders
+- Q4448822 avoided subject: Penitent Magdalene
+- Q3039856 avoided subject: The Magdalen Reading
+- Q4310527 avoided subject: The Body of the Dead Christ in the Tomb
+- Q1387483 avoided subject: The Last Judgment
+- Q1387483 avoided subject: The Last Judgment
+- Q2270955 no liturgical tag: David and Goliath [man|head|David|corpse|Goliath|beheaded head]
+- Q3605057 no liturgical tag: The Fall of Man [woman|nudity|man|waist-length hair|beard|Adam|navel|pubic hair|couple|parrot|tre]
+- Q574004 avoided subject: Crucifixion and Last Judgement diptych
+- Q3978277 avoided subject: Susanna and the Elders
+- Q2721037 no liturgical tag: David with the Head of Goliath [man|sword|head|David|beheaded head|David with the head of Goliath]
+- Q2568873 avoided subject: Vienna Diptych
+- Q2568873 avoided subject: Vienna Diptych
+- Q2568873 avoided subject: Vienna Diptych
+- Q2568873 avoided subject: Vienna Diptych
+- Q3877895 avoided subject: Noli me tangere
+- Q3495790 avoided subject: Salome with the Head of John the Baptist
+- Q3769169 avoided subject: Judith Beheading Holofernes
+- Q4693305 no liturgical tag: Agnus Dei [table|lamb]
+- Q1679544 no liturgical tag: Jacob Blessing the Sons of Joseph [Jacob|Blessing of Jacob]
+- Q664038 avoided subject: Martyrdom of the Ten Thousand
+- Q2415259 avoided subject: Saint Michael Vanquishing Satan
+- Q377810 no liturgical tag: The Adoration of the Golden Calf [woman|sky|child|cloud|man|Moses|mountain|tree|Aaron|dance|twilight|golden calf|T]
+- Q3210253 avoided subject: Magdalene with the Smoking Flame
+- Q2734679 avoided subject: Martha and Mary Magdalene
+- Q2604155 avoided subject: Lamentation of Christ
+- Q1103801 avoided subject: The Ecstasy of Saint Cecilia
+- Q949567 no liturgical tag: The Shadow of Death [saw|pumpkin|bracelet|tunic|interior space]
+- Q2589202 no liturgical tag: Ahasuerus and Haman at the Feast of Esther [Haman|Esther|Ahasuerus]
+- Q24160 avoided subject: Braque Triptych
+- Q1751408 avoided subject: Madonna and Child enthroned with Saints and Angels
+- Q6470337 no liturgical tag: Lady Lilith [Lilith]
+- Q740212 no liturgical tag: Jeremiah Lamenting the Destruction of Jerusalem [Jeremiah]
+- Q15974339 avoided subject: Penitent Magdalene
+- Q3402890 no liturgical tag: The Scapegoat [goat|scapegoat]
+- Q3898507 no liturgical tag: The Garden of Eden with the Fall of Man [dog|lion|woman|animal|horse|snake|man|waist-length hair|rabbit|nudity|leopard|be]
+- Q626791 avoided subject: Saint Jerome penitent
+- Q2318325 avoided subject: Salome with the Head of John the Baptist
+- Q1778000 no liturgical tag: Baronci Altarpiece []
+- Q3733425 no liturgical tag: Esther before Ahasuerus [woman|man|Esther|Ahasuerus]
+- Q20354732 no liturgical tag: The Destruction of Sodom And Gomorrah [Lot|Sodom and Gomorrah|Lot's daughters]
+- Q2067336 avoided subject: Assumption of the Virgin
+- Q3224378 avoided subject: Massacre of the Innocents
+- Q3907532 avoided subject: Coronation of the Virgin with Saints (Valle Romita Polyptych)
+- Q3918344 avoided subject: The Toilette of Esther
+- Q3622074 no liturgical tag: Arearea [dog|woman|Tahiti|paganism|landscape|recorder]
+- Q594470 avoided subject: St. Michael Vanquishing Satan
+- Q2448678 avoided subject: Massacre of the Innocents
+- Q2273901 no liturgical tag: Joseph's Tunic [dog|Jacob shown Joseph's blood-stained coat by his sons|coat of many colors]
+- Q2318957 avoided subject: Salome with the Head of John the Baptist
+- Q2711706 no liturgical tag: Diptych of Maarten van Nieuwenhove []
+- Q959628 no liturgical tag: Asmodea [Book of Tobit]
+- Q3877896 avoided subject: Noli me tangere
+- Q3877896 avoided subject: Noli me tangere
+- Q3762348 no liturgical tag: Jael and Sisera [woman|man|Judges|Sisera|Yael]
+- Q3769182 avoided subject: Judith and Holofernes
+- Q2247307 avoided subject: Polyptych of the Misericordia
+- Q2157202 no liturgical tag: The Just Judges [horse|city|judge|Hubert van Eyck]
+- Q728027 avoided subject: The Martyrdom of Saint Philip
+- Q9026835 avoided subject: The Penitent Mary Magdalene
+- Q9169712 avoided subject: Bathsheba at her Bath
+- Q9140602 no liturgical tag: The Fall of Man [flower|fox|breast|nudity|waist-length hair|beard|Adam|landscape|navel|couple|tre]
+- Q3689716 avoided subject: Conversion of the Magdalene
+- Q3689716 avoided subject: Conversion of the Magdalene
+- Q3696827 no liturgical tag: The Creation of the Sun, Moon and Planets [Genesis creation narrative]
+- Q1134060 avoided subject: Susanna and the Elders
+- Q1410866 avoided subject: Martyrdom of Saint Sebastian
+- Q615851 avoided subject: Nativity
+- Q4095553 no liturgical tag: Boyarina Morozova [Feodosia Morozova]
+- Q644887 avoided subject: Judith and Holofernes
+- Q1132486 avoided subject: The Martyrdom of Saint Ursula
+- Q2303840 avoided subject: Saint Sebastian
+- Q2452374 no liturgical tag: The Judgement of Solomon [Judgment of Solomon]
+- Q1054459 avoided subject: Crucifixion
+- Q1863885 no liturgical tag: Moses Defending the Daughters of Jethro [Moses|Moses and the Daughters of Jethro]
+- Q3720171 avoided subject: The Martyrdom of Saint Sebastian
+- Q17066005 avoided subject: Pietà
+- Q1629015 avoided subject: Holy Allegory
+- Q19574577 avoided subject: The Conversion of Mary Magdalene
+- Q2041139 avoided subject: Judith II
+- Q735326 avoided subject: Lamentation over the Dead Christ
+- Q9281692 no liturgical tag: Temptation of Adam [apple|woman|sky|man|nudity|navel|Garden of Eden|Adam|broad-leaved tree|back|trun]
+- Q835699 avoided subject: The Great Last Judgement
+- Q9074913 no liturgical tag: Saul and David [man|beard|David|Saul|harp|turban|sitting]
+- Q9074913 no liturgical tag: Saul and David [man|beard|David|Saul|harp|turban|sitting]
+- Q3292135 avoided subject: Mary Magdalen in Ecstasy
+- Q3210251 avoided subject: The Penitent Magdalen
+- Q3210251 avoided subject: The Penitent Magdalen
+- Q3705722 avoided subject: The Entombment
+- Q3945710 avoided subject: Salome with the head of John the Baptist
+- Q1131476 avoided subject: Deposition of Christ
+- Q1395192 avoided subject: Crucifixion Triptych
+- Q633587 avoided subject: Drunkenness of Noah
+- Q465894 avoided subject: The Return of the Dove to the Ark
+- Q3850306 avoided subject: Martyrdom of Four Saints
+- Q4314748 no liturgical tag: The Finding of the Saviour in the Temple []
+- Q20128133 no liturgical tag: The World Before the Flood []
+- Q1115423 avoided subject: Lamentation over the Dead Christ with Saints
+- Q1113846 avoided subject: Temptation of St. Thomas
+- Q3842735 avoided subject: Madonna of Saint Sebastian
+- Q3851966 avoided subject: Mystic Marriage of Saint Catherine of Alexandria with Saint Sebastian
+- Q5800462 no liturgical tag: Separation of David and Jonathan [man|waist-length hair|Jonathan|scimitar|David|crying|boot|sadness|blond hair|ove]
+- Q3213794 avoided subject: Altarpiece from S. Francesco dei Zoccolanti, Matelica
+- Q18719519 avoided subject: Triptych with the Entombment of Christ
+- Q16913597 avoided subject: Susanna and the Elders
+- Q16913597 avoided subject: Susanna and the Elders
+- Q3223807 avoided subject: The Last Judgment
+- Q5949742 avoided subject: The Martyrdom of St. Maurice
+- Q6102310 no liturgical tag: Rebecca and Eliezer [fountain]
+- Q521671 avoided subject: Pietà of Villeneuve-lès-Avignon
+- Q7617092 no liturgical tag: Still Life with Lemons, Oranges and a Rose [water|flower|orange|table|teacup|rose|basketry|basket|saucer|lemon|branch]
+- Q6780231 avoided subject: Mary Magdalene
+- Q2267509 avoided subject: The Return of Judith to Bethulia
+- Q2416277 avoided subject: Holy Trinity
+- Q8353711 no liturgical tag: Daniel in the Lions' Den [lion|Daniel|Daniel in the lions' den]
+- Q1215717 avoided subject: Coronation of the Virgin
+- Q7767151 avoided subject: The Subsiding of the Waters of the Deluge
+- Q3207678 avoided subject: Lamentation over the Dead Christ
+- Q3685121 avoided subject: Lamentation over the Dead Christ
+- Q3707697 no liturgical tag: The Deluge [Genesis flood narrative]
+- Q3944655 avoided subject: The Sacrifice of Noah
+- Q4146226 no liturgical tag: Victory O Lord! [Moses|Aaron|Battle of Refidim|Hur]
+- Q3955636 no liturgical tag: Separation of Light from Darkness [Genesis creation narrative]
+- Q3948607 no liturgical tag: Samson and Delilah [Samson|Delilah]
+- Q3948607 no liturgical tag: Samson and Delilah [Samson|Delilah]
+- Q444078 avoided subject: Saint Sebastian
+- Q3985203 no liturgical tag: Testament and Death of Moses []
+- Q9362085 no liturgical tag: Triptych of Jan Floreins []
+- Q9362085 no liturgical tag: Triptych of Jan Floreins []
+- Q3842738 avoided subject: Madonna of St. Jerome
+- Q3842383 avoided subject: The Holy Family with Saint Mary Magdalen
+- Q3710280 avoided subject: The Disputation on the Trinity
+- Q3213789 avoided subject: Madonna and Child Enthroned with Saints John the Baptist and Sebastian
+- Q3784764 avoided subject: Martyrdom of Saint Sebastian
+- Q19900658 avoided subject: Expulsion from the Garden of Eden
+- Q3769173 avoided subject: Judith and Maidservant with Head of Holofernes
+- Q16070465 avoided subject: St Mary Magdalene in Ecstasy
+- Q19861889 avoided subject: Bathsheba
+- Q2911543 no liturgical tag: Esther [woman|pearl|crown|red hair|Esther|gown]
+- Q5963585 avoided subject: La Gloria
+- Q18688278 avoided subject: Lot and His Daughters
+- Q5963059 no liturgical tag: Creation of the Animals [Genesis creation narrative]
+- Q2900098 avoided subject: Bathsheba at Her Bath
+- Q20083777 avoided subject: Crucifixion
+- Q1706136 no liturgical tag: Joseph with Jacob in Egypt [Joseph]
+- Q1706136 no liturgical tag: Joseph with Jacob in Egypt [Joseph]
+- Q29784129 no liturgical tag: Scene from the Great Flood [woman|child|nudity|drowning]
+- Q6456889 no liturgical tag: Joan of Arc at the Coronation of Charles VII [Joan of Arc]
+- Q29016921 avoided subject: Lot and his Daughters
+- Q7402169 avoided subject: Saint Sebastian
+- Q7759351 avoided subject: The Raising of Lazarus
+- Q9073350 no liturgical tag: San Bernardino de Siena [book|Bernardino of Siena|mitre]
+- Q9138435 no liturgical tag: Abraham Casting Out Hagar and Ishmael [Abraham|Hagar|Ishmael]
+- Q7750471 avoided subject: The Martyrdom of Saint Lawrence
+- Q7732151 no liturgical tag: The end of the world [ruins|Day of Judgment]
+- Q9202855 no liturgical tag: Haman recognizes his fate [Haman]
+- Q3210250 avoided subject: The Repentant Magdalen
+- Q11731707 no liturgical tag: Joseph and Potiphar's Wife [Zulaikha]
+- Q3900760 no liturgical tag: The Plague at Ashdod [temple|pain|plague|corpse|Philistines]
+- Q3696835 avoided subject: The Creation of Eve
+- Q3927386 avoided subject: Saints Peter, Martha, Mary Magdalen, and Leonard
+- Q3978272 avoided subject: Susanna and the Elders
+- Q3978273 avoided subject: Susanna and the Elders
+- Q4126304 avoided subject: The Raising of Lazarus
+- Q3955632 no liturgical tag: The Separation of the Earth and Waters [Genesis creation narrative]
+- Q3948606 no liturgical tag: Samson and Delilah [Samson|Delilah]
+- Q1995698 avoided subject: The Last Judgment
+- Q16038543 no liturgical tag: The Vision of the Blessed Hermann Joseph []
+- Q16038543 no liturgical tag: The Vision of the Blessed Hermann Joseph []
+- Q20829114 no liturgical tag: Brazen Serpent []
+- Q1638622 licence 'CC BY-SA 4.0': Adoration of the Magi
+- Q1217213 shape 2.25: Annunciation
+- Q2344505 licence 'CC BY-SA 4.0': Madonna of the Goldfinch
+- Q2344437 licence 'CC BY-SA 4.0': Transfiguration
+- Q951105 shape 2.39: The Feast in the House of Levi
+- Q2610709 licence 'CC BY-SA 4.0': Madonna of Foligno
+- Q572697 licence 'CC BY-SA 4.0': Pesaro Madonna
+- Q2734881 shape 0.38: Annunciation
+- Q874058 licence 'CC BY-SA 4.0': Columba Triptych
+- Q3910087 shape 2.20: Saint Mark Preaching in Alexandria
+- Q1698794 shape 2.11: The Altar of St. John
+- Q743643 licence 'CC BY-SA 4.0': Joseph the Carpenter
+- Q369913 shape 2.31: Advent and Triumph of Christ
+- Q1989202 licence 'CC BY 3.0': Saint Jerome in His Study
+- Q490312 shape 2.30: Crucifixion
+- Q2529591 licence 'CC BY-SA 4.0': Deposition of Christ
++ Q1892745 [ordinary] Salvator Mundi — Leonardo da Vinci (1500)
++ Q563727 [marian,saints,ordinary] The Virgin and Child with Saint Anne — Leonardo da Vinci (1511)
++ Q734834 [advent,pentecost,marian,angels,saints] Ghent Altarpiece — Jan van Eyck (1432)
++ Q328079 [marian,angels,ordinary] Sistine Madonna — Raphael (1512)
++ Q1142058 [marian,ordinary] Benois Madonna — Leonardo da Vinci (1480)
++ Q783215 [advent,saints] Saint John the Baptist — Leonardo da Vinci (1514)
++ Q969377 [saints,ordinary] The Calling of Saint Matthew — Caravaggio (1609)
++ Q2246489 [ordinary] The Storm on the Sea of Galilee — Rembrandt (1633)
++ Q546297 [holyweek,ordinary] Lamentation of Christ — Andrea Mantegna (1483)
++ Q500951 [holyweek,ordinary] The Yellow Christ — Paul Gauguin (1889)
++ Q185255 [epiphany,marian,saints,ordinary] The Wedding at Cana — Paolo Veronese (1562)
++ Q1473546 [christmas,marian,saints,ordinary] Doni Tondo — Michelangelo (1500)
++ Q1059211 [advent,epiphany,saints,ordinary] The Baptism of Christ — Leonardo da Vinci (1470)
++ Q698015 [marian,ordinary] Madonna of the Carnation — Leonardo da Vinci (1475)
++ Q512755 [lent] El retorno del hijo gey — Rembrandt (1668)
++ Q1192570 [lent] The Blind Leading the Blind — Pieter Brueghel the Elder (1568)
++ Q1327676 [marian,ordinary] Madonna Litta — Leonardo da Vinci (1490)
++ Q94802 [advent,marian,angels,saints,ordinary] The Burial of the Count of Orgaz — El Greco (1586)
++ Q318947 [easter,ordinary] Supper at Emmaus — Caravaggio (1601)
++ Q2030685 [marian,saints] The Marriage of the Virgin — Raphael (1504)
++ Q1899740 [marian,angels,saints,ordinary] Assumption of the Virgin — Titian (1517)
++ Q488825 [epiphany,marian,saints,ordinary] Adoration of the Magi — Sandro Botticelli (1475)
++ Q254923 [marian,saints,ordinary] Alba Madonna — Raphael (1510)
++ Q972196 [lent,saints] Saint Jerome in the Wilderness — Leonardo da Vinci (1480)
++ Q2035209 [marian,ordinary] Madonna del Granduca — Raphael (1506)
++ Q685916 [holyweek,saints] Crucifixion of Saint Peter — Caravaggio (1600)
++ Q867403 [marian,angels,saints,ordinary] Madonna with the Long Neck — Parmigianino (1600)
++ Q927449 [marian,ordinary] Christ in the House of Martha and Mary — Johannes Vermeer (1650)
++ Q966681 [marian,saints,ordinary] Madonna della Seggiola — Raphael (1513)
++ Q2343778 [marian,ordinary] La Belle Jardinière — Raphael (1500)
++ Q2337873 [angels,saints] The Inspiration of Saint Matthew — Caravaggio (1602)
++ Q2327759 [saints] The Torment of Saint Anthony — Michelangelo (1487)
++ Q1747569 [marian,ordinary] The Madonna in the Church — Jan van Eyck (1430)
++ Q680128 [holyweek,saints,ordinary] Christ Carrying the Cross — Hieronymus Bosch (1515)
++ Q745098 [christmas,marian,angels,saints,ordinary] Rest on the Flight into Egypt — Caravaggio (1597)
++ Q2344357 [marian,ordinary] Oddi Altarpiece — Raphael (1502)
++ Q1212920 [holyweek,ordinary] Flagellation of Christ — Piero della Francesca (1459)
++ Q2472983 [holyweek,angels,saints,ordinary] Last Supper — Jacopo Tintoretto (1563)
++ Q2480921 [marian,saints,ordinary] Madonna with Canon Joris van der Paele — Jan van Eyck (1436)
++ Q2500226 [holyweek,marian,saints,ordinary] The Deposition — Raphael (1507)
++ Q2354080 [lent,ordinary] Christ in the Wilderness — Ivan Kramskoi (1872)
++ Q2714617 [ordinary] The Disrobing of Christ — El Greco (1578)
++ Q2628761 [epiphany,marian,ordinary] Adoration of the Magi — Albrecht Dürer (1504)
++ Q1213160 [holyweek,ordinary] The Entombment — Michelangelo (1500)
++ Q2452858 [marian,ordinary] Madonna del Prato — Raphael (1505)
++ Q472799 [marian,angels] Mary Untier of Knots — Johann Georg Melchior Schmittner (1700)
++ Q2273517 [saints] Conversion on the Way to Damascus — Caravaggio (1600)
++ Q2551625 [marian,ordinary] Madonna of the Magnificat — Sandro Botticelli (1483)
++ Q698228 [marian,ordinary] Madonna of the Rosary — Caravaggio (1607)
++ Q2419166 [easter,saints,ordinary] The Incredulity of Saint Thomas — Caravaggio (1601)
++ Q2713203 [marian,ordinary] Madonna di Loreto — Caravaggio (1605)
++ Q2627034 [saints] Saint Catherine of Alexandria — Caravaggio (1598)
++ Q919294 [marian,ordinary] Madonna and Child (The Conestabile Madonna) — Raphael (1504)
++ Q1245388 [marian,ordinary] Madonna of the Pinks — Raphael (1506)
++ Q602813 [marian,ordinary] Solly Madonna — Raphael (1500)
++ Q960157 [advent,marian,saints,ordinary] Christ in the House of His Parents — John Everett Millais (1849)
++ Q979440 [advent,marian,angels,saints] Annunciation with Saints Maxima and Ansanus — Simone Martini (1333)
++ Q1764395 [ordinary] Vision After the Sermon — Paul Gauguin (1888)
++ Q686107 [holyweek,ordinary] The Procession to Calvary — Pieter Brueghel the Elder (1564)
++ Q1170194 [marian,angels,saints,ordinary] Feast of the Rosary — Albrecht Dürer (1506)
++ Q594406 [angels] The Fall of the Rebel Angels — Pieter Brueghel the Elder (1562)
++ Q510799 [saints] Saint Jerome Writing — Caravaggio (1607)
++ Q2528741 [holyweek,ordinary] Christ Crucified — Diego Velázquez (1632)
++ Q1796098 [advent,marian,angels,saints,ordinary] Madonna and Child with Saints, Angels and Federico da Montefeltro (San Bernardino Altarpiece) — Piero della Francesca (1472)
++ Q286096 [marian,angels,saints,ordinary] Saint Luke Drawing the Virgin — Rogier van der Weyden (1490)
++ Q2607050 [marian,ordinary] Small Cowper Madonna — Raphael (1505)
++ Q1757920 [ordinary] The Light of the World — William Holman Hunt (1853)
++ Q1527541 [christmas,marian,ordinary] Nativity — Antonio da Correggio (1529)
++ Q2632688 [advent,epiphany,ordinary] The Baptism of Christ — Piero della Francesca (1448)
++ Q2667782 [holyweek,ordinary] The Descent from the Cross — Peter Paul Rubens (1611)
++ Q2667782 [holyweek,ordinary] The Descent from the Cross — Peter Paul Rubens (1611)
++ Q2715177 [saints] Saint Jerome — Caravaggio (1606)
++ Q474409 [marian,ordinary] Lucca Madonna — Jan van Eyck (1437)
++ Q1087244 [lent,ordinary] Christ and the Woman Taken in Adultery — Pieter Brueghel the Elder (1565)
++ Q1111394 [lent,ordinary] Rembrandt and Saskia in the parable of the Prodigal Son — Rembrandt (1635)
++ Q4680634 [epiphany,marian,ordinary] The Adoration of the Kings — Pieter Brueghel the Elder (1563)
++ Q2504917 [ordinary] The Green Christ — Paul Gauguin (1889)
++ Q323079 [marian,angels,saints,ordinary] Dresden Triptych — Jan van Eyck (1437)
++ Q323079 [marian,angels,saints,ordinary] Dresden Triptych — Jan van Eyck (1437)
++ Q2097931 [easter,ordinary] Supper at Emmaus — Caravaggio (1606)
++ Q677682 [easter,angels,ordinary] Resurrection of Christ — Raphael (1500)
++ Q2016193 [marian] Madonna Enthroned — Giotto (1300)
++ Q2629134 [marian,ordinary] Madonna and Child with the Book — Raphael (1503)
++ Q2713620 [marian,ordinary] Ansidei Madonna — Raphael (1505)
++ Q375216 [marian,saints] The People's Census at Bethlehem — Pieter Brueghel the Elder (1566)
++ Q430069 [holyweek,ordinary] Ecce Homo — Hieronymus Bosch (1490)
++ Q2276130 [epiphany,marian,ordinary] The Epiphany — Hieronymus Bosch (1494)
++ Q2273890 [ordinary] Miracle of the Slave — Jacopo Tintoretto (1547)
++ Q974674 [christmas,marian,angels,ordinary] The Mystical Nativity — Sandro Botticelli (1500)
++ Q2529918 [saints] Saint George and the Dragon — Raphael (1500)
++ Q94006 [saints] Saint Praxedis — Johannes Vermeer (1655)
++ Q4536026 [advent,holyweek,ordinary] The Appearance of Christ Before the People — Alexander Ivanov (1847)
++ Q2420918 [marian,ordinary] Madonna of the Rose — Raphael (1517)
++ Q2664637 [holyweek,ordinary] Christ Falling on the Way to Calvary — Raphael (1515)
++ Q2646680 [saints,ordinary] The Stoning of Saint Stephen — Rembrandt (1624)
++ Q3332564 [advent,marian] Virgin Annunciate — Antonello da Messina (1475)
++ Q1448728 [advent,marian,angels] Annunciation — Caravaggio (1609)
++ Q642198 [advent,marian,saints] The Annunciation, with Saint Emidius — Carlo Crivelli (1486)
++ Q2467082 [advent,marian,ordinary] Visitation — Raphael (1517)
++ Q2715353 [saints] Saint Jerome in His Study — Antonello da Messina (1474)
++ Q2273943 [epiphany,marian,ordinary] Adoration of the Magi — Diego Velázquez (1619)
++ Q2567058 [holyweek,ordinary] Christ Carrying the Cross — Hieronymus Bosch (1500)
++ Q1055117 [epiphany,marian,ordinary] Adoration of the Magi — Gentile da Fabriano (1423)
++ Q965822 [marian,angels,saints,ordinary] Madonna della Vittoria — Andrea Mantegna (1495)
++ Q2535486 [marian,ordinary] Tempi Madonna — Raphael (1508)
++ Q2622161 [saints] Saint George and the Dragon — Raphael (1505)
++ Q2609235 [angels,saints] Saint Francis of Assisi in Ecstasy — Caravaggio (1594)
++ Q2503581 [advent,marian,ordinary] Garvagh Madonna — Raphael (1500)
++ Q323141 [marian,saints,ordinary] Heller Altarpiece — Albrecht Dürer (1500)
++ Q1720631 [marian,saints,ordinary] Castelfranco Madonna — Giorgione (1503)
++ Q323032 [christmas,holyweek,marian,ordinary] Miraflores Altarpiece — Rogier van der Weyden (1443)
++ Q6119366 [saints] Saint Martin and the Beggar — El Greco (1597)
++ Q2165279 [saints] Saint Catherine of Alexandria — Raphael (1507)
++ Q2427320 [christmas,marian,saints,ordinary] Madonna of Loreto — Raphael (1509)
++ Q7401211 [saints] Saint Eulalia — John William Waterhouse (1885)
++ Q2631335 [marian,angels,saints,ordinary] Madonna with the Fish — Raphael (1513)
++ Q2713671 [christmas,marian,ordinary] Canigiani Holy Family — Raphael (1505)
++ Q884782 [holyweek,ordinary] Altarpiece Tetschen — Caspar David Friedrich (1807)
++ Q9392232 [advent,marian,angels] Annunciation — Hans Memling (1480)
++ Q1118465 [marian,angels,ordinary] Ia Orana Maria — Paul Gauguin (1891)
++ Q1115613 [marian,ordinary] Madonna del Prato — Giovanni Bellini (1500)
++ Q650086 [angels] Balaam and the Ass — Rembrandt (1626)
++ Q2459887 [lent,ordinary] The Tribute Money — Titian (1516)
++ Q455319 [marian] Darmstadt Madonna — Hans Holbein the Younger (1526)
++ Q1087226 [marian,ordinary] Christ in the House of Martha and Mary — Diego Velázquez (1618)
++ Q1803755 [christmas,marian,ordinary] Landscape with the Flight into Egypt — Pieter Brueghel the Elder (1563)
++ Q948745 [marian,ordinary] Rucellai Madonna — Duccio di Buoninsegna (1285)
++ Q959537 [marian] Death of the Virgin — Andrea Mantegna (1462)
++ Q959537 [marian] Death of the Virgin — Andrea Mantegna (1462)
++ Q970808 [christmas,marian,angels,saints,ordinary] The Flight into Egypt — Nicolas Poussin (1658)
++ Q203259 [angels] The Fall of the Damned — Peter Paul Rubens (1621)
++ Q3605563 [christmas,marian,saints,ordinary] Adoration of the Shepherds — Giorgione (1507)
++ Q3874247 [saints] The Denial of Saint Peter — Rembrandt (1660)
++ Q3202169 [angels,ordinary] The Apotheosis of Homer — Jean-Auguste-Dominique Ingres (1827)
++ Q1684762 [marian,angels,saints,ordinary] Manchester Madonna — Michelangelo (1494)
++ Q2264942 [holyweek,ordinary] The Flagellation of Christ — Caravaggio (1607)
++ Q2269291 [marian,angels,ordinary] Madonna of the Pomegranate — Sandro Botticelli (1487)
++ Q2269343 [marian,angels,saints,ordinary] San Zaccaria Altarpiece — Giovanni Bellini (1505)
++ Q2378567 [advent,marian,angels] Annunciation — Fra Angelico (1420)
++ Q2714237 [advent,marian,angels] Cestello Annunciation — Sandro Botticelli (1489)
++ Q1235695 [marian,angels,saints,ordinary] Madonna of the Harpies — Andrea del Sarto (1517)
++ Q1211651 [lent] The Blinding of Samson — Rembrandt (1636)
++ Q3918296 [marian,ordinary] Virgin and Child with a Rosary — Bartolomé Esteban Murillo (1650)
++ Q2715302 [marian,saints,ordinary] Madonna and Child with Saint Anne — Caravaggio (1605)
++ Q1434332 [ordinary] Parable of the Sower — Pieter Brueghel the Elder (1557)
++ Q2277635 [lent,ordinary] The Raising of Lazarus — Caravaggio (1609)
++ Q1114913 [christmas,marian,angels,ordinary] Adoration of the Shepherds — El Greco (1612)
++ Q3531531 [epiphany,marian,ordinary] Adoration of the Magi — Fra Angelico (1430)
++ Q5665712 [holyweek,ordinary] Jerusalem — Jean-Léon Gérôme (1867)
++ Q3842778 [marian,ordinary] The Gypsy Madonna — Titian (1510)
++ Q1569622 [advent,marian,angels,ordinary] Madonna and Child Enthroned with Angels and Prophets. ˋSanta Trinità Maestà´ — Cimabue (1290)
++ Q570163 [lent,ordinary] The Woman Taken in Adultery — Rembrandt (1644)
++ Q2066739 [marian,angels,saints,ordinary] San Zeno Altarpiece — Andrea Mantegna (1457)
++ Q688870 [allsaints,saints,ordinary] Adoration of the Trinity — Albrecht Dürer (1511)
++ Q2446983 [ordinary] Scenes from the Passion of Christ — Hans Memling (1470)
++ Q2425901 [advent,marian,angels] Ecce Ancilla Domini — Dante Gabriel Rossetti (1850)
++ Q2425901 [advent,marian,angels] Ecce Ancilla Domini — Dante Gabriel Rossetti (1850)
++ Q2629419 [marian,saints,ordinary] Madonna with Beardless Saint Joseph — Raphael (1506)
++ Q3884945 [holyweek,saints,ordinary] The Agony in the Garden — Andrea Mantegna (1450)
++ Q924655 [angels,saints] St Mark's Body Brought to Venice — Jacopo Tintoretto (1564)
++ Q10749451 [angels] Abraham's Sacrifice — Rembrandt (1635)
++ Q3937806 [angels,saints] Finding of the body of St Mark — Jacopo Tintoretto (1562)
++ Q1131110 [holyweek,saints,ordinary] Agony in the Garden — Giovanni Bellini (1459)
++ Q1132479 [saints] The Burial of Saint Lucy — Caravaggio (1608)
++ Q1433194 [christmas,marian,saints,ordinary] Nativity with Saint Francis and Saint Lawrence — Caravaggio (1600)
++ Q580853 [marian,angels,ordinary] Madonna and Child with an Angel — Sandro Botticelli (1465)
++ Q2733729 [ordinary] Christ Crowned with Thorns — Hieronymus Bosch (1495)
++ Q2456003 [marian] The Immaculate Conception of Los Venerables — Bartolomé Esteban Murillo (1660)
++ Q434461 [marian,angels,saints,ordinary] The Seven Sacraments — Rogier van der Weyden (1440)
++ Q2448065 [ordinary] Christ Among the Doctors — Albrecht Dürer (1506)
++ Q2328603 [holyweek,ordinary] Christ Carrying the Cross — Hieronymus Bosch (1505)
++ Q2389534 [saints] The Hermit Saint — Hieronymus Bosch (1493)
++ Q931837 [holyweek,ordinary] Christ at the Column — Caravaggio (1606)
++ Q1091213 [ordinary] Corpse of Christ — Annibale Carracci (1582)
++ Q1762826 [marian,ordinary] Contarini Madonna — Giovanni Bellini (1475)
++ Q1055111 [marian,angels,ordinary] Madonna and Child — Filippo Lippi (1460)
++ Q257048 [advent,saints,ordinary] The Sermon of Saint John the Baptist — Pieter Brueghel the Elder (1566)
++ Q257048 [advent,saints,ordinary] The Sermon of Saint John the Baptist — Pieter Brueghel the Elder (1566)
++ Q257048 [advent,saints,ordinary] The Sermon of Saint John the Baptist — Pieter Brueghel the Elder (1566)
++ Q5316837 [marian,ordinary] Durán Madonna — Rogier van der Weyden (1435)
++ Q5781032 [angels] The Concert of the Angels — El Greco (1600)
++ Q3221859 [marian,angels,ordinary] Coronation of the Virgin — Diego Velázquez (1634)
++ Q3211055 [christmas,marian,ordinary] The Nativity — Piero della Francesca (1480)
++ Q3212033 [marian,ordinary] Presentation at the Temple — Andrea Mantegna (1400)
++ Q3817178 [lent,ordinary] Miracle of the Holy Cross at the Rialto Bridge — Vittore Carpaccio (1494)
++ Q2920183 [advent,marian,angels] Annunciation — Titian (1564)
++ Q3078569 [marian,angels] Dormition of the Virgin — El Greco (1565)
++ Q24090 [holyweek,ordinary] The Crowning with Thorns — Titian (1542)
++ Q5966323 [marian,saints] The Coronation of the Virgin — El Greco (1597)
++ Q3210257 [advent,marian,angels,saints,ordinary] Madonna Bardi — Sandro Botticelli (1500)
++ Q5916308 [marian] The Immaculate Conception — Giovanni Battista Tiepolo (1767)
++ Q27033728 [marian,saints,ordinary] Madonna and Child Enthroned with Saints — Raphael (1504)
++ Q560057 [advent,marian,ordinary] Terranuova Madonna — Raphael (1505)
++ Q560057 [advent,marian,ordinary] Terranuova Madonna — Raphael (1505)
++ Q669872 [saints] The Vision of Saint Eustace — Pisanello (1400)
++ Q738038 [marian,saints,ordinary] Madonna with the Blue Diadem — Gianfrancesco Penni (1515)
++ Q2381716 [christmas,marian,saints,ordinary] The Flight into Egypt — Adam Elsheimer (1609)
++ Q665337 [saints] Conversion of Paul — Pieter Brueghel the Elder (1567)
++ Q665337 [saints] Conversion of Paul — Pieter Brueghel the Elder (1567)
++ Q3224308 [marian,saints] Marriage of the Virgin — Pietro Perugino (1501)
++ Q3947115 [saints] Saint Francis in the Desert — Giovanni Bellini (1480)
++ Q3947309 [lent,saints] St. Jerome in the Wilderness — Albrecht Dürer (1496)
++ Q1134281 [angels] Ezekiel's Vision — Raphael (1518)
++ Q617629 [easter,ordinary] The Resurrection — El Greco (1598)
++ Q2741541 [epiphany,marian,ordinary] Monforte Altarpiece — Hugo van der Goes (1470)
++ Q2842584 [saints] Saint Peter and Saint Paul — El Greco (1595)
++ Q2327715 [christmas,marian,ordinary] Adoration of the Shepherds — Caravaggio (1609)
++ Q2325834 [holyweek,ordinary] Ecce Homo — Caravaggio (1605)
++ Q1984131 [saints] Saint George and the Dragon — Jacopo Tintoretto (1555)
++ Q1986597 [marian,ordinary] Madonna d'Orleans — Raphael (1506)
++ Q315716 [marian,ordinary] Stuppach Madonna — Matthias Grünewald (1514)
++ Q2516599 [advent,marian] Annunciation — Jan van Eyck (1440)
++ Q2598223 [marian,ordinary] Mary and Child — Albrecht Dürer (1512)
++ Q2607065 [marian,ordinary] Niccolini-Cowper Madonna — Raphael (1511)
++ Q2565646 [saints,ordinary] Saint Christopher Carrying the Christ Child — Hieronymus Bosch (1500)
++ Q3543898 [holyweek,ordinary] Christ Crucified — Francisco Goya (1780)
++ Q3605536 [epiphany,marian,ordinary] Adoration of the Magi — Lorenzo Monaco (1420)
++ Q3842403 [marian,ordinary] Haller Madonna — Albrecht Dürer (1495)
++ Q5792618 [marian,angels] The Birth of the Virgin — Bartolomé Esteban Murillo (1660)
++ Q3464529 [marian,saints] Saint Margaret of Antioch — Francisco de Zurbarán (1630)

@@ -1,0 +1,3602 @@
+[
+ {
+  "id": "Q1892745",
+  "file": "lib/Q1892745.jpg",
+  "title": "Salvator Mundi",
+  "artist": "Leonardo da Vinci",
+  "year": "1500",
+  "collection": "Louvre Abu Dhabi",
+  "tags": [
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1325,
+  "source": "https://commons.wikimedia.org/wiki/File:Leonardo_da_Vinci,_Salvator_Mundi,_c.1500,_oil_on_walnut,_45.4_%C3%97_65.6_cm.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q563727",
+  "file": "lib/Q563727.jpg",
+  "title": "The Virgin and Child with Saint Anne",
+  "artist": "Leonardo da Vinci",
+  "year": "1511",
+  "collection": "Department of Paintings of the Louvre",
+  "tags": [
+   "marian",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1190,
+  "source": "https://commons.wikimedia.org/wiki/File:Sainte_Anne_Leonard.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q734834",
+  "file": "lib/Q734834.jpg",
+  "title": "Ghent Altarpiece",
+  "artist": "Jan van Eyck",
+  "year": "1432",
+  "collection": "Solly Collection",
+  "tags": [
+   "advent",
+   "pentecost",
+   "marian",
+   "angels",
+   "saints"
+  ],
+  "w": 800,
+  "h": 443,
+  "source": "https://commons.wikimedia.org/wiki/File:Ghent_Altarpiece_by_Jan_van_Eyck_ALL.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q328079",
+  "file": "lib/Q328079.jpg",
+  "title": "Sistine Madonna",
+  "artist": "Raphael",
+  "year": "1512",
+  "collection": "Staatliche Kunstsammlungen Dresden",
+  "tags": [
+   "marian",
+   "angels",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1222,
+  "source": "https://commons.wikimedia.org/wiki/File:Raphael_-_The_Sistine_Madonna_-_Google_Arts_%26_Culture.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1142058",
+  "file": "lib/Q1142058.jpg",
+  "title": "Benois Madonna",
+  "artist": "Leonardo da Vinci",
+  "year": "1480",
+  "collection": "Hermitage Museum",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1442,
+  "source": "https://commons.wikimedia.org/wiki/File:Leonardo,_Madonna_Benois.JPG",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q783215",
+  "file": "lib/Q783215.jpg",
+  "title": "Saint John the Baptist",
+  "artist": "Leonardo da Vinci",
+  "year": "1514",
+  "collection": "Department of Paintings of the Louvre",
+  "tags": [
+   "advent",
+   "saints"
+  ],
+  "w": 900,
+  "h": 1165,
+  "source": "https://commons.wikimedia.org/wiki/File:Leonardo_da_Vinci_-_Saint_John_the_Baptist_C2RMF_retouched.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q969377",
+  "file": "lib/Q969377.jpg",
+  "title": "The Calling of Saint Matthew",
+  "artist": "Caravaggio",
+  "year": "1609",
+  "collection": "San Luigi dei Francesi",
+  "tags": [
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 850,
+  "source": "https://commons.wikimedia.org/wiki/File:Caravaggio_%E2%80%94_The_Calling_of_Saint_Matthew.jpg",
+  "license": "CC0"
+ },
+ {
+  "id": "Q2246489",
+  "file": "lib/Q2246489.jpg",
+  "title": "The Storm on the Sea of Galilee",
+  "artist": "Rembrandt",
+  "year": "1633",
+  "collection": "",
+  "tags": [
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1118,
+  "source": "https://commons.wikimedia.org/wiki/File:Rembrandt_Christ_in_the_Storm_on_the_Lake_of_Galilee.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q546297",
+  "file": "lib/Q546297.jpg",
+  "title": "Lamentation of Christ",
+  "artist": "Andrea Mantegna",
+  "year": "1483",
+  "collection": "Pinacoteca di Brera",
+  "tags": [
+   "holyweek",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 761,
+  "source": "https://commons.wikimedia.org/wiki/File:Lamentaci%C3%B3n_sobre_Cristo_muerto,_por_Andrea_Mantegna.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q500951",
+  "file": "lib/Q500951.jpg",
+  "title": "The Yellow Christ",
+  "artist": "Paul Gauguin",
+  "year": "1889",
+  "collection": "Buffalo AKG Art Museum",
+  "tags": [
+   "holyweek",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1132,
+  "source": "https://commons.wikimedia.org/wiki/File:Paul_Gauguin_-_The_Yellow_Christ_(Le_Christ_jaune)_1889.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q185255",
+  "file": "lib/Q185255.jpg",
+  "title": "The Wedding at Cana",
+  "artist": "Paolo Veronese",
+  "year": "1562",
+  "collection": "Department of Paintings of the Louvre",
+  "tags": [
+   "epiphany",
+   "marian",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 603,
+  "source": "https://commons.wikimedia.org/wiki/File:Les_Noces_de_Cana_-_Paolo_Veronese_-_Mus%C3%A9e_du_Louvre_Peintures_INV_142_;_MR_384.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1473546",
+  "file": "lib/Q1473546.jpg",
+  "title": "Doni Tondo",
+  "artist": "Michelangelo",
+  "year": "1500",
+  "collection": "Uffizi Gallery",
+  "tags": [
+   "christmas",
+   "marian",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 927,
+  "source": "https://commons.wikimedia.org/wiki/File:Tondo_Doni_2015.png",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1059211",
+  "file": "lib/Q1059211.jpg",
+  "title": "The Baptism of Christ",
+  "artist": "Leonardo da Vinci",
+  "year": "1470",
+  "collection": "Uffizi Gallery",
+  "tags": [
+   "advent",
+   "epiphany",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1082,
+  "source": "https://commons.wikimedia.org/wiki/File:Verrocchio_and_Leonardo,_Baptism_of_Christ,_c1470-75,_Uffizi.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q698015",
+  "file": "lib/Q698015.jpg",
+  "title": "Madonna of the Carnation",
+  "artist": "Leonardo da Vinci",
+  "year": "1475",
+  "collection": "Bavarian State Painting Collections",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1211,
+  "source": "https://commons.wikimedia.org/wiki/File:LEONARDO-DA-VINCI_-_MADONNA-MIT-DER-NELKE-7779_917154_BSTGS.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q512755",
+  "file": "lib/Q512755.jpg",
+  "title": "El retorno del hijo gey",
+  "artist": "Rembrandt",
+  "year": "1668",
+  "collection": "Hermitage Museum",
+  "tags": [
+   "lent"
+  ],
+  "w": 900,
+  "h": 1175,
+  "source": "https://commons.wikimedia.org/wiki/File:Rembrandt_Harmensz_van_Rijn_-_Return_of_the_Prodigal_Son_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1192570",
+  "file": "lib/Q1192570.jpg",
+  "title": "The Blind Leading the Blind",
+  "artist": "Pieter Brueghel the Elder",
+  "year": "1568",
+  "collection": "Museo di Capodimonte",
+  "tags": [
+   "lent"
+  ],
+  "w": 900,
+  "h": 505,
+  "source": "https://commons.wikimedia.org/wiki/File:Bruegel,_Pieter_(I)_-_Blind_leading_the_blind_Google_Art_Project.jpeg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1327676",
+  "file": "lib/Q1327676.jpg",
+  "title": "Madonna Litta",
+  "artist": "Leonardo da Vinci",
+  "year": "1490",
+  "collection": "Hermitage Museum",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1148,
+  "source": "https://commons.wikimedia.org/wiki/File:Leonardo_da_Vinci_attributed_-_Madonna_Litta.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q94802",
+  "file": "lib/Q94802.jpg",
+  "title": "The Burial of the Count of Orgaz",
+  "artist": "El Greco",
+  "year": "1586",
+  "collection": "Church of Santo Tomé",
+  "tags": [
+   "advent",
+   "marian",
+   "angels",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1102,
+  "source": "https://commons.wikimedia.org/wiki/File:El_Greco_-_The_Burial_of_the_Count_of_Orgaz.JPG",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q318947",
+  "file": "lib/Q318947.jpg",
+  "title": "Supper at Emmaus",
+  "artist": "Caravaggio",
+  "year": "1601",
+  "collection": "National Gallery",
+  "tags": [
+   "easter",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 640,
+  "source": "https://commons.wikimedia.org/wiki/File:Caravaggio_-_Supper_at_Emmaus_-_National_Gallery_London.jpeg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2030685",
+  "file": "lib/Q2030685.jpg",
+  "title": "The Marriage of the Virgin",
+  "artist": "Raphael",
+  "year": "1504",
+  "collection": "Pinacoteca di Brera",
+  "tags": [
+   "marian",
+   "saints"
+  ],
+  "w": 900,
+  "h": 1291,
+  "source": "https://commons.wikimedia.org/wiki/File:Raffaello_-_Spozalizio_-_Web_Gallery_of_Art.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1899740",
+  "file": "lib/Q1899740.jpg",
+  "title": "Assumption of the Virgin",
+  "artist": "Titian",
+  "year": "1517",
+  "collection": "Santa Maria Gloriosa dei Frari",
+  "tags": [
+   "marian",
+   "angels",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1656,
+  "source": "https://commons.wikimedia.org/wiki/File:Tizian_041.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q488825",
+  "file": "lib/Q488825.jpg",
+  "title": "Adoration of the Magi",
+  "artist": "Sandro Botticelli",
+  "year": "1475",
+  "collection": "Uffizi Gallery",
+  "tags": [
+   "epiphany",
+   "marian",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 735,
+  "source": "https://commons.wikimedia.org/wiki/File:Zanobi-Altar.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q254923",
+  "file": "lib/Q254923.jpg",
+  "title": "Alba Madonna",
+  "artist": "Raphael",
+  "year": "1510",
+  "collection": "Andrew W. Mellon collection",
+  "tags": [
+   "marian",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 900,
+  "source": "https://commons.wikimedia.org/wiki/File:Raphael,_The_Alba_Madonna,_c._1510,_NGA_26.jpg",
+  "license": "CC0"
+ },
+ {
+  "id": "Q972196",
+  "file": "lib/Q972196.jpg",
+  "title": "Saint Jerome in the Wilderness",
+  "artist": "Leonardo da Vinci",
+  "year": "1480",
+  "collection": "Pinacoteca Vaticana",
+  "tags": [
+   "lent",
+   "saints"
+  ],
+  "w": 900,
+  "h": 1269,
+  "source": "https://commons.wikimedia.org/wiki/File:Leonardo_da_Vinci_%E2%80%94_Jerome.jpg",
+  "license": "CC0"
+ },
+ {
+  "id": "Q2035209",
+  "file": "lib/Q2035209.jpg",
+  "title": "Madonna del Granduca",
+  "artist": "Raphael",
+  "year": "1506",
+  "collection": "Galleria Palatina",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1326,
+  "source": "https://commons.wikimedia.org/wiki/File:Raffaello_(1483-1520)_-_La_Madonna_del_Granduca_-_178_-_Galleria_Palatina.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q685916",
+  "file": "lib/Q685916.jpg",
+  "title": "Crucifixion of Saint Peter",
+  "artist": "Caravaggio",
+  "year": "1600",
+  "collection": "Santa Maria del Popolo",
+  "tags": [
+   "holyweek",
+   "saints"
+  ],
+  "w": 900,
+  "h": 1160,
+  "source": "https://commons.wikimedia.org/wiki/File:Crucifixion_of_Saint_Peter-Caravaggio_(c.1600).jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q867403",
+  "file": "lib/Q867403.jpg",
+  "title": "Madonna with the Long Neck",
+  "artist": "Parmigianino",
+  "year": "1600",
+  "collection": "Galleria Palatina",
+  "tags": [
+   "marian",
+   "angels",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1411,
+  "source": "https://commons.wikimedia.org/wiki/File:Parmigianino_-_Madonna_and_Child_with_Angels,_known_as_the_Madonna_with_the_Long_Neck.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q927449",
+  "file": "lib/Q927449.jpg",
+  "title": "Christ in the House of Martha and Mary",
+  "artist": "Johannes Vermeer",
+  "year": "1650",
+  "collection": "Scottish National Gallery",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1041,
+  "source": "https://commons.wikimedia.org/wiki/File:Johannes_(Jan)_Vermeer_-_Christ_in_the_House_of_Martha_and_Mary_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q966681",
+  "file": "lib/Q966681.jpg",
+  "title": "Madonna della Seggiola",
+  "artist": "Raphael",
+  "year": "1513",
+  "collection": "Galleria Palatina",
+  "tags": [
+   "marian",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 920,
+  "source": "https://commons.wikimedia.org/wiki/File:Raphael_Madonna_della_seggiola.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2343778",
+  "file": "lib/Q2343778.jpg",
+  "title": "La Belle Jardinière",
+  "artist": "Raphael",
+  "year": "1500",
+  "collection": "Department of Paintings of the Louvre",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1400,
+  "source": "https://commons.wikimedia.org/wiki/File:La_Vierge_%C3%A0_l%27Enfant_avec_le_petit_saint_Jean_Baptiste_-_Rapha%C3%ABl_-_Mus%C3%A9e_du_Louvre_Peintures_INV_602_;_MR_433.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2337873",
+  "file": "lib/Q2337873.jpg",
+  "title": "The Inspiration of Saint Matthew",
+  "artist": "Caravaggio",
+  "year": "1602",
+  "collection": "San Luigi dei Francesi",
+  "tags": [
+   "angels",
+   "saints"
+  ],
+  "w": 900,
+  "h": 1408,
+  "source": "https://commons.wikimedia.org/wiki/File:Caravaggio_-_La_inspiraci%C3%B3n_de_San_Mateo_(San_Luigi_dei_Francesi,_Roma).jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2327759",
+  "file": "lib/Q2327759.jpg",
+  "title": "The Torment of Saint Anthony",
+  "artist": "Michelangelo",
+  "year": "1487",
+  "collection": "Kimbell Art Museum",
+  "tags": [
+   "saints"
+  ],
+  "w": 900,
+  "h": 1231,
+  "source": "https://commons.wikimedia.org/wiki/File:Michelangelo_Buonarroti_-_The_Torment_of_Saint_Anthony_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1747569",
+  "file": "lib/Q1747569.jpg",
+  "title": "The Madonna in the Church",
+  "artist": "Jan van Eyck",
+  "year": "1430",
+  "collection": "Gemäldegalerie Berlin",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 670,
+  "h": 1500,
+  "source": "https://commons.wikimedia.org/wiki/File:Jan_van_Eyck_-_Madonna_in_the_Church_-_WGA7590.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q680128",
+  "file": "lib/Q680128.jpg",
+  "title": "Christ Carrying the Cross",
+  "artist": "Hieronymus Bosch",
+  "year": "1515",
+  "collection": "Museum of Fine Arts Ghent (MSK)",
+  "tags": [
+   "holyweek",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 838,
+  "source": "https://commons.wikimedia.org/wiki/File:Bosch_-_Christ_Carrying_the_Cross,_ca._1510_-_ca._1516,_Inv._1902-H.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q745098",
+  "file": "lib/Q745098.jpg",
+  "title": "Rest on the Flight into Egypt",
+  "artist": "Caravaggio",
+  "year": "1597",
+  "collection": "Galleria Doria Pamphilj",
+  "tags": [
+   "christmas",
+   "marian",
+   "angels",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 726,
+  "source": "https://commons.wikimedia.org/wiki/File:Rest_on_the_Flight_into_Egypt-Caravaggio_(c.1597).jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2344357",
+  "file": "lib/Q2344357.jpg",
+  "title": "Oddi Altarpiece",
+  "artist": "Raphael",
+  "year": "1502",
+  "collection": "Pinacoteca Vaticana",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 627,
+  "h": 1030,
+  "source": "https://commons.wikimedia.org/wiki/File:PalaOddiRaffaello.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1212920",
+  "file": "lib/Q1212920.jpg",
+  "title": "Flagellation of Christ",
+  "artist": "Piero della Francesca",
+  "year": "1459",
+  "collection": "Galleria Nazionale delle Marche",
+  "tags": [
+   "holyweek",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 633,
+  "source": "https://commons.wikimedia.org/wiki/File:Piero_della_Francesca_Flagellazione-gndm-full.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2472983",
+  "file": "lib/Q2472983.jpg",
+  "title": "Last Supper",
+  "artist": "Jacopo Tintoretto",
+  "year": "1563",
+  "collection": "Church of San Giorgio Maggiore",
+  "tags": [
+   "holyweek",
+   "angels",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 572,
+  "source": "https://commons.wikimedia.org/wiki/File:Jacopo_Tintoretto_-_The_Last_Supper_-_WGA22649.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2480921",
+  "file": "lib/Q2480921.jpg",
+  "title": "Madonna with Canon Joris van der Paele",
+  "artist": "Jan van Eyck",
+  "year": "1436",
+  "collection": "Vlaamse Kunstcollectie",
+  "tags": [
+   "marian",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 698,
+  "source": "https://commons.wikimedia.org/wiki/File:Eyck,_Jan_van_-_Madonna_with_Canon_van_der_Paele.jpeg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2500226",
+  "file": "lib/Q2500226.jpg",
+  "title": "The Deposition",
+  "artist": "Raphael",
+  "year": "1507",
+  "collection": "Galleria Borghese",
+  "tags": [
+   "holyweek",
+   "marian",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 931,
+  "source": "https://commons.wikimedia.org/wiki/File:Raffaello,_pala_baglioni,_deposizione.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2354080",
+  "file": "lib/Q2354080.jpg",
+  "title": "Christ in the Wilderness",
+  "artist": "Ivan Kramskoi",
+  "year": "1872",
+  "collection": "Tretyakov Gallery",
+  "tags": [
+   "lent",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 789,
+  "source": "https://commons.wikimedia.org/wiki/File:Ivan_Kramskoy_-_%D0%A5%D1%80%D0%B8%D1%81%D1%82%D0%BE%D1%81_%D0%B2_%D0%BF%D1%83%D1%81%D1%82%D1%8B%D0%BD%D0%B5_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2714617",
+  "file": "lib/Q2714617.jpg",
+  "title": "The Disrobing of Christ",
+  "artist": "El Greco",
+  "year": "1578",
+  "collection": "Toledo Cathedral",
+  "tags": [
+   "ordinary"
+  ],
+  "w": 745,
+  "h": 1280,
+  "source": "https://commons.wikimedia.org/wiki/File:El_Expolio,_por_El_Greco.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2628761",
+  "file": "lib/Q2628761.jpg",
+  "title": "Adoration of the Magi",
+  "artist": "Albrecht Dürer",
+  "year": "1504",
+  "collection": "Uffizi Gallery",
+  "tags": [
+   "epiphany",
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 786,
+  "source": "https://commons.wikimedia.org/wiki/File:Albrecht_D%C3%BCrer_-_Adorazione_dei_Magi_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1213160",
+  "file": "lib/Q1213160.jpg",
+  "title": "The Entombment",
+  "artist": "Michelangelo",
+  "year": "1500",
+  "collection": "National Gallery",
+  "tags": [
+   "holyweek",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 980,
+  "source": "https://commons.wikimedia.org/wiki/File:Entombment_Michelangelo.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2452858",
+  "file": "lib/Q2452858.jpg",
+  "title": "Madonna del Prato",
+  "artist": "Raphael",
+  "year": "1505",
+  "collection": "Kunsthistorisches Museum",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1152,
+  "source": "https://commons.wikimedia.org/wiki/File:Raphael_-_Madonna_in_the_Meadow_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q472799",
+  "file": "lib/Q472799.jpg",
+  "title": "Mary Untier of Knots",
+  "artist": "Johann Georg Melchior Schmittner",
+  "year": "1700",
+  "collection": "St. Peter am Perlach",
+  "tags": [
+   "marian",
+   "angels"
+  ],
+  "w": 202,
+  "h": 347,
+  "source": "https://commons.wikimedia.org/wiki/File:Mary,_Untier_of_Knots_by_Schmidtner.png",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2273517",
+  "file": "lib/Q2273517.jpg",
+  "title": "Conversion on the Way to Damascus",
+  "artist": "Caravaggio",
+  "year": "1600",
+  "collection": "Santa Maria del Popolo",
+  "tags": [
+   "saints"
+  ],
+  "w": 900,
+  "h": 1182,
+  "source": "https://commons.wikimedia.org/wiki/File:Conversion_on_the_Way_to_Damascus-Caravaggio_(c.1600-1).jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2551625",
+  "file": "lib/Q2551625.jpg",
+  "title": "Madonna of the Magnificat",
+  "artist": "Sandro Botticelli",
+  "year": "1483",
+  "collection": "Uffizi Gallery",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 900,
+  "source": "https://commons.wikimedia.org/wiki/File:Sandro_Botticelli_-_Madonna_del_Magnificat_C.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q698228",
+  "file": "lib/Q698228.jpg",
+  "title": "Madonna of the Rosary",
+  "artist": "Caravaggio",
+  "year": "1607",
+  "collection": "Kunsthistorisches Museum",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1308,
+  "source": "https://commons.wikimedia.org/wiki/File:Michelangelo_Merisi,_called_Caravaggio_-_Madonna_of_the_Rosary_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2419166",
+  "file": "lib/Q2419166.jpg",
+  "title": "The Incredulity of Saint Thomas",
+  "artist": "Caravaggio",
+  "year": "1601",
+  "collection": "Sanssouci Picture Gallery",
+  "tags": [
+   "easter",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 668,
+  "source": "https://commons.wikimedia.org/wiki/File:Caravaggio_incredulity.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2713203",
+  "file": "lib/Q2713203.jpg",
+  "title": "Madonna di Loreto",
+  "artist": "Caravaggio",
+  "year": "1605",
+  "collection": "Basilica of Saint Augustine in Campo Marzio",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1539,
+  "source": "https://commons.wikimedia.org/wiki/File:Madonna_di_Loreto-Caravaggio_(c.1604-6).jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2627034",
+  "file": "lib/Q2627034.jpg",
+  "title": "Saint Catherine of Alexandria",
+  "artist": "Caravaggio",
+  "year": "1598",
+  "collection": "Thyssen-Bornemisza Museum",
+  "tags": [
+   "saints"
+  ],
+  "w": 900,
+  "h": 1170,
+  "source": "https://commons.wikimedia.org/wiki/File:Saint_Catherine_of_Alexandria_(Caravaggio).jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q919294",
+  "file": "lib/Q919294.jpg",
+  "title": "Madonna and Child (The Conestabile Madonna)",
+  "artist": "Raphael",
+  "year": "1504",
+  "collection": "Hermitage Museum",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 921,
+  "source": "https://commons.wikimedia.org/wiki/File:Raffaello_Madonna_Connestabile.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1245388",
+  "file": "lib/Q1245388.jpg",
+  "title": "Madonna of the Pinks",
+  "artist": "Raphael",
+  "year": "1506",
+  "collection": "National Gallery",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 870,
+  "h": 1080,
+  "source": "https://commons.wikimedia.org/wiki/File:Raphael_Madonna_of_the_Pinks.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q602813",
+  "file": "lib/Q602813.jpg",
+  "title": "Solly Madonna",
+  "artist": "Raphael",
+  "year": "1500",
+  "collection": "Solly Collection",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1225,
+  "source": "https://commons.wikimedia.org/wiki/File:Raffael_(1483_-_1520)_-_The_Virgin_and_Child_-_Solly_Madonna_-_141_-_Gem%C3%A4ldegalerie.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q960157",
+  "file": "lib/Q960157.jpg",
+  "title": "Christ in the House of His Parents",
+  "artist": "John Everett Millais",
+  "year": "1849",
+  "collection": "Tate",
+  "tags": [
+   "advent",
+   "marian",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 547,
+  "source": "https://commons.wikimedia.org/wiki/File:John_Everett_Millais_-_Christ_in_the_House_of_His_Parents_(%60The_Carpenter%27s_Shop%27)_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q979440",
+  "file": "lib/Q979440.jpg",
+  "title": "Annunciation with Saints Maxima and Ansanus",
+  "artist": "Simone Martini",
+  "year": "1333",
+  "collection": "Uffizi Gallery",
+  "tags": [
+   "advent",
+   "marian",
+   "angels",
+   "saints"
+  ],
+  "w": 900,
+  "h": 782,
+  "source": "https://commons.wikimedia.org/wiki/File:Simone_Martini_%E2%80%94_Annunciation_with_St._Margaret_and_St._Ansanus.jpg",
+  "license": "CC0"
+ },
+ {
+  "id": "Q1764395",
+  "file": "lib/Q1764395.jpg",
+  "title": "Vision After the Sermon",
+  "artist": "Paul Gauguin",
+  "year": "1888",
+  "collection": "National Galleries Scotland",
+  "tags": [
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 705,
+  "source": "https://commons.wikimedia.org/wiki/File:La_vision_apr%C3%A8s_le_sermon_(Paul_Gauguin).jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q686107",
+  "file": "lib/Q686107.jpg",
+  "title": "The Procession to Calvary",
+  "artist": "Pieter Brueghel the Elder",
+  "year": "1564",
+  "collection": "Kunsthistorisches Museum",
+  "tags": [
+   "holyweek",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 654,
+  "source": "https://commons.wikimedia.org/wiki/File:Pieter_Bruegel_d._%C3%84._007b.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1170194",
+  "file": "lib/Q1170194.jpg",
+  "title": "Feast of the Rosary",
+  "artist": "Albrecht Dürer",
+  "year": "1506",
+  "collection": "National Gallery Prague",
+  "tags": [
+   "marian",
+   "angels",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 756,
+  "source": "https://commons.wikimedia.org/wiki/File:Albrecht_D%C3%BCrer_-_Das_Rosenkranzfest_(1506).jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q594406",
+  "file": "lib/Q594406.jpg",
+  "title": "The Fall of the Rebel Angels",
+  "artist": "Pieter Brueghel the Elder",
+  "year": "1562",
+  "collection": "Royal Museums of Fine Arts of Belgium",
+  "tags": [
+   "angels"
+  ],
+  "w": 900,
+  "h": 650,
+  "source": "https://commons.wikimedia.org/wiki/File:Pieter_Bruegel_the_Elder_-_The_Fall_of_the_Rebel_Angels_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q510799",
+  "file": "lib/Q510799.jpg",
+  "title": "Saint Jerome Writing",
+  "artist": "Caravaggio",
+  "year": "1607",
+  "collection": "Heritage Malta",
+  "tags": [
+   "saints"
+  ],
+  "w": 900,
+  "h": 618,
+  "source": "https://commons.wikimedia.org/wiki/File:Caravaggio_-_Saint_Jerome_in_his_study_-_Oratory_of_St_John_the_Baptist,_St_John%E2%80%99s_Co-Cathedral,_Valletta.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2528741",
+  "file": "lib/Q2528741.jpg",
+  "title": "Christ Crucified",
+  "artist": "Diego Velázquez",
+  "year": "1632",
+  "collection": "Museo del Prado",
+  "tags": [
+   "holyweek",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1342,
+  "source": "https://commons.wikimedia.org/wiki/File:Cristo_crucificado.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1796098",
+  "file": "lib/Q1796098.jpg",
+  "title": "Madonna and Child with Saints, Angels and Federico da Montefeltro (San Bernardino Altarpiece)",
+  "artist": "Piero della Francesca",
+  "year": "1472",
+  "collection": "Pinacoteca di Brera",
+  "tags": [
+   "advent",
+   "marian",
+   "angels",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1290,
+  "source": "https://commons.wikimedia.org/wiki/File:Piero_della_Francesca_046.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q286096",
+  "file": "lib/Q286096.jpg",
+  "title": "Saint Luke Drawing the Virgin",
+  "artist": "Rogier van der Weyden",
+  "year": "1490",
+  "collection": "Museum of Fine Arts Boston",
+  "tags": [
+   "marian",
+   "angels",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1122,
+  "source": "https://commons.wikimedia.org/wiki/File:Weyden_madonna_1440.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2607050",
+  "file": "lib/Q2607050.jpg",
+  "title": "Small Cowper Madonna",
+  "artist": "Raphael",
+  "year": "1505",
+  "collection": "",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1211,
+  "source": "https://commons.wikimedia.org/wiki/File:Raffaello_Madonna_Cowper.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1757920",
+  "file": "lib/Q1757920.jpg",
+  "title": "The Light of the World",
+  "artist": "William Holman Hunt",
+  "year": "1853",
+  "collection": "Keble College",
+  "tags": [
+   "ordinary"
+  ],
+  "w": 600,
+  "h": 1224,
+  "source": "https://commons.wikimedia.org/wiki/File:Hunt,_William_Homan_-_The_Light_of_the_World_-_1853-54.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1527541",
+  "file": "lib/Q1527541.jpg",
+  "title": "Nativity",
+  "artist": "Antonio da Correggio",
+  "year": "1529",
+  "collection": "Staatliche Kunstsammlungen Dresden",
+  "tags": [
+   "christmas",
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1226,
+  "source": "https://commons.wikimedia.org/wiki/File:Correggio_-_The_Holy_Night_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2632688",
+  "file": "lib/Q2632688.jpg",
+  "title": "The Baptism of Christ",
+  "artist": "Piero della Francesca",
+  "year": "1448",
+  "collection": "National Gallery",
+  "tags": [
+   "advent",
+   "epiphany",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1293,
+  "source": "https://commons.wikimedia.org/wiki/File:Piero_della_Francesca_-_Battesimo_di_Cristo_(National_Gallery,_London).jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2667782",
+  "file": "lib/Q2667782.jpg",
+  "title": "The Descent from the Cross",
+  "artist": "Peter Paul Rubens",
+  "year": "1611",
+  "collection": "Onze-Lieve-Vrouwekathedraal",
+  "tags": [
+   "holyweek",
+   "ordinary"
+  ],
+  "w": 630,
+  "h": 748,
+  "source": "https://commons.wikimedia.org/wiki/File:Peter_Paul_Rubens_065_exterior.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2667782",
+  "file": "lib/Q2667782.jpg",
+  "title": "The Descent from the Cross",
+  "artist": "Peter Paul Rubens",
+  "year": "1611",
+  "collection": "Onze-Lieve-Vrouwekathedraal",
+  "tags": [
+   "holyweek",
+   "ordinary"
+  ],
+  "w": 630,
+  "h": 748,
+  "source": "https://commons.wikimedia.org/wiki/File:Peter_Paul_Rubens_-_Descent_from_the_Cross_-_WGA20212.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2715177",
+  "file": "lib/Q2715177.jpg",
+  "title": "Saint Jerome",
+  "artist": "Caravaggio",
+  "year": "1606",
+  "collection": "Galleria Borghese",
+  "tags": [
+   "saints"
+  ],
+  "w": 900,
+  "h": 655,
+  "source": "https://commons.wikimedia.org/wiki/File:Caravaggio_-_Saint_Jerome_-_Galleria_Borghese.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q474409",
+  "file": "lib/Q474409.jpg",
+  "title": "Lucca Madonna",
+  "artist": "Jan van Eyck",
+  "year": "1437",
+  "collection": "Städel Museum",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1194,
+  "source": "https://commons.wikimedia.org/wiki/File:Lucca_Madonna_(SM_944).png",
+  "license": "PDM-owner"
+ },
+ {
+  "id": "Q1087244",
+  "file": "lib/Q1087244.jpg",
+  "title": "Christ and the Woman Taken in Adultery",
+  "artist": "Pieter Brueghel the Elder",
+  "year": "1565",
+  "collection": "Courtauld Institute of Art",
+  "tags": [
+   "lent",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 627,
+  "source": "https://commons.wikimedia.org/wiki/File:Pieter_Bruegel_(I)_-_Christ_and_the_woman_taken_in_adultery.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1111394",
+  "file": "lib/Q1111394.jpg",
+  "title": "Rembrandt and Saskia in the parable of the Prodigal Son",
+  "artist": "Rembrandt",
+  "year": "1635",
+  "collection": "Staatliche Kunstsammlungen Dresden",
+  "tags": [
+   "lent",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1141,
+  "source": "https://commons.wikimedia.org/wiki/File:Rembrandt_-_Rembrandt_and_Saskia_in_the_Scene_of_the_Prodigal_Son_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q4680634",
+  "file": "lib/Q4680634.jpg",
+  "title": "The Adoration of the Kings",
+  "artist": "Pieter Brueghel the Elder",
+  "year": "1563",
+  "collection": "National Gallery",
+  "tags": [
+   "epiphany",
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1198,
+  "source": "https://commons.wikimedia.org/wiki/File:Anbetung_der_K%C3%B6nige_(Bruegel,_1564).jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2504917",
+  "file": "lib/Q2504917.jpg",
+  "title": "The Green Christ",
+  "artist": "Paul Gauguin",
+  "year": "1889",
+  "collection": "Royal Museums of Fine Arts of Belgium",
+  "tags": [
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1137,
+  "source": "https://commons.wikimedia.org/wiki/File:Paul_Gauguin_-_The_Green_Christ_(1889).jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q323079",
+  "file": "lib/Q323079.jpg",
+  "title": "Dresden Triptych",
+  "artist": "Jan van Eyck",
+  "year": "1437",
+  "collection": "Staatliche Kunstsammlungen Dresden",
+  "tags": [
+   "marian",
+   "angels",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 663,
+  "source": "https://commons.wikimedia.org/wiki/File:Jan_van_Eyck_-_Triptych_of_Mary_and_Child,_St._Michael,_and_the_Catherine_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q323079",
+  "file": "lib/Q323079.jpg",
+  "title": "Dresden Triptych",
+  "artist": "Jan van Eyck",
+  "year": "1437",
+  "collection": "Staatliche Kunstsammlungen Dresden",
+  "tags": [
+   "marian",
+   "angels",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 663,
+  "source": "https://commons.wikimedia.org/wiki/File:Gem%C3%A4ldegalerie_Alte_Meister_(Dresden)_Galeriewerk_Braun_1836a.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2097931",
+  "file": "lib/Q2097931.jpg",
+  "title": "Supper at Emmaus",
+  "artist": "Caravaggio",
+  "year": "1606",
+  "collection": "Pinacoteca di Brera",
+  "tags": [
+   "easter",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 711,
+  "source": "https://commons.wikimedia.org/wiki/File:Caravaggio_%E2%80%94_Supper_at_Emmaus.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q677682",
+  "file": "lib/Q677682.jpg",
+  "title": "Resurrection of Christ",
+  "artist": "Raphael",
+  "year": "1500",
+  "collection": "São Paulo Museum of Art",
+  "tags": [
+   "easter",
+   "angels",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1096,
+  "source": "https://commons.wikimedia.org/wiki/File:Rafael_-_ressureicaocristo01.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2016193",
+  "file": "lib/Q2016193.jpg",
+  "title": "Madonna Enthroned",
+  "artist": "Giotto",
+  "year": "1300",
+  "collection": "Uffizi Gallery",
+  "tags": [
+   "marian"
+  ],
+  "w": 900,
+  "h": 1384,
+  "source": "https://commons.wikimedia.org/wiki/File:Madonna_di_Ognissanti_by_Giotto.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2629134",
+  "file": "lib/Q2629134.jpg",
+  "title": "Madonna and Child with the Book",
+  "artist": "Raphael",
+  "year": "1503",
+  "collection": "Norton Simon Museum",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 850,
+  "h": 1207,
+  "source": "https://commons.wikimedia.org/wiki/File:Raphael_Madonna_Pasadena.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2713620",
+  "file": "lib/Q2713620.jpg",
+  "title": "Ansidei Madonna",
+  "artist": "Raphael",
+  "year": "1505",
+  "collection": "National Gallery",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 354,
+  "h": 500,
+  "source": "https://commons.wikimedia.org/wiki/File:PalaAnsidei.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q375216",
+  "file": "lib/Q375216.jpg",
+  "title": "The People's Census at Bethlehem",
+  "artist": "Pieter Brueghel the Elder",
+  "year": "1566",
+  "collection": "Royal Museum of Fine Arts Antwerp",
+  "tags": [
+   "marian",
+   "saints"
+  ],
+  "w": 900,
+  "h": 623,
+  "source": "https://commons.wikimedia.org/wiki/File:Pieter_Bruegel_the_Elder_-_The_Numbering_at_Bethlehem_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q430069",
+  "file": "lib/Q430069.jpg",
+  "title": "Ecce Homo",
+  "artist": "Hieronymus Bosch",
+  "year": "1490",
+  "collection": "Städel Museum",
+  "tags": [
+   "holyweek",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1052,
+  "source": "https://commons.wikimedia.org/wiki/File:Ecce_Homo_(SM_1577).png",
+  "license": "PDM-owner"
+ },
+ {
+  "id": "Q2276130",
+  "file": "lib/Q2276130.jpg",
+  "title": "The Epiphany",
+  "artist": "Hieronymus Bosch",
+  "year": "1494",
+  "collection": "Museo del Prado",
+  "tags": [
+   "epiphany",
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 784,
+  "source": "https://commons.wikimedia.org/wiki/File:Hieronymus_Bosch_-_Triptych_of_the_Adoration_of_the_Magi_-_WGA2606.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2273890",
+  "file": "lib/Q2273890.jpg",
+  "title": "Miracle of the Slave",
+  "artist": "Jacopo Tintoretto",
+  "year": "1547",
+  "collection": "Gallerie dell'Accademia",
+  "tags": [
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 702,
+  "source": "https://commons.wikimedia.org/wiki/File:Tintoretto_-_Miracle_of_the_Slave.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q974674",
+  "file": "lib/Q974674.jpg",
+  "title": "The Mystical Nativity",
+  "artist": "Sandro Botticelli",
+  "year": "1500",
+  "collection": "National Gallery",
+  "tags": [
+   "christmas",
+   "marian",
+   "angels",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1303,
+  "source": "https://commons.wikimedia.org/wiki/File:Mystic_Nativity,_Sandro_Botticelli.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2529918",
+  "file": "lib/Q2529918.jpg",
+  "title": "Saint George and the Dragon",
+  "artist": "Raphael",
+  "year": "1500",
+  "collection": "Department of Paintings of the Louvre",
+  "tags": [
+   "saints"
+  ],
+  "w": 900,
+  "h": 1057,
+  "source": "https://commons.wikimedia.org/wiki/File:Saint_Georges_luttant_avec_le_dragon_-_Rapha%C3%ABl_-_Mus%C3%A9e_du_Louvre_Peintures_INV_609_;_MR_440.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q94006",
+  "file": "lib/Q94006.jpg",
+  "title": "Saint Praxedis",
+  "artist": "Johannes Vermeer",
+  "year": "1655",
+  "collection": "National Museum of Western Art",
+  "tags": [
+   "saints"
+  ],
+  "w": 900,
+  "h": 1089,
+  "source": "https://commons.wikimedia.org/wiki/File:Vermeer_saint_praxedis.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q4536026",
+  "file": "lib/Q4536026.jpg",
+  "title": "The Appearance of Christ Before the People",
+  "artist": "Alexander Ivanov",
+  "year": "1847",
+  "collection": "Tretyakov Gallery",
+  "tags": [
+   "advent",
+   "holyweek",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 628,
+  "source": "https://commons.wikimedia.org/wiki/File:%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80_%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B5%D0%B2%D0%B8%D1%87_%D0%98%D0%B2%D0%B0%D0%BD%D0%BE%D0%B2_-_%D0%AF%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_%D0%A5%D1%80%D0%B8%D1%81%D1%82%D0%B0_%D0%BD%D0%B0%D1%80%D0%BE%D0%B4%D1%83_(%D0%AF%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_%D0%9C%D0%B5%D1%81%D1%81%D0%B8%D0%B8)_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2420918",
+  "file": "lib/Q2420918.jpg",
+  "title": "Madonna of the Rose",
+  "artist": "Raphael",
+  "year": "1517",
+  "collection": "Museo del Prado",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1144,
+  "source": "https://commons.wikimedia.org/wiki/File:Raffaello_Santi_-_Madonna_della_Rosa_(Prado).jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2664637",
+  "file": "lib/Q2664637.jpg",
+  "title": "Christ Falling on the Way to Calvary",
+  "artist": "Raphael",
+  "year": "1515",
+  "collection": "Museo del Prado",
+  "tags": [
+   "holyweek",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1248,
+  "source": "https://commons.wikimedia.org/wiki/File:Christ_Falling_on_the_Way_to_Calvary_-_Raphael.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2646680",
+  "file": "lib/Q2646680.jpg",
+  "title": "The Stoning of Saint Stephen",
+  "artist": "Rembrandt",
+  "year": "1624",
+  "collection": "Museum of Fine Arts of Lyon",
+  "tags": [
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 649,
+  "source": "https://commons.wikimedia.org/wiki/File:Rembrandt_Harmensz._van_Rijn_150.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q3332564",
+  "file": "lib/Q3332564.jpg",
+  "title": "Virgin Annunciate",
+  "artist": "Antonello da Messina",
+  "year": "1475",
+  "collection": "Galleria Regionale della Sicilia",
+  "tags": [
+   "advent",
+   "marian"
+  ],
+  "w": 900,
+  "h": 1177,
+  "source": "https://commons.wikimedia.org/wiki/File:Antonello_da_Messina,_Annunciata_di_Palermo,_circa_1475-77_-FG2.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1448728",
+  "file": "lib/Q1448728.jpg",
+  "title": "Annunciation",
+  "artist": "Caravaggio",
+  "year": "1609",
+  "collection": "Museum of Fine Arts of Nancy",
+  "tags": [
+   "advent",
+   "marian",
+   "angels"
+  ],
+  "w": 900,
+  "h": 1255,
+  "source": "https://commons.wikimedia.org/wiki/File:Caravaggio_-_The_Annunciation.JPG",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q642198",
+  "file": "lib/Q642198.jpg",
+  "title": "The Annunciation, with Saint Emidius",
+  "artist": "Carlo Crivelli",
+  "year": "1486",
+  "collection": "National Gallery",
+  "tags": [
+   "advent",
+   "marian",
+   "saints"
+  ],
+  "w": 900,
+  "h": 1269,
+  "source": "https://commons.wikimedia.org/wiki/File:Crivelli_Carlo,_Annunciation.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2467082",
+  "file": "lib/Q2467082.jpg",
+  "title": "Visitation",
+  "artist": "Raphael",
+  "year": "1517",
+  "collection": "Museo del Prado",
+  "tags": [
+   "advent",
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1245,
+  "source": "https://commons.wikimedia.org/wiki/File:Visitaci%C3%B3n_de_Rafael.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2715353",
+  "file": "lib/Q2715353.jpg",
+  "title": "Saint Jerome in His Study",
+  "artist": "Antonello da Messina",
+  "year": "1474",
+  "collection": "National Gallery",
+  "tags": [
+   "saints"
+  ],
+  "w": 900,
+  "h": 1142,
+  "source": "https://commons.wikimedia.org/wiki/File:Antonello_da_Messina_-_St_Jerome_in_his_study_-_National_Gallery_London.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2273943",
+  "file": "lib/Q2273943.jpg",
+  "title": "Adoration of the Magi",
+  "artist": "Diego Velázquez",
+  "year": "1619",
+  "collection": "Museo del Prado",
+  "tags": [
+   "epiphany",
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1476,
+  "source": "https://commons.wikimedia.org/wiki/File:Vel%C3%A1zquez_-_Adoraci%C3%B3n_de_los_Reyes_(Museo_del_Prado,_1619).jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2567058",
+  "file": "lib/Q2567058.jpg",
+  "title": "Christ Carrying the Cross",
+  "artist": "Hieronymus Bosch",
+  "year": "1500",
+  "collection": "Kunsthistorisches Museum",
+  "tags": [
+   "holyweek",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1654,
+  "source": "https://commons.wikimedia.org/wiki/File:Hieronymus_Bosch_054.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1055117",
+  "file": "lib/Q1055117.jpg",
+  "title": "Adoration of the Magi",
+  "artist": "Gentile da Fabriano",
+  "year": "1423",
+  "collection": "Uffizi Gallery",
+  "tags": [
+   "epiphany",
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 984,
+  "source": "https://commons.wikimedia.org/wiki/File:Gentile_da_Fabriano_-_Adorazione_dei_Magi_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q965822",
+  "file": "lib/Q965822.jpg",
+  "title": "Madonna della Vittoria",
+  "artist": "Andrea Mantegna",
+  "year": "1495",
+  "collection": "Department of Paintings of the Louvre",
+  "tags": [
+   "marian",
+   "angels",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1537,
+  "source": "https://commons.wikimedia.org/wiki/File:La_Vierge_de_la_Victoire_-_Andrea_Mantegna_-_Mus%C3%A9e_du_Louvre_Peintures_INV_369_;_MR_337.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2535486",
+  "file": "lib/Q2535486.jpg",
+  "title": "Tempi Madonna",
+  "artist": "Raphael",
+  "year": "1508",
+  "collection": "Bavarian State Painting Collections",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1358,
+  "source": "https://commons.wikimedia.org/wiki/File:Tempi_Madonna_-_Raphael.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2622161",
+  "file": "lib/Q2622161.jpg",
+  "title": "Saint George and the Dragon",
+  "artist": "Raphael",
+  "year": "1505",
+  "collection": "Andrew W. Mellon collection",
+  "tags": [
+   "saints"
+  ],
+  "w": 900,
+  "h": 1182,
+  "source": "https://commons.wikimedia.org/wiki/File:Raphael_-_Saint_George_and_the_Dragon_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2609235",
+  "file": "lib/Q2609235.jpg",
+  "title": "Saint Francis of Assisi in Ecstasy",
+  "artist": "Caravaggio",
+  "year": "1594",
+  "collection": "Wadsworth Atheneum Museum of Art",
+  "tags": [
+   "angels",
+   "saints"
+  ],
+  "w": 900,
+  "h": 648,
+  "source": "https://commons.wikimedia.org/wiki/File:Saint_Francis_of_Assisi_in_Ecstasy-Caravaggio_(c.1595).jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2503581",
+  "file": "lib/Q2503581.jpg",
+  "title": "Garvagh Madonna",
+  "artist": "Raphael",
+  "year": "1500",
+  "collection": "National Gallery",
+  "tags": [
+   "advent",
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1038,
+  "source": "https://commons.wikimedia.org/wiki/File:The_Aldobrandini_Madonna.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q323141",
+  "file": "lib/Q323141.jpg",
+  "title": "Heller Altarpiece",
+  "artist": "Albrecht Dürer",
+  "year": "1500",
+  "collection": "Dominikanerkloster Frankfurt am Main",
+  "tags": [
+   "marian",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 598,
+  "source": "https://commons.wikimedia.org/wiki/File:HMF_Duerer_Gruenewald_Harrich_Heller-Altar_DSC_6312.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1720631",
+  "file": "lib/Q1720631.jpg",
+  "title": "Castelfranco Madonna",
+  "artist": "Giorgione",
+  "year": "1503",
+  "collection": "Dome of Castlefranco Veneto",
+  "tags": [
+   "marian",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1239,
+  "source": "https://commons.wikimedia.org/wiki/File:Giorgione_-_Pala_di_Castelfranco.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q323032",
+  "file": "lib/Q323032.jpg",
+  "title": "Miraflores Altarpiece",
+  "artist": "Rogier van der Weyden",
+  "year": "1443",
+  "collection": "Gemäldegalerie Berlin",
+  "tags": [
+   "christmas",
+   "holyweek",
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 460,
+  "source": "https://commons.wikimedia.org/wiki/File:Der_Miraflores-Altar,_Marienaltar,_Miraflores-Altar_-_Gem%C3%A4ldegalerie_Berlin_-_4009118.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q6119366",
+  "file": "lib/Q6119366.jpg",
+  "title": "Saint Martin and the Beggar",
+  "artist": "El Greco",
+  "year": "1597",
+  "collection": "Widener Collection",
+  "tags": [
+   "saints"
+  ],
+  "w": 900,
+  "h": 1668,
+  "source": "https://commons.wikimedia.org/wiki/File:El_Greco_-_San_Mart%C3%ADn_y_el_mendigo.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2165279",
+  "file": "lib/Q2165279.jpg",
+  "title": "Saint Catherine of Alexandria",
+  "artist": "Raphael",
+  "year": "1507",
+  "collection": "National Gallery",
+  "tags": [
+   "saints"
+  ],
+  "w": 900,
+  "h": 1172,
+  "source": "https://commons.wikimedia.org/wiki/File:Raffael_020.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2427320",
+  "file": "lib/Q2427320.jpg",
+  "title": "Madonna of Loreto",
+  "artist": "Raphael",
+  "year": "1509",
+  "collection": "Condé Museum",
+  "tags": [
+   "christmas",
+   "marian",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1226,
+  "source": "https://commons.wikimedia.org/wiki/File:Rapha%C3%ABl_-_La_Madone_de_Lorette_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q7401211",
+  "file": "lib/Q7401211.jpg",
+  "title": "Saint Eulalia",
+  "artist": "John William Waterhouse",
+  "year": "1885",
+  "collection": "Tate",
+  "tags": [
+   "saints"
+  ],
+  "w": 900,
+  "h": 1483,
+  "source": "https://commons.wikimedia.org/wiki/File:John_William_Waterhouse_-_Saint_Eulalia_-_1885.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2631335",
+  "file": "lib/Q2631335.jpg",
+  "title": "Madonna with the Fish",
+  "artist": "Raphael",
+  "year": "1513",
+  "collection": "Museo del Prado",
+  "tags": [
+   "marian",
+   "angels",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1207,
+  "source": "https://commons.wikimedia.org/wiki/File:Raffaello_Sanzio_-_Sacra_Famiglia_con_Rafael,_Tobia_e_San_Girolamo,_o_Vergine_del_pesce.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2713671",
+  "file": "lib/Q2713671.jpg",
+  "title": "Canigiani Holy Family",
+  "artist": "Raphael",
+  "year": "1505",
+  "collection": "Johann Wilhelm von der Pfalz collection",
+  "tags": [
+   "christmas",
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1127,
+  "source": "https://commons.wikimedia.org/wiki/File:Raffaello_Santi_-_Sacra_Famiglia_Canigiani_(Alte_Pinakothek).jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q884782",
+  "file": "lib/Q884782.jpg",
+  "title": "Altarpiece Tetschen",
+  "artist": "Caspar David Friedrich",
+  "year": "1807",
+  "collection": "Staatliche Kunstsammlungen Dresden",
+  "tags": [
+   "holyweek",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 938,
+  "source": "https://commons.wikimedia.org/wiki/File:Caspar_David_Friedrich_-_Das_Kreuz_im_Gebirge.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q9392232",
+  "file": "lib/Q9392232.jpg",
+  "title": "Annunciation",
+  "artist": "Hans Memling",
+  "year": "1480",
+  "collection": "Metropolitan Museum of Art",
+  "tags": [
+   "advent",
+   "marian",
+   "angels"
+  ],
+  "w": 900,
+  "h": 1248,
+  "source": "https://commons.wikimedia.org/wiki/File:Annunciation_Memling.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1118465",
+  "file": "lib/Q1118465.jpg",
+  "title": "Ia Orana Maria",
+  "artist": "Paul Gauguin",
+  "year": "1891",
+  "collection": "Metropolitan Museum of Art",
+  "tags": [
+   "marian",
+   "angels",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1160,
+  "source": "https://commons.wikimedia.org/wiki/File:Paul_Gauguin_Ia_Orana_Maria_(Hail_Mary)_The_Metropolitan_Museum_of_Art1.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1115613",
+  "file": "lib/Q1115613.jpg",
+  "title": "Madonna del Prato",
+  "artist": "Giovanni Bellini",
+  "year": "1500",
+  "collection": "National Gallery",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 697,
+  "source": "https://commons.wikimedia.org/wiki/File:Bellini,_Giovanni_-_Madonna_of_the_Meadow.jpeg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q650086",
+  "file": "lib/Q650086.jpg",
+  "title": "Balaam and the Ass",
+  "artist": "Rembrandt",
+  "year": "1626",
+  "collection": "Musée Cognacq-Jay",
+  "tags": [
+   "angels"
+  ],
+  "w": 900,
+  "h": 1199,
+  "source": "https://commons.wikimedia.org/wiki/File:P1150002_Cognacq-Jay_Rembrandt_anesse_de_Balaam_rwk.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2459887",
+  "file": "lib/Q2459887.jpg",
+  "title": "The Tribute Money",
+  "artist": "Titian",
+  "year": "1516",
+  "collection": "Staatliche Kunstsammlungen Dresden",
+  "tags": [
+   "lent",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1232,
+  "source": "https://commons.wikimedia.org/wiki/File:Titian_-_The_Tribute_Money_-_Google_Art_Project_(715452).jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q455319",
+  "file": "lib/Q455319.jpg",
+  "title": "Darmstadt Madonna",
+  "artist": "Hans Holbein the Younger",
+  "year": "1526",
+  "collection": "Würth Collection",
+  "tags": [
+   "marian"
+  ],
+  "w": 900,
+  "h": 1274,
+  "source": "https://commons.wikimedia.org/wiki/File:Darmstadtmadonna.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1087226",
+  "file": "lib/Q1087226.jpg",
+  "title": "Christ in the House of Martha and Mary",
+  "artist": "Diego Velázquez",
+  "year": "1618",
+  "collection": "National Gallery",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 522,
+  "source": "https://commons.wikimedia.org/wiki/File:Cristo_en_casa_de_Marta_y_Mar%C3%ADa,_by_Diego_Vel%C3%A1zquez.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1803755",
+  "file": "lib/Q1803755.jpg",
+  "title": "Landscape with the Flight into Egypt",
+  "artist": "Pieter Brueghel the Elder",
+  "year": "1563",
+  "collection": "Antoine Seilern collection",
+  "tags": [
+   "christmas",
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 590,
+  "source": "https://commons.wikimedia.org/wiki/File:Pieter_Bruegel_der_%C3%84ltere_-_Landschaft_mit_der_Flucht_nach_%C3%84gypten.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q948745",
+  "file": "lib/Q948745.jpg",
+  "title": "Rucellai Madonna",
+  "artist": "Duccio di Buoninsegna",
+  "year": "1285",
+  "collection": "Uffizi Gallery",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1470,
+  "source": "https://commons.wikimedia.org/wiki/File:Duccio_-_Maest%C3%A0_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q959537",
+  "file": "lib/Q959537.jpg",
+  "title": "Death of the Virgin",
+  "artist": "Andrea Mantegna",
+  "year": "1462",
+  "collection": "Museo del Prado",
+  "tags": [
+   "marian"
+  ],
+  "w": 900,
+  "h": 1176,
+  "source": "https://commons.wikimedia.org/wiki/File:Andrea_Mantegna_047.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q959537",
+  "file": "lib/Q959537.jpg",
+  "title": "Death of the Virgin",
+  "artist": "Andrea Mantegna",
+  "year": "1462",
+  "collection": "Museo del Prado",
+  "tags": [
+   "marian"
+  ],
+  "w": 900,
+  "h": 1176,
+  "source": "https://commons.wikimedia.org/wiki/File:1462_Mantegna_Der_Tod_Mariens_Museo_del_Prado_anagoria.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q970808",
+  "file": "lib/Q970808.jpg",
+  "title": "The Flight into Egypt",
+  "artist": "Nicolas Poussin",
+  "year": "1658",
+  "collection": "Museum of Fine Arts of Lyon",
+  "tags": [
+   "christmas",
+   "marian",
+   "angels",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 656,
+  "source": "https://commons.wikimedia.org/wiki/File:Poussin-Fuite_en_Egypte-MBA-Lyon.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q203259",
+  "file": "lib/Q203259.jpg",
+  "title": "The Fall of the Damned",
+  "artist": "Peter Paul Rubens",
+  "year": "1621",
+  "collection": "Johann Wilhelm von der Pfalz collection",
+  "tags": [
+   "angels"
+  ],
+  "w": 900,
+  "h": 1156,
+  "source": "https://commons.wikimedia.org/wiki/File:Peter_Paul_Rubens_-_Fall_of_the_damned.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q3605563",
+  "file": "lib/Q3605563.jpg",
+  "title": "Adoration of the Shepherds",
+  "artist": "Giorgione",
+  "year": "1507",
+  "collection": "Samuel H. Kress Collection",
+  "tags": [
+   "christmas",
+   "marian",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 736,
+  "source": "https://commons.wikimedia.org/wiki/File:Giorgione_-_Adoration_of_the_Shepherds_-_National_Gallery_of_Art.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q3874247",
+  "file": "lib/Q3874247.jpg",
+  "title": "The Denial of Saint Peter",
+  "artist": "Rembrandt",
+  "year": "1660",
+  "collection": "Rijksmuseum",
+  "tags": [
+   "saints"
+  ],
+  "w": 900,
+  "h": 823,
+  "source": "https://commons.wikimedia.org/wiki/File:Rembrandt_Harmensz._van_Rijn_012.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q3202169",
+  "file": "lib/Q3202169.jpg",
+  "title": "The Apotheosis of Homer",
+  "artist": "Jean-Auguste-Dominique Ingres",
+  "year": "1827",
+  "collection": "Department of Paintings of the Louvre",
+  "tags": [
+   "angels",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 670,
+  "source": "https://commons.wikimedia.org/wiki/File:Hom%C3%A8re_d%C3%A9ifi%C3%A9,_dit_aussi_L%27apoth%C3%A9ose_d%27Hom%C3%A8re_-_Jean-Auguste_Dominique_Ingres_-_Mus%C3%A9e_du_Louvre_Peintures_INV_5417_;_C_196.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1684762",
+  "file": "lib/Q1684762.jpg",
+  "title": "Manchester Madonna",
+  "artist": "Michelangelo",
+  "year": "1494",
+  "collection": "Borghese Collection",
+  "tags": [
+   "marian",
+   "angels",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1220,
+  "source": "https://commons.wikimedia.org/wiki/File:MICHELANGELO_-_Manchester_Madonna_adjusted.JPG",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2264942",
+  "file": "lib/Q2264942.jpg",
+  "title": "The Flagellation of Christ",
+  "artist": "Caravaggio",
+  "year": "1607",
+  "collection": "Museo di Capodimonte",
+  "tags": [
+   "holyweek",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1217,
+  "source": "https://commons.wikimedia.org/wiki/File:The_Flagellation_of_Christ-Caravaggio_(1607).jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2269291",
+  "file": "lib/Q2269291.jpg",
+  "title": "Madonna of the Pomegranate",
+  "artist": "Sandro Botticelli",
+  "year": "1487",
+  "collection": "Uffizi Gallery",
+  "tags": [
+   "marian",
+   "angels",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 900,
+  "source": "https://commons.wikimedia.org/wiki/File:Sandro_Botticelli_-_Madonna_della_melagrana_1487.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2269343",
+  "file": "lib/Q2269343.jpg",
+  "title": "San Zaccaria Altarpiece",
+  "artist": "Giovanni Bellini",
+  "year": "1505",
+  "collection": "San Zaccaria",
+  "tags": [
+   "marian",
+   "angels",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1612,
+  "source": "https://commons.wikimedia.org/wiki/File:Pala_di_San_Zaccaria_(Venezia).jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2378567",
+  "file": "lib/Q2378567.jpg",
+  "title": "Annunciation",
+  "artist": "Fra Angelico",
+  "year": "1420",
+  "collection": "Museo del Prado",
+  "tags": [
+   "advent",
+   "marian",
+   "angels"
+  ],
+  "w": 900,
+  "h": 883,
+  "source": "https://commons.wikimedia.org/wiki/File:Fra_Angelico_-_The_Annunciation_-_WGA0454.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2714237",
+  "file": "lib/Q2714237.jpg",
+  "title": "Cestello Annunciation",
+  "artist": "Sandro Botticelli",
+  "year": "1489",
+  "collection": "Uffizi Gallery",
+  "tags": [
+   "advent",
+   "marian",
+   "angels"
+  ],
+  "w": 900,
+  "h": 852,
+  "source": "https://commons.wikimedia.org/wiki/File:Sandro_Botticelli_-_Annunciazione_di_Cestello.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1235695",
+  "file": "lib/Q1235695.jpg",
+  "title": "Madonna of the Harpies",
+  "artist": "Andrea del Sarto",
+  "year": "1517",
+  "collection": "Uffizi Gallery",
+  "tags": [
+   "marian",
+   "angels",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1010,
+  "source": "https://commons.wikimedia.org/wiki/File:Andrea_del_Sarto_-_Virgin_and_Child_between_St_Francis_of_Assisi_and_St_John_the_Evangelist_(%27Madonna_of_the_Harpies%27),_1517,_1890_no.1577.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1211651",
+  "file": "lib/Q1211651.jpg",
+  "title": "The Blinding of Samson",
+  "artist": "Rembrandt",
+  "year": "1636",
+  "collection": "Städel Museum",
+  "tags": [
+   "lent"
+  ],
+  "w": 900,
+  "h": 617,
+  "source": "https://commons.wikimedia.org/wiki/File:The_Blinding_of_Samson_(SM_1383).png",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q3918296",
+  "file": "lib/Q3918296.jpg",
+  "title": "Virgin and Child with a Rosary",
+  "artist": "Bartolomé Esteban Murillo",
+  "year": "1650",
+  "collection": "Museo del Prado",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1342,
+  "source": "https://commons.wikimedia.org/wiki/File:Virgen_del_Rosario_(Murillo).jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2715302",
+  "file": "lib/Q2715302.jpg",
+  "title": "Madonna and Child with Saint Anne",
+  "artist": "Caravaggio",
+  "year": "1605",
+  "collection": "Galleria Borghese",
+  "tags": [
+   "marian",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1240,
+  "source": "https://commons.wikimedia.org/wiki/File:Madonna_and_Child_with_St._Anne-Caravaggio_(c._1605-6).jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1434332",
+  "file": "lib/Q1434332.jpg",
+  "title": "Parable of the Sower",
+  "artist": "Pieter Brueghel the Elder",
+  "year": "1557",
+  "collection": "Timken Museum of Art",
+  "tags": [
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 645,
+  "source": "https://commons.wikimedia.org/wiki/File:Pieter_Bruegel_d._%C3%84._030.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2277635",
+  "file": "lib/Q2277635.jpg",
+  "title": "The Raising of Lazarus",
+  "artist": "Caravaggio",
+  "year": "1609",
+  "collection": "Regional museum of Messina",
+  "tags": [
+   "lent",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1233,
+  "source": "https://commons.wikimedia.org/wiki/File:Michelangelo_Caravaggio_006.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1114913",
+  "file": "lib/Q1114913.jpg",
+  "title": "Adoration of the Shepherds",
+  "artist": "El Greco",
+  "year": "1612",
+  "collection": "Museo del Prado",
+  "tags": [
+   "christmas",
+   "marian",
+   "angels",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1617,
+  "source": "https://commons.wikimedia.org/wiki/File:La_adoraci%C3%B3n_de_los_pastores_(El_Greco).jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q3531531",
+  "file": "lib/Q3531531.jpg",
+  "title": "Adoration of the Magi",
+  "artist": "Fra Angelico",
+  "year": "1430",
+  "collection": "Cook collection",
+  "tags": [
+   "epiphany",
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 876,
+  "source": "https://commons.wikimedia.org/wiki/File:Fra_Angelico_Adoration.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q5665712",
+  "file": "lib/Q5665712.jpg",
+  "title": "Jerusalem",
+  "artist": "Jean-Léon Gérôme",
+  "year": "1867",
+  "collection": "Musée d'Orsay",
+  "tags": [
+   "holyweek",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 514,
+  "source": "https://commons.wikimedia.org/wiki/File:Jean-L%C3%A9on_G%C3%A9r%C3%B4me_Consummatum_est.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q3842778",
+  "file": "lib/Q3842778.jpg",
+  "title": "The Gypsy Madonna",
+  "artist": "Titian",
+  "year": "1510",
+  "collection": "James Hamilton, 1st Duke of Hamilton collection",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 698,
+  "source": "https://commons.wikimedia.org/wiki/File:Tiziano_Vecellio,_called_Titian_-_Gipsy_Madonna_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1569622",
+  "file": "lib/Q1569622.jpg",
+  "title": "Madonna and Child Enthroned with Angels and Prophets. ˋSanta Trinità Maestà´",
+  "artist": "Cimabue",
+  "year": "1290",
+  "collection": "Uffizi Gallery",
+  "tags": [
+   "advent",
+   "marian",
+   "angels",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1612,
+  "source": "https://commons.wikimedia.org/wiki/File:Cimabue_-_Maest%C3%A0_di_Santa_Trinita_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q570163",
+  "file": "lib/Q570163.jpg",
+  "title": "The Woman Taken in Adultery",
+  "artist": "Rembrandt",
+  "year": "1644",
+  "collection": "National Gallery",
+  "tags": [
+   "lent",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1160,
+  "source": "https://commons.wikimedia.org/wiki/File:Rembrandt_-_The_Woman_taken_in_Adultery_(1644).jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2066739",
+  "file": "lib/Q2066739.jpg",
+  "title": "San Zeno Altarpiece",
+  "artist": "Andrea Mantegna",
+  "year": "1457",
+  "collection": "Basilica of San Zeno",
+  "tags": [
+   "marian",
+   "angels",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 599,
+  "source": "https://commons.wikimedia.org/wiki/File:Verone_-_San_Zeno_-_Retable_de_Mantegna..jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q688870",
+  "file": "lib/Q688870.jpg",
+  "title": "Adoration of the Trinity",
+  "artist": "Albrecht Dürer",
+  "year": "1511",
+  "collection": "Kunsthistorisches Museum",
+  "tags": [
+   "allsaints",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 984,
+  "source": "https://commons.wikimedia.org/wiki/File:Albrecht_D%C3%BCrer_-_Adoration_of_the_Trinity_(Landauer_Altar)_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2446983",
+  "file": "lib/Q2446983.jpg",
+  "title": "Scenes from the Passion of Christ",
+  "artist": "Hans Memling",
+  "year": "1470",
+  "collection": "Galleria Sabauda",
+  "tags": [
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 557,
+  "source": "https://commons.wikimedia.org/wiki/File:Hans_Memling_Passione.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2425901",
+  "file": "lib/Q2425901.jpg",
+  "title": "Ecce Ancilla Domini",
+  "artist": "Dante Gabriel Rossetti",
+  "year": "1850",
+  "collection": "Tate",
+  "tags": [
+   "advent",
+   "marian",
+   "angels"
+  ],
+  "w": 589,
+  "h": 1024,
+  "source": "https://commons.wikimedia.org/wiki/File:Rossetti_Annunciation.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2425901",
+  "file": "lib/Q2425901.jpg",
+  "title": "Ecce Ancilla Domini",
+  "artist": "Dante Gabriel Rossetti",
+  "year": "1850",
+  "collection": "Tate",
+  "tags": [
+   "advent",
+   "marian",
+   "angels"
+  ],
+  "w": 589,
+  "h": 1024,
+  "source": "https://commons.wikimedia.org/wiki/File:Dante_Gabriel_Rossetti_-_Ecce_Ancilla_Domini!_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2629419",
+  "file": "lib/Q2629419.jpg",
+  "title": "Madonna with Beardless Saint Joseph",
+  "artist": "Raphael",
+  "year": "1506",
+  "collection": "Hermitage Museum",
+  "tags": [
+   "marian",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1174,
+  "source": "https://commons.wikimedia.org/wiki/File:Raphael_Madonna_with_Beardless_St._Joseph.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q3884945",
+  "file": "lib/Q3884945.jpg",
+  "title": "The Agony in the Garden",
+  "artist": "Andrea Mantegna",
+  "year": "1450",
+  "collection": "National Gallery",
+  "tags": [
+   "holyweek",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 701,
+  "source": "https://commons.wikimedia.org/wiki/File:Andrea_Mantegna_036.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q924655",
+  "file": "lib/Q924655.jpg",
+  "title": "St Mark's Body Brought to Venice",
+  "artist": "Jacopo Tintoretto",
+  "year": "1564",
+  "collection": "Gallerie dell'Accademia",
+  "tags": [
+   "angels",
+   "saints"
+  ],
+  "w": 900,
+  "h": 1119,
+  "source": "https://commons.wikimedia.org/wiki/File:Jacopo_Tintoretto_-_St_Mark%27s_Body_Brought_to_Venice.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q10749451",
+  "file": "lib/Q10749451.jpg",
+  "title": "Abraham's Sacrifice",
+  "artist": "Rembrandt",
+  "year": "1635",
+  "collection": "Hermitage Museum",
+  "tags": [
+   "angels"
+  ],
+  "w": 900,
+  "h": 1307,
+  "source": "https://commons.wikimedia.org/wiki/File:Rembrandt_Harmensz._van_Rijn_035.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q3937806",
+  "file": "lib/Q3937806.jpg",
+  "title": "Finding of the body of St Mark",
+  "artist": "Jacopo Tintoretto",
+  "year": "1562",
+  "collection": "Pinacoteca di Brera",
+  "tags": [
+   "angels",
+   "saints"
+  ],
+  "w": 900,
+  "h": 890,
+  "source": "https://commons.wikimedia.org/wiki/File:Jacopo_Tintoretto_-_Finding_of_the_body_of_St_Mark.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1131110",
+  "file": "lib/Q1131110.jpg",
+  "title": "Agony in the Garden",
+  "artist": "Giovanni Bellini",
+  "year": "1459",
+  "collection": "National Gallery",
+  "tags": [
+   "holyweek",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 568,
+  "source": "https://commons.wikimedia.org/wiki/File:Bellini,Giovanni_-_Agony_in_the_Garden_-_National_Gallery.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1132479",
+  "file": "lib/Q1132479.jpg",
+  "title": "The Burial of Saint Lucy",
+  "artist": "Caravaggio",
+  "year": "1608",
+  "collection": "Santa Lucia al Sepolcro sanctuary",
+  "tags": [
+   "saints"
+  ],
+  "w": 900,
+  "h": 1221,
+  "source": "https://commons.wikimedia.org/wiki/File:Burial_of_Saint_Lucy-Caravaggio_(1608).jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1433194",
+  "file": "lib/Q1433194.jpg",
+  "title": "Nativity with Saint Francis and Saint Lawrence",
+  "artist": "Caravaggio",
+  "year": "1600",
+  "collection": "",
+  "tags": [
+   "christmas",
+   "marian",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1186,
+  "source": "https://commons.wikimedia.org/wiki/File:Caravaggio-Nativity(1600).jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q580853",
+  "file": "lib/Q580853.jpg",
+  "title": "Madonna and Child with an Angel",
+  "artist": "Sandro Botticelli",
+  "year": "1465",
+  "collection": "Museo degli Innocenti",
+  "tags": [
+   "marian",
+   "angels",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1252,
+  "source": "https://commons.wikimedia.org/wiki/File:Sandro_botticelli,_madonna_col_bambino_e_un_angelo_ispirato_alla_lippina,_1465-66.JPG",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2733729",
+  "file": "lib/Q2733729.jpg",
+  "title": "Christ Crowned with Thorns",
+  "artist": "Hieronymus Bosch",
+  "year": "1495",
+  "collection": "National Gallery",
+  "tags": [
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1128,
+  "source": "https://commons.wikimedia.org/wiki/File:Hieronymus_Bosch_-_Christ_Mocked_(The_Crowning_with_Thorns)_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2456003",
+  "file": "lib/Q2456003.jpg",
+  "title": "The Immaculate Conception of Los Venerables",
+  "artist": "Bartolomé Esteban Murillo",
+  "year": "1660",
+  "collection": "Department of Paintings of the Louvre",
+  "tags": [
+   "marian"
+  ],
+  "w": 900,
+  "h": 1320,
+  "source": "https://commons.wikimedia.org/wiki/File:Murillo_immaculate_conception.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q434461",
+  "file": "lib/Q434461.jpg",
+  "title": "The Seven Sacraments",
+  "artist": "Rogier van der Weyden",
+  "year": "1440",
+  "collection": "Royal Museum of Fine Arts Antwerp",
+  "tags": [
+   "marian",
+   "angels",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 778,
+  "source": "https://commons.wikimedia.org/wiki/File:Rogier_van_der_Weyden_-_De_Zeven_Sacramenten_-_393-395_-_Royal_Museum_of_Fine_Arts_Antwerp.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2448065",
+  "file": "lib/Q2448065.jpg",
+  "title": "Christ Among the Doctors",
+  "artist": "Albrecht Dürer",
+  "year": "1506",
+  "collection": "Thyssen-Bornemisza Museum",
+  "tags": [
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 722,
+  "source": "https://commons.wikimedia.org/wiki/File:Albrecht_D%C3%BCrer_-_Jesus_among_the_Doctors_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2328603",
+  "file": "lib/Q2328603.jpg",
+  "title": "Christ Carrying the Cross",
+  "artist": "Hieronymus Bosch",
+  "year": "1505",
+  "collection": "Royal Palace of Madrid",
+  "tags": [
+   "holyweek",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1230,
+  "source": "https://commons.wikimedia.org/wiki/File:ChristCarryingCrossBoschMadridVersion.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2389534",
+  "file": "lib/Q2389534.jpg",
+  "title": "The Hermit Saint",
+  "artist": "Hieronymus Bosch",
+  "year": "1493",
+  "collection": "Doge's Palace",
+  "tags": [
+   "saints"
+  ],
+  "w": 900,
+  "h": 668,
+  "source": "https://commons.wikimedia.org/wiki/File:Hieronymus_Bosch_-_Hermit_Saints_Triptych.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q931837",
+  "file": "lib/Q931837.jpg",
+  "title": "Christ at the Column",
+  "artist": "Caravaggio",
+  "year": "1606",
+  "collection": "Musée des Beaux-Arts de Rouen",
+  "tags": [
+   "holyweek",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 687,
+  "source": "https://commons.wikimedia.org/wiki/File:Christ_at_the_Column-Caravaggio_(c._1607).jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1091213",
+  "file": "lib/Q1091213.jpg",
+  "title": "Corpse of Christ",
+  "artist": "Annibale Carracci",
+  "year": "1582",
+  "collection": "Staatsgalerie Stuttgart",
+  "tags": [
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 716,
+  "source": "https://commons.wikimedia.org/wiki/File:Annibale_carracci,_salma_di_cristo.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1762826",
+  "file": "lib/Q1762826.jpg",
+  "title": "Contarini Madonna",
+  "artist": "Giovanni Bellini",
+  "year": "1475",
+  "collection": "Gallerie dell'Accademia",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1181,
+  "source": "https://commons.wikimedia.org/wiki/File:(Venice)_Madonna_col_bambino_in_piedi_benedicente_-_Giovanni_Bellini_-_gallerie_Accademia.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1055111",
+  "file": "lib/Q1055111.jpg",
+  "title": "Madonna and Child",
+  "artist": "Filippo Lippi",
+  "year": "1460",
+  "collection": "Uffizi Gallery",
+  "tags": [
+   "marian",
+   "angels",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1320,
+  "source": "https://commons.wikimedia.org/wiki/File:Madonna_and_Child_with_two_Angels_(by_Filippo_Lippi)_%E2%80%93_Galleria_degli_Uffizi,_Florence.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q257048",
+  "file": "lib/Q257048.jpg",
+  "title": "The Sermon of Saint John the Baptist",
+  "artist": "Pieter Brueghel the Elder",
+  "year": "1566",
+  "collection": "Museum of Fine Arts, Budapest",
+  "tags": [
+   "advent",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 524,
+  "source": "https://commons.wikimedia.org/wiki/File:Pieter_Bruegel_the_Elder_-_The_Sermon_of_Saint_John_the_Baptist_(1566)_-_Sz%C3%A9pm%C5%B1v%C3%A9szeti_M%C3%BAzeum.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q257048",
+  "file": "lib/Q257048.jpg",
+  "title": "The Sermon of Saint John the Baptist",
+  "artist": "Pieter Brueghel the Elder",
+  "year": "1566",
+  "collection": "Museum of Fine Arts, Budapest",
+  "tags": [
+   "advent",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 524,
+  "source": "https://commons.wikimedia.org/wiki/File:Pieter_Bruegel_the_Elder_-_The_Sermon_of_Saint_John_the_Baptist_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q257048",
+  "file": "lib/Q257048.jpg",
+  "title": "The Sermon of Saint John the Baptist",
+  "artist": "Pieter Brueghel the Elder",
+  "year": "1566",
+  "collection": "Museum of Fine Arts, Budapest",
+  "tags": [
+   "advent",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 524,
+  "source": "https://commons.wikimedia.org/wiki/File:Pieter_Bruegel_the_Elder_-_The_Sermon_of_Saint_John_the_Baptist.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q5316837",
+  "file": "lib/Q5316837.jpg",
+  "title": "Durán Madonna",
+  "artist": "Rogier van der Weyden",
+  "year": "1435",
+  "collection": "Museo del Prado",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1811,
+  "source": "https://commons.wikimedia.org/wiki/File:Rogier_van_der_Weyden_-_Virgin_and_Child_(Dur%C3%A1n_Madonna)_-_Prado_P02722.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q5781032",
+  "file": "lib/Q5781032.jpg",
+  "title": "The Concert of the Angels",
+  "artist": "El Greco",
+  "year": "1600",
+  "collection": "National Gallery of Athens",
+  "tags": [
+   "angels"
+  ],
+  "w": 900,
+  "h": 484,
+  "source": "https://commons.wikimedia.org/wiki/File:El_Greco_-_The_Concert_of_the_Angels,_ca_1608-1614,_%CE%A0.152.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q3221859",
+  "file": "lib/Q3221859.jpg",
+  "title": "Coronation of the Virgin",
+  "artist": "Diego Velázquez",
+  "year": "1634",
+  "collection": "Museo del Prado",
+  "tags": [
+   "marian",
+   "angels",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1198,
+  "source": "https://commons.wikimedia.org/wiki/File:Diego_Vel%C3%A1zquez_-_Coronation_of_the_Virgin_-_Prado.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q3211055",
+  "file": "lib/Q3211055.jpg",
+  "title": "The Nativity",
+  "artist": "Piero della Francesca",
+  "year": "1480",
+  "collection": "National Gallery",
+  "tags": [
+   "christmas",
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 922,
+  "source": "https://commons.wikimedia.org/wiki/File:Piero_della_Francesca_041.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q3212033",
+  "file": "lib/Q3212033.jpg",
+  "title": "Presentation at the Temple",
+  "artist": "Andrea Mantegna",
+  "year": "1400",
+  "collection": "Solly Collection",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 720,
+  "source": "https://commons.wikimedia.org/wiki/File:Andrea_Mantegna_(um_1431_-_1506)_-_The_Presentation_at_the_Temple_-_29_-_Gem%C3%A4ldegalerie.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q3817178",
+  "file": "lib/Q3817178.jpg",
+  "title": "Miracle of the Holy Cross at the Rialto Bridge",
+  "artist": "Vittore Carpaccio",
+  "year": "1494",
+  "collection": "Gallerie dell'Accademia",
+  "tags": [
+   "lent",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 847,
+  "source": "https://commons.wikimedia.org/wiki/File:Accademia_-_Miracle_of_the_Holy_Cross_at_Rialto_by_Vittore_Carpaccio.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2920183",
+  "file": "lib/Q2920183.jpg",
+  "title": "Annunciation",
+  "artist": "Titian",
+  "year": "1564",
+  "collection": "San Salvador",
+  "tags": [
+   "advent",
+   "marian",
+   "angels"
+  ],
+  "w": 900,
+  "h": 1565,
+  "source": "https://commons.wikimedia.org/wiki/File:Titian_-_The_Annunciation_-_WGA22827.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q3078569",
+  "file": "lib/Q3078569.jpg",
+  "title": "Dormition of the Virgin",
+  "artist": "El Greco",
+  "year": "1565",
+  "collection": "Syros, Agios Nikolaos in Ermoupolis",
+  "tags": [
+   "marian",
+   "angels"
+  ],
+  "w": 900,
+  "h": 1081,
+  "source": "https://commons.wikimedia.org/wiki/File:Dormition_El_Greco.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q24090",
+  "file": "lib/Q24090.jpg",
+  "title": "The Crowning with Thorns",
+  "artist": "Titian",
+  "year": "1542",
+  "collection": "Department of Paintings of the Louvre",
+  "tags": [
+   "holyweek",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1504,
+  "source": "https://commons.wikimedia.org/wiki/File:Titian_-_Crowning_with_Thorns_-_WGA22806.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q5966323",
+  "file": "lib/Q5966323.jpg",
+  "title": "The Coronation of the Virgin",
+  "artist": "El Greco",
+  "year": "1597",
+  "collection": "Hospital de la Caridad de Illescas",
+  "tags": [
+   "marian",
+   "saints"
+  ],
+  "w": 900,
+  "h": 662,
+  "source": "https://commons.wikimedia.org/wiki/File:GRECO_Coronacion.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q3210257",
+  "file": "lib/Q3210257.jpg",
+  "title": "Madonna Bardi",
+  "artist": "Sandro Botticelli",
+  "year": "1500",
+  "collection": "Gemäldegalerie Berlin",
+  "tags": [
+   "advent",
+   "marian",
+   "angels",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 938,
+  "source": "https://commons.wikimedia.org/wiki/File:Sandro_Botticelli_-_Madonna_with_Saints_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q5916308",
+  "file": "lib/Q5916308.jpg",
+  "title": "The Immaculate Conception",
+  "artist": "Giovanni Battista Tiepolo",
+  "year": "1767",
+  "collection": "Museo del Prado",
+  "tags": [
+   "marian"
+  ],
+  "w": 900,
+  "h": 1654,
+  "source": "https://commons.wikimedia.org/wiki/File:The_Immaculate_Conception,_by_Giovanni_Battista_Tiepolo,_from_Prado_in_Google_Earth.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q27033728",
+  "file": "lib/Q27033728.jpg",
+  "title": "Madonna and Child Enthroned with Saints",
+  "artist": "Raphael",
+  "year": "1504",
+  "collection": "Metropolitan Museum of Art",
+  "tags": [
+   "marian",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1163,
+  "source": "https://commons.wikimedia.org/wiki/File:Madonna_and_Child_Enthroned_with_Saints.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q560057",
+  "file": "lib/Q560057.jpg",
+  "title": "Terranuova Madonna",
+  "artist": "Raphael",
+  "year": "1505",
+  "collection": "Gemäldegalerie Berlin",
+  "tags": [
+   "advent",
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 909,
+  "source": "https://commons.wikimedia.org/wiki/File:Raffaello_Sanzio_-_Madonna_Terranuova_(Berlin).jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q560057",
+  "file": "lib/Q560057.jpg",
+  "title": "Terranuova Madonna",
+  "artist": "Raphael",
+  "year": "1505",
+  "collection": "Gemäldegalerie Berlin",
+  "tags": [
+   "advent",
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 909,
+  "source": "https://commons.wikimedia.org/wiki/File:Raffael_(1483_-_1520)_-_The_Virgin_and_Child_with_the_Infant_St._John_-_Terranuova_Madonna_-_247A_-_Gem%C3%A4ldegalerie.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q669872",
+  "file": "lib/Q669872.jpg",
+  "title": "The Vision of Saint Eustace",
+  "artist": "Pisanello",
+  "year": "1400",
+  "collection": "National Gallery",
+  "tags": [
+   "saints"
+  ],
+  "w": 900,
+  "h": 741,
+  "source": "https://commons.wikimedia.org/wiki/File:Pisanello_018.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q738038",
+  "file": "lib/Q738038.jpg",
+  "title": "Madonna with the Blue Diadem",
+  "artist": "Gianfrancesco Penni",
+  "year": "1515",
+  "collection": "Department of Paintings of the Louvre",
+  "tags": [
+   "marian",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1277,
+  "source": "https://commons.wikimedia.org/wiki/File:La_Vierge_au_voile,_by_Raffaello_Sanzio,_from_C2RMF_retouched.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2381716",
+  "file": "lib/Q2381716.jpg",
+  "title": "The Flight into Egypt",
+  "artist": "Adam Elsheimer",
+  "year": "1609",
+  "collection": "Bavarian State Painting Collections",
+  "tags": [
+   "christmas",
+   "marian",
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 663,
+  "source": "https://commons.wikimedia.org/wiki/File:Adam_Elsheimer_-_Die_Flucht_nach_%C3%84gypten_(Alte_Pinakothek)_2.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q665337",
+  "file": "lib/Q665337.jpg",
+  "title": "Conversion of Paul",
+  "artist": "Pieter Brueghel the Elder",
+  "year": "1567",
+  "collection": "Kunsthistorisches Museum",
+  "tags": [
+   "saints"
+  ],
+  "w": 900,
+  "h": 621,
+  "source": "https://commons.wikimedia.org/wiki/File:Pieter_Bruegel_d._%C3%84._019.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q665337",
+  "file": "lib/Q665337.jpg",
+  "title": "Conversion of Paul",
+  "artist": "Pieter Brueghel the Elder",
+  "year": "1567",
+  "collection": "Kunsthistorisches Museum",
+  "tags": [
+   "saints"
+  ],
+  "w": 900,
+  "h": 621,
+  "source": "https://commons.wikimedia.org/wiki/File:Conversion_of_Paul_(Bruegel).jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q3224308",
+  "file": "lib/Q3224308.jpg",
+  "title": "Marriage of the Virgin",
+  "artist": "Pietro Perugino",
+  "year": "1501",
+  "collection": "Musée des Beaux-Arts de Caen",
+  "tags": [
+   "marian",
+   "saints"
+  ],
+  "w": 900,
+  "h": 1169,
+  "source": "https://commons.wikimedia.org/wiki/File:Pietro_Perugino_cat66.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q3947115",
+  "file": "lib/Q3947115.jpg",
+  "title": "Saint Francis in the Desert",
+  "artist": "Giovanni Bellini",
+  "year": "1480",
+  "collection": "The Frick Collection",
+  "tags": [
+   "saints"
+  ],
+  "w": 900,
+  "h": 789,
+  "source": "https://commons.wikimedia.org/wiki/File:Giovanni_Bellini_-_Saint_Francis_in_the_Desert_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q3947309",
+  "file": "lib/Q3947309.jpg",
+  "title": "St. Jerome in the Wilderness",
+  "artist": "Albrecht Dürer",
+  "year": "1496",
+  "collection": "National Gallery",
+  "tags": [
+   "lent",
+   "saints"
+  ],
+  "w": 900,
+  "h": 1213,
+  "source": "https://commons.wikimedia.org/wiki/File:Albrecht_D%C3%BCrer_012.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1134281",
+  "file": "lib/Q1134281.jpg",
+  "title": "Ezekiel's Vision",
+  "artist": "Raphael",
+  "year": "1518",
+  "collection": "Galleria Palatina",
+  "tags": [
+   "angels"
+  ],
+  "w": 900,
+  "h": 1225,
+  "source": "https://commons.wikimedia.org/wiki/File:Raffaello_-_Visione_di_Ezechiele.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q617629",
+  "file": "lib/Q617629.jpg",
+  "title": "The Resurrection",
+  "artist": "El Greco",
+  "year": "1598",
+  "collection": "Museo de la Trinidad",
+  "tags": [
+   "easter",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1950,
+  "source": "https://commons.wikimedia.org/wiki/File:El_Greco_-_The_Resurrection_(La_Resurrecci%C3%B3n_de_Cristo)_1597-1600.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2741541",
+  "file": "lib/Q2741541.jpg",
+  "title": "Monforte Altarpiece",
+  "artist": "Hugo van der Goes",
+  "year": "1470",
+  "collection": "Gemäldegalerie Berlin",
+  "tags": [
+   "epiphany",
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 585,
+  "source": "https://commons.wikimedia.org/wiki/File:Hugo_van_der_Goes_-_The_Adoration_of_the_Kings_(Monforte_Altar)_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2842584",
+  "file": "lib/Q2842584.jpg",
+  "title": "Saint Peter and Saint Paul",
+  "artist": "El Greco",
+  "year": "1595",
+  "collection": "Museu Nacional d'Art de Catalunya",
+  "tags": [
+   "saints"
+  ],
+  "w": 900,
+  "h": 1157,
+  "source": "https://commons.wikimedia.org/wiki/File:El_Greco_-_Saint_Peter_and_Saint_Paul_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2327715",
+  "file": "lib/Q2327715.jpg",
+  "title": "Adoration of the Shepherds",
+  "artist": "Caravaggio",
+  "year": "1609",
+  "collection": "Regional museum of Messina",
+  "tags": [
+   "christmas",
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1346,
+  "source": "https://commons.wikimedia.org/wiki/File:Adoration_of_the_Shepherds-Caravaggio_(1609).jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2325834",
+  "file": "lib/Q2325834.jpg",
+  "title": "Ecce Homo",
+  "artist": "Caravaggio",
+  "year": "1605",
+  "collection": "Palazzo Bianco",
+  "tags": [
+   "holyweek",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1127,
+  "source": "https://commons.wikimedia.org/wiki/File:Caravaggio_(Michelangelo_Merisi)_-_Ecce_Homo_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1984131",
+  "file": "lib/Q1984131.jpg",
+  "title": "Saint George and the Dragon",
+  "artist": "Jacopo Tintoretto",
+  "year": "1555",
+  "collection": "National Gallery",
+  "tags": [
+   "saints"
+  ],
+  "w": 900,
+  "h": 1490,
+  "source": "https://commons.wikimedia.org/wiki/File:Jacopo_Tintoretto_-_Saint_George_and_the_Dragon_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q1986597",
+  "file": "lib/Q1986597.jpg",
+  "title": "Madonna d'Orleans",
+  "artist": "Raphael",
+  "year": "1506",
+  "collection": "Condé Museum",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1273,
+  "source": "https://commons.wikimedia.org/wiki/File:Rapha%C3%ABl_-_La_Madone_de_la_maison_d%27Orl%C3%A9ans_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q315716",
+  "file": "lib/Q315716.jpg",
+  "title": "Stuppach Madonna",
+  "artist": "Matthias Grünewald",
+  "year": "1514",
+  "collection": "Church of the Coronation of Mary, Stuppach",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1130,
+  "source": "https://commons.wikimedia.org/wiki/File:Mathis_Gothart_Gr%C3%BCnewald_001.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2516599",
+  "file": "lib/Q2516599.jpg",
+  "title": "Annunciation",
+  "artist": "Jan van Eyck",
+  "year": "1440",
+  "collection": "Thyssen-Bornemisza family Collection",
+  "tags": [
+   "advent",
+   "marian"
+  ],
+  "w": 900,
+  "h": 731,
+  "source": "https://commons.wikimedia.org/wiki/File:Jan_van_Eyck,_Around_1390-1441_-_The_Annuciation_Diptych_-_Google_Art_Project.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2598223",
+  "file": "lib/Q2598223.jpg",
+  "title": "Mary and Child",
+  "artist": "Albrecht Dürer",
+  "year": "1512",
+  "collection": "Kunsthistorisches Museum",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1182,
+  "source": "https://commons.wikimedia.org/wiki/File:Albrecht_D%C3%BCrer,_,_Kunsthistorisches_Museum_Wien,_Gem%C3%A4ldegalerie_-_Maria_mit_Kind_-_GG_848_-_Kunsthistorisches_Museum.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2607065",
+  "file": "lib/Q2607065.jpg",
+  "title": "Niccolini-Cowper Madonna",
+  "artist": "Raphael",
+  "year": "1511",
+  "collection": "Andrew W. Mellon collection",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1293,
+  "source": "https://commons.wikimedia.org/wiki/File:Grande_madonna_cowper.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q2565646",
+  "file": "lib/Q2565646.jpg",
+  "title": "Saint Christopher Carrying the Christ Child",
+  "artist": "Hieronymus Bosch",
+  "year": "1500",
+  "collection": "Museum Boijmans Van Beuningen",
+  "tags": [
+   "saints",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1428,
+  "source": "https://commons.wikimedia.org/wiki/File:Jheronimus_Bosch_-_Saint_Christopher_-_Google_Art_ProjectFXD_(Cropped).jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q3543898",
+  "file": "lib/Q3543898.jpg",
+  "title": "Christ Crucified",
+  "artist": "Francisco Goya",
+  "year": "1780",
+  "collection": "Museo de la Trinidad",
+  "tags": [
+   "holyweek",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1515,
+  "source": "https://commons.wikimedia.org/wiki/File:Cristo_en_la_cruz_(Goya).jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q3605536",
+  "file": "lib/Q3605536.jpg",
+  "title": "Adoration of the Magi",
+  "artist": "Lorenzo Monaco",
+  "year": "1420",
+  "collection": "Uffizi Gallery",
+  "tags": [
+   "epiphany",
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 801,
+  "source": "https://commons.wikimedia.org/wiki/File:Lorenzo_Monaco_Adoratione_dei_Magi.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q3842403",
+  "file": "lib/Q3842403.jpg",
+  "title": "Haller Madonna",
+  "artist": "Albrecht Dürer",
+  "year": "1495",
+  "collection": "Thyssen-Bornemisza family Collection",
+  "tags": [
+   "marian",
+   "ordinary"
+  ],
+  "w": 900,
+  "h": 1113,
+  "source": "https://commons.wikimedia.org/wiki/File:Madonna_Haller.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q5792618",
+  "file": "lib/Q5792618.jpg",
+  "title": "The Birth of the Virgin",
+  "artist": "Bartolomé Esteban Murillo",
+  "year": "1660",
+  "collection": "Department of Paintings of the Louvre",
+  "tags": [
+   "marian",
+   "angels"
+  ],
+  "w": 900,
+  "h": 472,
+  "source": "https://commons.wikimedia.org/wiki/File:Bartolom%C3%A9_Esteban_Perez_Murillo_-_Birth_of_the_Virgin_-_WGA16372.jpg",
+  "license": "Public domain"
+ },
+ {
+  "id": "Q3464529",
+  "file": "lib/Q3464529.jpg",
+  "title": "Saint Margaret of Antioch",
+  "artist": "Francisco de Zurbarán",
+  "year": "1630",
+  "collection": "National Gallery",
+  "tags": [
+   "marian",
+   "saints"
+  ],
+  "w": 900,
+  "h": 1420,
+  "source": "https://commons.wikimedia.org/wiki/File:Francisco_de_Zurbar%C3%A1n_047.jpg",
+  "license": "Public domain"
+ }
+]
