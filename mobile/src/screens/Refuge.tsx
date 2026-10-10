@@ -8,7 +8,7 @@ import { addEntry, clearLog, loadLog, Meditation, MEDITATIONS, REST_SHORT, Refug
 
 type Step = 'home' | 'triggers' | 'choose' | 'after' | 'struggling' | 'thanks' | 'record';
 
-const INK = '#EFE6D2', DIM = '#A8946C', FAINT = '#6F6450', GOLD = '#C9A84C', BG = '#07060A';
+const INK = '#EEE7DA', DIM = '#B4A890', FAINT = '#6E6876', GOLD = '#C4A870', BG = '#111015';
 
 export default function Refuge({ visible, onClose }: { visible: boolean; onClose: () => void }) {
   const [step, setStep] = useState<Step>('home');
@@ -175,7 +175,7 @@ function Record({ log, confirmClear, setConfirmClear, onClear }: { log: RefugeEn
         {perDay.map((n, i) => (
           <View key={i} style={{ flex: 1, alignItems: 'center', gap: 4 }}>
             <View style={{ height: 50, justifyContent: 'flex-end' }}>
-              <View style={{ width: 8, height: n ? 6 + (44 * n) / max : 2, backgroundColor: n ? GOLD : '#2A2620', borderRadius: 2 }} />
+              <View style={{ width: 8, height: n ? 6 + (44 * n) / max : 2, backgroundColor: n ? GOLD : '#26222B', borderRadius: 2 }} />
             </View>
             <Text style={st.barL}>{days[i].toLocaleDateString('en-GB', { weekday: 'narrow' })}</Text>
           </View>
@@ -205,7 +205,7 @@ function Record({ log, confirmClear, setConfirmClear, onClear }: { log: RefugeEn
         confirmClear ? (
           <View style={{ flexDirection: 'row', gap: 18, alignItems: 'center' }}>
             <Text style={st.fine}>Clear your whole record?</Text>
-            <Pressable onPress={onClear}><Text style={[st.link, { color: '#C46A5A' }]}>Clear</Text></Pressable>
+            <Pressable onPress={onClear}><Text style={[st.link, { color: '#C98B7C' }]}>Clear</Text></Pressable>
             <Pressable onPress={() => setConfirmClear(false)}><Text style={st.link}>Keep</Text></Pressable>
           </View>
         ) : <Pressable onPress={() => setConfirmClear(true)}><Text style={st.link}>Clear record</Text></Pressable>
@@ -219,37 +219,37 @@ const st = StyleSheet.create({
   root: { flex: 1, backgroundColor: BG },
   top: { flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 22, paddingTop: 52, paddingBottom: 8 },
   body: { paddingHorizontal: 26, paddingTop: 20, paddingBottom: 60 },
-  link: { fontFamily: F.sc, fontSize: 14, letterSpacing: 1.4, color: DIM },
-  eyebrow: { fontFamily: F.sc, fontSize: 12.5, letterSpacing: 2.2, color: GOLD },
-  title: { fontFamily: F.display, fontSize: 50, color: INK },
-  h2: { fontFamily: F.display, fontSize: 30, lineHeight: 36, color: INK },
-  quote: { fontFamily: F.displayItalic, fontSize: 21, lineHeight: 29, color: INK },
-  cite: { fontFamily: F.sc, fontSize: 12, letterSpacing: 1.6, color: DIM, marginTop: -8 },
-  text: { fontFamily: F.body, fontSize: 16, lineHeight: 25, color: '#CDBF9F' },
+  link: { fontFamily: F.sc, fontSize: 12, letterSpacing: 1.4, color: DIM },
+  eyebrow: { fontFamily: F.sc, fontSize: 10.5, letterSpacing: 2.2, color: GOLD },
+  title: { fontFamily: F.display, fontSize: 55, color: INK },
+  h2: { fontFamily: F.display, fontSize: 33, lineHeight: 39, color: INK },
+  quote: { fontFamily: F.displayItalic, fontSize: 23, lineHeight: 31.5, color: INK },
+  cite: { fontFamily: F.sc, fontSize: 10, letterSpacing: 1.6, color: DIM, marginTop: -8 },
+  text: { fontFamily: F.body, fontSize: 16, lineHeight: 25, color: '#CFC7B9' },
   fine: { fontFamily: F.bodyItalic, fontSize: 13, lineHeight: 19, color: FAINT },
-  primary: { borderWidth: 1, borderColor: GOLD, backgroundColor: '#1A150C', borderRadius: 999, paddingVertical: 16, alignItems: 'center', marginTop: 6 },
-  primaryText: { fontFamily: F.sc, fontSize: 17, letterSpacing: 1.6, color: INK },
-  secondary: { borderWidth: 1, borderColor: '#3A3328', borderRadius: 999, paddingVertical: 13, alignItems: 'center' },
-  secondaryText: { fontFamily: F.sc, fontSize: 15, letterSpacing: 1.4, color: DIM },
+  primary: { borderWidth: 1, borderColor: GOLD, backgroundColor: '#221D27', borderRadius: 999, paddingVertical: 16, alignItems: 'center', marginTop: 6 },
+  primaryText: { fontFamily: F.sc, fontSize: 14.5, letterSpacing: 0.4, color: INK },
+  secondary: { borderWidth: 1, borderColor: '#36313D', borderRadius: 999, paddingVertical: 13, alignItems: 'center' },
+  secondaryText: { fontFamily: F.sc, fontSize: 13, letterSpacing: 0.4, color: DIM },
   chips: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
-  chip: { borderWidth: 1, borderColor: '#4A4234', borderRadius: 999, paddingHorizontal: 14, paddingVertical: 8 },
+  chip: { borderWidth: 1, borderColor: '#3D3744', borderRadius: 999, paddingHorizontal: 14, paddingVertical: 8 },
   chipOn: { backgroundColor: INK, borderColor: INK },
   chipText: { fontFamily: F.body, fontSize: 14.5, color: INK },
-  card: { borderWidth: 1, borderColor: '#2E2920', borderRadius: 4, paddingVertical: 14, paddingHorizontal: 16, backgroundColor: '#0E0C10' },
-  cardTitle: { fontFamily: F.display, fontSize: 23, color: INK },
+  card: { borderWidth: 1, borderColor: '#2C2731', borderRadius: 12, paddingVertical: 14, paddingHorizontal: 16, backgroundColor: '#1A171F' },
+  cardTitle: { fontFamily: F.display, fontSize: 25.5, color: INK },
   cardSub: { fontFamily: F.bodyItalic, fontSize: 14, color: DIM, marginTop: 2 },
   tips: { gap: 10, marginTop: 8, borderLeftWidth: 2, borderColor: GOLD, paddingLeft: 14 },
-  tip: { fontFamily: F.body, fontSize: 15, lineHeight: 23, color: '#CDBF9F' },
+  tip: { fontFamily: F.body, fontSize: 15, lineHeight: 23, color: '#CFC7B9' },
   stats: { flexDirection: 'row', gap: 10 },
-  stat: { flex: 1, borderWidth: 1, borderColor: '#2E2920', borderRadius: 4, paddingVertical: 12, alignItems: 'center' },
+  stat: { flex: 1, borderWidth: 1, borderColor: '#2C2731', borderRadius: 12, paddingVertical: 12, alignItems: 'center' },
   statN: { fontFamily: F.bodyMedium, fontSize: 30, color: INK, fontVariant: ['tabular-nums'] },
-  statL: { fontFamily: F.sc, fontSize: 12, letterSpacing: 1.2, color: DIM },
-  small: { fontFamily: F.sc, fontSize: 12, letterSpacing: 1.8, color: DIM, marginTop: 6 },
+  statL: { fontFamily: F.sc, fontSize: 10, letterSpacing: 1.2, color: DIM },
+  small: { fontFamily: F.sc, fontSize: 10, letterSpacing: 1.8, color: DIM, marginTop: 6 },
   bars: { flexDirection: 'row', alignItems: 'flex-end' },
-  barL: { fontFamily: F.sc, fontSize: 10.5, color: FAINT },
+  barL: { fontFamily: F.sc, fontSize: 9, color: FAINT },
   row: { flexDirection: 'row', alignItems: 'center', gap: 12 },
-  rowL: { width: 120, fontFamily: F.body, fontSize: 14.5, color: '#CDBF9F' },
+  rowL: { width: 120, fontFamily: F.body, fontSize: 14.5, color: '#CFC7B9' },
   rowN: { fontFamily: F.body, fontSize: 14, color: DIM, minWidth: 20, textAlign: 'right', marginLeft: 'auto' },
-  track: { flex: 1, height: 6, backgroundColor: '#1E1B16', borderRadius: 3, overflow: 'hidden' },
+  track: { flex: 1, height: 6, backgroundColor: '#26222B', borderRadius: 12, overflow: 'hidden' },
   fill: { height: 6, backgroundColor: GOLD },
 });

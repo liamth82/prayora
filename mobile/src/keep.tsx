@@ -108,19 +108,19 @@ function KeepSheet({ draft, themes, onPick, onAddTheme, onCancel }: { draft: Dra
 }
 
 const st = StyleSheet.create({
-  scrim: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(44,24,16,0.45)', zIndex: 50 },
+  scrim: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(8,7,10,0.6)', zIndex: 50 },
   sheet: { backgroundColor: C.vellum, borderTopLeftRadius: 14, borderTopRightRadius: 14, padding: 20, paddingBottom: 34, borderTopWidth: 3, borderColor: C.gold },
-  sheetHead: { fontFamily: F.sc, fontSize: 12.5, letterSpacing: 1.6, color: C.rubric, marginBottom: 8 },
-  quote: { fontFamily: F.displayItalic, fontSize: 19, lineHeight: 26, color: C.ink },
-  src: { fontFamily: F.sc, fontSize: 12.5, letterSpacing: 0.6, color: C.inkFaint, marginTop: 6 },
+  sheetHead: { fontFamily: F.sc, fontSize: 10.5, letterSpacing: 1.6, color: C.rubric, marginBottom: 8 },
+  quote: { fontFamily: F.displayItalic, fontSize: 21, lineHeight: 28, color: C.ink },
+  src: { fontFamily: F.sc, fontSize: 10.5, letterSpacing: 0.6, color: C.inkFaint, marginTop: 6 },
   chips: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
   chip: { borderWidth: 1, borderColor: C.ink, borderRadius: 999, paddingHorizontal: 14, paddingVertical: 8 },
   chipText: { fontFamily: F.body, fontSize: 14.5, color: C.ink },
   newRow: { flexDirection: 'row', gap: 8, marginTop: 12 },
-  input: { flex: 1, borderWidth: 1, borderColor: C.vellum3, backgroundColor: C.paper, borderRadius: 3, paddingHorizontal: 12, paddingVertical: 9, fontFamily: F.body, fontSize: 15, color: C.ink },
-  addBtn: { backgroundColor: C.ink, borderRadius: 3, paddingHorizontal: 16, justifyContent: 'center' },
-  addText: { fontFamily: F.sc, fontSize: 14, letterSpacing: 1, color: C.vellum },
-  cancel: { fontFamily: F.sc, fontSize: 14, letterSpacing: 1, color: C.inkSoft },
+  input: { flex: 1, borderWidth: 1, borderColor: C.vellum3, backgroundColor: C.paper, borderRadius: 12, paddingHorizontal: 12, paddingVertical: 9, fontFamily: F.body, fontSize: 15, color: C.ink },
+  addBtn: { backgroundColor: C.ink, borderRadius: 12, paddingHorizontal: 16, justifyContent: 'center' },
+  addText: { fontFamily: F.sc, fontSize: 12, letterSpacing: 1, color: C.vellum },
+  cancel: { fontFamily: F.sc, fontSize: 12, letterSpacing: 1, color: C.inkSoft },
   toast: { position: 'absolute', bottom: 110, alignSelf: 'center', backgroundColor: C.ink, paddingHorizontal: 16, paddingVertical: 10, borderRadius: 999, zIndex: 60 },
   toastText: { fontFamily: F.body, fontSize: 14, color: C.vellum },
 });

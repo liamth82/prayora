@@ -80,7 +80,7 @@ export default function Hours({ scrollTop }: { scrollTop: () => void }) {
         {HOURS.map((x) => {
           const isNow = x.id === cur.id, d = done.includes(x.id);
           return (
-            <Pressable key={x.id} onPress={() => go(x.id)} style={[st.hour, isNow && { backgroundColor: 'rgba(201,168,76,0.2)' }]}>
+            <Pressable key={x.id} onPress={() => go(x.id)} style={[st.hour, isNow && { backgroundColor: 'rgba(196,168,112,0.08)' }]}>
               <Text style={st.t}>{x.label}</Text>
               <View style={{ flex: 1 }}>
                 <Text style={st.n}>{x.name}</Text>
@@ -102,15 +102,15 @@ const VR = ({ v, t }: { v: string; t: string }) => (
 );
 
 const st = StyleSheet.create({
-  prayNow: { backgroundColor: '#0E0B0A', borderRadius: 4, paddingVertical: 18, paddingHorizontal: 18, marginBottom: 20, borderWidth: 1, borderColor: C.gold },
-  prayNowSmall: { fontFamily: F.sc, fontSize: 12, letterSpacing: 2, color: C.gold },
-  prayNowText: { fontFamily: F.display, fontSize: 28, color: C.vellum, marginTop: 2 },
-  prayNowSub: { fontFamily: F.bodyItalic, fontSize: 13.5, color: '#B9A57F', marginTop: 2 },
+  prayNow: { backgroundColor: '#241F29', borderRadius: 16, paddingVertical: 18, paddingHorizontal: 18, marginBottom: 20, borderWidth: StyleSheet.hairlineWidth, borderColor: 'rgba(196,168,112,0.45)' },
+  prayNowSmall: { fontFamily: F.sc, fontSize: 10, letterSpacing: 2, color: C.gold },
+  prayNowText: { fontFamily: F.display, fontSize: 31, color: C.ink, marginTop: 2 },
+  prayNowSub: { fontFamily: F.bodyItalic, fontSize: 13.5, color: '#B4A890', marginTop: 2 },
   hour: { flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 12, paddingHorizontal: 4, borderBottomWidth: 1, borderColor: C.vellum3 },
-  t: { width: 50, fontFamily: F.sc, fontSize: 13, color: C.inkFaint },
-  n: { fontFamily: F.display, fontSize: 21, color: C.ink },
+  t: { width: 50, fontFamily: F.sc, fontSize: 11, color: C.inkFaint },
+  n: { fontFamily: F.display, fontSize: 23, color: C.ink },
   sub: { fontFamily: F.body, fontSize: 12.5, color: C.inkSoft },
-  status: { fontFamily: F.sc, fontSize: 12.5, letterSpacing: 1, color: C.inkFaint },
+  status: { fontFamily: F.sc, fontSize: 10.5, letterSpacing: 1, color: C.inkFaint },
   rub: { fontFamily: F.sc, color: C.rubric, fontSize: 13, letterSpacing: 1, marginTop: 16, marginBottom: 2 },
   office: { fontFamily: F.body, fontSize: 16.5, lineHeight: 27, color: C.ink, marginVertical: 2 },
 });

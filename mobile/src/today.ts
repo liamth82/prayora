@@ -75,12 +75,12 @@ export function artKeyFor(day: Day | null, date: Date): string {
 }
 
 export const LIT_COLORS: Record<string, { bg: string; fg: string; accent: string }> = {
-  green: { bg: '#2F4A33', fg: '#F5EDD6', accent: '#C9A84C' },
-  violet: { bg: '#43294F', fg: '#F5EDD6', accent: '#C9A84C' },
-  red: { bg: '#6E1C1A', fg: '#F5EDD6', accent: '#E0C277' },
-  rose: { bg: '#9C5A68', fg: '#FBF3E6', accent: '#F1D9A0' },
-  black: { bg: '#1E1A17', fg: '#EDE4CF', accent: '#C9A84C' },
-  white: { bg: '#EFE3C2', fg: '#2C1810', accent: '#8F6D1F' },
+  green: { bg: '#1D2A23', fg: '#EEE7DA', accent: '#C4A870' },
+  violet: { bg: '#261C30', fg: '#EEE7DA', accent: '#C4A870' },
+  red: { bg: '#341818', fg: '#F2E9DC', accent: '#D8BF8A' },
+  rose: { bg: '#3A222A', fg: '#F4ECE2', accent: '#E3C9A0' },
+  black: { bg: '#121014', fg: '#E8E1D4', accent: '#B9A274' },
+  white: { bg: '#2A2621', fg: '#F4EFE6', accent: '#D8BF8A' },
 };
 
 const EF_ORDER = ['Introitus', 'Oratio', 'Commemoratio Oratio', 'Lectio', 'Graduale', 'Tractus', 'Sequentia', 'Evangelium',

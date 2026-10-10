@@ -94,14 +94,14 @@ export default function Today({ openHours, onThanks, onRefuge }: { openHours: ()
       </View>
 
       <View style={{ paddingHorizontal: 20, paddingTop: 20 }}>
-        {saint ? <SaintCard s={saint} accent={lc.bg === LIT_COLORS.white.bg ? C.goldDeep : lc.bg} /> : null}
+        {saint ? <SaintCard s={saint} accent={C.gold} /> : null}
 
         <View style={st.quick}>
-          <Pressable onPress={onThanks} style={({ pressed }) => [st.quickBtn, pressed && { backgroundColor: C.vellum2 }]} accessibilityRole="button">
+          <Pressable onPress={onThanks} style={({ pressed }) => [st.quickBtn, pressed && { backgroundColor: C.vellum3 }]} accessibilityRole="button">
             <Text style={st.quickSmall}>SOMETHING GOOD?</Text>
             <Text style={st.quickTitle}>Give thanks</Text>
           </Pressable>
-          <Pressable onPress={onRefuge} style={({ pressed }) => [st.quickBtn, pressed && { backgroundColor: C.vellum2 }]} accessibilityRole="button">
+          <Pressable onPress={onRefuge} style={({ pressed }) => [st.quickBtn, pressed && { backgroundColor: C.vellum3 }]} accessibilityRole="button">
             <Text style={st.quickSmall}>TEMPTED?</Text>
             <Text style={st.quickTitle}>Take refuge</Text>
           </Pressable>
@@ -117,7 +117,7 @@ export default function Today({ openHours, onThanks, onRefuge }: { openHours: ()
         {day ? (
           <View style={st.readBox}>
             <Pressable onPress={toggleRead} style={[st.readBtn, isRead && st.readBtnOn]} accessibilityRole="checkbox" accessibilityState={{ checked: isRead }}>
-              <Text style={[st.readText, isRead && { color: C.vellum }]}>{isRead ? '✓  Read today' : 'Mark as read'}</Text>
+              <Text style={[st.readText, isRead && { color: C.deep }]}>{isRead ? '✓  Read today' : 'Mark as read'}</Text>
             </Pressable>
             <Text style={st.streak}>
               {streak > 1 ? `${streak} days in a row` : streak === 1 ? 'First day of a new run' : 'Read the day\'s readings to begin a run'}
@@ -237,48 +237,48 @@ function EFPropers({ day, latin }: { day: EFDay; latin: 'en' | 'both' | 'la' }) 
 }
 
 const st = StyleSheet.create({
-  lightbox: { flex: 1, backgroundColor: '#0E0A08', paddingTop: 48, paddingBottom: 28 },
+  lightbox: { flex: 1, backgroundColor: C.deep, paddingTop: 48, paddingBottom: 28 },
   lbCaption: { paddingHorizontal: 22, paddingTop: 14 },
-  lbTitle: { fontFamily: F.display, fontSize: 22, color: '#F5EDD6' },
-  lbCredit: { fontFamily: F.bodyItalic, fontSize: 12.5, lineHeight: 18, color: '#B9A57F', marginTop: 4 },
-  lbHint: { fontFamily: F.sc, fontSize: 11.5, letterSpacing: 1.4, color: '#7E6E55', marginTop: 10 },
+  lbTitle: { fontFamily: F.display, fontSize: 24, color: C.ink },
+  lbCredit: { fontFamily: F.bodyItalic, fontSize: 12.5, lineHeight: 18, color: C.inkSoft, marginTop: 4 },
+  lbHint: { fontFamily: F.sc, fontSize: 10, letterSpacing: 1.4, color: C.inkFaint, marginTop: 10 },
   quick: { flexDirection: 'row', gap: 10, marginBottom: 12 },
-  quickBtn: { flex: 1, borderWidth: 1, borderColor: C.vellum3, borderRadius: 3, paddingVertical: 10, paddingHorizontal: 12 },
-  quickSmall: { fontFamily: F.sc, fontSize: 11, letterSpacing: 1.4, color: C.inkFaint },
-  quickTitle: { fontFamily: F.display, fontSize: 20, color: C.ink, marginTop: 1 },
+  quickBtn: { flex: 1, backgroundColor: C.vellum2, borderRadius: 14, paddingVertical: 10, paddingHorizontal: 12 },
+  quickSmall: { fontFamily: F.sc, fontSize: 9.5, letterSpacing: 1.4, color: C.inkFaint },
+  quickTitle: { fontFamily: F.display, fontSize: 22, color: C.ink, marginTop: 1 },
   readBox: { alignItems: 'center', marginTop: 26, marginBottom: 6, gap: 8 },
-  readBtn: { borderWidth: 1, borderColor: C.ink, borderRadius: 3, paddingHorizontal: 22, paddingVertical: 12 },
+  readBtn: { borderWidth: 1, borderColor: C.vellum3, borderRadius: 999, paddingHorizontal: 22, paddingVertical: 12 },
   readBtnOn: { backgroundColor: C.green, borderColor: C.green },
-  readText: { fontFamily: F.sc, fontSize: 15, letterSpacing: 1.2, color: C.ink },
+  readText: { fontFamily: F.sc, fontSize: 13, letterSpacing: 0.4, color: C.ink },
   streak: { fontFamily: F.bodyItalic, fontSize: 13, color: C.inkSoft },
   artWrap: { paddingTop: 20, paddingHorizontal: 20, paddingBottom: 6 },
-  frame: { borderWidth: 3, borderColor: C.gold, padding: 4, backgroundColor: C.gold },
+  frame: { borderWidth: StyleSheet.hairlineWidth, borderColor: 'rgba(216,191,138,0.55)', padding: 5, borderRadius: 2 },
   credit: { fontFamily: F.bodyItalic, fontSize: 10.5, marginTop: 6, lineHeight: 14 },
   band: { paddingHorizontal: 20, paddingTop: 14, paddingBottom: 22 },
-  date: { fontFamily: F.sc, fontSize: 13, letterSpacing: 2 },
-  title: { fontFamily: F.display, fontSize: 32, lineHeight: 36, marginTop: 6 },
+  date: { fontFamily: F.sc, fontSize: 11, letterSpacing: 2 },
+  title: { fontFamily: F.display, fontSize: 35, lineHeight: 39, marginTop: 6 },
   meta: { fontFamily: F.body, fontSize: 14, lineHeight: 20, marginTop: 6, opacity: 0.9 },
-  form: { fontFamily: F.sc, fontSize: 12, letterSpacing: 1.6, marginTop: 10 },
-  hourRow: { borderWidth: 1, borderColor: C.vellum3, padding: 12, marginBottom: 20, borderRadius: 3 },
-  hourLabel: { fontFamily: F.sc, fontSize: 11.5, letterSpacing: 1.5, color: C.inkFaint },
-  hourName: { fontFamily: F.display, fontSize: 21, color: C.ink, marginTop: 2 },
+  form: { fontFamily: F.sc, fontSize: 10, letterSpacing: 1.6, marginTop: 10 },
+  hourRow: { backgroundColor: C.vellum2, padding: 14, marginBottom: 24, borderRadius: 14 },
+  hourLabel: { fontFamily: F.sc, fontSize: 10, letterSpacing: 1.5, color: C.inkFaint },
+  hourName: { fontFamily: F.display, fontSize: 23, color: C.ink, marginTop: 2 },
   hourSub: { fontFamily: F.body, fontSize: 13, color: C.inkSoft },
-  section: { borderTopWidth: 1, borderColor: C.vellum3 },
+  section: { borderTopWidth: StyleSheet.hairlineWidth, borderColor: C.vellum3 },
   sectionHead: { flexDirection: 'row', alignItems: 'center', paddingVertical: 12, gap: 10 },
-  sectionLabel: { fontFamily: F.display, fontSize: 20, color: C.ink },
-  sectionRef: { fontFamily: F.sc, fontSize: 12.5, letterSpacing: 0.8, color: C.rubric, marginTop: 1 },
-  chev: { fontFamily: F.display, fontSize: 24, color: C.goldDeep, width: 20, textAlign: 'center' },
+  sectionLabel: { fontFamily: F.display, fontSize: 22, color: C.ink },
+  sectionRef: { fontFamily: F.ui, fontSize: 12, letterSpacing: 0.2, color: C.inkSoft, marginTop: 1 },
+  chev: { fontFamily: F.display, fontSize: 26.5, color: C.goldDeep, width: 20, textAlign: 'center' },
   reading: { fontFamily: F.body, fontSize: 16.5, lineHeight: 27, color: C.ink },
   latin: { fontFamily: F.bodyItalic, color: C.inkSoft, fontSize: 15.5, lineHeight: 25 },
-  latinBox: { marginTop: 10, paddingLeft: 12, borderLeftWidth: 2, borderColor: C.gold },
-  vn: { fontFamily: F.sc, fontSize: 12, color: C.rubric },
-  efRef: { fontFamily: F.sc, fontSize: 12.5, color: C.rubric, letterSpacing: 0.6 },
+  latinBox: { marginTop: 10, paddingLeft: 12, borderLeftWidth: 1, borderColor: C.gold },
+  vn: { fontFamily: F.sc, fontSize: 10, color: C.rubric },
+  efRef: { fontFamily: F.sc, fontSize: 10.5, color: C.rubric, letterSpacing: 0.6 },
   efHead: { fontFamily: F.bodyItalic, fontSize: 14, color: C.inkSoft },
   src: { fontFamily: F.bodyItalic, fontSize: 12.5, color: C.inkFaint, marginTop: 6, marginBottom: 6 },
-  saintName: { fontFamily: F.display, fontSize: 27, lineHeight: 31, color: C.ink },
+  saintName: { fontFamily: F.display, fontSize: 29.5, lineHeight: 33.5, color: C.ink },
   saintDates: { fontFamily: F.bodyItalic, fontSize: 13, color: C.inkSoft, marginBottom: 8 },
   body: { fontFamily: F.body, fontSize: 15.5, lineHeight: 24, color: C.ink, marginBottom: 8 },
-  prayer: { borderLeftWidth: 3, paddingLeft: 14, marginVertical: 10 },
-  prayerText: { fontFamily: F.displayItalic, fontSize: 18, lineHeight: 26, color: C.ink },
-  smallHead: { fontFamily: F.sc, fontSize: 12.5, letterSpacing: 1.4, color: C.rubric, marginTop: 8, marginBottom: 4 },
+  prayer: { borderLeftWidth: 1.5, paddingLeft: 14, marginVertical: 10 },
+  prayerText: { fontFamily: F.displayItalic, fontSize: 20, lineHeight: 28, color: C.ink },
+  smallHead: { fontFamily: F.sc, fontSize: 10.5, letterSpacing: 1.4, color: C.rubric, marginTop: 8, marginBottom: 4 },
 });

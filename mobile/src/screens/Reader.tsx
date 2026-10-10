@@ -1,16 +1,20 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { ActivityIndicator, Modal, NativeScrollEvent, NativeSyntheticEvent, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import {
+  ActivityIndicator, Animated, FlatList, LayoutChangeEvent, Modal, NativeScrollEvent, NativeSyntheticEvent, Pressable,
+  StyleSheet, Text, TextLayoutEventData, useWindowDimensions, View,
+} from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import * as Haptics from 'expo-haptics';
+import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 import { F } from '../theme';
 import { useKeepable } from '../keep';
 import { load, save } from '../storage';
-import { Illumination } from '../components/ui';
-import { DEFAULT_PREFS, ReaderPrefs, Tone, TONES } from '../reading';
+import { DEFAULT_PREFS, ReaderPrefs, Tone, TONE_LABEL, TONES } from '../reading';
 
 export type ReaderUnit = { n?: number | string; text: string };
 export type ReaderChapter = {
-  key: string;            // stable id for remembering scroll position
+  key: string;            // stable id for remembering the reading position
   heading: string;        // e.g. "Luke" or "The Imitation of Christ"
   title: string;          // e.g. "Chapter 10" or "Of the Imitation of Christ"
   section?: string;       // e.g. "Book I · Admonitions profitable for the spiritual life"
@@ -21,116 +25,225 @@ export type ReaderChapter = {
   position: string;       // e.g. "Chapter 10 of 24"
 };
 
+const PAD_X = 28, PAD_TOP = 26, PAD_BOTTOM = 14;
+type Box = { top: number; bottom: number };
+type Page = { start: number; end: number };
+
+/**
+ * A paginated, page-turning reader. The chapter is laid out once off screen at the page width; every
+ * line's position is measured, and pages are cut on line boundaries so no line is ever split. Each page
+ * then shows its own window onto that same layout, so verse numbers, drop caps and press-and-hold to
+ * keep a passage all work exactly as they do in the flowing text.
+ */
 export default function Reader({ chapter, loading, onClose, onPrev, onNext }: {
   chapter: ReaderChapter | null; loading: boolean; onClose: () => void; onPrev?: () => void; onNext?: () => void;
 }) {
   const insets = useSafeAreaInsets();
+  const { width: W } = useWindowDimensions();
   const kp = useKeepable();
   const [prefs, setPrefs] = useState<ReaderPrefs>(DEFAULT_PREFS);
   const [showPrefs, setShowPrefs] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const scroll = useRef<ScrollView>(null);
-  const lastSave = useRef(0);
+  const [areaH, setAreaH] = useState(0);
+  const [page, setPage] = useState(0);
+  const [startPage, setStartPage] = useState(0);
+  const list = useRef<FlatList<Page>>(null);
+  const scrollX = useRef(new Animated.Value(0)).current;
   const T = TONES[prefs.tone];
+  const size = prefs.size, line = Math.round(size * 1.6);
+  const contentW = W - PAD_X * 2;
+  const pageH = Math.max(0, areaH - PAD_TOP - PAD_BOTTOM);
 
   useEffect(() => { load<ReaderPrefs>('reader:prefs', DEFAULT_PREFS).then(setPrefs); }, []);
   const setP = (p: Partial<ReaderPrefs>) => { const n = { ...prefs, ...p }; setPrefs(n); save('reader:prefs', n); };
 
-  // Restore the reading position for this chapter.
-  useEffect(() => {
-    if (!chapter) return;
-    setProgress(0);
-    load<number>('reader:pos:' + chapter.key, 0).then((y) => {
-      setTimeout(() => scroll.current?.scrollTo({ y, animated: false }), 60);
-    });
-  }, [chapter?.key]); // eslint-disable-line react-hooks/exhaustive-deps
+  // ---- measurement -------------------------------------------------------------------------------
+  const measureKey = chapter && pageH > 0 ? `${chapter.key}|${size}|${contentW}|${pageH}` : '';
+  const [paged, setPaged] = useState<{ key: string; pages: Page[] } | null>(null);
+  const pages = paged && paged.key === measureKey ? paged.pages : null;
 
-  const onScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const { contentOffset, contentSize, layoutMeasurement } = e.nativeEvent;
-    const max = Math.max(1, contentSize.height - layoutMeasurement.height);
-    setProgress(Math.min(1, Math.max(0, contentOffset.y / max)));
-    const now = Date.now();
-    if (chapter && now - lastSave.current > 800) { lastSave.current = now; save('reader:pos:' + chapter.key, contentOffset.y); }
+  const measure = useMemo(() => {
+    const layouts: Record<string, { y: number; h: number }> = {};
+    const lines: Record<string, Box[]> = {};
+    let total = 0;
+    let timer: ReturnType<typeof setTimeout> | null = null;
+    const key = measureKey, chapterKey = chapter?.key ?? '', ph = pageH, step = line;
+
+    const paginate = async () => {
+      if (!key || ph <= 0) return;
+      const boxes: Box[] = [];
+      for (const [id, l] of Object.entries(layouts)) {
+        const ls = lines[id];
+        if (ls && ls.length) ls.forEach((b) => boxes.push({ top: l.y + b.top, bottom: l.y + b.bottom }));
+        else if (l.h <= ph) boxes.push({ top: l.y, bottom: l.y + l.h });
+        else for (let y = 0; y < l.h; y += step) boxes.push({ top: l.y + y, bottom: l.y + Math.min(l.h, y + step) }); // no line metrics: step by line height
+      }
+      boxes.sort((x, y) => x.top - y.top);
+      const starts = [0];
+      let cur = 0;
+      for (const b of boxes) if (b.bottom - cur > ph + 0.5 && b.top > cur) { cur = b.top; starts.push(cur); }
+      const end = Math.max(total, boxes.length ? boxes[boxes.length - 1].bottom : 0);
+      const ps = starts.map((st0, i) => ({ start: st0, end: i + 1 < starts.length ? starts[i + 1] : end }));
+      const saved = await load<number>('reader:pos:' + chapterKey, 0);
+      let p = 0;
+      ps.forEach((pg, i) => { if (saved >= pg.start - 1) p = i; });
+      setStartPage(p); setPage(p); setPaged({ key, pages: ps });
+    };
+    const schedule = () => { if (timer) clearTimeout(timer); timer = setTimeout(paginate, 140); };
+    return {
+      layout: (id: string) => (e: LayoutChangeEvent) => { layouts[id] = { y: e.nativeEvent.layout.y, h: e.nativeEvent.layout.height }; schedule(); },
+      text: (id: string) => (e: NativeSyntheticEvent<TextLayoutEventData>) => {
+        lines[id] = e.nativeEvent.lines.map((l) => ({ top: l.y, bottom: l.y + l.height })); schedule();
+      },
+      root: (e: LayoutChangeEvent) => { total = e.nativeEvent.layout.height; schedule(); },
+    };
+  }, [measureKey]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // ---- turning -----------------------------------------------------------------------------------
+  const count = pages?.length ?? 0;
+  const goTo = (p: number) => {
+    if (p < 0) { onPrev?.(); return; }
+    if (p >= count) { onNext?.(); return; }
+    list.current?.scrollToOffset({ offset: p * W, animated: true });
+    if (p !== page) Haptics.selectionAsync().catch(() => {});
+    setPage(p);
+    if (chapter && pages?.[p]) save('reader:pos:' + chapter.key, pages[p].start);
+  };
+  const settle = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const p = Math.round(e.nativeEvent.contentOffset.x / W);
+    if (p !== page) Haptics.selectionAsync().catch(() => {});
+    setPage(p);
+    if (chapter && pages?.[p]) save('reader:pos:' + chapter.key, pages[p].start);
+  };
+  const tapAt = (x: number) => {
+    if (showPrefs) { setShowPrefs(false); return; }
+    if (x < W * 0.3) goTo(page - 1);
+    else if (x > W * 0.7) goTo(page + 1);
+  };
+  const turnable = { onPress: (e: any) => tapAt(e?.nativeEvent?.pageX ?? 0) };
+
+  // ---- the chapter itself, rendered identically for measuring and for every page ------------------
+  const renderContent = (m: typeof measure | null) => {
+    if (!chapter) return null;
+    const L = (id: string) => (m ? { onLayout: m.layout(id) } : {});
+    const TL = (id: string) => (m ? { onLayout: m.layout(id), onTextLayout: m.text(id) } : {});
+    return (
+      <View onLayout={m ? m.root : undefined}>
+        <View {...L('head')} style={st.head}>
+          {chapter.section ? <Text style={[st.chSection, { color: T.soft }]}>{chapter.section}</Text> : null}
+          <Text style={[st.chTitle, { color: T.ink }]}>{chapter.title}</Text>
+          <Text style={[st.chPos, { color: T.accent }]}>{chapter.position.toUpperCase()}</Text>
+          <View style={[st.ornament, { backgroundColor: T.accent }]} />
+        </View>
+        {chapter.mode === 'verses' ? (
+          <Text {...TL('v')} style={{ fontFamily: F.body, fontSize: size, lineHeight: line, color: T.ink }}>
+            {chapter.units.map((u, i) => (
+              <Text key={i} {...kp(u.text, chapter.sourceFor(u))} {...turnable}>
+                <Text style={{ fontFamily: F.sc, fontSize: size * 0.55, color: T.accent }}>{u.n}{' '}</Text>
+                {i === 0 ? <DropCap text={u.text} size={size} color={T.accent} /> : u.text}{'  '}
+              </Text>
+            ))}
+          </Text>
+        ) : (
+          chapter.units.map((u, i) => (
+            <Text key={i} {...TL('p' + i)} {...kp(u.text, chapter.sourceFor(u))} {...turnable}
+              style={{ fontFamily: F.body, fontSize: size, lineHeight: line, color: T.ink, marginBottom: Math.round(line * 0.55) }}>
+              {i === 0 ? <DropCap text={u.text} size={size} color={T.accent} /> : u.text}
+            </Text>
+          ))
+        )}
+        <View {...L('end')} style={st.end}>
+          <Text style={[st.endMark, { color: T.accent }]}>✠</Text>
+          {onNext ? (
+            <Pressable onPress={onNext} style={[st.nextBtn, { borderColor: T.rule }]}><Text style={[st.nextText, { color: T.ink }]}>Next chapter</Text></Pressable>
+          ) : <Text style={[st.hint, { color: T.soft }]}>The end</Text>}
+        </View>
+      </View>
+    );
   };
 
-  const size = prefs.size, line = Math.round(size * 1.65);
+  // ---- a page: a clipped window onto the laid-out chapter, sliding over the page beneath it -------
+  const renderPage = ({ item, index }: { item: Page; index: number }) => {
+    const shift = scrollX.interpolate({ inputRange: [index * W, (index + 1) * W], outputRange: [0, W * 0.72], extrapolate: 'clamp' });
+    const dim = scrollX.interpolate({ inputRange: [index * W, (index + 1) * W], outputRange: [0, 0.5], extrapolate: 'clamp' });
+    const edge = scrollX.interpolate({ inputRange: [(index - 1) * W, (index - 0.5) * W, index * W], outputRange: [0, 0.55, 0], extrapolate: 'clamp' });
+    return (
+      <Animated.View style={{ width: W, height: areaH, transform: [{ translateX: shift }] }}>
+        <Pressable onPress={(e) => tapAt(e.nativeEvent.pageX)} style={[st.page, { backgroundColor: T.bg }]}>
+          <View style={{ height: item.end - item.start, overflow: 'hidden' }}>
+            <View style={{ position: 'absolute', top: -item.start, left: 0, width: contentW }}>{renderContent(null)}</View>
+          </View>
+        </Pressable>
+        <Animated.View pointerEvents="none" style={[st.shade, { opacity: dim }]} />
+        <Animated.View pointerEvents="none" style={[st.edge, { opacity: edge }]}>
+          <Svg width={18} height="100%"><Defs><LinearGradient id="pe" x1="0" y1="0" x2="1" y2="0"><Stop offset="0" stopColor="#000" stopOpacity="0" /><Stop offset="1" stopColor="#000" stopOpacity="0.9" /></LinearGradient></Defs><Rect x={0} y={0} width={18} height="100%" fill="url(#pe)" /></Svg>
+        </Animated.View>
+      </Animated.View>
+    );
+  };
+
+  const progress = count ? (page + 1) / count : 0;
 
   return (
     <Modal visible animationType="slide" onRequestClose={onClose} statusBarTranslucent>
       <StatusBar style={prefs.tone === 'night' ? 'light' : 'dark'} />
       <View style={[st.root, { backgroundColor: T.bg, paddingTop: insets.top || 28 }]}>
-        <View style={[st.bar, { borderColor: T.rule }]}>
-          <Pressable onPress={onClose} hitSlop={12} accessibilityLabel="Close reader"><Text style={[st.barBtn, { color: T.soft }]}>‹ Close</Text></Pressable>
+        <View style={st.bar}>
+          <Pressable onPress={onClose} hitSlop={12} accessibilityLabel="Close reader"><Text style={[st.barBtn, { color: T.soft }]}>Close</Text></Pressable>
           <Text style={[st.barTitle, { color: T.soft }]} numberOfLines={1}>{chapter?.heading ?? ''}</Text>
           <Pressable onPress={() => setShowPrefs(!showPrefs)} hitSlop={12} accessibilityLabel="Text size and page tone"><Text style={[st.aa, { color: T.soft }]}>Aa</Text></Pressable>
         </View>
         {showPrefs ? (
-          <View style={[st.prefs, { backgroundColor: T.bar, borderColor: T.rule }]}>
+          <View style={[st.prefs, { backgroundColor: T.bar }]}>
             <View style={st.prefRow}>
-              <Pressable onPress={() => setP({ size: Math.max(14, size - 1) })} style={[st.sizeBtn, { borderColor: T.soft }]}><Text style={{ color: T.ink, fontFamily: F.body, fontSize: 14 }}>A</Text></Pressable>
-              <Text style={{ color: T.soft, fontFamily: F.body, fontSize: 13 }}>{size}</Text>
-              <Pressable onPress={() => setP({ size: Math.min(28, size + 1) })} style={[st.sizeBtn, { borderColor: T.soft }]}><Text style={{ color: T.ink, fontFamily: F.body, fontSize: 20 }}>A</Text></Pressable>
+              <Pressable onPress={() => setP({ size: Math.max(14, size - 1) })} style={[st.sizeBtn, { borderColor: T.rule }]}><Text style={{ color: T.ink, fontFamily: F.body, fontSize: 14 }}>A</Text></Pressable>
+              <Text style={{ color: T.soft, fontFamily: F.ui, fontSize: 13, width: 28, textAlign: 'center' }}>{size}</Text>
+              <Pressable onPress={() => setP({ size: Math.min(28, size + 1) })} style={[st.sizeBtn, { borderColor: T.rule }]}><Text style={{ color: T.ink, fontFamily: F.body, fontSize: 21 }}>A</Text></Pressable>
             </View>
             <View style={st.prefRow}>
               {(['vellum', 'sepia', 'night'] as Tone[]).map((t) => (
                 <Pressable key={t} onPress={() => setP({ tone: t })} style={[st.tone, { backgroundColor: TONES[t].bg, borderColor: prefs.tone === t ? T.accent : T.rule }]}>
-                  <Text style={{ color: TONES[t].ink, fontFamily: F.body, fontSize: 13 }}>{t[0].toUpperCase() + t.slice(1)}</Text>
+                  <Text style={{ color: TONES[t].ink, fontFamily: F.ui, fontSize: 13 }}>{TONE_LABEL[t]}</Text>
                 </Pressable>
               ))}
             </View>
           </View>
         ) : null}
 
-        {loading || !chapter ? (
-          <ActivityIndicator color={T.soft} style={{ marginTop: 60 }} />
-        ) : (
-          <ScrollView ref={scroll} onScroll={onScroll} scrollEventThrottle={64} contentContainerStyle={st.page}>
-            {chapter.section ? <Text style={[st.chSection, { color: T.soft }]}>{chapter.section}</Text> : null}
-            <Text style={[st.chTitle, { color: T.ink }]}>{chapter.title}</Text>
-            <Text style={[st.chPos, { color: T.accent }]}>{chapter.position.toUpperCase()}</Text>
-            {chapter.illumination ? (
-              <View style={{ alignItems: 'center', marginTop: 18, marginBottom: 6 }}>
-                <Illumination width={84} book={{ id: chapter.key, name: chapter.illumination.name, ref: '', note: '', verses: [],
-                  color: chapter.illumination.color, emblem: chapter.illumination.emblem, initial: chapter.illumination.initial }} />
-              </View>
-            ) : <View style={[st.ornament, { backgroundColor: T.rule }]} />}
-            <View style={{ marginTop: 16 }}>
-              {chapter.mode === 'verses' ? (
-                <Text style={{ fontFamily: F.body, fontSize: size, lineHeight: line, color: T.ink }}>
-                  {chapter.units.map((u, i) => (
-                    <Text key={i} {...kp(u.text, chapter.sourceFor(u))}>
-                      <Text style={{ fontFamily: F.body, fontSize: size * 0.6, color: T.accent }}>{u.n} </Text>
-                      {u.text}{'  '}
-                    </Text>
-                  ))}
-                </Text>
-              ) : (
-                chapter.units.map((u, i) => (
-                  <Text key={i} {...kp(u.text, chapter.sourceFor(u))}
-                    style={{ fontFamily: F.body, fontSize: size, lineHeight: line, color: T.ink, marginBottom: line * 0.6, textIndent: undefined } as any}>
-                    {i === 0 ? (() => {
-                      const k = u.text.search(/[A-Za-z]/);
-                      if (k < 0) return u.text;
-                      return (<>{u.text.slice(0, k)}<Text style={{ fontFamily: F.display, fontSize: size * 1.9, color: T.accent }}>{u.text[k]}</Text>{u.text.slice(k + 1)}</>);
-                    })() : u.text}
-                  </Text>
-                ))
-              )}
+        <View style={{ flex: 1, overflow: 'hidden' }} onLayout={(e) => setAreaH(Math.floor(e.nativeEvent.layout.height))}>
+          {chapter && measureKey && !pages ? (
+            <View key={measureKey} pointerEvents="none" style={{ position: 'absolute', opacity: 0, left: PAD_X, top: PAD_TOP, width: contentW }}>
+              {renderContent(measure)}
             </View>
-            <View style={[st.endRow, { borderColor: T.rule }]}>
-              {onPrev ? <Pressable onPress={onPrev} style={st.navBtn}><Text style={[st.navText, { color: T.soft }]}>‹ Previous</Text></Pressable> : <View />}
-              {onNext ? <Pressable onPress={onNext} style={st.navBtn}><Text style={[st.navText, { color: T.accent }]}>Next chapter ›</Text></Pressable> : <View />}
-            </View>
-            <Text style={[st.hint, { color: T.soft }]}>Press and hold any passage to keep it in My Wisdom.</Text>
-          </ScrollView>
-        )}
+          ) : null}
+          {loading || !chapter || !pages ? (
+            <ActivityIndicator color={T.soft} style={{ marginTop: 60 }} />
+          ) : (
+            <Animated.FlatList
+              key={measureKey}
+              ref={list as any}
+              data={pages}
+              horizontal
+              pagingEnabled
+              showsHorizontalScrollIndicator={false}
+              initialScrollIndex={startPage}
+              getItemLayout={(_: any, i: number) => ({ length: W, offset: W * i, index: i })}
+              keyExtractor={(_: Page, i: number) => String(i)}
+              renderItem={renderPage}
+              windowSize={3}
+              initialNumToRender={1}
+              maxToRenderPerBatch={2}
+              onScroll={Animated.event([{ nativeEvent: { contentOffset: { x: scrollX } } }], { useNativeDriver: true })}
+              scrollEventThrottle={16}
+              onMomentumScrollEnd={settle}
+            />
+          )}
+        </View>
 
-        <View style={[st.foot, { borderColor: T.rule, backgroundColor: T.bg, paddingBottom: Math.max(insets.bottom, 10) }]}>
+        <View style={[st.foot, { paddingBottom: Math.max(insets.bottom, 12) }]}>
           <View style={[st.track, { backgroundColor: T.rule }]}><View style={[st.fill, { width: `${progress * 100}%`, backgroundColor: T.accent }]} /></View>
           <View style={st.footRow}>
-            <Pressable onPress={onPrev} disabled={!onPrev} hitSlop={10}><Text style={[st.footBtn, { color: onPrev ? T.soft : 'transparent' }]}>‹</Text></Pressable>
             <Text style={[st.footText, { color: T.soft }]}>{chapter?.position ?? ''}</Text>
-            <Pressable onPress={onNext} disabled={!onNext} hitSlop={10}><Text style={[st.footBtn, { color: onNext ? T.soft : 'transparent' }]}>›</Text></Pressable>
+            <Text style={[st.footText, { color: T.soft }]}>{count ? `${page + 1} of ${count}` : ''}</Text>
           </View>
         </View>
       </View>
@@ -138,29 +251,38 @@ export default function Reader({ chapter, loading, onClose, onPrev, onNext }: {
   );
 }
 
+function DropCap({ text, size, color }: { text: string; size: number; color: string }) {
+  const k = text.search(/[A-Za-z]/);
+  if (k < 0) return <>{text}</>;
+  return (<>{text.slice(0, k)}<Text style={{ fontFamily: F.display, fontSize: size * 1.9, color }}>{text[k]}</Text>{text.slice(k + 1)}</>);
+}
+
 const st = StyleSheet.create({
   root: { flex: 1 },
-  bar: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 18, paddingVertical: 10, borderBottomWidth: StyleSheet.hairlineWidth, gap: 12 },
-  barBtn: { fontFamily: F.sc, fontSize: 14, letterSpacing: 1 },
-  barTitle: { flex: 1, textAlign: 'center', fontFamily: F.sc, fontSize: 13.5, letterSpacing: 1.4 },
-  aa: { fontFamily: F.display, fontSize: 20 },
-  prefs: { paddingHorizontal: 18, paddingVertical: 12, gap: 12, borderBottomWidth: StyleSheet.hairlineWidth },
+  bar: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 20, paddingVertical: 12, gap: 12 },
+  barBtn: { fontFamily: F.sc, fontSize: 13, letterSpacing: 0.4 },
+  barTitle: { flex: 1, textAlign: 'center', fontFamily: F.sc, fontSize: 10.5, letterSpacing: 1.8, textTransform: 'uppercase' },
+  aa: { fontFamily: F.display, fontSize: 22 },
+  prefs: { paddingHorizontal: 18, paddingVertical: 14, gap: 12 },
   prefRow: { flexDirection: 'row', alignItems: 'center', gap: 12, justifyContent: 'center' },
-  sizeBtn: { borderWidth: 1, borderRadius: 999, width: 44, height: 36, alignItems: 'center', justifyContent: 'center' },
-  tone: { borderWidth: 1.5, borderRadius: 6, paddingHorizontal: 16, paddingVertical: 8 },
-  page: { paddingHorizontal: 26, paddingTop: 26, paddingBottom: 40 },
-  chSection: { fontFamily: F.bodyItalic, fontSize: 13.5, textAlign: 'center', marginBottom: 8 },
-  chTitle: { fontFamily: F.display, fontSize: 30, lineHeight: 36, textAlign: 'center' },
-  chPos: { fontFamily: F.sc, fontSize: 12, letterSpacing: 2, textAlign: 'center', marginTop: 6 },
-  ornament: { height: 1, width: 80, alignSelf: 'center', marginTop: 18 },
-  endRow: { flexDirection: 'row', justifyContent: 'space-between', borderTopWidth: StyleSheet.hairlineWidth, marginTop: 30, paddingTop: 16 },
-  navBtn: { paddingVertical: 8 },
-  navText: { fontFamily: F.sc, fontSize: 15, letterSpacing: 1.2 },
-  hint: { fontFamily: F.bodyItalic, fontSize: 12.5, textAlign: 'center', marginTop: 18, opacity: 0.8 },
-  foot: { borderTopWidth: StyleSheet.hairlineWidth, paddingHorizontal: 18, paddingTop: 8 },
-  track: { height: 2, borderRadius: 1, overflow: 'hidden' },
-  fill: { height: 2 },
-  footRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingTop: 6 },
-  footBtn: { fontFamily: F.display, fontSize: 24, paddingHorizontal: 10 },
-  footText: { fontFamily: F.sc, fontSize: 12.5, letterSpacing: 1.2 },
+  sizeBtn: { borderWidth: 1, borderRadius: 999, width: 46, height: 36, alignItems: 'center', justifyContent: 'center' },
+  tone: { borderWidth: 1.5, borderRadius: 999, paddingHorizontal: 18, paddingVertical: 8 },
+  page: { flex: 1, paddingHorizontal: PAD_X, paddingTop: PAD_TOP },
+  shade: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: '#000' },
+  edge: { position: 'absolute', top: 0, bottom: 0, left: -18, width: 18 },
+  head: { alignItems: 'center', paddingBottom: 26 },
+  chSection: { fontFamily: F.bodyItalic, fontSize: 13.5, lineHeight: 19, textAlign: 'center', marginBottom: 10 },
+  chTitle: { fontFamily: F.display, fontSize: 34, lineHeight: 40, textAlign: 'center' },
+  chPos: { fontFamily: F.sc, fontSize: 9.5, letterSpacing: 2.2, textAlign: 'center', marginTop: 8 },
+  ornament: { height: 1, width: 36, marginTop: 18, opacity: 0.7 },
+  end: { alignItems: 'center', paddingTop: 18, paddingBottom: 10, gap: 16 },
+  endMark: { fontSize: 13, opacity: 0.8 },
+  nextBtn: { borderWidth: 1, borderRadius: 999, paddingHorizontal: 26, paddingVertical: 11 },
+  nextText: { fontFamily: F.sc, fontSize: 13, letterSpacing: 0.4 },
+  hint: { fontFamily: F.bodyItalic, fontSize: 13 },
+  foot: { paddingHorizontal: 24, paddingTop: 6 },
+  track: { height: 1.5, borderRadius: 1, overflow: 'hidden' },
+  fill: { height: 1.5 },
+  footRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingTop: 8 },
+  footText: { fontFamily: F.sc, fontSize: 10, letterSpacing: 1 },
 });

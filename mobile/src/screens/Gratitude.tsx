@@ -7,7 +7,7 @@ import PrayerSession from './PrayerSession';
 import { addGratitude, CAUSES, GratitudeEntry, loadGratitude, removeGratitude, THANKS_LINES, THANKS_REST, THANKS_SETTLE } from '../gratitude';
 
 type Step = 'home' | 'give' | 'done' | 'journal';
-const INK = '#F3E9CF', DIM = '#B9A57F', FAINT = '#75684F', GOLD = '#D4B45E', BG = '#0D0A06';
+const INK = '#EEE7DA', DIM = '#B4A890', FAINT = '#6E6876', GOLD = '#C4A870', BG = '#111015';
 
 export default function Gratitude({ visible, onClose }: { visible: boolean; onClose: () => void }) {
   const [step, setStep] = useState<Step>('home');
@@ -101,7 +101,7 @@ export default function Gratitude({ visible, onClose }: { visible: boolean; onCl
                     {!e.note && !e.causes.length ? <Text style={st.causes}>Thanks be to God</Text> : null}
                     {confirmDel === e.t ? (
                       <View style={{ flexDirection: 'row', gap: 18, marginTop: 8 }}>
-                        <Pressable onPress={async () => { setLog(await removeGratitude(e.t)); setConfirmDel(null); }}><Text style={[st.link, { color: '#C46A5A' }]}>Remove</Text></Pressable>
+                        <Pressable onPress={async () => { setLog(await removeGratitude(e.t)); setConfirmDel(null); }}><Text style={[st.link, { color: '#C98B7C' }]}>Remove</Text></Pressable>
                         <Pressable onPress={() => setConfirmDel(null)}><Text style={st.link}>Keep</Text></Pressable>
                       </View>
                     ) : null}
@@ -125,27 +125,27 @@ const st = StyleSheet.create({
   root: { flex: 1, backgroundColor: BG },
   top: { flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 22, paddingTop: 52, paddingBottom: 8 },
   body: { paddingHorizontal: 26, paddingTop: 20, paddingBottom: 60 },
-  link: { fontFamily: F.sc, fontSize: 14, letterSpacing: 1.4, color: DIM },
-  eyebrow: { fontFamily: F.sc, fontSize: 12.5, letterSpacing: 2.2, color: GOLD },
-  title: { fontFamily: F.display, fontSize: 48, color: INK },
-  h2: { fontFamily: F.display, fontSize: 30, lineHeight: 36, color: INK },
-  quote: { fontFamily: F.displayItalic, fontSize: 21, lineHeight: 29, color: INK },
-  cite: { fontFamily: F.sc, fontSize: 12, letterSpacing: 1.6, color: DIM, marginTop: -8 },
-  text: { fontFamily: F.body, fontSize: 16, lineHeight: 25, color: '#D6C7A2' },
+  link: { fontFamily: F.sc, fontSize: 12, letterSpacing: 1.4, color: DIM },
+  eyebrow: { fontFamily: F.sc, fontSize: 10.5, letterSpacing: 2.2, color: GOLD },
+  title: { fontFamily: F.display, fontSize: 53, color: INK },
+  h2: { fontFamily: F.display, fontSize: 33, lineHeight: 39, color: INK },
+  quote: { fontFamily: F.displayItalic, fontSize: 23, lineHeight: 31.5, color: INK },
+  cite: { fontFamily: F.sc, fontSize: 10, letterSpacing: 1.6, color: DIM, marginTop: -8 },
+  text: { fontFamily: F.body, fontSize: 16, lineHeight: 25, color: '#CFC7B9' },
   fine: { fontFamily: F.bodyItalic, fontSize: 13, color: FAINT },
-  primary: { borderWidth: 1, borderColor: GOLD, backgroundColor: '#2A200C', borderRadius: 999, paddingVertical: 16, alignItems: 'center', marginTop: 6 },
-  primaryText: { fontFamily: F.sc, fontSize: 17, letterSpacing: 1.6, color: INK },
-  secondary: { borderWidth: 1, borderColor: '#4A3E26', borderRadius: 999, paddingVertical: 13, alignItems: 'center' },
-  secondaryText: { fontFamily: F.sc, fontSize: 15, letterSpacing: 1.4, color: DIM },
+  primary: { borderWidth: 1, borderColor: GOLD, backgroundColor: '#221D27', borderRadius: 999, paddingVertical: 16, alignItems: 'center', marginTop: 6 },
+  primaryText: { fontFamily: F.sc, fontSize: 14.5, letterSpacing: 0.4, color: INK },
+  secondary: { borderWidth: 1, borderColor: '#3A3441', borderRadius: 999, paddingVertical: 13, alignItems: 'center' },
+  secondaryText: { fontFamily: F.sc, fontSize: 13, letterSpacing: 0.4, color: DIM },
   chips: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
-  chip: { borderWidth: 1, borderColor: '#5A4B2E', borderRadius: 999, paddingHorizontal: 14, paddingVertical: 8 },
+  chip: { borderWidth: 1, borderColor: '#3D3744', borderRadius: 999, paddingHorizontal: 14, paddingVertical: 8 },
   chipOn: { backgroundColor: GOLD, borderColor: GOLD },
   chipText: { fontFamily: F.body, fontSize: 14.5, color: INK },
-  input: { borderWidth: 1, borderColor: '#4A3E26', borderRadius: 6, padding: 12, minHeight: 70, fontFamily: F.body, fontSize: 15.5, color: INK, textAlignVertical: 'top' },
-  tag: { borderWidth: 1, borderColor: '#4A3E26', borderRadius: 999, paddingHorizontal: 12, paddingVertical: 5 },
+  input: { borderWidth: 1, borderColor: '#3A3441', borderRadius: 6, padding: 12, minHeight: 70, fontFamily: F.body, fontSize: 15.5, color: INK, textAlignVertical: 'top' },
+  tag: { borderWidth: 1, borderColor: '#3A3441', borderRadius: 999, paddingHorizontal: 12, paddingVertical: 5 },
   tagText: { fontFamily: F.body, fontSize: 13, color: DIM },
   entry: { borderLeftWidth: 2, borderColor: GOLD, paddingLeft: 14, paddingVertical: 4 },
-  date: { fontFamily: F.sc, fontSize: 12, letterSpacing: 1.2, color: DIM },
-  note: { fontFamily: F.displayItalic, fontSize: 19, lineHeight: 26, color: INK, marginTop: 4 },
-  causes: { fontFamily: F.body, fontSize: 14, color: '#D6C7A2', marginTop: 3 },
+  date: { fontFamily: F.sc, fontSize: 10, letterSpacing: 1.2, color: DIM },
+  note: { fontFamily: F.displayItalic, fontSize: 21, lineHeight: 28, color: INK, marginTop: 4 },
+  causes: { fontFamily: F.body, fontSize: 14, color: '#CFC7B9', marginTop: 3 },
 });

@@ -35,11 +35,12 @@ export const savePlace = (p: Place) => save('reader:place', p);
 
 export type Tone = 'vellum' | 'sepia' | 'night';
 export type ReaderPrefs = { size: number; tone: Tone };
-export const DEFAULT_PREFS: ReaderPrefs = { size: 18, tone: 'vellum' };
+export const DEFAULT_PREFS: ReaderPrefs = { size: 18, tone: 'night' };
+export const TONE_LABEL: Record<Tone, string> = { vellum: 'Paper', sepia: 'Sepia', night: 'Night' };
 export const TONES: Record<Tone, { bg: string; ink: string; soft: string; accent: string; rule: string; bar: string }> = {
-  vellum: { bg: '#F5EDD6', ink: '#2C1810', soft: '#6A5440', accent: '#A3322A', rule: '#E0D0A6', bar: '#ECE0BF' },
-  sepia: { bg: '#E9D9B6', ink: '#3A2614', soft: '#6B5236', accent: '#93321F', rule: '#D2BD92', bar: '#DFCCA4' },
-  night: { bg: '#0B0A0D', ink: '#E6DCC6', soft: '#9C8D72', accent: '#C9A84C', rule: '#26221C', bar: '#141217' },
+  vellum: { bg: '#F4EFE6', ink: '#221E26', soft: '#6D6672', accent: '#8C6A3A', rule: '#E0D9CC', bar: '#EBE5DA' },
+  sepia: { bg: '#E9DFCB', ink: '#33281C', soft: '#6E5D49', accent: '#8A5A2E', rule: '#D6C9B0', bar: '#E0D4BD' },
+  night: { bg: '#15131A', ink: '#E6DFD2', soft: '#8F8898', accent: '#C4A870', rule: '#2A2630', bar: '#1C1922' },
 };
 
 /** Colour and emblem for an illuminated initial, by section of the Bible. */

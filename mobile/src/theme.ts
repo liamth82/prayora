@@ -1,25 +1,34 @@
+/**
+ * Ora palette: a deep, warm night (aubergine-slate, never pure black) with ivory type
+ * and a restrained champagne gold. Token names are kept from the vellum era so every
+ * screen follows: vellum = ground, vellum2 = raised surface, vellum3 = hairline, ink = text.
+ */
 export const C = {
-  vellum: '#F5EDD6',
-  vellum2: '#ECE0BF',
-  vellum3: '#E0D0A6',
-  paper: '#FBF6E7',
-  ink: '#2C1810',
-  inkSoft: '#6A5440',
-  inkFaint: '#8E785C',
-  gold: '#C9A84C',
-  goldDeep: '#8F6D1F',
-  rubric: '#A3322A',
-  green: '#3F6B3A',
-  violet: '#5B3A6E',
-  white: '#F7F3E8',
+  vellum: '#17141B',
+  vellum2: '#201C25',
+  vellum3: '#332E39',
+  paper: '#1C1921',
+  deep: '#100E13',
+  ink: '#EEE7DA',
+  inkSoft: '#B5AC9F',
+  inkFaint: '#7D7684',
+  gold: '#C4A870',
+  goldDeep: '#D8BF8A',
+  rubric: '#C98B7C',
+  green: '#86A887',
+  violet: '#A48DB8',
+  white: '#F4EFE6',
 };
 
 export const F = {
-  display: 'IMFellEnglish_400Regular',
-  displayItalic: 'IMFellEnglish_400Regular_Italic',
-  sc: 'IMFellEnglishSC_400Regular',
-  body: 'Lora_400Regular',
-  bodyItalic: 'Lora_400Regular_Italic',
-  bodyMedium: 'Lora_500Medium',
-  bodySemi: 'Lora_600SemiBold',
+  display: 'CormorantGaramond_500Medium',
+  displayItalic: 'CormorantGaramond_500Medium_Italic',
+  displayLight: 'CormorantGaramond_400Regular',
+  sc: 'Inter_500Medium',
+  ui: 'Inter_400Regular',
+  uiSemi: 'Inter_600SemiBold',
+  body: 'Newsreader_400Regular',
+  bodyItalic: 'Newsreader_400Regular_Italic',
+  bodyMedium: 'Newsreader_500Medium',
+  bodySemi: 'Newsreader_600SemiBold',
 };

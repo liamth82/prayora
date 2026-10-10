@@ -31,7 +31,7 @@ export function Back({ label, onPress }: { label: string; onPress: () => void })
 
 export function Button({ label, onPress, variant = 'ink', style }: { label: string; onPress: () => void; variant?: 'ink' | 'ghost' | 'gold'; style?: ViewStyle }) {
   const v = variant === 'ink' ? s.btnInk : variant === 'gold' ? s.btnGold : s.btnGhost;
-  const t = variant === 'ink' ? { color: C.vellum } : { color: C.ink };
+  const t = variant === 'ghost' ? { color: C.ink } : { color: C.deep };
   return (
     <Pressable onPress={onPress} style={({ pressed }) => [s.btn, v, pressed && { opacity: 0.8 }, style]}>
       <Text style={[s.btnText, t]}>{label}</Text>
@@ -102,7 +102,7 @@ export function Illumination({ book, width }: { book: Book; width: number }) {
       <Rect x={8} y={8} width={184} height={234} fill={`url(#${id})`} />
       <Path d="M22 22 C 40 30, 30 50, 22 60 M178 22 C 160 30, 170 50, 178 60 M22 228 C 40 220, 30 200, 22 190 M178 228 C 160 220, 170 200, 178 190" stroke={g} strokeWidth={2} fill="none" />
       {[[22, 22], [178, 22], [22, 228], [178, 228]].map(([x, y]) => <Circle key={`${x}-${y}`} cx={x} cy={y} r={4} fill={g} />)}
-      <Rect x={36} y={32} width={128} height={140} fill={C.vellum} stroke={g} strokeWidth={4} />
+      <Rect x={36} y={32} width={128} height={140} fill="#F1E8D4" stroke={g} strokeWidth={4} />
       <Rect x={42} y={38} width={116} height={128} fill="none" stroke={book.color} strokeWidth={1} opacity={0.5} />
       <SvgText x={100} y={150} textAnchor="middle" fontFamily={F.display} fontSize={124} fill={book.color}>{book.initial}</SvgText>
       <G transform="translate(100 206)"><Emblem type={book.emblem} /></G>
@@ -115,12 +115,12 @@ export function Sundial({ mins, width = 150 }: { mins: number; width?: number })
   const sx = cx + Math.cos(a) * (r - 6), sy = cy - Math.sin(a) * (r - 6);
   return (
     <Svg width={width} height={(width * 100) / 150} viewBox="0 0 150 100" accessibilityLabel={`Sundial showing ${mins} minutes in Ora today`}>
-      <Path d={`M${cx - r} ${cy} A ${r} ${r} 0 0 1 ${cx + r} ${cy} Z`} fill={C.vellum2} stroke={C.gold} strokeWidth={2} />
+      <Path d={`M${cx - r} ${cy} A ${r} ${r} 0 0 1 ${cx + r} ${cy} Z`} fill={C.vellum2} stroke={C.gold} strokeWidth={1} />
       {Array.from({ length: 13 }, (_, i) => {
         const t = Math.PI * (1 - i / 12), L = i % 3 ? 8 : 14;
         return <Line key={i} x1={cx + Math.cos(t) * r} y1={cy - Math.sin(t) * r} x2={cx + Math.cos(t) * (r - L)} y2={cy - Math.sin(t) * (r - L)} stroke={C.inkSoft} strokeWidth={1.2} />;
       })}
-      <Line x1={cx} y1={cy} x2={sx} y2={sy} stroke={C.ink} strokeOpacity={0.55} strokeWidth={7} strokeLinecap="round" />
+      <Line x1={cx} y1={cy} x2={sx} y2={sy} stroke={C.gold} strokeOpacity={0.35} strokeWidth={7} strokeLinecap="round" />
       <Path d={`M${cx} ${cy} L ${cx} ${cy - 34} L ${cx + 4} ${cy} Z`} fill={C.goldDeep} />
       <SvgText x={cx - r + 2} y={cy + 14} fontSize={9} fill={C.inkSoft} fontFamily={F.sc}>0</SvgText>
       <SvgText x={cx + r - 14} y={cy + 14} fontSize={9} fill={C.inkSoft} fontFamily={F.sc}>60</SvgText>
@@ -129,19 +129,19 @@ export function Sundial({ mins, width = 150 }: { mins: number; width?: number })
 }
 
 export const s = StyleSheet.create({
-  eyebrow: { fontFamily: F.sc, fontSize: 13, letterSpacing: 1.5, color: C.rubric, marginBottom: 4 },
-  h2: { fontFamily: F.display, fontSize: 30, lineHeight: 34, color: C.ink, marginBottom: 6 },
-  h3: { fontFamily: F.display, fontSize: 22, lineHeight: 26, color: C.ink },
+  eyebrow: { fontFamily: F.sc, fontSize: 11, letterSpacing: 2, color: C.gold, marginBottom: 6, textTransform: 'uppercase' },
+  h2: { fontFamily: F.display, fontSize: 32, lineHeight: 36, color: C.ink, marginBottom: 6 },
+  h3: { fontFamily: F.display, fontSize: 24, lineHeight: 28, color: C.ink },
   lede: { fontFamily: F.body, fontSize: 14.5, lineHeight: 22, color: C.inkSoft, marginBottom: 18 },
   body: { fontFamily: F.body, fontSize: 15, lineHeight: 23, color: C.ink },
   proto: { fontFamily: F.bodyItalic, fontSize: 12, lineHeight: 18, color: C.inkFaint, marginTop: 14 },
   rule: { flexDirection: 'row', alignItems: 'center', marginVertical: 18, gap: 8 },
-  ruleLine: { flex: 1, height: 1, backgroundColor: C.gold },
-  ruleMark: { color: C.goldDeep, fontSize: 13 },
-  back: { fontFamily: F.sc, fontSize: 14, letterSpacing: 1, color: C.inkSoft },
-  btn: { paddingVertical: 11, paddingHorizontal: 18, borderRadius: 3, borderWidth: 1, alignItems: 'center', alignSelf: 'flex-start' },
+  ruleLine: { flex: 1, height: StyleSheet.hairlineWidth, backgroundColor: C.vellum3 },
+  ruleMark: { color: C.gold, fontSize: 11, opacity: 0.8 },
+  back: { fontFamily: F.sc, fontSize: 13, letterSpacing: 0.4, color: C.inkSoft },
+  btn: { paddingVertical: 12, paddingHorizontal: 20, borderRadius: 999, borderWidth: 1, alignItems: 'center', alignSelf: 'flex-start' },
   btnInk: { backgroundColor: C.ink, borderColor: C.ink },
-  btnGhost: { backgroundColor: 'transparent', borderColor: C.ink },
+  btnGhost: { backgroundColor: 'transparent', borderColor: C.vellum3 },
   btnGold: { backgroundColor: C.gold, borderColor: C.goldDeep },
-  btnText: { fontFamily: F.sc, fontSize: 15, letterSpacing: 1.2 },
+  btnText: { fontFamily: F.sc, fontSize: 14, letterSpacing: 0.4 },
 });

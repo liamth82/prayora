@@ -5,9 +5,9 @@ import * as SplashScreen from 'expo-splash-screen';
 import * as Updates from 'expo-updates';
 import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, Ellipse, Path } from 'react-native-svg';
-import { useFonts, IMFellEnglish_400Regular, IMFellEnglish_400Regular_Italic } from '@expo-google-fonts/im-fell-english';
-import { IMFellEnglishSC_400Regular } from '@expo-google-fonts/im-fell-english-sc';
-import { Lora_400Regular, Lora_400Regular_Italic, Lora_500Medium, Lora_600SemiBold } from '@expo-google-fonts/lora';
+import { useFonts, CormorantGaramond_400Regular, CormorantGaramond_500Medium, CormorantGaramond_500Medium_Italic } from '@expo-google-fonts/cormorant-garamond';
+import { Inter_400Regular, Inter_500Medium, Inter_600SemiBold } from '@expo-google-fonts/inter';
+import { Newsreader_400Regular, Newsreader_400Regular_Italic, Newsreader_500Medium, Newsreader_600SemiBold } from '@expo-google-fonts/newsreader';
 
 import { C, F } from './src/theme';
 import { season } from './src/liturgy';
@@ -125,9 +125,9 @@ function Main() {
 
   return (
     <View style={[st.root, { paddingTop: insets.top }]}>
-      <StatusBar style={fast ? 'light' : 'dark'} />
+      <StatusBar style="light" />
       <View style={st.header}>
-        <Text style={st.wordmark}>Or<Text style={{ color: C.rubric }}>a</Text></Text>
+        <Text style={st.wordmark}>Or<Text style={{ color: C.gold, fontFamily: F.displayItalic }}>a</Text></Text>
         <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 12, flexShrink: 1 }}>
           <View style={{ alignItems: 'flex-end', flexShrink: 1 }}>
             <Text style={st.date}>{date}</Text>
@@ -161,8 +161,8 @@ function Main() {
           const on = id === tab;
           return (
             <Pressable key={id} onPress={() => choose(id)} style={st.tab} accessibilityRole="tab" accessibilityState={{ selected: on }}>
-              <TabIcon tab={id} color={on ? C.rubric : C.inkFaint} />
-              <Text style={[st.tabText, on && { color: C.ink }]}>{label}</Text>
+              <TabIcon tab={id} color={on ? C.gold : C.inkFaint} />
+              <Text style={[st.tabText, on && { color: C.ink }]}>{label.toUpperCase()}</Text>
             </Pressable>
           );
         })}
@@ -179,8 +179,9 @@ function Main() {
 
 export default function App() {
   const [loaded, error] = useFonts({
-    IMFellEnglish_400Regular, IMFellEnglish_400Regular_Italic, IMFellEnglishSC_400Regular,
-    Lora_400Regular, Lora_400Regular_Italic, Lora_500Medium, Lora_600SemiBold,
+    CormorantGaramond_400Regular, CormorantGaramond_500Medium, CormorantGaramond_500Medium_Italic,
+    Inter_400Regular, Inter_500Medium, Inter_600SemiBold,
+    Newsreader_400Regular, Newsreader_400Regular_Italic, Newsreader_500Medium, Newsreader_600SemiBold,
   });
   useEffect(() => { if (loaded || error) SplashScreen.hideAsync().catch(() => {}); }, [loaded, error]);
   if (!loaded && !error) return null;
@@ -197,13 +198,13 @@ export default function App() {
 
 const st = StyleSheet.create({
   root: { flex: 1, backgroundColor: C.vellum },
-  header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end', gap: 12, paddingHorizontal: 20, paddingTop: 10, paddingBottom: 12, borderBottomWidth: 1, borderColor: C.vellum3 },
-  wordmark: { fontFamily: F.display, fontSize: 34, lineHeight: 38, color: C.ink },
-  date: { fontFamily: F.bodySemi, fontSize: 13, color: C.ink },
+  header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end', gap: 12, paddingHorizontal: 20, paddingTop: 10, paddingBottom: 12, borderBottomWidth: StyleSheet.hairlineWidth, borderColor: C.vellum3 },
+  wordmark: { fontFamily: F.display, fontSize: 36, lineHeight: 40, color: C.ink, letterSpacing: 0.5 },
+  date: { fontFamily: F.sc, fontSize: 12.5, color: C.ink, letterSpacing: 0.2 },
   lit: { flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 2 },
-  litText: { fontFamily: F.body, fontSize: 12.5, color: C.inkSoft },
+  litText: { fontFamily: F.ui, fontSize: 11.5, color: C.inkSoft },
   screen: { paddingHorizontal: 20, paddingTop: 18, paddingBottom: 32 },
-  tabs: { flexDirection: 'row', borderTopWidth: 1, borderColor: C.vellum3, backgroundColor: C.vellum2, paddingTop: 8 },
+  tabs: { flexDirection: 'row', borderTopWidth: StyleSheet.hairlineWidth, borderColor: C.vellum3, backgroundColor: C.deep, paddingTop: 10 },
   tab: { flex: 1, alignItems: 'center', gap: 3, paddingBottom: 4 },
-  tabText: { fontFamily: F.sc, fontSize: 11, letterSpacing: 0.3, color: C.inkFaint },
+  tabText: { fontFamily: F.sc, fontSize: 9.5, letterSpacing: 1.1, color: C.inkFaint },
 });

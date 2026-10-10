@@ -7,7 +7,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "backgroundColor": "#F5EDD6",
+    "backgroundColor": "#17141B",
     "runtimeVersion": {
       "policy": "sdkVersion"
     },
@@ -39,7 +39,7 @@
           "image": "./assets/splash-icon.png",
           "imageWidth": 180,
           "resizeMode": "contain",
-          "backgroundColor": "#F5EDD6"
+          "backgroundColor": "#17141B"
         }
       ]
     ],

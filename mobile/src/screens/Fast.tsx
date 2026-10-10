@@ -29,7 +29,7 @@ export default function Fast({ minutes, prayerMinutes, lectioMinutes, onStart, o
         <Text style={st.refugeTitle}>Refuge</Text>
         <Text style={st.refugeSub}>Five minutes with God, whenever you need them</Text>
       </Pressable>
-      <Pressable onPress={onThanks} style={[st.refuge, { backgroundColor: '#0D0A06', marginTop: 10 }]} accessibilityRole="button">
+      <Pressable onPress={onThanks} style={[st.refuge, { marginTop: 10 }]} accessibilityRole="button">
         <Text style={st.refugeSmall}>WHEN SOMETHING GOOD HAPPENS</Text>
         <Text style={st.refugeTitle}>Deo gratias</Text>
         <Text style={st.refugeSub}>Give thanks, and remember it</Text>
@@ -49,21 +49,27 @@ export default function Fast({ minutes, prayerMinutes, lectioMinutes, onStart, o
   );
 }
 
-type Sym = { name: string; caption: string; paths: string[]; fills?: string[]; circles?: number[][]; dots?: number[][] };
+type Sym = { name: string; caption: string; paths: string[]; fine?: string[]; circles?: number[][]; fineCircles?: number[][]; fills?: string[]; dots?: number[][] };
 const SYMBOLS = require('../symbols.json') as Sym[];
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
+/** Gothic line drawings: a firm contour with a hairline just inside it, as an engraver would cut them. */
 function SacredSymbol({ sym, size }: { sym: Sym; size: number }) {
-  const ink = '#EFE6D2';
+  const ink = '#EEE7DA';
+  const k = 200 / size; // keep the hairlines crisp whatever size the symbol is drawn at
   return (
     <Svg width={size} height={size} viewBox="0 0 200 200">
-      <G fill="none" stroke={ink} strokeOpacity={0.12} strokeWidth={5} strokeLinecap="round" strokeLinejoin="round">
+      <G fill="none" stroke={ink} strokeOpacity={0.07} strokeWidth={4.5} strokeLinecap="round" strokeLinejoin="round">
         {sym.paths.map((d, i) => <Path key={'g' + i} d={d} />)}
         {(sym.circles ?? []).map(([cx, cy, r], i) => <Circle key={'gc' + i} cx={cx} cy={cy} r={r} />)}
       </G>
-      <G fill="none" stroke={ink} strokeWidth={1.4} strokeLinecap="round" strokeLinejoin="round">
+      <G fill="none" stroke={ink} strokeWidth={Math.max(1.05, 1.5 * k)} strokeLinecap="round" strokeLinejoin="round">
         {sym.paths.map((d, i) => <Path key={i} d={d} />)}
         {(sym.circles ?? []).map(([cx, cy, r], i) => <Circle key={'c' + i} cx={cx} cy={cy} r={r} />)}
+      </G>
+      <G fill="none" stroke={ink} strokeOpacity={0.72} strokeWidth={Math.max(0.5, 0.75 * k)} strokeLinecap="round" strokeLinejoin="round">
+        {(sym.fine ?? []).map((d, i) => <Path key={'h' + i} d={d} />)}
+        {(sym.fineCircles ?? []).map(([cx, cy, r], i) => <Circle key={'hc' + i} cx={cx} cy={cy} r={r} />)}
       </G>
       <G fill={ink} stroke="none">
         {(sym.fills ?? []).map((d, i) => <Path key={'f' + i} d={d} />)}
@@ -180,31 +186,31 @@ export function Veil({ mode, until, start, onEnd }: { mode: Mode; until: number;
 
 const st = StyleSheet.create({
   dial: { flexDirection: 'row', alignItems: 'center', gap: 14 },
-  mins: { fontFamily: F.display, fontSize: 40, color: C.ink },
+  mins: { fontFamily: F.display, fontSize: 44, color: C.ink },
   minsSmall: { fontFamily: F.body, fontSize: 14, color: C.inkSoft },
   prayer: { fontFamily: F.bodyItalic, fontSize: 14, color: C.green, marginTop: 2 },
-  refuge: { backgroundColor: '#07060A', borderRadius: 4, padding: 18, marginTop: 18, borderWidth: 1, borderColor: C.gold },
-  refugeSmall: { fontFamily: F.sc, fontSize: 12, letterSpacing: 2, color: C.gold },
-  refugeTitle: { fontFamily: F.display, fontSize: 30, color: '#EFE6D2', marginTop: 2 },
-  refugeSub: { fontFamily: F.bodyItalic, fontSize: 13.5, color: '#A8946C', marginTop: 2 },
+  refuge: { backgroundColor: '#241F29', borderRadius: 16, padding: 18, marginTop: 18, borderWidth: StyleSheet.hairlineWidth, borderColor: 'rgba(196,168,112,0.45)' },
+  refugeSmall: { fontFamily: F.sc, fontSize: 10, letterSpacing: 2, color: C.gold },
+  refugeTitle: { fontFamily: F.display, fontSize: 33, color: '#EEE7DA', marginTop: 2 },
+  refugeSub: { fontFamily: F.bodyItalic, fontSize: 13.5, color: '#B4A890', marginTop: 2 },
   msg: { fontFamily: F.body, fontSize: 14, lineHeight: 20, color: C.inkSoft, marginTop: 4 },
-  mode: { borderWidth: 1, borderColor: C.vellum3, borderRadius: 4, padding: 14 },
+  mode: { borderWidth: 1, borderColor: C.vellum3, borderRadius: 12, padding: 14 },
   modeTop: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' },
-  len: { fontFamily: F.sc, fontSize: 13, letterSpacing: 1, color: C.rubric },
+  len: { fontFamily: F.sc, fontSize: 11, letterSpacing: 1, color: C.rubric },
   modeD: { fontFamily: F.body, fontSize: 14, lineHeight: 20, color: C.inkSoft, marginTop: 4 },
-  veil: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: '#050407', alignItems: 'center', justifyContent: 'center', paddingHorizontal: 32, zIndex: 10 },
+  veil: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: '#0F0E13', alignItems: 'center', justifyContent: 'center', paddingHorizontal: 32, zIndex: 10 },
   corner: { position: 'absolute', top: 52, right: 22, flexDirection: 'row', alignItems: 'center', gap: 10 },
-  left: { fontFamily: F.sc, fontSize: 13, letterSpacing: 1.4, color: '#A8946C' },
-  holdRing: { position: 'absolute', top: 2, left: 2, width: 40, height: 40, borderRadius: 20, borderWidth: 2, borderColor: '#C9A84C' },
-  caption: { fontFamily: F.displayItalic, fontSize: 15, color: '#8C7B5C', marginTop: 16, letterSpacing: 0.4 },
+  left: { fontFamily: F.sc, fontSize: 11, letterSpacing: 1.4, color: '#B4A890' },
+  holdRing: { position: 'absolute', top: 2, left: 2, width: 40, height: 40, borderRadius: 20, borderWidth: 2, borderColor: '#C4A870' },
+  caption: { fontFamily: F.displayItalic, fontSize: 16.5, color: '#8A8290', marginTop: 16, letterSpacing: 0.4 },
   foot: { position: 'absolute', bottom: 40, alignItems: 'center', gap: 4 },
-  hint: { fontFamily: F.sc, fontSize: 11.5, letterSpacing: 1.6, color: '#4F4636' },
+  hint: { fontFamily: F.sc, fontSize: 10, letterSpacing: 1.6, color: '#4A4552' },
   modeN: { fontFamily: F.sc, letterSpacing: 3, color: C.gold, fontSize: 14 },
-  clock: { fontFamily: F.display, fontSize: 64, color: C.vellum, fontVariant: ['tabular-nums'] },
-  quote: { fontFamily: F.displayItalic, fontSize: 23, lineHeight: 31, color: '#EFE6D2', textAlign: 'center' },
-  cite: { fontFamily: F.sc, fontSize: 12, letterSpacing: 1.5, color: '#B9A57F', marginTop: 6 },
-  allowed: { fontFamily: F.body, fontSize: 12.5, color: '#6E6250', textAlign: 'center' },
-  hold: { borderWidth: 1, borderColor: '#6d5640', borderRadius: 3, paddingVertical: 12, paddingHorizontal: 22, overflow: 'hidden' },
-  holdFill: { position: 'absolute', left: 0, top: 0, bottom: 0, backgroundColor: 'rgba(201,168,76,0.35)' },
-  holdText: { fontFamily: F.sc, fontSize: 13, letterSpacing: 1.5, color: '#D8C9A6' },
+  clock: { fontFamily: F.display, fontSize: 70.5, color: C.ink, fontVariant: ['tabular-nums'] },
+  quote: { fontFamily: F.displayItalic, fontSize: 25.5, lineHeight: 33.5, color: '#EEE7DA', textAlign: 'center' },
+  cite: { fontFamily: F.sc, fontSize: 10, letterSpacing: 1.5, color: '#B4A890', marginTop: 6 },
+  allowed: { fontFamily: F.body, fontSize: 12.5, color: '#6E6876', textAlign: 'center' },
+  hold: { borderWidth: 1, borderColor: '#4A4450', borderRadius: 12, paddingVertical: 12, paddingHorizontal: 22, overflow: 'hidden' },
+  holdFill: { position: 'absolute', left: 0, top: 0, bottom: 0, backgroundColor: 'rgba(196,168,112,0.35)' },
+  holdText: { fontFamily: F.sc, fontSize: 11, letterSpacing: 1.5, color: '#D6CEC0' },
 });

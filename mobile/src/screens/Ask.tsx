@@ -82,7 +82,7 @@ export default function Ask() {
 
 const st = StyleSheet.create({
   bar: { flexDirection: 'row', gap: 8, alignItems: 'center', marginBottom: 12 },
-  input: { flex: 1, borderWidth: 1, borderColor: C.vellum3, backgroundColor: C.paper, borderRadius: 3, paddingHorizontal: 12, paddingVertical: 10, fontFamily: F.body, fontSize: 15, color: C.ink },
+  input: { flex: 1, borderWidth: 1, borderColor: C.vellum3, backgroundColor: C.paper, borderRadius: 12, paddingHorizontal: 12, paddingVertical: 10, fontFamily: F.body, fontSize: 15, color: C.ink },
   chips: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginBottom: 18 },
   chip: { borderWidth: 1, borderColor: C.gold, borderRadius: 999, paddingHorizontal: 11, paddingVertical: 6 },
   chipText: { fontFamily: F.body, fontSize: 13.5, color: C.ink },
@@ -90,5 +90,5 @@ const st = StyleSheet.create({
   qText: { fontFamily: F.body, fontSize: 15, lineHeight: 22, color: C.vellum },
   a: { alignSelf: 'flex-start', maxWidth: '95%', borderLeftWidth: 2, borderColor: C.gold, paddingLeft: 12 },
   aText: { fontFamily: F.body, fontSize: 15, lineHeight: 24, color: C.ink },
-  cite: { fontFamily: F.sc, fontSize: 12.5, letterSpacing: 0.8, color: C.rubric, marginTop: 6 },
+  cite: { fontFamily: F.sc, fontSize: 10.5, letterSpacing: 0.8, color: C.rubric, marginTop: 6 },
 });
