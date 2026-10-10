@@ -1,0 +1,12 @@
+# Paintings to leave out of Ora's art library (Wikidata QIDs). Reason after the #.
+Q512755   # vandalised English label on Wikidata
+Q1111394  # tavern scene
+Q2327759  # demons
+Q594406   # Fall of the Rebel Angels: monsters
+Q203259   # Fall of the Damned: nudity
+Q1211651  # Blinding of Samson: violent
+Q3202169  # Apotheosis of Homer: not religious
+Q1118465  # Ia Orana Maria: nudity
+Q1091213  # Corpse of Christ: stark for a daily picture
+Q7401211  # Saint Eulalia: nude body
+Q2389534  # The Hermit Saint: demons

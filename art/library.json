@@ -233,21 +233,6 @@
   "license": "Public domain"
  },
  {
-  "id": "Q512755",
-  "file": "lib/Q512755.jpg",
-  "title": "El retorno del hijo gey",
-  "artist": "Rembrandt",
-  "year": "1668",
-  "collection": "Hermitage Museum",
-  "tags": [
-   "lent"
-  ],
-  "w": 900,
-  "h": 1175,
-  "source": "https://commons.wikimedia.org/wiki/File:Rembrandt_Harmensz_van_Rijn_-_Return_of_the_Prodigal_Son_-_Google_Art_Project.jpg",
-  "license": "Public domain"
- },
- {
   "id": "Q1192570",
   "file": "lib/Q1192570.jpg",
   "title": "The Blind Leading the Blind",
@@ -511,21 +496,6 @@
   "w": 900,
   "h": 1408,
   "source": "https://commons.wikimedia.org/wiki/File:Caravaggio_-_La_inspiraci%C3%B3n_de_San_Mateo_(San_Luigi_dei_Francesi,_Roma).jpg",
-  "license": "Public domain"
- },
- {
-  "id": "Q2327759",
-  "file": "lib/Q2327759.jpg",
-  "title": "The Torment of Saint Anthony",
-  "artist": "Michelangelo",
-  "year": "1487",
-  "collection": "Kimbell Art Museum",
-  "tags": [
-   "saints"
-  ],
-  "w": 900,
-  "h": 1231,
-  "source": "https://commons.wikimedia.org/wiki/File:Michelangelo_Buonarroti_-_The_Torment_of_Saint_Anthony_-_Google_Art_Project.jpg",
   "license": "Public domain"
  },
  {
@@ -990,21 +960,6 @@
   "license": "Public domain"
  },
  {
-  "id": "Q594406",
-  "file": "lib/Q594406.jpg",
-  "title": "The Fall of the Rebel Angels",
-  "artist": "Pieter Brueghel the Elder",
-  "year": "1562",
-  "collection": "Royal Museums of Fine Arts of Belgium",
-  "tags": [
-   "angels"
-  ],
-  "w": 900,
-  "h": 650,
-  "source": "https://commons.wikimedia.org/wiki/File:Pieter_Bruegel_the_Elder_-_The_Fall_of_the_Rebel_Angels_-_Google_Art_Project.jpg",
-  "license": "Public domain"
- },
- {
   "id": "Q510799",
   "file": "lib/Q510799.jpg",
   "title": "Saint Jerome Writing",
@@ -1154,22 +1109,6 @@
   "license": "Public domain"
  },
  {
-  "id": "Q2667782",
-  "file": "lib/Q2667782.jpg",
-  "title": "The Descent from the Cross",
-  "artist": "Peter Paul Rubens",
-  "year": "1611",
-  "collection": "Onze-Lieve-Vrouwekathedraal",
-  "tags": [
-   "holyweek",
-   "ordinary"
-  ],
-  "w": 630,
-  "h": 748,
-  "source": "https://commons.wikimedia.org/wiki/File:Peter_Paul_Rubens_-_Descent_from_the_Cross_-_WGA20212.jpg",
-  "license": "Public domain"
- },
- {
   "id": "Q2715177",
   "file": "lib/Q2715177.jpg",
   "title": "Saint Jerome",
@@ -1214,22 +1153,6 @@
   "w": 900,
   "h": 627,
   "source": "https://commons.wikimedia.org/wiki/File:Pieter_Bruegel_(I)_-_Christ_and_the_woman_taken_in_adultery.jpg",
-  "license": "Public domain"
- },
- {
-  "id": "Q1111394",
-  "file": "lib/Q1111394.jpg",
-  "title": "Rembrandt and Saskia in the parable of the Prodigal Son",
-  "artist": "Rembrandt",
-  "year": "1635",
-  "collection": "Staatliche Kunstsammlungen Dresden",
-  "tags": [
-   "lent",
-   "ordinary"
-  ],
-  "w": 900,
-  "h": 1141,
-  "source": "https://commons.wikimedia.org/wiki/File:Rembrandt_-_Rembrandt_and_Saskia_in_the_Scene_of_the_Prodigal_Son_-_Google_Art_Project.jpg",
   "license": "Public domain"
  },
  {
@@ -1280,24 +1203,6 @@
   "w": 900,
   "h": 663,
   "source": "https://commons.wikimedia.org/wiki/File:Jan_van_Eyck_-_Triptych_of_Mary_and_Child,_St._Michael,_and_the_Catherine_-_Google_Art_Project.jpg",
-  "license": "Public domain"
- },
- {
-  "id": "Q323079",
-  "file": "lib/Q323079.jpg",
-  "title": "Dresden Triptych",
-  "artist": "Jan van Eyck",
-  "year": "1437",
-  "collection": "Staatliche Kunstsammlungen Dresden",
-  "tags": [
-   "marian",
-   "angels",
-   "saints",
-   "ordinary"
-  ],
-  "w": 900,
-  "h": 663,
-  "source": "https://commons.wikimedia.org/wiki/File:Gem%C3%A4ldegalerie_Alte_Meister_(Dresden)_Galeriewerk_Braun_1836a.jpg",
   "license": "Public domain"
  },
  {
@@ -1872,21 +1777,6 @@
   "license": "Public domain"
  },
  {
-  "id": "Q7401211",
-  "file": "lib/Q7401211.jpg",
-  "title": "Saint Eulalia",
-  "artist": "John William Waterhouse",
-  "year": "1885",
-  "collection": "Tate",
-  "tags": [
-   "saints"
-  ],
-  "w": 900,
-  "h": 1483,
-  "source": "https://commons.wikimedia.org/wiki/File:John_William_Waterhouse_-_Saint_Eulalia_-_1885.jpg",
-  "license": "Public domain"
- },
- {
   "id": "Q2631335",
   "file": "lib/Q2631335.jpg",
   "title": "Madonna with the Fish",
@@ -1952,23 +1842,6 @@
   "w": 900,
   "h": 1248,
   "source": "https://commons.wikimedia.org/wiki/File:Annunciation_Memling.jpg",
-  "license": "Public domain"
- },
- {
-  "id": "Q1118465",
-  "file": "lib/Q1118465.jpg",
-  "title": "Ia Orana Maria",
-  "artist": "Paul Gauguin",
-  "year": "1891",
-  "collection": "Metropolitan Museum of Art",
-  "tags": [
-   "marian",
-   "angels",
-   "ordinary"
-  ],
-  "w": 900,
-  "h": 1160,
-  "source": "https://commons.wikimedia.org/wiki/File:Paul_Gauguin_Ia_Orana_Maria_(Hail_Mary)_The_Metropolitan_Museum_of_Art1.jpg",
   "license": "Public domain"
  },
  {
@@ -2098,21 +1971,6 @@
   "license": "Public domain"
  },
  {
-  "id": "Q959537",
-  "file": "lib/Q959537.jpg",
-  "title": "Death of the Virgin",
-  "artist": "Andrea Mantegna",
-  "year": "1462",
-  "collection": "Museo del Prado",
-  "tags": [
-   "marian"
-  ],
-  "w": 900,
-  "h": 1176,
-  "source": "https://commons.wikimedia.org/wiki/File:1462_Mantegna_Der_Tod_Mariens_Museo_del_Prado_anagoria.jpg",
-  "license": "Public domain"
- },
- {
   "id": "Q970808",
   "file": "lib/Q970808.jpg",
   "title": "The Flight into Egypt",
@@ -2129,21 +1987,6 @@
   "w": 900,
   "h": 656,
   "source": "https://commons.wikimedia.org/wiki/File:Poussin-Fuite_en_Egypte-MBA-Lyon.jpg",
-  "license": "Public domain"
- },
- {
-  "id": "Q203259",
-  "file": "lib/Q203259.jpg",
-  "title": "The Fall of the Damned",
-  "artist": "Peter Paul Rubens",
-  "year": "1621",
-  "collection": "Johann Wilhelm von der Pfalz collection",
-  "tags": [
-   "angels"
-  ],
-  "w": 900,
-  "h": 1156,
-  "source": "https://commons.wikimedia.org/wiki/File:Peter_Paul_Rubens_-_Fall_of_the_damned.jpg",
   "license": "Public domain"
  },
  {
@@ -2177,22 +2020,6 @@
   "w": 900,
   "h": 823,
   "source": "https://commons.wikimedia.org/wiki/File:Rembrandt_Harmensz._van_Rijn_012.jpg",
-  "license": "Public domain"
- },
- {
-  "id": "Q3202169",
-  "file": "lib/Q3202169.jpg",
-  "title": "The Apotheosis of Homer",
-  "artist": "Jean-Auguste-Dominique Ingres",
-  "year": "1827",
-  "collection": "Department of Paintings of the Louvre",
-  "tags": [
-   "angels",
-   "ordinary"
-  ],
-  "w": 900,
-  "h": 670,
-  "source": "https://commons.wikimedia.org/wiki/File:Hom%C3%A8re_d%C3%A9ifi%C3%A9,_dit_aussi_L%27apoth%C3%A9ose_d%27Hom%C3%A8re_-_Jean-Auguste_Dominique_Ingres_-_Mus%C3%A9e_du_Louvre_Peintures_INV_5417_;_C_196.jpg",
   "license": "Public domain"
  },
  {
@@ -2314,21 +2141,6 @@
   "w": 900,
   "h": 1010,
   "source": "https://commons.wikimedia.org/wiki/File:Andrea_del_Sarto_-_Virgin_and_Child_between_St_Francis_of_Assisi_and_St_John_the_Evangelist_(%27Madonna_of_the_Harpies%27),_1517,_1890_no.1577.jpg",
-  "license": "Public domain"
- },
- {
-  "id": "Q1211651",
-  "file": "lib/Q1211651.jpg",
-  "title": "The Blinding of Samson",
-  "artist": "Rembrandt",
-  "year": "1636",
-  "collection": "Städel Museum",
-  "tags": [
-   "lent"
-  ],
-  "w": 900,
-  "h": 617,
-  "source": "https://commons.wikimedia.org/wiki/File:The_Blinding_of_Samson_(SM_1383).png",
   "license": "Public domain"
  },
  {
@@ -2564,23 +2376,6 @@
   "license": "Public domain"
  },
  {
-  "id": "Q2425901",
-  "file": "lib/Q2425901.jpg",
-  "title": "Ecce Ancilla Domini",
-  "artist": "Dante Gabriel Rossetti",
-  "year": "1850",
-  "collection": "Tate",
-  "tags": [
-   "advent",
-   "marian",
-   "angels"
-  ],
-  "w": 589,
-  "h": 1024,
-  "source": "https://commons.wikimedia.org/wiki/File:Dante_Gabriel_Rossetti_-_Ecce_Ancilla_Domini!_-_Google_Art_Project.jpg",
-  "license": "Public domain"
- },
- {
   "id": "Q2629419",
   "file": "lib/Q2629419.jpg",
   "title": "Madonna with Beardless Saint Joseph",
@@ -2808,21 +2603,6 @@
   "license": "Public domain"
  },
  {
-  "id": "Q2389534",
-  "file": "lib/Q2389534.jpg",
-  "title": "The Hermit Saint",
-  "artist": "Hieronymus Bosch",
-  "year": "1493",
-  "collection": "Doge's Palace",
-  "tags": [
-   "saints"
-  ],
-  "w": 900,
-  "h": 668,
-  "source": "https://commons.wikimedia.org/wiki/File:Hieronymus_Bosch_-_Hermit_Saints_Triptych.jpg",
-  "license": "Public domain"
- },
- {
   "id": "Q931837",
   "file": "lib/Q931837.jpg",
   "title": "Christ at the Column",
@@ -2836,21 +2616,6 @@
   "w": 900,
   "h": 687,
   "source": "https://commons.wikimedia.org/wiki/File:Christ_at_the_Column-Caravaggio_(c._1607).jpg",
-  "license": "Public domain"
- },
- {
-  "id": "Q1091213",
-  "file": "lib/Q1091213.jpg",
-  "title": "Corpse of Christ",
-  "artist": "Annibale Carracci",
-  "year": "1582",
-  "collection": "Staatsgalerie Stuttgart",
-  "tags": [
-   "ordinary"
-  ],
-  "w": 900,
-  "h": 716,
-  "source": "https://commons.wikimedia.org/wiki/File:Annibale_carracci,_salma_di_cristo.jpg",
   "license": "Public domain"
  },
  {
@@ -2901,40 +2666,6 @@
   "w": 900,
   "h": 524,
   "source": "https://commons.wikimedia.org/wiki/File:Pieter_Bruegel_the_Elder_-_The_Sermon_of_Saint_John_the_Baptist_(1566)_-_Sz%C3%A9pm%C5%B1v%C3%A9szeti_M%C3%BAzeum.jpg",
-  "license": "Public domain"
- },
- {
-  "id": "Q257048",
-  "file": "lib/Q257048.jpg",
-  "title": "The Sermon of Saint John the Baptist",
-  "artist": "Pieter Brueghel the Elder",
-  "year": "1566",
-  "collection": "Museum of Fine Arts, Budapest",
-  "tags": [
-   "advent",
-   "saints",
-   "ordinary"
-  ],
-  "w": 900,
-  "h": 524,
-  "source": "https://commons.wikimedia.org/wiki/File:Pieter_Bruegel_the_Elder_-_The_Sermon_of_Saint_John_the_Baptist_-_Google_Art_Project.jpg",
-  "license": "Public domain"
- },
- {
-  "id": "Q257048",
-  "file": "lib/Q257048.jpg",
-  "title": "The Sermon of Saint John the Baptist",
-  "artist": "Pieter Brueghel the Elder",
-  "year": "1566",
-  "collection": "Museum of Fine Arts, Budapest",
-  "tags": [
-   "advent",
-   "saints",
-   "ordinary"
-  ],
-  "w": 900,
-  "h": 524,
-  "source": "https://commons.wikimedia.org/wiki/File:Pieter_Bruegel_the_Elder_-_The_Sermon_of_Saint_John_the_Baptist.jpg",
   "license": "Public domain"
  },
  {
@@ -3168,23 +2899,6 @@
   "license": "Public domain"
  },
  {
-  "id": "Q560057",
-  "file": "lib/Q560057.jpg",
-  "title": "Terranuova Madonna",
-  "artist": "Raphael",
-  "year": "1505",
-  "collection": "Gemäldegalerie Berlin",
-  "tags": [
-   "advent",
-   "marian",
-   "ordinary"
-  ],
-  "w": 900,
-  "h": 909,
-  "source": "https://commons.wikimedia.org/wiki/File:Raffael_(1483_-_1520)_-_The_Virgin_and_Child_with_the_Infant_St._John_-_Terranuova_Madonna_-_247A_-_Gem%C3%A4ldegalerie.jpg",
-  "license": "Public domain"
- },
- {
   "id": "Q669872",
   "file": "lib/Q669872.jpg",
   "title": "The Vision of Saint Eustace",
@@ -3247,21 +2961,6 @@
   "w": 900,
   "h": 621,
   "source": "https://commons.wikimedia.org/wiki/File:Pieter_Bruegel_d._%C3%84._019.jpg",
-  "license": "Public domain"
- },
- {
-  "id": "Q665337",
-  "file": "lib/Q665337.jpg",
-  "title": "Conversion of Paul",
-  "artist": "Pieter Brueghel the Elder",
-  "year": "1567",
-  "collection": "Kunsthistorisches Museum",
-  "tags": [
-   "saints"
-  ],
-  "w": 900,
-  "h": 621,
-  "source": "https://commons.wikimedia.org/wiki/File:Conversion_of_Paul_(Bruegel).jpg",
   "license": "Public domain"
  },
  {

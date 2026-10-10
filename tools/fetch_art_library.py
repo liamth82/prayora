@@ -238,5 +238,57 @@ def main(out, max_items=220):
     print("kept", len(entries))
 
 
+def tidy_round(path, bg=(18, 16, 22)):
+    """Round paintings (tondi) are often scanned on white: darken everything outside the circle."""
+    im = Image.open(path).convert("RGB")
+    w, h = im.size
+    px = im.load()
+    corners = [px[2, 2], px[w - 3, 2], px[2, h - 3], px[w - 3, h - 3]]
+    edges = [px[w // 2, 3], px[w // 2, h - 4], px[3, h // 2], px[w - 4, h // 2]]
+    if not (0.9 < w / h < 1.1 and all(min(c) > 225 for c in corners) and sum(min(c) < 200 for c in edges) >= 2):
+        return False
+    mask = Image.new("L", (w, h), 0)
+    ImageDraw.Draw(mask).ellipse((1, 1, w - 2, h - 2), fill=255)
+    out = Image.new("RGB", (w, h), bg)
+    out.paste(im, (0, 0), mask)
+    out.save(path, "JPEG", quality=82, optimize=True, progressive=True)
+    return True
+
+
+def finalize(out):
+    """Drop excluded and duplicate entries, tidy round paintings, rebuild the contact sheet."""
+    ex_path = os.path.join(os.path.dirname(__file__), "art_exclude.txt")
+    exclude = {l.split("#")[0].strip() for l in open(ex_path) if l.split("#")[0].strip()} if os.path.exists(ex_path) else set()
+    entries = json.load(open(os.path.join(out, "library.json")))
+    seen, kept = set(), []
+    for e in entries:
+        if e["id"] in exclude or e["id"] in seen:
+            continue
+        seen.add(e["id"])
+        kept.append(e)
+    for f in os.listdir(os.path.join(out, "lib")):
+        if f.endswith(".jpg") and not f.startswith("_") and f[:-4] not in seen:
+            os.remove(os.path.join(out, "lib", f))
+    for e in kept:
+        if tidy_round(os.path.join(out, e["file"])):
+            print("tidied", e["id"], e["title"])
+    json.dump(kept, open(os.path.join(out, "library.json"), "w"), ensure_ascii=False, indent=1)
+    cell, cols = 150, 12
+    sheet = Image.new("RGB", (cols * cell, max(1, (len(kept) + cols - 1) // cols) * (cell + 16)), (20, 18, 24))
+    d = ImageDraw.Draw(sheet)
+    for n, e in enumerate(kept):
+        with Image.open(os.path.join(out, e["file"])) as im:
+            im.thumbnail((cell - 6, cell - 6))
+            x, y = (n % cols) * cell, (n // cols) * (cell + 16)
+            sheet.paste(im, (x + (cell - im.width) // 2, y + (cell - im.height) // 2))
+            d.text((x + 4, y + cell), f"{n} {e['id']}", fill=(220, 210, 190))
+    sheet.save(os.path.join(out, "lib", "_sheet.jpg"), "JPEG", quality=70)
+    print("final", len(kept))
+
+
 if __name__ == "__main__":
-    main(sys.argv[1], int(sys.argv[2]) if len(sys.argv) > 2 else 220)
+    if sys.argv[1] == "--finalize":
+        finalize(sys.argv[2])
+    else:
+        main(sys.argv[1], int(sys.argv[2]) if len(sys.argv) > 2 else 220)
+        finalize(sys.argv[1])

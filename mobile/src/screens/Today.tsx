@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, Image, Modal, Pressable, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import * as Haptics from 'expo-haptics';
 import { useKeepable } from '../keep';
@@ -6,21 +6,25 @@ import { C, F } from '../theme';
 import { currentHour } from '../content';
 import { useSettings } from '../settings';
 import {
-  ArtManifest, artKeyFor, BASE, Day, getSaint, Saint, saintKept, EFDay, EFSection, getArtManifest, getDay, isoDate, LIT_COLORS, OFDay,
+  ArtManifest, artForDay, artKeyFor, BASE, getArtLibrary, LibArt, Day, getSaint, Saint, saintKept, EFDay, EFSection, getArtManifest, getDay, isoDate, LIT_COLORS, OFDay,
   orderedEF, rankLabelEF, rankLabelOF,
 } from '../today';
 import { load, save } from '../storage';
 import { Eyebrow, Proto, Rule } from '../components/ui';
+import Reader, { ReaderChapter } from './Reader';
 
 export default function Today({ openHours, onThanks, onRefuge }: { openHours: () => void; onThanks: () => void; onRefuge: () => void }) {
   const { form, latin } = useSettings();
   const { width: winW } = useWindowDimensions();
   const [day, setDay] = useState<Day | null>(null);
   const [art, setArt] = useState<ArtManifest>({});
+  const [lib, setLib] = useState<LibArt[]>([]);
+  useEffect(() => { getArtLibrary().then(setLib); }, []);
   const [saint, setSaint] = useState<Saint | null>(null);
   const [state, setState] = useState<'loading' | 'ready' | 'missing'>('loading');
   const [zoom, setZoom] = useState(false);
   const [readDays, setReadDays] = useState<string[]>([]);
+  const [reading, setReading] = useState<number | null>(null);
   useEffect(() => { load<string[]>('readDays', []).then(setReadDays); }, []);
   const now = new Date();
   const date = isoDate(now);
@@ -36,9 +40,9 @@ export default function Today({ openHours, onThanks, onRefuge }: { openHours: ()
   const colorName = day?.color || 'green';
   const lc = LIT_COLORS[colorName] ?? LIT_COLORS.green;
   const key = artKeyFor(day, now);
-  const item = art[key] ?? art.default;
-  const imageUri = saint?.image ? `${BASE}/saints/${saint.image}` : item ? `${BASE}/art/${item.file}` : null;
-  const ratio = saint?.image ? (saint.imageRatio ?? 0.8) : item && item.w && item.h ? item.w / item.h : 0.75;
+  const dayArt = useMemo(() => artForDay(key, now, lib, art), [key, lib, art, date]); // eslint-disable-line react-hooks/exhaustive-deps
+  const imageUri = saint?.image ? `${BASE}/saints/${saint.image}` : dayArt?.uri ?? null;
+  const ratio = saint?.image ? (saint.imageRatio ?? 0.8) : dayArt?.ratio ?? 0.75;
   const dateLabel = now.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
   const hour = currentHour(now);
   const isRead = readDays.includes(date);
@@ -53,21 +57,23 @@ export default function Today({ openHours, onThanks, onRefuge }: { openHours: ()
     if (!isRead) Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => {});
     setReadDays(next); save('readDays', next);
   };
-  const credit = saint?.image ? saint.imageCredit : item ? `${item.title.replace(/\.jpe?g$/i, '')}. ${item.license || 'Public domain'}, via Wikimedia Commons.` : '';
+  const chapters = useMemo(() => (day ? readingChapters(day, latin, dateLabel) : []), [day, latin, dateLabel]);
+  const words = chapters.reduce((n, c) => n + c.units.reduce((m, u) => m + u.text.split(/\s+/).length, 0), 0);
+  const credit = saint?.image ? saint.imageCredit : dayArt?.credit ?? '';
 
   return (
     <View style={{ marginHorizontal: -20, marginTop: -18 }}>
       {imageUri ? (
         <View style={[st.artWrap, { backgroundColor: lc.bg }]}>
           <Pressable onPress={() => setZoom(true)} style={st.frame} accessibilityRole="imagebutton" accessibilityLabel="View the artwork full screen">
-            <Image source={{ uri: imageUri }} style={{ width: '100%', height: Math.min((winW - 54) / ratio, 300) }} resizeMode="cover" accessibilityLabel={saint?.name ?? item?.title ?? 'Manuscript illumination'} />
+            <Image source={{ uri: imageUri }} style={{ width: '100%', height: Math.min((winW - 54) / ratio, 300) }} resizeMode="cover" accessibilityLabel={saint?.name ?? dayArt?.title ?? 'Sacred art'} />
           </Pressable>
           <Text style={[st.credit, { color: lc.fg, opacity: 0.7 }]} numberOfLines={2}>{credit}</Text>
           <Modal visible={zoom} animationType="fade" onRequestClose={() => setZoom(false)} statusBarTranslucent>
             <Pressable style={st.lightbox} onPress={() => setZoom(false)} accessibilityLabel="Close artwork">
               <Image source={{ uri: imageUri }} style={{ width: '100%', flex: 1 }} resizeMode="contain" />
               <View style={st.lbCaption}>
-                <Text style={st.lbTitle}>{saint?.image ? saint.name : day?.title ?? ''}</Text>
+                <Text style={st.lbTitle}>{saint?.image ? saint.name : dayArt?.title ?? ''}</Text>
                 <Text style={st.lbCredit}>{credit}</Text>
                 <Text style={st.lbHint}>Tap anywhere to close</Text>
               </View>
@@ -112,6 +118,23 @@ export default function Today({ openHours, onThanks, onRefuge }: { openHours: ()
           <Text style={st.hourName}>{hour.name} <Text style={st.hourSub}>· {hour.sub} ›</Text></Text>
         </Pressable>
 
+        {chapters.length ? (
+          <Pressable onPress={() => setReading(0)} style={({ pressed }) => [st.begin, pressed && { opacity: 0.85 }]} accessibilityRole="button">
+            <View style={{ flex: 1 }}>
+              <Text style={st.beginSmall}>{isRead ? 'READ TODAY · READ AGAIN' : day?.form === 'OF' ? "TODAY'S READINGS" : 'PROPER OF THE MASS'}</Text>
+              <Text style={st.beginTitle}>Begin the readings</Text>
+              <Text style={st.beginSub}>{chapters.length} {day?.form === 'OF' ? 'readings' : 'parts'} · about {Math.max(2, Math.round(words / 180))} min · turn the pages</Text>
+            </View>
+            <Text style={st.beginArrow}>›</Text>
+          </Pressable>
+        ) : null}
+        {reading !== null && chapters[reading] ? (
+          <Reader chapter={chapters[reading]} loading={false} onClose={() => setReading(null)}
+            onPrev={reading > 0 ? () => setReading(reading - 1) : undefined}
+            onNext={reading < chapters.length - 1 ? () => setReading(reading + 1) : undefined}
+            nextLabel={`Next: ${chapters[reading + 1]?.title ?? ''}`}
+            finish={{ label: isRead ? 'Done' : 'Mark as read', onPress: () => { if (!isRead) toggleRead(); setReading(null); } }} />
+        ) : null}
         {day?.form === 'OF' ? <OFReadings day={day} /> : null}
         {day?.form === 'EF' ? <EFPropers day={day} latin={latin} /> : null}
         {day ? (
@@ -180,7 +203,7 @@ function OFReadings({ day }: { day: OFDay }) {
     <View>
       <Eyebrow>Readings at Mass</Eyebrow>
       {day.readings.map((r) => (
-        <Collapsible key={r.key} label={r.label} sub={r.ref} initiallyOpen={r.key === 'gospel'}>
+        <Collapsible key={r.key} label={r.label} sub={r.ref}>
           {r.verses.length ? (
             <Text style={st.reading}>
               {r.verses.map(([n, t], i) => (
@@ -196,7 +219,34 @@ function OFReadings({ day }: { day: OFDay }) {
   );
 }
 
-const OPEN_EF = new Set(['Oratio', 'Lectio', 'Evangelium']);
+const OPEN_EF = new Set<string>();
+
+const vOrR = (l: string) => l.replace(/^V\.\s/, '℣. ').replace(/^R\.\s/, '℟. ');
+
+/** The day's readings (or the 1962 propers) as chapters for the page-turning reader. */
+function readingChapters(day: Day, latin: 'en' | 'both' | 'la', dateLabel: string): ReaderChapter[] {
+  if (day.form === 'OF') {
+    const rs = day.readings.filter((r) => r.verses.length);
+    return rs.map((r, i) => ({
+      key: `today:${day.date}:${r.key}`, heading: dateLabel, title: r.label, section: r.ref,
+      units: r.verses.map(([n, t]) => ({ n: n.split(':').pop(), text: t })), mode: 'verses' as const,
+      sourceFor: (u) => `${verseRef(r.ref, String(day.readings.find((x) => x.key === r.key)!.verses.find(([, t]) => t === u.text)?.[0] ?? u.n), r.key === 'psalm')} · Douay-Rheims`,
+      position: `Reading ${i + 1} of ${rs.length}`,
+    }));
+  }
+  const secs = orderedEF(day.sections).filter((s) => s.id !== 'Prefatio');
+  return secs.map((s, i) => {
+    const lines = (latin === 'la' ? s.la : s.en).map((l) => l.trim()).filter(Boolean);
+    const ref = lines.find((l) => /^\*.+\*$/.test(l))?.replace(/\*/g, '');
+    const body = lines.filter((l) => !/^\*.+\*$/.test(l)).map(vOrR);
+    return {
+      key: `today:${day.date}:ef:${s.id}`, heading: day.title, title: s.label, section: ref,
+      units: body.map((text) => ({ text })), mode: 'prose' as const,
+      sourceFor: () => [s.label, ref, day.title].filter(Boolean).join(' · '),
+      position: `${i + 1} of ${secs.length}`,
+    };
+  }).filter((c) => c.units.length);
+}
 
 function EFBody({ lines, isLatin, sectionId, source }: { lines: string[]; isLatin?: boolean; sectionId: string; source: string }) {
   const kp = useKeepable();
@@ -242,6 +292,12 @@ const st = StyleSheet.create({
   lbTitle: { fontFamily: F.display, fontSize: 24, color: C.ink },
   lbCredit: { fontFamily: F.bodyItalic, fontSize: 12.5, lineHeight: 18, color: C.inkSoft, marginTop: 4 },
   lbHint: { fontFamily: F.sc, fontSize: 10, letterSpacing: 1.4, color: C.inkFaint, marginTop: 10 },
+  begin: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#241F29', borderRadius: 16, padding: 18, marginBottom: 22,
+    borderWidth: StyleSheet.hairlineWidth, borderColor: 'rgba(196,168,112,0.45)' },
+  beginSmall: { fontFamily: F.sc, fontSize: 10, letterSpacing: 2, color: C.gold },
+  beginTitle: { fontFamily: F.display, fontSize: 30, color: C.ink, marginTop: 2 },
+  beginSub: { fontFamily: F.bodyItalic, fontSize: 13.5, color: C.inkSoft, marginTop: 2 },
+  beginArrow: { fontFamily: F.display, fontSize: 34, color: C.gold, marginLeft: 10 },
   quick: { flexDirection: 'row', gap: 10, marginBottom: 12 },
   quickBtn: { flex: 1, backgroundColor: C.vellum2, borderRadius: 14, paddingVertical: 10, paddingHorizontal: 12 },
   quickSmall: { fontFamily: F.sc, fontSize: 9.5, letterSpacing: 1.4, color: C.inkFaint },

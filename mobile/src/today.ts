@@ -141,3 +141,74 @@ export function isSanctoral(day: Day | null): boolean {
   if (day.form === 'OF') return ['MEMORIAL', 'OPT_MEMORIAL', 'FEAST', 'SOLEMNITY', 'COMMEMORATION'].includes(day.rank);
   return day.title !== day.tempora && !/sunday|feria|week|octave|ember|vigil/i.test(day.title);
 }
+
+// ---- the sacred art library: a different painting each day, chosen for the season -----------------
+
+export type LibArt = {
+  id: string; file: string; title: string; artist: string; year: string; collection: string; tags: string[];
+  w: number; h: number; source: string; license: string;
+};
+export type DayArt = { uri: string; title: string; credit: string; ratio: number };
+
+export async function getArtLibrary(): Promise<LibArt[]> {
+  try {
+    const r = await fetchJson<LibArt[]>(`${BASE}/art/library.json`);
+    save('art:library', r);
+    return r;
+  } catch {
+    return load<LibArt[]>('art:library', []);
+  }
+}
+
+const SEASONAL = ['advent', 'christmas', 'epiphany', 'holyweek', 'easter', 'ascension', 'pentecost'];
+const POOLS: Record<string, (a: LibArt) => boolean> = {
+  advent: (a) => a.tags.includes('advent'),
+  epiphany: (a) => a.tags.includes('epiphany'),
+  lent: (a) => a.tags.includes('lent') || a.tags.includes('holyweek'),
+  holyweek: (a) => a.tags.includes('holyweek'),
+  easter: (a) => ['easter', 'ascension', 'pentecost'].some((t) => a.tags.includes(t)),
+  ascension: (a) => ['ascension', 'easter'].some((t) => a.tags.includes(t)),
+  pentecost: (a) => ['pentecost', 'ascension'].some((t) => a.tags.includes(t)),
+  christmas: (a) => a.tags.includes('christmas') || a.tags.includes('epiphany'),
+  allsaints: (a) => a.tags.includes('allsaints') || (a.tags.includes('saints') && !a.tags.some((t) => SEASONAL.includes(t))),
+  souls: (a) => /lament|entomb|piet|deposition/i.test(a.title),
+  angels: (a) => a.tags.includes('angels') && !a.tags.some((t) => SEASONAL.includes(t)),
+  marian: (a) => a.tags.includes('marian') && !a.tags.some((t) => ['holyweek', 'easter'].includes(t)),
+  martyr: (a) => a.tags.includes('saints') && !a.tags.some((t) => SEASONAL.includes(t)),
+  apostles: (a) => a.tags.includes('saints') && !a.tags.some((t) => SEASONAL.includes(t)),
+};
+const ordinary = (a: LibArt) => !a.tags.some((t) => SEASONAL.includes(t));
+
+function seeded(seed: number) {
+  let x = seed >>> 0 || 1;
+  return () => { x ^= x << 13; x ^= x >>> 17; x ^= x << 5; return ((x >>> 0) % 100000) / 100000; };
+}
+const hash = (s: string) => [...s].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 7);
+
+/** The day's painting: drawn from the season's pool, without repeating until the pool is used up. */
+export function artForDay(key: string, date: Date, lib: LibArt[], manifest: ArtManifest): DayArt | null {
+  const legacy = manifest[key] ?? manifest.default;
+  const fromLegacy = (m: ArtItem): DayArt => ({
+    uri: `${BASE}/art/${m.file}`, title: m.title.replace(/\.jpe?g$/i, '').replace(/_/g, ' '),
+    credit: `${m.title.replace(/\.jpe?g$/i, '')}. ${m.license || 'Public domain'}, via Wikimedia Commons.`, ratio: m.w && m.h ? m.w / m.h : 0.75,
+  });
+  const test = POOLS[key] ?? ordinary;
+  const pool = lib.filter(test).sort((a, b) => a.id.localeCompare(b.id));
+  if (!pool.length) return legacy ? fromLegacy(legacy) : null;
+  const n = pool.length + (legacy ? 1 : 0);
+  const dayNo = Math.floor(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) / 86400000);
+  const order = Array.from({ length: n }, (_, i) => i);
+  const rnd = seeded(Math.floor(dayNo / n) * 7919 + hash(key));
+  for (let i = n - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [order[i], order[j]] = [order[j], order[i]]; }
+  const k = order[dayNo % n];
+  if (k >= pool.length && legacy) return fromLegacy(legacy);
+  return libArt(pool[k]);
+}
+
+export function libArt(a: LibArt): DayArt {
+  const by = [a.artist, a.year].filter(Boolean).join(', ');
+  return {
+    uri: `${BASE}/art/${a.file}`, title: a.title, ratio: a.w / a.h,
+    credit: `${a.title}${by ? ` — ${by}` : ''}${a.collection ? `. ${a.collection}` : ''}. Public domain, via Wikimedia Commons.`,
+  };
+}

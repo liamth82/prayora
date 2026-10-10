@@ -35,8 +35,9 @@ type Page = { start: number; end: number };
  * then shows its own window onto that same layout, so verse numbers, drop caps and press-and-hold to
  * keep a passage all work exactly as they do in the flowing text.
  */
-export default function Reader({ chapter, loading, onClose, onPrev, onNext }: {
+export default function Reader({ chapter, loading, onClose, onPrev, onNext, nextLabel = 'Next chapter', finish }: {
   chapter: ReaderChapter | null; loading: boolean; onClose: () => void; onPrev?: () => void; onNext?: () => void;
+  nextLabel?: string; finish?: { label: string; onPress: () => void };
 }) {
   const insets = useSafeAreaInsets();
   const { width: W } = useWindowDimensions();
@@ -179,7 +180,9 @@ export default function Reader({ chapter, loading, onClose, onPrev, onNext }: {
         <View {...L('end')} style={st.end}>
           <Text style={[st.endMark, { color: T.accent }]}>✠</Text>
           {onNext ? (
-            <Pressable onPress={onNext} style={[st.nextBtn, { borderColor: T.rule }]}><Text style={[st.nextText, { color: T.ink }]}>Next chapter</Text></Pressable>
+            <Pressable onPress={onNext} style={[st.nextBtn, { borderColor: T.rule }]}><Text style={[st.nextText, { color: T.ink }]}>{nextLabel}</Text></Pressable>
+          ) : finish ? (
+            <Pressable onPress={finish.onPress} style={[st.nextBtn, { borderColor: T.accent, backgroundColor: T.accent }]}><Text style={[st.nextText, { color: T.bg }]}>{finish.label}</Text></Pressable>
           ) : <Text style={[st.hint, { color: T.soft }]}>The end</Text>}
         </View>
       </View>

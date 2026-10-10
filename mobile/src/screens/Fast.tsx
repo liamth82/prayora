@@ -6,7 +6,7 @@ import { Mode, MODES } from '../content';
 import { C, F } from '../theme';
 import { Eyebrow, H2, H3, Lede, Proto, Rule, Sundial } from '../components/ui';
 import { load, save } from '../storage';
-import { ArtItem, BASE, getArtManifest } from '../today';
+import { artForDay, DayArt, getArtLibrary, getArtManifest, libArt } from '../today';
 
 export type FastView = 'symbol' | 'art';
 
@@ -106,17 +106,16 @@ export function Veil({ mode, until, start, onEnd }: { mode: Mode; until: number;
   const [showTime, setShowTime] = useState(false);
   const [symIdx, setSymIdx] = useState(() => Math.floor(Math.random() * SYMBOLS.length));
   const [view, setView] = useState<FastView | null>(null);
-  const [art, setArt] = useState<ArtItem[]>([]);
+  const [art, setArt] = useState<DayArt[]>([]);
   const [artIdx, setArtIdx] = useState(0);
   const [artReady, setArtReady] = useState(false);
   useEffect(() => {
     load<FastView>('fast:view', 'symbol').then(setView);
-    getArtManifest().then((m) => {
-      const items = Object.values(m).filter((x) => x && x.file);
-      const seen = new Set<string>();
-      const uniq = items.filter((x) => (seen.has(x.file) ? false : (seen.add(x.file), true)));
-      for (let i = uniq.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [uniq[i], uniq[j]] = [uniq[j], uniq[i]]; }
-      setArt(uniq);
+    Promise.all([getArtLibrary(), getArtManifest()]).then(([lib, m]) => {
+      const items: DayArt[] = lib.map(libArt);
+      if (!items.length) Object.keys(m).forEach((k) => { const a = artForDay(k, new Date(), [], m); if (a && !items.some((x) => x.uri === a.uri)) items.push(a); });
+      for (let i = items.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [items[i], items[j]] = [items[j], items[i]]; }
+      setArt(items);
     }).finally(() => setArtReady(true));
   }, []);
   const fade = useRef(new Animated.Value(0)).current;
@@ -187,7 +186,7 @@ export function Veil({ mode, until, start, onEnd }: { mode: Mode; until: number;
   if (!ready) return <View style={st.veil} />;
   if (view === 'art' && art.length) {
     const item = art[artIdx % art.length];
-    const ratio = item.w && item.h ? item.w / item.h : 0.75;
+    const ratio = item.ratio || 0.75;
     const maxH = height * 0.58, maxW = width - 40;
     const w = Math.min(maxW, maxH * ratio), hgt = w / ratio;
     return (
@@ -195,14 +194,14 @@ export function Veil({ mode, until, start, onEnd }: { mode: Mode; until: number;
         <Pressable onPress={tap} onPressIn={pressIn} onPressOut={pressOut} style={{ alignItems: 'center' }}
           accessibilityRole="button" accessibilityLabel={`${item.title}. ${remaining}. Hold the painting for three seconds to end the fast early`}>
           <Animated.View style={{ opacity: Animated.multiply(fade, glow) }}>
-            <Image source={{ uri: `${BASE}/art/${item.file}` }} style={{ width: w, height: hgt, borderRadius: 2 }} resizeMode="cover" />
+            <Image source={{ uri: item.uri }} style={{ width: w, height: hgt, borderRadius: 2 }} resizeMode="cover" />
           </Animated.View>
           <View style={[st.artTrack, { width: w }]}>
             <View style={[st.artFill, { width: `${frac * 100}%` }]} />
             <Animated.View style={[st.artHold, { width: hold.interpolate({ inputRange: [0, 1], outputRange: ['0%', '100%'] }) }]} />
           </View>
           <Animated.Text style={[st.artCaption, { opacity: fade, width: w }]} numberOfLines={2}>
-            {showTime ? remaining : item.title.replace(/\.jpe?g$/i, '').replace(/_/g, ' ')}
+            {showTime ? remaining : item.title}
           </Animated.Text>
         </Pressable>
         <View style={{ alignItems: 'center', marginTop: 26 }}>
