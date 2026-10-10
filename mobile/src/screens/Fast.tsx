@@ -1,12 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Animated, Easing, Pressable, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+import { Animated, Easing, Image, Pressable, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import Svg, { Circle, G, Path } from 'react-native-svg';
 import * as Haptics from 'expo-haptics';
 import { Mode, MODES } from '../content';
 import { C, F } from '../theme';
 import { Eyebrow, H2, H3, Lede, Proto, Rule, Sundial } from '../components/ui';
+import { load, save } from '../storage';
+import { ArtItem, BASE, getArtManifest } from '../today';
+
+export type FastView = 'symbol' | 'art';
 
 export default function Fast({ minutes, prayerMinutes, lectioMinutes, onStart, onRefuge, onThanks }: { minutes: number; prayerMinutes: number; lectioMinutes: number; onStart: (m: Mode) => void; onRefuge: () => void; onThanks: () => void }) {
+  const [view, setView] = useState<FastView>('symbol');
+  useEffect(() => { load<FastView>('fast:view', 'symbol').then(setView); }, []);
+  const pick = (v: FastView) => { setView(v); save('fast:view', v); };
   const msg = minutes < 10 ? 'A good visit. When you are finished, close the app.'
     : minutes < 30 ? 'Consider closing Ora and praying in silence.'
     : 'Put the phone down. God is not in here.';
@@ -36,6 +43,14 @@ export default function Fast({ minutes, prayerMinutes, lectioMinutes, onStart, o
       </Pressable>
       <Rule />
       <Eyebrow>Begin a fast</Eyebrow>
+      <Text style={st.viewLabel}>While you fast, show</Text>
+      <View style={st.seg}>
+        {([['symbol', 'A sacred symbol'], ['art', 'Sacred art']] as [FastView, string][]).map(([v, label]) => (
+          <Pressable key={v} onPress={() => pick(v)} style={[st.segBtn, view === v && st.segOn]} accessibilityRole="radio" accessibilityState={{ selected: view === v }}>
+            <Text style={[st.segText, view === v && { color: C.deep }]}>{label}</Text>
+          </Pressable>
+        ))}
+      </View>
       <View style={{ gap: 10 }}>
         {MODES.map((m) => (
           <Pressable key={m.id} onPress={() => onStart(m)} style={({ pressed }) => [st.mode, pressed && { borderColor: C.gold }]}>
@@ -85,11 +100,25 @@ const QUOTES: [string, string][] = [
 const SYMBOL_SECS = 40;
 
 export function Veil({ mode, until, start, onEnd }: { mode: Mode; until: number; start?: number; onEnd: () => void }) {
-  const { width } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
   const total = Math.max(60000, until - (start ?? (mode.mins ? until - mode.mins * 60000 : until - 8 * 3600000)));
   const [left, setLeft] = useState(until - Date.now());
   const [showTime, setShowTime] = useState(false);
   const [symIdx, setSymIdx] = useState(() => Math.floor(Math.random() * SYMBOLS.length));
+  const [view, setView] = useState<FastView | null>(null);
+  const [art, setArt] = useState<ArtItem[]>([]);
+  const [artIdx, setArtIdx] = useState(0);
+  const [artReady, setArtReady] = useState(false);
+  useEffect(() => {
+    load<FastView>('fast:view', 'symbol').then(setView);
+    getArtManifest().then((m) => {
+      const items = Object.values(m).filter((x) => x && x.file);
+      const seen = new Set<string>();
+      const uniq = items.filter((x) => (seen.has(x.file) ? false : (seen.add(x.file), true)));
+      for (let i = uniq.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [uniq[i], uniq[j]] = [uniq[j], uniq[i]]; }
+      setArt(uniq);
+    }).finally(() => setArtReady(true));
+  }, []);
   const fade = useRef(new Animated.Value(0)).current;
   const breathe = useRef(new Animated.Value(0)).current;
   const hold = useRef(new Animated.Value(0)).current;
@@ -104,12 +133,16 @@ export function Veil({ mode, until, start, onEnd }: { mode: Mode; until: number;
     return () => clearInterval(t);
   }, [until, onEnd]);
 
-  // Slow crossfade between the symbols, with a faint breathing glow.
+  // Slow crossfade between the symbols, with a faint breathing glow. Starts once we know what to show,
+  // so the animated values are attached to the views they drive.
+  const ready = view === 'symbol' || (view === 'art' && artReady);
   useEffect(() => {
+    if (!ready) return;
     Animated.timing(fade, { toValue: 1, duration: 2500, useNativeDriver: true }).start();
     const t = setInterval(() => {
       Animated.timing(fade, { toValue: 0, duration: 2500, useNativeDriver: true }).start(() => {
         setSymIdx((i) => (i + 1) % SYMBOLS.length);
+        setArtIdx((i) => i + 1);
         Animated.timing(fade, { toValue: 1, duration: 2500, useNativeDriver: true }).start();
       });
     }, SYMBOL_SECS * 1000);
@@ -119,7 +152,7 @@ export function Veil({ mode, until, start, onEnd }: { mode: Mode; until: number;
     ]));
     b.start();
     return () => { clearInterval(t); b.stop(); };
-  }, [fade, breathe]);
+  }, [fade, breathe, ready]);
 
   const h = Math.floor(left / 3600000), mi = Math.floor((left % 3600000) / 60000);
   const remaining = h ? `${h} h ${mi} min left` : `${Math.max(1, mi)} min left`;
@@ -150,6 +183,39 @@ export function Veil({ mode, until, start, onEnd }: { mode: Mode; until: number;
   const ring = size + 44;
   const RR = ring / 2 - 3, CIRC = 2 * Math.PI * RR;
   const glow = breathe.interpolate({ inputRange: [0, 1], outputRange: [0.78, 1] });
+
+  if (!ready) return <View style={st.veil} />;
+  if (view === 'art' && art.length) {
+    const item = art[artIdx % art.length];
+    const ratio = item.w && item.h ? item.w / item.h : 0.75;
+    const maxH = height * 0.58, maxW = width - 40;
+    const w = Math.min(maxW, maxH * ratio), hgt = w / ratio;
+    return (
+      <View style={st.veil}>
+        <Pressable onPress={tap} onPressIn={pressIn} onPressOut={pressOut} style={{ alignItems: 'center' }}
+          accessibilityRole="button" accessibilityLabel={`${item.title}. ${remaining}. Hold the painting for three seconds to end the fast early`}>
+          <Animated.View style={{ opacity: Animated.multiply(fade, glow) }}>
+            <Image source={{ uri: `${BASE}/art/${item.file}` }} style={{ width: w, height: hgt, borderRadius: 2 }} resizeMode="cover" />
+          </Animated.View>
+          <View style={[st.artTrack, { width: w }]}>
+            <View style={[st.artFill, { width: `${frac * 100}%` }]} />
+            <Animated.View style={[st.artHold, { width: hold.interpolate({ inputRange: [0, 1], outputRange: ['0%', '100%'] }) }]} />
+          </View>
+          <Animated.Text style={[st.artCaption, { opacity: fade, width: w }]} numberOfLines={2}>
+            {showTime ? remaining : item.title.replace(/\.jpe?g$/i, '').replace(/_/g, ' ')}
+          </Animated.Text>
+        </Pressable>
+        <View style={{ alignItems: 'center', marginTop: 26 }}>
+          <Text style={[st.quote, { fontSize: 22, lineHeight: 29 }]}>{quote}</Text>
+          <Text style={st.cite}>{cite.toUpperCase()}</Text>
+        </View>
+        <View style={st.foot}>
+          <Text style={st.allowed}>{mode.name} · {mode.allow}</Text>
+          <Text style={st.hint}>Hold the painting to end early · tap to see the time</Text>
+        </View>
+      </View>
+    );
+  }
 
   return (
     <View style={st.veil}>
@@ -204,6 +270,15 @@ const st = StyleSheet.create({
   holdRing: { position: 'absolute', top: 2, left: 2, width: 40, height: 40, borderRadius: 20, borderWidth: 2, borderColor: '#C4A870' },
   caption: { fontFamily: F.displayItalic, fontSize: 16.5, color: '#8A8290', marginTop: 16, letterSpacing: 0.4 },
   foot: { position: 'absolute', bottom: 40, alignItems: 'center', gap: 4 },
+  viewLabel: { fontFamily: F.ui, fontSize: 13, color: C.inkSoft, marginBottom: 8 },
+  seg: { flexDirection: 'row', backgroundColor: C.vellum2, borderRadius: 999, padding: 4, marginBottom: 16 },
+  segBtn: { flex: 1, paddingVertical: 9, borderRadius: 999, alignItems: 'center' },
+  segOn: { backgroundColor: C.ink },
+  segText: { fontFamily: F.sc, fontSize: 13, color: C.inkSoft },
+  artTrack: { height: 2, backgroundColor: 'rgba(255,255,255,0.08)', marginTop: 14, overflow: 'hidden', borderRadius: 1 },
+  artFill: { position: 'absolute', left: 0, top: 0, bottom: 0, backgroundColor: 'rgba(233,223,200,0.45)' },
+  artHold: { position: 'absolute', left: 0, top: 0, bottom: 0, backgroundColor: '#C4A870' },
+  artCaption: { fontFamily: F.bodyItalic, fontSize: 13, lineHeight: 18, color: '#8A8290', marginTop: 10, textAlign: 'center' },
   hint: { fontFamily: F.sc, fontSize: 10, letterSpacing: 1.6, color: '#4A4552' },
   modeN: { fontFamily: F.sc, letterSpacing: 3, color: C.gold, fontSize: 14 },
   clock: { fontFamily: F.display, fontSize: 70.5, color: C.ink, fontVariant: ['tabular-nums'] },

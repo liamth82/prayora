@@ -127,21 +127,23 @@ function Main() {
     <View style={[st.root, { paddingTop: insets.top }]}>
       <StatusBar style="light" />
       <View style={st.header}>
-        <Text style={st.wordmark}>Or<Text style={{ color: C.gold, fontFamily: F.displayItalic }}>a</Text></Text>
-        <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 12, flexShrink: 1 }}>
-          <View style={{ alignItems: 'flex-end', flexShrink: 1 }}>
-            <Text style={st.date}>{date}</Text>
-            <View style={st.lit}><Dot color={s.color} /><Text style={st.litText}>{s.name}</Text></View>
-          </View>
-          <Pressable onPress={() => setRefugeOpen(true)} hitSlop={10} accessibilityRole="button" accessibilityLabel="Refuge, when temptation comes" style={{ paddingBottom: 2 }}>
+        <View style={st.headTop}>
+          <Text style={st.wordmark}>Or<Text style={{ color: C.gold, fontFamily: F.displayItalic }}>a</Text></Text>
+          <View style={st.icons}>
+            <Pressable onPress={() => setRefugeOpen(true)} hitSlop={10} accessibilityRole="button" accessibilityLabel="Refuge, when temptation comes">
             <Svg width={20} height={22} viewBox="0 0 20 24"><Path d="M10 1.5 L18 4.5 V11 C18 16.5 14.5 20.5 10 22.5 C5.5 20.5 2 16.5 2 11 V4.5 Z" stroke={C.inkSoft} strokeWidth={1.5} fill="none" /><Path d="M10 6.5 V17 M6.5 10 H13.5" stroke={C.inkSoft} strokeWidth={1.5} /></Svg>
-          </Pressable>
-          <Pressable onPress={() => setWisdomOpen(true)} hitSlop={10} accessibilityRole="button" accessibilityLabel="My Wisdom" style={{ paddingBottom: 2 }}>
+            </Pressable>
+            <Pressable onPress={() => setWisdomOpen(true)} hitSlop={10} accessibilityRole="button" accessibilityLabel="My Wisdom">
             <Svg width={20} height={22} viewBox="0 0 20 24"><Path d="M3 2h14v20l-7-5-7 5z" stroke={C.inkSoft} strokeWidth={1.5} fill="none" /></Svg>
-          </Pressable>
-          <Pressable onPress={() => setSettingsOpen(true)} hitSlop={10} accessibilityRole="button" accessibilityLabel="Settings" style={{ paddingBottom: 2 }}>
+            </Pressable>
+            <Pressable onPress={() => setSettingsOpen(true)} hitSlop={10} accessibilityRole="button" accessibilityLabel="Settings">
             <Svg width={22} height={22} viewBox="0 0 24 24"><Circle cx={12} cy={12} r={3} stroke={C.inkSoft} strokeWidth={1.5} fill="none" /><Path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1" stroke={C.inkSoft} strokeWidth={1.5} /></Svg>
-          </Pressable>
+            </Pressable>
+          </View>
+        </View>
+        <View style={st.lit}>
+          <Dot color={s.color} size={7} />
+          <Text style={st.litText} numberOfLines={1}><Text style={st.date}>{date}</Text>{'  ·  '}{s.name}</Text>
         </View>
       </View>
 
@@ -198,11 +200,13 @@ export default function App() {
 
 const st = StyleSheet.create({
   root: { flex: 1, backgroundColor: C.vellum },
-  header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end', gap: 12, paddingHorizontal: 20, paddingTop: 10, paddingBottom: 12, borderBottomWidth: StyleSheet.hairlineWidth, borderColor: C.vellum3 },
+  header: { paddingHorizontal: 20, paddingTop: 4, paddingBottom: 12, borderBottomWidth: StyleSheet.hairlineWidth, borderColor: C.vellum3 },
+  headTop: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
+  icons: { flexDirection: 'row', alignItems: 'center', gap: 22 },
   wordmark: { fontFamily: F.display, fontSize: 36, lineHeight: 40, color: C.ink, letterSpacing: 0.5 },
-  date: { fontFamily: F.sc, fontSize: 12.5, color: C.ink, letterSpacing: 0.2 },
-  lit: { flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 2 },
-  litText: { fontFamily: F.ui, fontSize: 11.5, color: C.inkSoft },
+  date: { fontFamily: F.sc, color: C.ink },
+  lit: { flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 2 },
+  litText: { flexShrink: 1, fontFamily: F.ui, fontSize: 11.5, color: C.inkSoft },
   screen: { paddingHorizontal: 20, paddingTop: 18, paddingBottom: 32 },
   tabs: { flexDirection: 'row', borderTopWidth: StyleSheet.hairlineWidth, borderColor: C.vellum3, backgroundColor: C.deep, paddingTop: 10 },
   tab: { flex: 1, alignItems: 'center', gap: 3, paddingBottom: 4 },

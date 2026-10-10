@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
-  ActivityIndicator, Animated, FlatList, LayoutChangeEvent, Modal, NativeScrollEvent, NativeSyntheticEvent, Pressable,
+  ActivityIndicator, Animated, Easing, LayoutChangeEvent, Modal, NativeSyntheticEvent, PanResponder, Pressable,
   StyleSheet, Text, TextLayoutEventData, useWindowDimensions, View,
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
@@ -45,9 +45,9 @@ export default function Reader({ chapter, loading, onClose, onPrev, onNext }: {
   const [showPrefs, setShowPrefs] = useState(false);
   const [areaH, setAreaH] = useState(0);
   const [page, setPage] = useState(0);
-  const [startPage, setStartPage] = useState(0);
-  const list = useRef<FlatList<Page>>(null);
-  const scrollX = useRef(new Animated.Value(0)).current;
+  // `pos` is the reading position in pages, continuous while a leaf is mid-turn (2.4 = page 3 lifted 40%)
+  const pos = useRef(new Animated.Value(0)).current;
+  const busy = useRef(false);
   const T = TONES[prefs.tone];
   const size = prefs.size, line = Math.round(size * 1.6);
   const contentW = W - PAD_X * 2;
@@ -86,7 +86,7 @@ export default function Reader({ chapter, loading, onClose, onPrev, onNext }: {
       const saved = await load<number>('reader:pos:' + chapterKey, 0);
       let p = 0;
       ps.forEach((pg, i) => { if (saved >= pg.start - 1) p = i; });
-      setStartPage(p); setPage(p); setPaged({ key, pages: ps });
+      pos.setValue(p); setPage(p); setPaged({ key, pages: ps });
     };
     const schedule = () => { if (timer) clearTimeout(timer); timer = setTimeout(paginate, 140); };
     return {
@@ -98,22 +98,47 @@ export default function Reader({ chapter, loading, onClose, onPrev, onNext }: {
     };
   }, [measureKey]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // ---- turning -----------------------------------------------------------------------------------
+  // ---- turning: each page is a leaf hinged at the spine (its left edge) --------------------------
   const count = pages?.length ?? 0;
+  const pageRef = useRef(0); pageRef.current = page;
+  const countRef = useRef(0); countRef.current = count;
+  const land = (p: number) => {
+    const from = pageRef.current;
+    busy.current = true;
+    Animated.timing(pos, { toValue: p, duration: Math.abs(p - from) ? 520 : 260, easing: Easing.out(Easing.cubic), useNativeDriver: true }).start(() => {
+      busy.current = false;
+      if (p !== from) {
+        Haptics.selectionAsync().catch(() => {});
+        setPage(p);
+        if (chapter && pages?.[p]) save('reader:pos:' + chapter.key, pages[p].start);
+      }
+    });
+  };
   const goTo = (p: number) => {
+    if (busy.current) return;
     if (p < 0) { onPrev?.(); return; }
     if (p >= count) { onNext?.(); return; }
-    list.current?.scrollToOffset({ offset: p * W, animated: true });
-    if (p !== page) Haptics.selectionAsync().catch(() => {});
-    setPage(p);
-    if (chapter && pages?.[p]) save('reader:pos:' + chapter.key, pages[p].start);
+    land(p);
   };
-  const settle = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const p = Math.round(e.nativeEvent.contentOffset.x / W);
-    if (p !== page) Haptics.selectionAsync().catch(() => {});
-    setPage(p);
-    if (chapter && pages?.[p]) save('reader:pos:' + chapter.key, pages[p].start);
-  };
+  const nav = useRef({ onPrev, onNext }); nav.current = { onPrev, onNext };
+  const pan = useMemo(() => PanResponder.create({
+    onMoveShouldSetPanResponderCapture: (_, g) => !busy.current && Math.abs(g.dx) > 10 && Math.abs(g.dx) > Math.abs(g.dy) * 1.3,
+    onPanResponderMove: (_, g) => {
+      const p0 = pageRef.current, max = countRef.current - 1;
+      pos.setValue(Math.max(Math.max(0, p0 - 1), Math.min(Math.min(max, p0 + 1), p0 - g.dx / (W * 0.85))));
+    },
+    onPanResponderRelease: (_, g) => {
+      const p0 = pageRef.current, max = countRef.current - 1;
+      let t = p0;
+      if (g.dx < -W * 0.22 || g.vx < -0.35) t = p0 + 1;
+      else if (g.dx > W * 0.22 || g.vx > 0.35) t = p0 - 1;
+      if (t > max) { land(p0); if (g.dx < -W * 0.3) nav.current.onNext?.(); return; }
+      if (t < 0) { land(p0); if (g.dx > W * 0.3) nav.current.onPrev?.(); return; }
+      land(t);
+    },
+    onPanResponderTerminate: () => land(pageRef.current),
+  }), [W]); // eslint-disable-line react-hooks/exhaustive-deps
+
   const tapAt = (x: number) => {
     if (showPrefs) { setShowPrefs(false); return; }
     if (x < W * 0.3) goTo(page - 1);
@@ -161,25 +186,30 @@ export default function Reader({ chapter, loading, onClose, onPrev, onNext }: {
     );
   };
 
-  // ---- a page: a clipped window onto the laid-out chapter, sliding over the page beneath it -------
-  const renderPage = ({ item, index }: { item: Page; index: number }) => {
-    const shift = scrollX.interpolate({ inputRange: [index * W, (index + 1) * W], outputRange: [0, W * 0.72], extrapolate: 'clamp' });
-    const dim = scrollX.interpolate({ inputRange: [index * W, (index + 1) * W], outputRange: [0, 0.5], extrapolate: 'clamp' });
-    const edge = scrollX.interpolate({ inputRange: [(index - 1) * W, (index - 0.5) * W, index * W], outputRange: [0, 0.55, 0], extrapolate: 'clamp' });
+  // ---- a leaf: a clipped window onto the laid-out chapter, turning about its left edge ------------
+  const renderLeaf = (index: number) => {
+    const item = pages![index];
+    const turn = pos.interpolate({ inputRange: [index, index + 1], outputRange: ['0deg', '-100deg'], extrapolate: 'clamp' });
+    const lift = pos.interpolate({ inputRange: [index, index + 0.5, index + 1], outputRange: [0, 0.22, 0.55], extrapolate: 'clamp' });
+    const covered = pos.interpolate({ inputRange: [index - 1, index], outputRange: [0.5, 0], extrapolate: 'clamp' });
     return (
-      <Animated.View style={{ width: W, height: areaH, transform: [{ translateX: shift }] }}>
+      <Animated.View key={index} style={[st.leaf, { width: W, height: areaH, transformOrigin: 'left center', transform: [{ perspective: 2200 }, { rotateY: turn }] } as any]}>
         <Pressable onPress={(e) => tapAt(e.nativeEvent.pageX)} style={[st.page, { backgroundColor: T.bg }]}>
           <View style={{ height: item.end - item.start, overflow: 'hidden' }}>
             <View style={{ position: 'absolute', top: -item.start, left: 0, width: contentW }}>{renderContent(null)}</View>
           </View>
         </Pressable>
-        <Animated.View pointerEvents="none" style={[st.shade, { opacity: dim }]} />
-        <Animated.View pointerEvents="none" style={[st.edge, { opacity: edge }]}>
-          <Svg width={18} height="100%"><Defs><LinearGradient id="pe" x1="0" y1="0" x2="1" y2="0"><Stop offset="0" stopColor="#000" stopOpacity="0" /><Stop offset="1" stopColor="#000" stopOpacity="0.9" /></LinearGradient></Defs><Rect x={0} y={0} width={18} height="100%" fill="url(#pe)" /></Svg>
+        {/* the page beneath darkens while a leaf lies over it; the turning leaf shades as it lifts */}
+        <Animated.View pointerEvents="none" style={[st.shade, { opacity: covered }]} />
+        <Animated.View pointerEvents="none" style={[st.overlay, { opacity: lift }]}>
+          <Svg width="100%" height="100%"><Defs><LinearGradient id={'lf' + index} x1="0" y1="0" x2="1" y2="0"><Stop offset="0" stopColor="#000" stopOpacity="0.15" /><Stop offset="1" stopColor="#000" stopOpacity="1" /></LinearGradient></Defs><Rect x={0} y={0} width="100%" height="100%" fill={`url(#lf${index})`} /></Svg>
         </Animated.View>
+        <View pointerEvents="none" style={[st.spine, { backgroundColor: T.rule }]} />
       </Animated.View>
     );
   };
+  // draw the next page first and earlier pages on top, so a leaf always lies over the one after it
+  const leaves = pages ? [page + 1, page, page - 1].filter((i) => i >= 0 && i < pages.length) : [];
 
   const progress = count ? (page + 1) / count : 0;
 
@@ -218,24 +248,9 @@ export default function Reader({ chapter, loading, onClose, onPrev, onNext }: {
           {loading || !chapter || !pages ? (
             <ActivityIndicator color={T.soft} style={{ marginTop: 60 }} />
           ) : (
-            <Animated.FlatList
-              key={measureKey}
-              ref={list as any}
-              data={pages}
-              horizontal
-              pagingEnabled
-              showsHorizontalScrollIndicator={false}
-              initialScrollIndex={startPage}
-              getItemLayout={(_: any, i: number) => ({ length: W, offset: W * i, index: i })}
-              keyExtractor={(_: Page, i: number) => String(i)}
-              renderItem={renderPage}
-              windowSize={3}
-              initialNumToRender={1}
-              maxToRenderPerBatch={2}
-              onScroll={Animated.event([{ nativeEvent: { contentOffset: { x: scrollX } } }], { useNativeDriver: true })}
-              scrollEventThrottle={16}
-              onMomentumScrollEnd={settle}
-            />
+            <View style={{ flex: 1 }} {...pan.panHandlers}>
+              {leaves.map(renderLeaf)}
+            </View>
           )}
         </View>
 
@@ -268,8 +283,10 @@ const st = StyleSheet.create({
   sizeBtn: { borderWidth: 1, borderRadius: 999, width: 46, height: 36, alignItems: 'center', justifyContent: 'center' },
   tone: { borderWidth: 1.5, borderRadius: 999, paddingHorizontal: 18, paddingVertical: 8 },
   page: { flex: 1, paddingHorizontal: PAD_X, paddingTop: PAD_TOP },
+  leaf: { position: 'absolute', top: 0, left: 0, backfaceVisibility: 'hidden' },
   shade: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: '#000' },
-  edge: { position: 'absolute', top: 0, bottom: 0, left: -18, width: 18 },
+  overlay: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 },
+  spine: { position: 'absolute', top: 0, bottom: 0, left: 0, width: StyleSheet.hairlineWidth },
   head: { alignItems: 'center', paddingBottom: 26 },
   chSection: { fontFamily: F.bodyItalic, fontSize: 13.5, lineHeight: 19, textAlign: 'center', marginBottom: 10 },
   chTitle: { fontFamily: F.display, fontSize: 34, lineHeight: 40, textAlign: 'center' },
