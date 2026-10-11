@@ -9,7 +9,7 @@ import { chapterFor } from '../chapters';
 import Reader, { ReaderChapter } from './Reader';
 
 type Source = { n: number; kind: 'bible' | 'library' | 'saint'; book: string; chapter: number; ref: string; text: string };
-type Msg = { role: 'user' | 'assistant'; content: string; sources?: Source[]; error?: boolean };
+type Msg = { role: 'user' | 'assistant'; content: string; sources?: Source[]; error?: boolean; retry?: string };
 
 const STARTERS = [
   "Reflect with me on today's Gospel",
@@ -48,27 +48,52 @@ export default function Ask() {
     });
   }, [form]);
 
+  const answerY = useRef<Record<number, number>>({});
+  const scrollToAnswer = (i: number) => setTimeout(() => {
+    const y = answerY.current[i];
+    if (y != null) scroll.current?.scrollTo({ y: Math.max(0, y - 8), animated: true });
+    else scroll.current?.scrollToEnd({ animated: true });
+  }, 120);
+
+  const ask = async (history: Msg[]) => {
+    const body = JSON.stringify({ messages: history.map(({ role, content }) => ({ role, content })), today });
+    let lastErr = '';
+    for (let attempt = 0; attempt < 2; attempt++) {
+      try {
+        const r = await fetch(`${BASE}/api/ask`, { method: 'POST', headers: { 'content-type': 'application/json' }, body });
+        const j = await r.json().catch(() => ({}));
+        if (r.ok && j.answer) return j as { answer: string; sources: Source[] };
+        lastErr = j.error || '';
+        if (r.status === 400) break;
+      } catch { lastErr = ''; }
+      await new Promise((res) => setTimeout(res, 1500));
+    }
+    throw new Error(lastErr || 'Ask could not answer just now. Check your connection and try again.');
+  };
+
   const send = async (q: string) => {
     const question = q.trim();
     if (!question || busy) return;
-    const history: Msg[] = [...msgs.filter((m) => !m.error), { role: 'user', content: question }];
-    setMsgs([...msgs, { role: 'user', content: question }]);
-    setText(''); setBusy(true);
+    const base = msgs.filter((m) => !m.error);
+    const history: Msg[] = [...base, { role: 'user', content: question }];
+    setMsgs(history);
+    setText(''); setBusy(true); Keyboard.dismiss();
     setTimeout(() => scroll.current?.scrollToEnd({ animated: true }), 50);
     try {
-      const r = await fetch(`${BASE}/api/ask`, {
-        method: 'POST', headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ messages: history.map(({ role, content }) => ({ role, content })), today }),
-      });
-      const j = await r.json().catch(() => ({}));
-      if (!r.ok || !j.answer) throw new Error(j.error || 'Ask could not answer just now. Please try again in a moment.');
-      setMsgs((m) => [...m, { role: 'assistant', content: j.answer, sources: j.sources }]);
+      const j = await ask(history);
+      setMsgs([...history, { role: 'assistant', content: j.answer, sources: j.sources }]);
+      scrollToAnswer(history.length);
     } catch (e: any) {
-      setMsgs((m) => [...m, { role: 'assistant', content: e?.message && !/JSON|token|fetch/i.test(e.message) ? e.message : 'Ask could not answer just now. Check your connection and try again.', error: true }]);
+      setMsgs([...history, { role: 'assistant', content: e?.message || 'Ask could not answer just now.', error: true, retry: question }]);
+      setTimeout(() => scroll.current?.scrollToEnd({ animated: true }), 80);
     } finally {
       setBusy(false);
-      setTimeout(() => scroll.current?.scrollToEnd({ animated: true }), 80);
     }
+  };
+  const retry = (q: string) => {
+    // drop the failed exchange and ask again
+    setMsgs((m) => { const k = m.length - 2; return m.slice(0, Math.max(0, k)); });
+    setTimeout(() => send(q), 50);
   };
 
   const openSource = async (s: Source) => {
@@ -94,16 +119,27 @@ export default function Ask() {
                 </Pressable>
               ))}
             </View>
-            <Text style={st.fine}>Ask is not a priest. For confession, direction or anything weighing heavily on you, please speak to one.</Text>
+            <Text style={st.fine}>Press and hold any paragraph of an answer to keep it in My Wisdom. Ask is not a priest: for confession, direction or anything weighing heavily on you, please speak to one.</Text>
           </View>
         ) : (
           msgs.map((m, i) => m.role === 'user' ? (
             <View key={i} style={st.q}><Text style={st.qText}>{m.content}</Text></View>
           ) : (
-            <View key={i} style={st.a}>
-              <Text style={[st.aText, m.error && { color: C.rubric }]} {...(m.error ? {} : kp(m.content.replace(/\s*\[\d+\]/g, '').replace(/\*/g, ''), 'Ask · Ora'))}>
-                {renderAnswer(m.content)}
-              </Text>
+            <View key={i} style={st.a} onLayout={(e) => { answerY.current[i] = e.nativeEvent.layout.y; }}>
+              {m.error ? (
+                <>
+                  <Text style={[st.aText, { color: C.rubric }]}>{m.content}</Text>
+                  {m.retry ? <Pressable onPress={() => retry(m.retry!)} hitSlop={8}><Text style={st.retry}>Try again</Text></Pressable> : null}
+                </>
+              ) : (
+                m.content.split(/\n\s*\n/).map((para, k) => {
+                  const clean = para.replace(/\s*\[\d+\]/g, '').replace(/\*/g, '').trim();
+                  if (!clean) return null;
+                  const cited = [...para.matchAll(/\[(\d+)\]/g)].map((x) => m.sources?.find((s) => s.n === Number(x[1]))?.ref.split(' · ')[0]).filter(Boolean);
+                  const label = cited.length ? `Ask · ${[...new Set(cited)].join('; ')}` : 'Ask · Ora';
+                  return <Text key={k} style={[st.aText, k > 0 && { marginTop: 12 }]} {...kp(clean, label)}>{renderAnswer(para.trim())}</Text>;
+                })
+              )}
               {m.sources?.length ? (
                 <View style={{ gap: 6, marginTop: 10 }}>
                   {m.sources.map((s) => (
@@ -143,10 +179,13 @@ export default function Ask() {
   );
 }
 
+const SUP = '⁰¹²³⁴⁵⁶⁷⁸⁹';
+const sup = (n: string) => n.split('').map((d) => SUP[Number(d)] ?? d).join('');
+
 /** Answer text: citation numbers small and gold, *quotations* in italics, **emphasis** a touch heavier. */
 function renderAnswer(t: string) {
   return t.split(/(\[\d+\]|\*\*[^*]+\*\*|\*[^*\n]+\*)/g).filter(Boolean).map((part, i) => {
-    if (/^\[\d+\]$/.test(part)) return <Text key={i} style={st.cite}>{part.slice(1, -1)}</Text>;
+    if (/^\[\d+\]$/.test(part)) return <Text key={i} style={st.cite}>{'\u2009' + sup(part.slice(1, -1))}</Text>;
     if (/^\*\*.+\*\*$/.test(part)) return <Text key={i} style={{ fontFamily: F.bodyMedium }}>{part.slice(2, -2)}</Text>;
     if (/^\*.+\*$/.test(part)) return <Text key={i} style={{ fontFamily: F.bodyItalic }}>{part.slice(1, -1)}</Text>;
     return <Text key={i}>{part}</Text>;
@@ -161,8 +200,9 @@ const st = StyleSheet.create({
   q: { alignSelf: 'flex-end', maxWidth: '86%', backgroundColor: C.ink, borderRadius: 18, borderBottomRightRadius: 6, paddingHorizontal: 14, paddingVertical: 10 },
   qText: { fontFamily: F.body, fontSize: 15, lineHeight: 21, color: C.deep },
   a: { backgroundColor: C.vellum2, borderRadius: 18, borderBottomLeftRadius: 6, padding: 16 },
-  aText: { fontFamily: F.body, fontSize: 16, lineHeight: 25, color: C.ink },
-  cite: { fontFamily: F.sc, fontSize: 10.5, color: C.gold },
+  aText: { fontFamily: F.body, fontSize: 15.5, lineHeight: 23.5, color: C.ink },
+  retry: { fontFamily: F.sc, fontSize: 13, color: C.gold, marginTop: 10 },
+  cite: { fontFamily: F.body, color: C.gold },
   src: { flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: C.vellum, borderRadius: 12, padding: 10 },
   srcN: { width: 20, height: 20, borderRadius: 10, overflow: 'hidden', textAlign: 'center', lineHeight: 20, fontFamily: F.sc, fontSize: 11, color: C.deep, backgroundColor: C.gold },
   srcRef: { fontFamily: F.sc, fontSize: 12, color: C.ink },

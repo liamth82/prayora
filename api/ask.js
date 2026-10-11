@@ -98,7 +98,7 @@ CARE
 - Politely decline requests that have nothing to do with faith, prayer or the spiritual life, and offer to help with something that does.
 
 STYLE
-- Warm, clear and brief: usually 80 to 200 words, in short paragraphs. Plain English, British spelling. No headings, no bullet lists unless the person asks for steps.
+- Warm, clear and brief: usually 80 to 200 words, in two to four short paragraphs separated by a blank line. Plain English, British spelling. No headings, no bold labels at the start of paragraphs, no bullet lists unless the person asks for steps. Each paragraph should make sense on its own, because people save single paragraphs.
 - Write for a thoughtful adult who may be new to the faith. Explain any technical term you use.
 - You may end with one short line from Scripture or the saints, already found in the sources, only when it speaks directly to the question; otherwise end simply.
 - The Baltimore Catechism is old: where its wording reflects 19th-century discipline that has since changed (for example on fasting rules), say so.`;
@@ -119,14 +119,25 @@ const TOOLS = [{
 const idOf = (i) => "b" + i;
 
 async function claude(body) {
-  const r = await fetch("https://api.anthropic.com/v1/messages", {
-    method: "POST",
-    headers: { "content-type": "application/json", "x-api-key": process.env.ANTHROPIC_API_KEY, "anthropic-version": "2023-06-01" },
-    body: JSON.stringify(body),
-  });
-  const j = await r.json();
-  if (!r.ok) throw new Error((j.error && j.error.message) || `HTTP ${r.status}`);
-  return j;
+  // One quiet retry when the service is busy or a request goes astray.
+  for (let attempt = 0; ; attempt++) {
+    try {
+      const r = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST",
+        headers: { "content-type": "application/json", "x-api-key": process.env.ANTHROPIC_API_KEY, "anthropic-version": "2023-06-01" },
+        body: JSON.stringify(body),
+      });
+      const j = await r.json().catch(() => ({}));
+      if (r.ok) return j;
+      const msg = (j.error && j.error.message) || `HTTP ${r.status}`;
+      if (attempt >= 1 || !(r.status === 429 || r.status >= 500)) throw new Error(msg);
+      console.warn("ask retry", r.status, msg);
+    } catch (e) {
+      if (attempt >= 1) throw e;
+      console.warn("ask retry", e && e.message);
+    }
+    await new Promise((res) => setTimeout(res, 1200));
+  }
 }
 
 function clean(messages) {
@@ -195,7 +206,7 @@ module.exports = async (req, res) => {
     });
     return res.status(200).json({ answer: answer || "I couldn't find an answer to that in Ora's library.", sources });
   } catch (e) {
-    console.error("ask failed", e && e.message);
+    console.error("ask failed", e && e.message, e && e.stack);
     return res.status(502).json({ error: "Ask couldn't answer just now. Please try again in a moment." });
   }
 };
