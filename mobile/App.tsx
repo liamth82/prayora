@@ -27,6 +27,11 @@ import { KeepProvider } from './src/keep';
 import Wisdom from './src/screens/Wisdom';
 import Refuge from './src/screens/Refuge';
 import Gratitude from './src/screens/Gratitude';
+import PrayerSession from './src/screens/PrayerSession';
+import { Sheet } from './src/components/panels';
+import { askPermission, bellsAvailable, bellsWork, DEFAULT_BELLS, onBellTap, saveBells, scheduleBells } from './src/bells';
+import { bellPrayer } from './src/prayers';
+import { unlock } from './src/lock';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
 
@@ -54,6 +59,8 @@ function Main() {
   const [wisdomOpen, setWisdomOpen] = useState(false);
   const [refugeOpen, setRefugeOpen] = useState(false);
   const [thanksOpen, setThanksOpen] = useState(false);
+  const [ringing, setRinging] = useState<string | null>(null);
+  const [offerBells, setOfferBells] = useState(false);
   const [lectioSecs, setLectioSecs] = useState(0);
   const prayerOverlayRef = useRef(false);
   const readingOverlayRef = useRef(false);
@@ -85,6 +92,23 @@ function Main() {
     load<{ id: string; until: number; start?: number } | null>('fast', null).then((f) => { if (f && f.until > Date.now()) setFast(f); });
   }, []);
 
+  // Bells: set the day's bells, open the prayer when one is tapped, and offer the Angelus once.
+  useEffect(() => {
+    if (!bellsAvailable) return;
+    let stop = () => {};
+    bellsWork().then((ok) => {
+      if (!ok) return;
+      scheduleBells().catch(() => {});
+      stop = onBellTap((id) => setRinging(id));
+      load<boolean>('bells:offered', false).then((done) => { if (!done) setTimeout(() => setOfferBells(true), 2500); });
+    });
+    return () => stop();
+  }, []);
+  const acceptBells = async () => {
+    setOfferBells(false); save('bells:offered', true);
+    try { if (await askPermission()) await saveBells({ ...DEFAULT_BELLS, on: true }); } catch {}
+  };
+
   // Count time spent in Ora while it is in the foreground
   useEffect(() => {
     let active = AppState.currentState === 'active';
@@ -107,7 +131,7 @@ function Main() {
 
   useEffect(() => { tabRef.current = tab; }, [tab]);
   useEffect(() => { overlayRef.current = settingsOpen; }, [settingsOpen]);
-  useEffect(() => { prayerOverlayRef.current = refugeOpen || thanksOpen; }, [refugeOpen, thanksOpen]);
+  useEffect(() => { prayerOverlayRef.current = refugeOpen || thanksOpen || !!ringing; }, [refugeOpen, thanksOpen, ringing]);
   useEffect(() => { readingOverlayRef.current = wisdomOpen; }, [wisdomOpen]);
   const choose = (t: Tab) => { setTab(t); save('tab', t); scrollTop(); };
 
@@ -117,8 +141,9 @@ function Main() {
     else { const d = new Date(); d.setHours(6, 0, 0, 0); if (d <= new Date()) d.setDate(d.getDate() + 1); until = +d; }
     const f = { id: m.id, until, start: Date.now() };
     setFast(f); save('fast', f);
+    scheduleBells(undefined, true).catch(() => {});
   };
-  const endFast = useCallback(() => { setFast(null); save('fast', null); }, []);
+  const endFast = useCallback(() => { setFast(null); save('fast', null); scheduleBells(undefined, false).catch(() => {}); }, []);
 
   const s = season();
   const date = new Date().toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
@@ -142,7 +167,7 @@ function Main() {
         <View style={st.lit}>
           <Dot color={s.color} size={7} />
           <Text style={st.litText} numberOfLines={1}><Text style={st.date}>{date}</Text>{'  ·  '}{s.name}</Text>
-          <Pressable onPress={() => setWisdomOpen(true)} hitSlop={10} accessibilityRole="button" accessibilityLabel="My Wisdom"><WisdomIcon color={C.inkSoft} /></Pressable>
+          <Pressable onPress={async () => { if (await unlock('My Wisdom')) setWisdomOpen(true); }} hitSlop={10} accessibilityRole="button" accessibilityLabel="My Wisdom"><WisdomIcon color={C.inkSoft} /></Pressable>
           <Pressable onPress={() => setSettingsOpen(true)} hitSlop={10} accessibilityRole="button" accessibilityLabel="Settings"><GearIcon color={C.inkSoft} /></Pressable>
         </View>
       </View>
@@ -174,6 +199,18 @@ function Main() {
       <Gratitude visible={thanksOpen} onClose={() => setThanksOpen(false)} />
       {wisdomOpen ? <View style={{ position: 'absolute', top: insets.top, left: 0, right: 0, bottom: 0 }}><Wisdom onClose={() => setWisdomOpen(false)} /></View> : null}
       {settingsOpen ? <View style={{ position: 'absolute', top: insets.top, left: 0, right: 0, bottom: 0 }}><Settings onClose={() => setSettingsOpen(false)} /></View> : null}
+      {ringing && bellPrayer(ringing) ? (() => {
+        const b = bellPrayer(ringing)!;
+        return <PrayerSession visible title={b.title} subtitle={b.subtitle} lines={b.lines}
+          onFinish={() => { if (b.hourId) { const k = 'prayed:' + todayKey(); load<string[]>(k, []).then((d) => save(k, d.includes(b.hourId!) ? d : [...d, b.hourId!])); } }}
+          onClose={() => setRinging(null)} />;
+      })() : null}
+      <Sheet visible={offerBells} onClose={() => { setOfferBells(false); save('bells:offered', true); }} eyebrow="A gentle bell" title="Ring the Angelus?">
+        <Text style={st.offerText}>For centuries, church bells have called Christians to pray the Angelus at six in the morning, at noon and at six in the evening. Ora can ring a soft bell at those times, and one tap takes you straight into the prayer.</Text>
+        <Text style={st.offerFine}>No reminders if you miss it. Change the times, or switch it off, in Settings.</Text>
+        <Pressable onPress={acceptBells} style={st.offerYes}><Text style={st.offerYesText}>Ring the Angelus</Text></Pressable>
+        <Pressable onPress={() => { setOfferBells(false); save('bells:offered', true); }} style={st.offerNo}><Text style={st.offerNoText}>Not now</Text></Pressable>
+      </Sheet>
       {fast && activeMode ? <Veil mode={activeMode} until={fast.until} start={fast.start} onEnd={endFast} onRefuge={() => setRefugeOpen(true)} onThanks={() => setThanksOpen(true)} /> : null}
     </View>
   );
@@ -211,5 +248,11 @@ const st = StyleSheet.create({
   screen: { flexGrow: 1, paddingHorizontal: 14, paddingTop: 12, paddingBottom: 12 },
   tabs: { flexDirection: 'row', borderTopWidth: StyleSheet.hairlineWidth, borderColor: C.vellum3, backgroundColor: C.deep, paddingTop: 10 },
   tab: { flex: 1, alignItems: 'center', gap: 3, paddingBottom: 4 },
+  offerText: { fontFamily: F.body, fontSize: 15.5, lineHeight: 24, color: C.ink },
+  offerFine: { fontFamily: F.bodyItalic, fontSize: 13, color: C.inkSoft, marginTop: 10 },
+  offerYes: { backgroundColor: C.ink, borderRadius: 999, paddingVertical: 14, alignItems: 'center', marginTop: 18 },
+  offerYesText: { fontFamily: F.sc, fontSize: 14, color: C.deep },
+  offerNo: { paddingVertical: 12, alignItems: 'center', marginTop: 4 },
+  offerNoText: { fontFamily: F.sc, fontSize: 13, color: C.inkSoft },
   tabText: { fontFamily: F.sc, fontSize: 9.5, letterSpacing: 1.1, color: C.inkFaint },
 });

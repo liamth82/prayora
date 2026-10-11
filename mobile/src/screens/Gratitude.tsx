@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { KeyboardAvoidingView, Modal, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import { unlock } from '../lock';
 import * as Haptics from 'expo-haptics';
 import { F } from '../theme';
 import PrayerSession from './PrayerSession';
@@ -48,7 +49,7 @@ export default function Gratitude({ visible, onClose }: { visible: boolean; onCl
               <Text style={st.cite}>1 THESSALONIANS 5:18</Text>
               <Text style={st.text}>When something good happens, large or small, stop and give thanks. Ora will remember it for you.</Text>
               <Pressable onPress={() => setStep('give')} style={st.primary}><Text style={st.primaryText}>Give thanks now</Text></Pressable>
-              <Pressable onPress={() => setStep('journal')} style={st.secondary}><Text style={st.secondaryText}>Your gratitude{log.length ? ` · ${log.length}` : ''}</Text></Pressable>
+              <Pressable onPress={async () => { if (await unlock('your gratitude')) setStep('journal'); }} style={st.secondary}><Text style={st.secondaryText}>Your gratitude{log.length ? ` · ${log.length}` : ''}</Text></Pressable>
               <Text style={st.fine}>Kept only on this phone.</Text>
             </View>
           ) : null}
@@ -77,7 +78,7 @@ export default function Gratitude({ visible, onClose }: { visible: boolean; onCl
             <View style={{ gap: 14, alignItems: 'center', paddingTop: 40 }}>
               <Text style={[st.title, { textAlign: 'center' }]}>Remembered</Text>
               <Text style={[st.text, { textAlign: 'center' }]}>{week === 1 ? 'Your first thanksgiving this week.' : `${week} thanksgivings this week.`} Look back on them when the days are hard.</Text>
-              <Pressable onPress={() => setStep('journal')} style={[st.secondary, { alignSelf: 'stretch' }]}><Text style={st.secondaryText}>See your gratitude</Text></Pressable>
+              <Pressable onPress={async () => { if (await unlock('your gratitude')) setStep('journal'); }} style={[st.secondary, { alignSelf: 'stretch' }]}><Text style={st.secondaryText}>See your gratitude</Text></Pressable>
               <Pressable onPress={onClose} style={{ padding: 10 }}><Text style={st.link}>Return to Ora</Text></Pressable>
             </View>
           ) : null}

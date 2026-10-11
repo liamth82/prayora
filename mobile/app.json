@@ -6,7 +6,7 @@
     "version": "0.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
     "backgroundColor": "#17141B",
     "runtimeVersion": {
       "policy": "sdkVersion"
@@ -21,7 +21,7 @@
     "android": {
       "package": "co.prayora.ora",
       "adaptiveIcon": {
-        "backgroundColor": "#2C1810",
+        "backgroundColor": "#17141B",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
@@ -40,6 +40,23 @@
           "imageWidth": 180,
           "resizeMode": "contain",
           "backgroundColor": "#17141B"
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/android-icon-monochrome.png",
+          "color": "#C4A870",
+          "sounds": [
+            "./assets/sounds/bell.wav",
+            "./assets/sounds/angelus.wav"
+          ]
+        }
+      ],
+      [
+        "expo-local-authentication",
+        {
+          "faceIDPermission": "Ora uses Face ID to keep your private reflections private."
         }
       ]
     ],

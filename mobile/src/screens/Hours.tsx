@@ -4,7 +4,8 @@ import { currentHour, GLORIA, HOURS } from '../content';
 import { load, save, todayKey } from '../storage';
 import { C, F } from '../theme';
 import { Panel, Sheet, Small, Sub, Title } from '../components/panels';
-import PrayerSession, { PrayerLine, toLines } from './PrayerSession';
+import PrayerSession from './PrayerSession';
+import { hourLines } from '../prayers';
 import Reader, { ReaderChapter } from './Reader';
 import { SacredSymbol, SYMBOLS } from './Fast';
 import type { Hour } from '../content';
@@ -25,16 +26,6 @@ export default function Hours() {
     const next = done.includes(id) ? done : [...done, id];
     setDone(next); save(key, next);
   };
-  const linesFor = (x: Hour): PrayerLine[] => [
-    { text: 'O God, come to my assistance.', secs: 5, label: 'Opening' },
-    { text: 'O Lord, make haste to help me.', secs: 5 },
-    ...toLines(GLORIA),
-    ...toLines(x.psalm[1], x.psalm[0]),
-    ...(x.cant ? toLines(x.cant[1], x.cant[0]) : []),
-    ...toLines(GLORIA),
-    { text: 'Let us bless the Lord.', secs: 4.5, label: 'Conclusion' },
-    { text: 'Thanks be to God.', secs: 5 },
-  ];
   const chapterFor = (x: Hour): ReaderChapter => ({
     key: 'hour:' + x.id, heading: 'The Hours', title: x.name, section: x.sub,
     units: [
@@ -87,7 +78,7 @@ export default function Hours() {
       </Sheet>
 
       {praying ? (
-        <PrayerSession visible title={praying.name} subtitle={praying.sub} lines={linesFor(praying)}
+        <PrayerSession visible title={praying.name} subtitle={praying.sub} lines={hourLines(praying)}
           onFinish={() => markDone(praying.id)} onClose={() => setPraying(null)} />
       ) : null}
       {reading ? (

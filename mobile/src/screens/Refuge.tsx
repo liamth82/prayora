@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Modal, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import { unlock } from '../lock';
 import * as Haptics from 'expo-haptics';
 import { F } from '../theme';
 import PrayerSession from './PrayerSession';
@@ -55,7 +56,7 @@ export default function Refuge({ visible, onClose }: { visible: boolean; onClose
               <Text style={st.cite}>PSALM 45:2</Text>
               <Text style={st.text}>If you are being tempted, you did the right thing by coming here. You won't be asked what it is. Take five minutes with God, and let it pass.</Text>
               <Pressable onPress={begin} style={st.primary} accessibilityRole="button"><Text style={st.primaryText}>I am tempted now</Text></Pressable>
-              <Pressable onPress={() => setStep('record')} style={st.secondary}><Text style={st.secondaryText}>Your record</Text></Pressable>
+              <Pressable onPress={async () => { if (await unlock('your record')) setStep('record'); }} style={st.secondary}><Text style={st.secondaryText}>Your record</Text></Pressable>
               <Text style={st.fine}>Everything here is kept only on this phone.</Text>
             </View>
           ) : null}
