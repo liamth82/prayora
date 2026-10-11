@@ -187,14 +187,15 @@ function Main() {
       </View>
 
       <View style={{ flex: 1, paddingBottom: kb }}>
-        <ScrollView ref={scroll} contentContainerStyle={st.screen} keyboardShouldPersistTaps="handled" bounces={false} showsVerticalScrollIndicator={false} scrollEnabled={tab !== 'ask'}>
+        {/* Ask scrolls its own conversation, so it needs a bounded height rather than sitting inside a scroll view. */}
+        {tab === 'ask' ? <View style={[st.screen, { flex: 1 }]}><Ask /></View> : null}
+        {tab !== 'ask' ? <ScrollView ref={scroll} contentContainerStyle={st.screen} keyboardShouldPersistTaps="handled" bounces={false} showsVerticalScrollIndicator={false}>
           {tab === 'today' && <Today openHours={() => choose('hours')} openSaints={() => choose('saints')} />}
           {tab === 'scripture' && <Scripture />}
           {tab === 'hours' && <Hours />}
           {tab === 'saints' && <Saints />}
-          {tab === 'ask' && <Ask />}
           {tab === 'fast' && <Fast minutes={Math.floor(secs / 60)} prayerMinutes={Math.floor(prayerSecs / 60)} lectioMinutes={Math.floor(lectioSecs / 60)} onStart={startFast} />}
-        </ScrollView>
+        </ScrollView> : null}
       </View>
 
       <View style={[st.tabs, { paddingBottom: Math.max(insets.bottom, 6) }, kb > 0 && { display: 'none' }]}>
