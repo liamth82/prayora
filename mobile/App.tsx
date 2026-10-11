@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { AppState, KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { AppState, Keyboard, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Updates from 'expo-updates';
@@ -60,6 +60,20 @@ function Main() {
   const [refugeOpen, setRefugeOpen] = useState(false);
   const [thanksOpen, setThanksOpen] = useState(false);
   const [ringing, setRinging] = useState<string | null>(null);
+  // The keyboard: lift the screen above it ourselves, because with edge-to-edge Android does not resize the window.
+  const [kb, setKb] = useState(0);
+  const rootRef = useRef<View>(null);
+  useEffect(() => {
+    const show = Keyboard.addListener(Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow', (e) => {
+      const top = e.endCoordinates.screenY;
+      const fallback = e.endCoordinates.height;
+      if (!rootRef.current || !top) { setKb(fallback); return; }
+      // How much of our screen the keyboard covers: the bottom of our view, less the top of the keyboard.
+      rootRef.current.measureInWindow((_x, y, _w, h) => setKb(Math.max(0, Math.min(fallback + 80, y + h - top))));
+    });
+    const hide = Keyboard.addListener(Platform.OS === 'ios' ? 'keyboardWillHide' : 'keyboardDidHide', () => setKb(0));
+    return () => { show.remove(); hide.remove(); };
+  }, []);
   const [offerBells, setOfferBells] = useState(false);
   const [lectioSecs, setLectioSecs] = useState(0);
   const prayerOverlayRef = useRef(false);
@@ -150,7 +164,7 @@ function Main() {
   const activeMode = fast ? MODES.find((m) => m.id === fast.id) : null;
 
   return (
-    <View style={[st.root, { paddingTop: insets.top }]}>
+    <View style={[st.root, { paddingTop: insets.top }]} ref={rootRef}>
       <StatusBar style="light" />
       <View style={st.header}>
         <View style={st.headTop}>
@@ -172,7 +186,7 @@ function Main() {
         </View>
       </View>
 
-      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+      <View style={{ flex: 1, paddingBottom: kb }}>
         <ScrollView ref={scroll} contentContainerStyle={st.screen} keyboardShouldPersistTaps="handled" bounces={false} showsVerticalScrollIndicator={false} scrollEnabled={tab !== 'ask'}>
           {tab === 'today' && <Today openHours={() => choose('hours')} openSaints={() => choose('saints')} />}
           {tab === 'scripture' && <Scripture />}
@@ -181,9 +195,9 @@ function Main() {
           {tab === 'ask' && <Ask />}
           {tab === 'fast' && <Fast minutes={Math.floor(secs / 60)} prayerMinutes={Math.floor(prayerSecs / 60)} lectioMinutes={Math.floor(lectioSecs / 60)} onStart={startFast} />}
         </ScrollView>
-      </KeyboardAvoidingView>
+      </View>
 
-      <View style={[st.tabs, { paddingBottom: Math.max(insets.bottom, 6) }]}>
+      <View style={[st.tabs, { paddingBottom: Math.max(insets.bottom, 6) }, kb > 0 && { display: 'none' }]}>
         {TABS.map(([id, label]) => {
           const on = id === tab;
           return (

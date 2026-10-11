@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { ActivityIndicator, Keyboard, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { C, F } from '../theme';
 import { useKeepable } from '../keep';
 import { useSettings } from '../settings';
@@ -32,6 +32,10 @@ export default function Ask() {
   const [saintSource, setSaintSource] = useState<Source | null>(null);
   const scroll = useRef<ScrollView>(null);
 
+  useEffect(() => {
+    const sub = Keyboard.addListener('keyboardDidShow', () => setTimeout(() => scroll.current?.scrollToEnd({ animated: true }), 60));
+    return () => sub.remove();
+  }, []);
   useEffect(() => {
     const d = new Date();
     getDay(form, isoDate(d)).then((day) => {
