@@ -7,8 +7,9 @@ KEYWORDS_OLD = ["devout life", "little flowers", "unknowing", "spiritual combat"
             "ascent of mount carmel", "story of a soul", "abandonment", "rule of", "patrick", "desert", "fathers",
             "presence of god", "way of perfection", "love of god", "francis of assisi", "scupoli", "julian of norwich",
             "revelations of divine love"]
-KEYWORDS = ["summa theologica", "catechism", "city of god", "apostolic fathers", "didache", "council of trent", "baltimore", "chrysostom", "homilies", "aquinas", "augustine", "cyprian", "ambrose", "gregory the great", "athanasius", "francis de sales", "liguori", "catholic doctrine", "christian doctrine"]
-IDS = {}
+KEYWORDS_DONE = ["summa theologica", "catechism", "city of god", "apostolic fathers", "didache", "council of trent", "baltimore", "chrysostom", "homilies", "aquinas", "augustine", "cyprian", "ambrose", "gregory the great", "athanasius", "francis de sales", "liguori", "catholic doctrine", "christian doctrine"]
+KEYWORDS = []
+IDS = {"baltimore2": 14552, "baltimore_explained": 14554, "summa1": 17611, "summa12": 17897, "summa22": 18755, "summa3": 19950, "cityofgod1": 45304, "cityofgod2": 45305, "apostolic": 77576}
 ARCHIVE = {}
 
 def fetch(url, timeout=120):
@@ -26,9 +27,9 @@ try:
                 found.setdefault(k, []).append({"id": row["Text#"], "title": row["Title"][:120], "authors": row.get("Authors", "")[:160]})
 except Exception as e:
     print("catalogue failed", e)
-json.dump(found, open(os.path.join(OUT, "catalog4.json"), "w"), indent=1, ensure_ascii=False)
+
 # Schaff's Fathers at CCEL: try the plain-text URL patterns and keep whichever answers.
-CCEL = ["anf01", "npnf102", "npnf110"]
+CCEL = []
 probe = {}
 for vol in CCEL:
     for url in (f"https://ccel.org/ccel/s/schaff/{vol}/cache/{vol}.txt", f"https://www.ccel.org/ccel/s/schaff/{vol}/cache/{vol}.txt",
@@ -40,7 +41,7 @@ for vol in CCEL:
             probe.setdefault(vol + "_bad", []).append([url, len(data), data[:80].decode("utf-8", "replace")])
         except Exception as e:
             probe.setdefault(vol + "_err", []).append([url, str(e)])
-json.dump(probe, open(os.path.join(OUT, "ccel_probe.json"), "w"), indent=1)
+
 for key, gid in IDS.items():
     for url in (f"https://www.gutenberg.org/cache/epub/{gid}/pg{gid}.txt", f"https://www.gutenberg.org/files/{gid}/{gid}-0.txt"):
         try:
