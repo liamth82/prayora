@@ -1,94 +1,172 @@
-import React, { useRef, useState } from 'react';
-import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
-import { ANSWERS } from '../content';
+import React, { useEffect, useRef, useState } from 'react';
+import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { C, F } from '../theme';
-import { Button, Eyebrow, H2, Lede, Proto } from '../components/ui';
+import { useKeepable } from '../keep';
+import { useSettings } from '../settings';
+import { BASE, getDay, isoDate } from '../today';
+import { Panel, Sheet, Small, Sub, Title } from '../components/panels';
+import { chapterFor } from '../chapters';
+import Reader, { ReaderChapter } from './Reader';
 
-type Msg = { q: string; a?: string; c?: string };
+type Source = { n: number; kind: 'bible' | 'library' | 'saint'; book: string; chapter: number; ref: string; text: string };
+type Msg = { role: 'user' | 'assistant'; content: string; sources?: Source[]; error?: boolean };
 
+const STARTERS = [
+  "Reflect with me on today's Gospel",
+  'Is Christ really present in the Eucharist?',
+  'How do I pray when God feels far away?',
+  'What does Scripture say about anxiety?',
+  'Why do Catholics honour Mary?',
+  'How can I resist temptation?',
+];
+
+/** Ask: questions of faith answered only from Ora's library, every source named and one tap away. */
 export default function Ask() {
+  const { form } = useSettings();
+  const kp = useKeepable();
   const [msgs, setMsgs] = useState<Msg[]>([]);
   const [text, setText] = useState('');
-  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [busy, setBusy] = useState(false);
+  const [today, setToday] = useState<{ date: string; title: string; gospel?: string } | null>(null);
+  const [reader, setReader] = useState<ReaderChapter | null>(null);
+  const [saintSource, setSaintSource] = useState<Source | null>(null);
+  const scroll = useRef<ScrollView>(null);
 
-  const ask = (q: string, idx?: number) => {
-    const hit = idx != null ? ANSWERS[idx] : ANSWERS.find((a) => a.k.test(q));
-    setMsgs((m) => [{ q }, ...m]);
-    if (timer.current) clearTimeout(timer.current);
-    timer.current = setTimeout(() => {
-      setMsgs((m) => {
-        const [first, ...rest] = m;
-        return [{
-          ...first,
-          a: hit ? hit.a : 'In the full app this question will be answered from the Catechism, Scripture and the Fathers, with each source cited. This preview has answers for the questions above.',
-          c: hit ? hit.c : 'Preview',
-        }, ...rest];
+  useEffect(() => {
+    const d = new Date();
+    getDay(form, isoDate(d)).then((day) => {
+      if (!day) return;
+      setToday({
+        date: d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }),
+        title: day.title,
+        gospel: day.form === 'OF' ? day.readings.find((r) => r.key === 'gospel')?.ref : undefined,
       });
-    }, 800);
+    });
+  }, [form]);
+
+  const send = async (q: string) => {
+    const question = q.trim();
+    if (!question || busy) return;
+    const history: Msg[] = [...msgs.filter((m) => !m.error), { role: 'user', content: question }];
+    setMsgs([...msgs, { role: 'user', content: question }]);
+    setText(''); setBusy(true);
+    setTimeout(() => scroll.current?.scrollToEnd({ animated: true }), 50);
+    try {
+      const r = await fetch(`${BASE}/api/ask`, {
+        method: 'POST', headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ messages: history.map(({ role, content }) => ({ role, content })), today }),
+      });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok || !j.answer) throw new Error(j.error || 'Ask could not answer just now. Please try again in a moment.');
+      setMsgs((m) => [...m, { role: 'assistant', content: j.answer, sources: j.sources }]);
+    } catch (e: any) {
+      setMsgs((m) => [...m, { role: 'assistant', content: e?.message && !/JSON|token|fetch/i.test(e.message) ? e.message : 'Ask could not answer just now. Check your connection and try again.', error: true }]);
+    } finally {
+      setBusy(false);
+      setTimeout(() => scroll.current?.scrollToEnd({ animated: true }), 80);
+    }
   };
 
-  const submit = () => {
-    const q = text.trim();
-    if (!q) return;
-    ask(q);
-    setText('');
+  const openSource = async (s: Source) => {
+    if (s.kind === 'saint') { setSaintSource(s); return; }
+    const c = await chapterFor(s.kind, s.book, s.chapter);
+    if (c) setReader(c);
   };
 
   return (
-    <View>
-      <Eyebrow>Ask</Eyebrow>
-      <H2>Seek, and you shall find</H2>
-      <Lede>Questions of faith, answered from the Catechism, Scripture and the Fathers, with every source named.</Lede>
-      <View style={st.bar}>
-        <TextInput
-          style={st.input}
-          value={text}
-          onChangeText={setText}
-          placeholder="Ask about the faith…"
-          placeholderTextColor={C.inkFaint}
-          returnKeyType="send"
-          onSubmitEditing={submit}
-        />
-        <Button label="Ask" onPress={submit} />
-      </View>
-      <View style={st.chips}>
-        {ANSWERS.map((a, i) => (
-          <Pressable key={a.q} onPress={() => ask(a.q, i)} style={({ pressed }) => [st.chip, pressed && { backgroundColor: C.vellum2 }]}>
-            <Text style={st.chipText}>{a.q}</Text>
-          </Pressable>
-        ))}
-      </View>
-      <View style={{ gap: 14 }}>
-        {msgs.map((m, i) => (
-          <View key={msgs.length - i} style={{ gap: 10 }}>
-            <View style={st.q}><Text style={st.qText}>{m.q}</Text></View>
-            <View style={st.a}>
-              {m.a ? (
-                <>
-                  <Text style={st.aText}>{m.a}</Text>
-                  <Text style={st.cite}>{m.c}</Text>
-                </>
-              ) : (
-                <Text style={[st.aText, { fontFamily: F.bodyItalic, color: C.inkFaint }]}>Consulting the Catechism…</Text>
-              )}
+    <View style={{ flex: 1, gap: 10 }}>
+      <ScrollView ref={scroll} style={{ flex: 1 }} contentContainerStyle={{ gap: 12, paddingBottom: 6, flexGrow: 1 }} keyboardShouldPersistTaps="handled" showsVerticalScrollIndicator={false}>
+        {!msgs.length ? (
+          <View style={{ flex: 1, gap: 10 }}>
+            <Panel accent style={{ paddingVertical: 20 }}>
+              <Small>Ask</Small>
+              <Title style={{ fontSize: 30, lineHeight: 34 }}>Seek, and you shall find</Title>
+              <Sub>Answers from the Scriptures, the saints and the spiritual classics, with every source named. Tap a source to read it in full.</Sub>
+            </Panel>
+            <View style={st.starters}>
+              {STARTERS.map((s) => (
+                <Pressable key={s} onPress={() => send(s)} style={({ pressed }) => [st.starter, pressed && { backgroundColor: C.vellum3 }]}>
+                  <Text style={st.starterText}>{s}</Text>
+                </Pressable>
+              ))}
             </View>
+            <Text style={st.fine}>Ask is not a priest. For confession, direction or anything weighing heavily on you, please speak to one.</Text>
           </View>
-        ))}
+        ) : (
+          msgs.map((m, i) => m.role === 'user' ? (
+            <View key={i} style={st.q}><Text style={st.qText}>{m.content}</Text></View>
+          ) : (
+            <View key={i} style={st.a}>
+              <Text style={[st.aText, m.error && { color: C.rubric }]} {...(m.error ? {} : kp(m.content.replace(/\s*\[\d+\]/g, ''), 'Ask · Ora'))}>
+                {renderAnswer(m.content)}
+              </Text>
+              {m.sources?.length ? (
+                <View style={{ gap: 6, marginTop: 10 }}>
+                  {m.sources.map((s) => (
+                    <Pressable key={s.n} onPress={() => openSource(s)} style={({ pressed }) => [st.src, pressed && { backgroundColor: C.vellum3 }]}>
+                      <Text style={st.srcN}>{s.n}</Text>
+                      <View style={{ flex: 1 }}>
+                        <Text style={st.srcRef} numberOfLines={1}>{s.ref}</Text>
+                        <Text style={st.srcText} numberOfLines={2}>{s.text.replace(/^\d+\s/, '')}</Text>
+                      </View>
+                      <Text style={st.chev}>›</Text>
+                    </Pressable>
+                  ))}
+                </View>
+              ) : null}
+            </View>
+          ))
+        )}
+        {busy ? <View style={st.thinking}><ActivityIndicator color={C.gold} /><Text style={st.thinkingText}>Searching the Scriptures and the saints…</Text></View> : null}
+      </ScrollView>
+
+      <View style={st.bar}>
+        {msgs.length ? (
+          <Pressable onPress={() => setMsgs([])} hitSlop={8} style={st.newBtn} accessibilityLabel="New conversation"><Text style={st.newText}>New</Text></Pressable>
+        ) : null}
+        <TextInput style={st.input} value={text} onChangeText={setText} placeholder="Ask about the faith…" placeholderTextColor={C.inkFaint}
+          returnKeyType="send" onSubmitEditing={() => send(text)} editable={!busy} multiline={false} maxLength={600} />
+        <Pressable onPress={() => send(text)} disabled={busy || !text.trim()} style={[st.send, (busy || !text.trim()) && { opacity: 0.4 }]} accessibilityLabel="Ask">
+          <Text style={st.sendText}>↑</Text>
+        </Pressable>
       </View>
-      <Proto>Preview: sample answers only. The live version will answer any question, with sources.</Proto>
+
+      {reader ? <Reader chapter={reader} loading={false} onClose={() => setReader(null)} /> : null}
+      <Sheet visible={!!saintSource} onClose={() => setSaintSource(null)} eyebrow="Saints" title={saintSource?.ref.split(' · ')[0]}>
+        <Text style={st.aText}>{saintSource?.text}</Text>
+      </Sheet>
     </View>
   );
 }
 
+/** Answer text with its citation numbers set small and gold. */
+function renderAnswer(t: string) {
+  return t.split(/(\[\d+\])/g).map((part, i) => /^\[\d+\]$/.test(part)
+    ? <Text key={i} style={st.cite}>{part.slice(1, -1)}</Text>
+    : <Text key={i}>{part}</Text>);
+}
+
 const st = StyleSheet.create({
-  bar: { flexDirection: 'row', gap: 8, alignItems: 'center', marginBottom: 12 },
-  input: { flex: 1, borderWidth: 1, borderColor: C.vellum3, backgroundColor: C.paper, borderRadius: 12, paddingHorizontal: 12, paddingVertical: 10, fontFamily: F.body, fontSize: 15, color: C.ink },
-  chips: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginBottom: 18 },
-  chip: { borderWidth: 1, borderColor: C.gold, borderRadius: 999, paddingHorizontal: 11, paddingVertical: 6 },
-  chipText: { fontFamily: F.body, fontSize: 13.5, color: C.ink },
-  q: { alignSelf: 'flex-end', maxWidth: '90%', backgroundColor: C.ink, paddingHorizontal: 13, paddingVertical: 9, borderRadius: 12, borderBottomRightRadius: 2 },
-  qText: { fontFamily: F.body, fontSize: 15, lineHeight: 22, color: C.vellum },
-  a: { alignSelf: 'flex-start', maxWidth: '95%', borderLeftWidth: 2, borderColor: C.gold, paddingLeft: 12 },
-  aText: { fontFamily: F.body, fontSize: 15, lineHeight: 24, color: C.ink },
-  cite: { fontFamily: F.sc, fontSize: 10.5, letterSpacing: 0.8, color: C.rubric, marginTop: 6 },
+  starters: { gap: 8 },
+  starter: { backgroundColor: C.vellum2, borderRadius: 14, paddingVertical: 12, paddingHorizontal: 14 },
+  starterText: { fontFamily: F.body, fontSize: 15, color: C.ink },
+  fine: { fontFamily: F.bodyItalic, fontSize: 12, color: C.inkFaint, textAlign: 'center', marginTop: 'auto', paddingHorizontal: 12 },
+  q: { alignSelf: 'flex-end', maxWidth: '86%', backgroundColor: C.ink, borderRadius: 18, borderBottomRightRadius: 6, paddingHorizontal: 14, paddingVertical: 10 },
+  qText: { fontFamily: F.body, fontSize: 15, lineHeight: 21, color: C.deep },
+  a: { backgroundColor: C.vellum2, borderRadius: 18, borderBottomLeftRadius: 6, padding: 16 },
+  aText: { fontFamily: F.body, fontSize: 16, lineHeight: 25, color: C.ink },
+  cite: { fontFamily: F.sc, fontSize: 10.5, color: C.gold },
+  src: { flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: C.vellum, borderRadius: 12, padding: 10 },
+  srcN: { width: 20, height: 20, borderRadius: 10, overflow: 'hidden', textAlign: 'center', lineHeight: 20, fontFamily: F.sc, fontSize: 11, color: C.deep, backgroundColor: C.gold },
+  srcRef: { fontFamily: F.sc, fontSize: 12, color: C.ink },
+  srcText: { fontFamily: F.bodyItalic, fontSize: 12.5, lineHeight: 17, color: C.inkSoft, marginTop: 1 },
+  chev: { fontFamily: F.display, fontSize: 20, color: C.goldDeep },
+  thinking: { flexDirection: 'row', alignItems: 'center', gap: 10, paddingHorizontal: 6 },
+  thinkingText: { fontFamily: F.bodyItalic, fontSize: 13.5, color: C.inkSoft },
+  bar: { flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: C.vellum2, borderRadius: 999, paddingLeft: 16, paddingRight: 5, paddingVertical: 5 },
+  newBtn: { paddingRight: 4 },
+  newText: { fontFamily: F.sc, fontSize: 12, color: C.gold },
+  input: { flex: 1, fontFamily: F.body, fontSize: 15.5, color: C.ink, paddingVertical: 8 },
+  send: { width: 38, height: 38, borderRadius: 19, backgroundColor: C.ink, alignItems: 'center', justifyContent: 'center' },
+  sendText: { fontSize: 19, color: C.deep, fontWeight: '600', marginTop: -2 },
 });

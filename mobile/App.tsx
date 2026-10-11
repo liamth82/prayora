@@ -148,7 +148,7 @@ function Main() {
       </View>
 
       <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-        <ScrollView ref={scroll} contentContainerStyle={st.screen} keyboardShouldPersistTaps="handled" bounces={false} showsVerticalScrollIndicator={false} >
+        <ScrollView ref={scroll} contentContainerStyle={st.screen} keyboardShouldPersistTaps="handled" bounces={false} showsVerticalScrollIndicator={false} scrollEnabled={tab !== 'ask'}>
           {tab === 'today' && <Today openHours={() => choose('hours')} openSaints={() => choose('saints')} />}
           {tab === 'scripture' && <Scripture />}
           {tab === 'hours' && <Hours />}
