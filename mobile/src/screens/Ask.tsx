@@ -97,7 +97,7 @@ export default function Ask() {
             <View key={i} style={st.q}><Text style={st.qText}>{m.content}</Text></View>
           ) : (
             <View key={i} style={st.a}>
-              <Text style={[st.aText, m.error && { color: C.rubric }]} {...(m.error ? {} : kp(m.content.replace(/\s*\[\d+\]/g, ''), 'Ask · Ora'))}>
+              <Text style={[st.aText, m.error && { color: C.rubric }]} {...(m.error ? {} : kp(m.content.replace(/\s*\[\d+\]/g, '').replace(/\*/g, ''), 'Ask · Ora'))}>
                 {renderAnswer(m.content)}
               </Text>
               {m.sources?.length ? (
@@ -139,11 +139,14 @@ export default function Ask() {
   );
 }
 
-/** Answer text with its citation numbers set small and gold. */
+/** Answer text: citation numbers small and gold, *quotations* in italics, **emphasis** a touch heavier. */
 function renderAnswer(t: string) {
-  return t.split(/(\[\d+\])/g).map((part, i) => /^\[\d+\]$/.test(part)
-    ? <Text key={i} style={st.cite}>{part.slice(1, -1)}</Text>
-    : <Text key={i}>{part}</Text>);
+  return t.split(/(\[\d+\]|\*\*[^*]+\*\*|\*[^*\n]+\*)/g).filter(Boolean).map((part, i) => {
+    if (/^\[\d+\]$/.test(part)) return <Text key={i} style={st.cite}>{part.slice(1, -1)}</Text>;
+    if (/^\*\*.+\*\*$/.test(part)) return <Text key={i} style={{ fontFamily: F.bodyMedium }}>{part.slice(2, -2)}</Text>;
+    if (/^\*.+\*$/.test(part)) return <Text key={i} style={{ fontFamily: F.bodyItalic }}>{part.slice(1, -1)}</Text>;
+    return <Text key={i}>{part}</Text>;
+  });
 }
 
 const st = StyleSheet.create({
