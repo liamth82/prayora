@@ -1,0 +1,24 @@
+# Asks the live /api/ask a question and shows the answer as a notice on the run (for checking Ask).
+name: Ask test
+on:
+  workflow_dispatch:
+    inputs:
+      question:
+        description: Question
+        default: "Is Christ really present in the Eucharist?"
+jobs:
+  ask:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ask
+        env:
+          Q: ${{ inputs.question }}
+        run: |
+          body=$(jq -n --arg q "$Q" '{messages:[{role:"user",content:$q}], today:{date:"today"}}')
+          start=$(date +%s)
+          curl -sS -X POST https://prayora.co/api/ask -H 'content-type: application/json' -d "$body" -o out.json -w "%{http_code}\n" > code.txt
+          secs=$(( $(date +%s) - start ))
+          echo "::notice title=status::$(cat code.txt) in ${secs}s"
+          jq -r '.answer // .error' out.json | tr '\n' ' ' | cut -c1-3500 | sed 's/^/::notice title=answer::/'
+          jq -r '.sources[]? | "\(.n) \(.ref)"' out.json | tr '\n' ';' | sed 's/^/::notice title=sources::/'
+          echo; cat out.json | head -c 4000

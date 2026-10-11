@@ -39,5 +39,10 @@
       "destination": "/app/",
       "permanent": true
     }
-  ]
+  ],
+  "functions": {
+    "api/ask.js": {
+      "maxDuration": 60
+    }
+  }
 }
