@@ -185,6 +185,145 @@ def desert():
     n = 16
     return [{"title": f"Sayings {ROMANS[i // n]}", "paras": say[i:i + n]} for i in range(0, len(say), n)]
 
+
+# ---------------------------------------------------------------- catechisms, Aquinas and the Fathers
+
+def unfoot(p):
+    """Drop footnote markers like [25] and editorial italics underscores."""
+    p = re.sub(r"\[\d+\]", "", p).replace("_", "")
+    return re.sub(r"\s+", " ", p.replace("--", "—")).strip()
+
+def summa(name, part):
+    body = gutenberg_body(name)
+    segs = re.split(r"(?m)^QUESTION (\d+)\s*$", body)
+    chapters = []
+    for k in range(1, len(segs) - 1, 2):
+        qn, seg = int(segs[k]), segs[k + 1]
+        if "ARTICLE [" not in seg:
+            continue
+        L = seg.split("\n")
+        head, i = [], 0
+        while i < len(L) and not L[i].strip(): i += 1
+        while i < len(L) and L[i].strip(): head.append(L[i].strip()); i += 1
+        title = re.sub(r"\s*\(.*?\)\s*$", "", " ".join(head)).strip(" .")
+        rest = "\n".join(L[i:])
+        arts = re.split(r"(?m)^\w+ ARTICLE \[([^\]]+)\]\s*$", rest)
+        paras = [unfoot(x) for x in paragraphs(arts[0].split("\n")) if x.strip()]
+        for a in range(1, len(arts) - 1, 2):
+            ps = [unfoot(x) for x in paragraphs(arts[a + 1].split("\n"))]
+            ps = [x for x in ps if x]
+            if not ps: continue
+            n = re.search(r"Art\. (\d+)", arts[a])
+            paras.append(f"Article {n.group(1) if n else (a + 1) // 2}. {ps[0]}")
+            paras += ps[1:]
+        chapters.append({"title": f"Question {qn}. {smart_title(title)}", "section": part, "paras": paras})
+    # keep the fullest copy of each question (the contents pages repeat the headings)
+    best = {}
+    for c in chapters:
+        q = c["title"].split(".")[0]
+        if q not in best or len(c["paras"]) > len(best[q]["paras"]): best[q] = c
+    return sorted(best.values(), key=lambda c: int(re.search(r"\d+", c["title"]).group()))
+
+ORD = {w: i + 1 for i, w in enumerate("FIRST SECOND THIRD FOURTH FIFTH SIXTH SEVENTH EIGHTH NINTH TENTH ELEVENTH TWELFTH THIRTEENTH FOURTEENTH FIFTEENTH SIXTEENTH SEVENTEENTH EIGHTEENTH NINETEENTH TWENTIETH".split())}
+
+def baltimore2():
+    body = gutenberg_body("baltimore2.txt")
+    segs = re.split(r"(?m)^LESSON ([A-Z\-]+(?: [A-Z\-]+)?)\s*$", body)
+    chapters = []
+    for k in range(1, len(segs) - 1, 2):
+        L = segs[k + 1].strip("\n").split("\n")
+        title = L[0].strip() if L else ""
+        paras = []
+        for p in paragraphs(L[1:]):
+            m = re.match(r"^(\d+)\. Q\. (.*?) A\. (.*)$", p)
+            if m:
+                paras.append(f"{m.group(1)}. {m.group(2).strip()} — {m.group(3).strip()}")
+            elif paras and len(p) < 400 and not p.isupper():
+                continue  # stray notes between questions
+        if paras:
+            chapters.append({"title": f"Lesson {k // 2 + 1}. {smart_title(title)}", "paras": paras})
+    return chapters
+
+def kinkead():
+    body = gutenberg_body("baltimore_explained.txt")
+    start = body.find("\nLesson 1\n")
+    segs = re.split(r"(?m)^Lesson (\d+)\s*$", body[start:])
+    chapters = []
+    for k in range(1, len(segs) - 1, 2):
+        L = segs[k + 1].strip("\n").split("\n")
+        title = L[0].strip()
+        paras = []
+        for p in paragraphs(L[1:]):
+            p = unfoot(p)
+            m = re.match(r"^\*?(\d+) Q\. (.*?) A\. (.*)$", p)
+            paras.append(f"{m.group(1)}. {m.group(2)} — {m.group(3)}" if m else p)
+        if any(c["title"].startswith(f"Lesson {segs[k]}.") for c in chapters): break  # an index of questions follows the lessons
+        chapters.append({"title": f"Lesson {segs[k]}. {smart_title(title)}", "paras": [x for x in paras if x]})
+    return chapters
+
+def cityofgod():
+    chapters = []
+    for name in ("cityofgod1.txt", "cityofgod2.txt"):
+        body = gutenberg_body(name)
+        books = re.split(r"(?m)^\s+BOOK ([A-Z\-]+)\.\s*$", body)
+        for k in range(1, len(books) - 1, 2):
+            word = books[k]
+            if word not in ORD and not re.match(r"^[A-Z]+-[A-Z]+$", word): continue
+            num = ORD.get(word) or sum(ORD.get(w, 0) for w in word.split("-")) or k
+            text = books[k + 1]
+            parts = re.split(r"\n[ \t]+(\d+)\. _([^_]*?)_[ \t]*\n", "\n" + text)
+            for j in range(1, len(parts) - 2, 3):
+                ps = [unfoot(p) for p in paragraphs(parts[j + 2].split("\n"))]
+                ps = [p for p in ps if p and not re.match(r"^(FOOTNOTES|\[\d+\])", p) and not p.isupper()]
+                if len(ps) < 1: continue
+                chapters.append({"title": f"{parts[j]}. {unfoot(parts[j + 1]).rstrip('.')}", "section": f"Book {num}", "paras": ps})
+    # the contents pages also match: keep the first full chapter of each (book, number)
+    seen, out = set(), []
+    for c in chapters:
+        key = (c["section"], c["title"].split(".")[0])
+        if key in seen or sum(len(p) for p in c["paras"]) < 200: continue
+        seen.add(key); out.append(c)
+    return out
+
+APOSTOLIC = [("THE FIRST EPISTLE OF CLEMENT.", "The First Epistle of Clement"), ("THE EPISTLE OF POLYCARP.", "The Epistle of Polycarp"),
+             ("THE ENCYCLICAL EPISTLE OF THE CHURCH AT SMYRNA", "The Martyrdom of Polycarp"),
+             ("THE EPISTLE OF IGNATIUS TO THE EPHESIANS.", "Ignatius to the Ephesians"), ("THE EPISTLE OF IGNATIUS TO THE MAGNESIANS.", "Ignatius to the Magnesians"),
+             ("THE EPISTLE OF IGNATIUS TO THE TRALLIANS.", "Ignatius to the Trallians"), ("THE EPISTLE OF IGNATIUS TO THE ROMANS.", "Ignatius to the Romans"),
+             ("THE EPISTLE OF IGNATIUS TO THE PHILADELPHIANS.", "Ignatius to the Philadelphians"), ("THE EPISTLE OF IGNATIUS TO THE SMYRNÆANS.", "Ignatius to the Smyrnaeans"),
+             ("THE EPISTLE OF IGNATIUS TO POLYCARP.", "Ignatius to Polycarp"), ("THE EPISTLE TO DIOGNETUS.", "The Epistle to Diognetus")]
+
+def apostolic():
+    body = gutenberg_body("apostolic.txt")
+    heads = [(m.start(), m.group(0).strip()) for m in re.finditer(r"(?m)^ *THE [A-ZÆ ,.’]{10,}$", body)]
+    chapters = []
+    for head, title in APOSTOLIC:
+        hits = [i for i, (pos, h) in enumerate(heads) if h == head]
+        if not hits: print("apostolic: missing", head); continue
+        i = hits[-1]
+        start = heads[i][0]
+        end = heads[i + 1][0] if i + 1 < len(heads) else len(body)
+        text = body[start:end]
+        text = text[text.find("\n") + 1:]
+        # Ignatius survives in a shorter and a longer form; keep the shorter, the genuine one.
+        if "SHORTER." in text:
+            text = re.sub(r"(?s)\n\s*LONGER\.\s*\n.*?(?=\n\s*(?:CHAP\.|SHORTER\.)|\Z)", "\n", text)
+            text = text.replace("SHORTER.", "")
+        fn = re.search(r"(?m)^\s*Footnote \d+:", text)
+        if fn: text = text[:fn.start()]
+        first = re.search(r"(?m)^\s*CHAP\. I\.", text)
+        if first:
+            pre = [p for p in paragraphs(text[:first.start()].split("\n")) if p.startswith("_")]
+            text = "\n\n".join(pre) + "\n\n" + text[first.start():]
+        ps = []
+        for p in paragraphs(text.split("\n")):
+            if re.match(r"^\s*(CHAP\.|INTRODUCTORY NOTICE|\[\d+\]|FOOTNOTES)", p) or p.isupper(): continue
+            p = unfoot(p)
+            if p: ps.append(p)
+        if "INTRODUCTORY NOTICE" in body[heads[i - 1][0]:start] if i else False:
+            pass
+        chapters.append({"title": title, "paras": ps})
+    return chapters
+
 BOOKS = [
     dict(id="imitation", title="The Imitation of Christ", author="Thomas à Kempis", translator="William Benham", year="c. 1418",
          blurb="After the Bible, perhaps the most widely read book in Christian history. Four short books on the inner life, humility and the love of Jesus.",
@@ -207,6 +346,30 @@ BOOKS = [
     dict(id="confessions", title="The Confessions", author="Saint Augustine of Hippo", translator="E. B. Pusey", year="397–400",
          blurb="Augustine's prayer to God about his restless youth, his long search and his conversion. 'Our heart is restless, until it repose in Thee.'",
          source="Project Gutenberg #3296", parse=confessions),
+    dict(id="baltimore", title="The Baltimore Catechism", author="The Third Plenary Council of Baltimore", translator="", year="1885",
+         blurb="The catechism that taught generations of English-speaking Catholics: 421 short questions and answers on the Creed, the Sacraments and the Commandments (No. 2).",
+         source="Project Gutenberg #14552", parse=baltimore2, raw="baltimore2.txt"),
+    dict(id="kinkead", title="An Explanation of the Baltimore Catechism", author="Rev. Thomas L. Kinkead", translator="", year="1891",
+         blurb="Each question of the Baltimore Catechism, explained simply and warmly for teachers and families, with stories and examples.",
+         source="Project Gutenberg #14554", parse=kinkead, raw="baltimore_explained.txt"),
+    dict(id="summa1", title="Summa Theologica: Part I", author="Saint Thomas Aquinas", translator="Fathers of the English Dominican Province", year="1265–1274",
+         blurb="God, the Trinity, creation, the angels and man: the first part of the greatest work of Catholic theology, set out as questions and answers.",
+         source="Project Gutenberg #17611", parse=lambda: summa("summa1.txt", "Part I"), raw="summa1.txt"),
+    dict(id="summa12", title="Summa Theologica: Part I-II", author="Saint Thomas Aquinas", translator="Fathers of the English Dominican Province", year="1265–1274",
+         blurb="Happiness, human acts, the passions, habits, virtue and vice, law and grace.",
+         source="Project Gutenberg #17897", parse=lambda: summa("summa12.txt", "Part I-II"), raw="summa12.txt"),
+    dict(id="summa22", title="Summa Theologica: Part II-II", author="Saint Thomas Aquinas", translator="Fathers of the English Dominican Province", year="1265–1274",
+         blurb="Faith, hope and charity, and the cardinal virtues of prudence, justice, fortitude and temperance, one by one.",
+         source="Project Gutenberg #18755", parse=lambda: summa("summa22.txt", "Part II-II"), raw="summa22.txt"),
+    dict(id="summa3", title="Summa Theologica: Part III", author="Saint Thomas Aquinas", translator="Fathers of the English Dominican Province", year="1265–1274",
+         blurb="Christ, Our Lady and the Sacraments: Baptism, Confirmation, the Eucharist and Penance.",
+         source="Project Gutenberg #19950", parse=lambda: summa("summa3.txt", "Part III"), raw="summa3.txt"),
+    dict(id="apostolic", title="The Apostolic Fathers", author="Clement, Ignatius, Polycarp and others", translator="Roberts, Donaldson and Crombie", year="c. 96–150",
+         blurb="Letters from the generation after the Apostles: Clement of Rome, the seven letters of Ignatius of Antioch on his way to martyrdom, Polycarp, and the Epistle to Diognetus.",
+         source="Ante-Nicene Christian Library, vol. I (1870), Project Gutenberg #77576", parse=apostolic, raw="apostolic.txt"),
+    dict(id="cityofgod", title="The City of God", author="Saint Augustine of Hippo", translator="Marcus Dods", year="413–426",
+         blurb="Augustine's great answer to the fall of Rome: two cities, built by two loves, the love of self and the love of God.",
+         source="Project Gutenberg #45304–45305", parse=cityofgod, raw="cityofgod1.txt"),
 ]
 
 def main():

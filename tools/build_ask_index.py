@@ -45,15 +45,38 @@ def main():
                     ref = f"{name} {first}" + (f"–{last}" if last != first else "")
                 docs.append(["bible", meta["id"], ci, ref, " ".join(f"{n} {t}" for n, t in group)])
 
+    PART = {"summa1": "I", "summa12": "I-II", "summa22": "II-II", "summa3": "III"}
     for meta in json.load(open(os.path.join(ROOT, "library", "index.json"))):
         t = json.load(open(os.path.join(ROOT, "library", meta["id"] + ".json")))
         books[meta["id"]] = f"{t['title']}, {t['author']}"
         for ci, ch in enumerate(t["chapters"]):
+            if meta["id"] in PART:
+                # Aquinas: index his own answer and replies, never the objections he goes on to refute.
+                q = re.match(r"Question (\d+)", ch["title"])
+                art, whether = 0, ""
+                for para in ch["paras"]:
+                    m = re.match(r"^Article (\d+)\. (.*)$", para)
+                    if m:
+                        art, whether = int(m.group(1)), m.group(2); continue
+                    if not art or re.match(r"^(Objection \d|Obj\. \d)", para):
+                        continue
+                    ref = f"Summa Theologica {PART[meta['id']]}, Q. {q.group(1) if q else ci + 1}, Art. {art} · {whether}"[:160]
+                    for piece in split_long(para):
+                        docs.append(["library", meta["id"], ci, ref, piece])
+                continue
             for para in ch["paras"]:
+                if meta["id"] in ("baltimore", "kinkead"):
+                    m = re.match(r"^(\d+)\. ", para)
+                    ref = f"{t['title']} · {ch['title']}" + (f" · Q. {m.group(1)}" if m else "")
+                    if meta["id"] == "kinkead" and m:
+                        continue  # the questions themselves are indexed once, from the Catechism
+                    if len(para) >= 30:
+                        docs.append(["library", meta["id"], ci, ref[:160], para[:900]])
+                    continue
                 for piece in split_long(para):
                     if len(piece) < 60:
                         continue
-                    docs.append(["library", meta["id"], ci, f"{t['title']} · {ch['title']}"[:140], piece])
+                    docs.append(["library", meta["id"], ci, f"{t['title']} · {ch['title']}"[:160], piece])
 
     for path in sorted(glob.glob(os.path.join(ROOT, "saints", "[0-9][0-9]-[0-9][0-9].json"))):
         s = json.load(open(path))

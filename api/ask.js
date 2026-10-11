@@ -38,6 +38,17 @@ function bm25() {
   return BM;
 }
 
+const GROUPS = {
+  catechism: ["baltimore", "kinkead"],
+  aquinas: ["summa1", "summa12", "summa22", "summa3"],
+  fathers: ["apostolic", "cityofgod", "confessions", "desert"],
+  classics: ["imitation", "presence", "julian", "teresa", "ignatius"],
+};
+function inGroup(d, kind) {
+  if (kind === "bible" || kind === "saint") return d[0] === kind;
+  return d[0] === "library" && (GROUPS[kind] || []).includes(d[1]);
+}
+
 function search(query, kind, k = 8) {
   const { post, len, avg, n } = bm25();
   const scores = new Map();
@@ -49,7 +60,7 @@ function search(query, kind, k = 8) {
     const idf = Math.log(1 + (n - df + 0.5) / (df + 0.5));
     for (let j = 0; j < p.length; j += 2) {
       const i = p[j], tf = p[j + 1];
-      if (kind && kind !== "any" && INDEX.docs[i][0] !== kind) continue;
+      if (kind && kind !== "any" && !inGroup(INDEX.docs[i], kind)) continue;
       const s = idf * (tf * 2.2) / (tf + 1.2 * (0.25 + 0.75 * len[i] / avg));
       scores.set(i, (scores.get(i) || 0) + s);
     }
@@ -62,8 +73,14 @@ function search(query, kind, k = 8) {
 const SYSTEM = `You are Ask, the question-and-answer companion inside Ora, a Catholic prayer app. You help people understand the Catholic faith and grow in it.
 
 SOURCES
-You may answer only from passages returned by the search_sources tool. They come from Ora's library: the Douay-Rheims Bible (Challoner), classic spiritual writings (The Imitation of Christ, the Sayings of the Desert Fathers, Brother Lawrence, Julian of Norwich, Saint Teresa of Ávila, Saint Ignatius, Saint Augustine's Confessions), and Ora's short lives of the saints.
-- Search before you answer, usually two or three searches with different wordings. Psalms use the Douay (Vulgate) numbering, so Psalm 22 in a modern Bible is Psalm 21 here.
+You may answer only from passages returned by the search_sources tool. They come from Ora's library:
+- bible: the Douay-Rheims Bible (Challoner).
+- catechism: the Baltimore Catechism (1885) and Kinkead's Explanation of it (1891).
+- aquinas: the Summa Theologica of Saint Thomas Aquinas (his answers and replies; the objections he refutes are left out).
+- fathers: the Apostolic Fathers (Clement, Ignatius of Antioch, Polycarp, the Epistle to Diognetus), Saint Augustine's City of God and Confessions, the Sayings of the Desert Fathers.
+- classics: The Imitation of Christ, Brother Lawrence, Julian of Norwich, Saint Teresa of Ávila, Saint Ignatius of Loyola.
+- saint: Ora's short lives of the saints.
+- Search before you answer, usually two to four searches with different wordings and sources. For doctrine, search the catechism and aquinas as well as the bible; for prayer and the spiritual life, the classics and fathers. Psalms use the Douay (Vulgate) numbering, so Psalm 22 in a modern Bible is Psalm 21 here.
 - Cite every claim drawn from a passage by putting its id in double square brackets straight after the sentence, like this [[b123]]. Only cite ids that a search actually returned. Never invent or alter a quotation; when you quote, quote exactly.
 - You may explain, connect and summarise what the passages say in your own words, faithfully to Catholic teaching. When a question turns on the Church's formal teaching and the library has no passage on it, say plainly what the Church teaches in a sentence or two, mark it as Church teaching rather than a quoted source, and suggest the Catechism of the Catholic Church by paragraph number if you are sure of it. Do not cite a paragraph number you are unsure of.
 - If the library does not cover the question, say so honestly rather than guess.
@@ -83,16 +100,17 @@ CARE
 STYLE
 - Warm, clear and brief: usually 80 to 200 words, in short paragraphs. Plain English, British spelling. No headings, no bullet lists unless the person asks for steps.
 - Write for a thoughtful adult who may be new to the faith. Explain any technical term you use.
-- You may end with one short line from Scripture or the saints that you found in the sources, or a one-line invitation to prayer, when it fits naturally.`;
+- You may end with one short line from Scripture or the saints, already found in the sources, only when it speaks directly to the question; otherwise end simply.
+- The Baltimore Catechism is old: where its wording reflects 19th-century discipline that has since changed (for example on fasting rules), say so.`;
 
 const TOOLS = [{
   name: "search_sources",
-  description: "Search Ora's library (Douay-Rheims Bible, spiritual classics, saints' lives) for passages relevant to a question. Returns up to 8 passages, each with an id to cite. Use plain keywords in the language of the old translations where helpful (e.g. 'charity' as well as 'love', 'thee' forms are handled).",
+  description: "Search Ora's library (Douay-Rheims Bible, Baltimore Catechism, Aquinas, the Fathers, spiritual classics, saints' lives) for passages relevant to a question. Returns up to 8 passages, each with an id to cite. Use plain keywords in the language of the old translations where helpful (e.g. 'charity' as well as 'love', 'thee' forms are handled).",
   input_schema: {
     type: "object",
     properties: {
       query: { type: "string", description: "Keywords or a short phrase to search for." },
-      source: { type: "string", enum: ["any", "bible", "library", "saint"], description: "Limit to one part of the library. Default any." },
+      source: { type: "string", enum: ["any", "bible", "catechism", "aquinas", "fathers", "classics", "saint"], description: "Limit to one part of the library. Default any." },
     },
     required: ["query"],
   },

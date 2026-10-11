@@ -61,5 +61,77 @@
   "year": "397–400",
   "blurb": "Augustine's prayer to God about his restless youth, his long search and his conversion. 'Our heart is restless, until it repose in Thee.'",
   "chapters": 13
+ },
+ {
+  "id": "baltimore",
+  "title": "The Baltimore Catechism",
+  "author": "The Third Plenary Council of Baltimore",
+  "translator": "",
+  "year": "1885",
+  "blurb": "The catechism that taught generations of English-speaking Catholics: 421 short questions and answers on the Creed, the Sacraments and the Commandments (No. 2).",
+  "chapters": 37
+ },
+ {
+  "id": "kinkead",
+  "title": "An Explanation of the Baltimore Catechism",
+  "author": "Rev. Thomas L. Kinkead",
+  "translator": "",
+  "year": "1891",
+  "blurb": "Each question of the Baltimore Catechism, explained simply and warmly for teachers and families, with stories and examples.",
+  "chapters": 37
+ },
+ {
+  "id": "summa1",
+  "title": "Summa Theologica: Part I",
+  "author": "Saint Thomas Aquinas",
+  "translator": "Fathers of the English Dominican Province",
+  "year": "1265–1274",
+  "blurb": "God, the Trinity, creation, the angels and man: the first part of the greatest work of Catholic theology, set out as questions and answers.",
+  "chapters": 116
+ },
+ {
+  "id": "summa12",
+  "title": "Summa Theologica: Part I-II",
+  "author": "Saint Thomas Aquinas",
+  "translator": "Fathers of the English Dominican Province",
+  "year": "1265–1274",
+  "blurb": "Happiness, human acts, the passions, habits, virtue and vice, law and grace.",
+  "chapters": 113
+ },
+ {
+  "id": "summa22",
+  "title": "Summa Theologica: Part II-II",
+  "author": "Saint Thomas Aquinas",
+  "translator": "Fathers of the English Dominican Province",
+  "year": "1265–1274",
+  "blurb": "Faith, hope and charity, and the cardinal virtues of prudence, justice, fortitude and temperance, one by one.",
+  "chapters": 188
+ },
+ {
+  "id": "summa3",
+  "title": "Summa Theologica: Part III",
+  "author": "Saint Thomas Aquinas",
+  "translator": "Fathers of the English Dominican Province",
+  "year": "1265–1274",
+  "blurb": "Christ, Our Lady and the Sacraments: Baptism, Confirmation, the Eucharist and Penance.",
+  "chapters": 90
+ },
+ {
+  "id": "apostolic",
+  "title": "The Apostolic Fathers",
+  "author": "Clement, Ignatius, Polycarp and others",
+  "translator": "Roberts, Donaldson and Crombie",
+  "year": "c. 96–150",
+  "blurb": "Letters from the generation after the Apostles: Clement of Rome, the seven letters of Ignatius of Antioch on his way to martyrdom, Polycarp, and the Epistle to Diognetus.",
+  "chapters": 11
+ },
+ {
+  "id": "cityofgod",
+  "title": "The City of God",
+  "author": "Saint Augustine of Hippo",
+  "translator": "Marcus Dods",
+  "year": "413–426",
+  "blurb": "Augustine's great answer to the fall of Rome: two cities, built by two loves, the love of self and the love of God.",
+  "chapters": 496
  }
 ]
