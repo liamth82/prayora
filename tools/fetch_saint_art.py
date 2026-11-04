@@ -10,6 +10,8 @@ def main(out):
     os.makedirs(os.path.join(out, "img"), exist_ok=True)
     path = os.path.join(out, "images.json")
     images = json.load(open(path)) if os.path.exists(path) else {}
+    xp = os.path.join(os.path.dirname(__file__), "saint_art_exclude.txt")
+    exclude = {l.strip() for l in open(xp) if l.strip() and not l.startswith("#")} if os.path.exists(xp) else set()
     for md, s in SAINTS.items():
         q = s.get("query")
         if not q or md in images: continue  # keep paintings already chosen
@@ -19,6 +21,7 @@ def main(out):
         for p in pages:
             ii = (p.get("imageinfo") or [{}])[0]; md_ = ii.get("extmetadata", {})
             lic = (md_.get("LicenseShortName", {}).get("value", "") + " " + md_.get("License", {}).get("value", "")).lower()
+            if p["title"].replace("File:", "") in exclude: continue
             if ii.get("mime") != "image/jpeg" or not ("public domain" in lic or "pd" in lic or "cc0" in lic) or ii.get("width", 0) < 500:
                 continue
             data = urllib.request.urlopen(urllib.request.Request(ii["thumburl"], headers={"User-Agent": UA}), timeout=60).read()

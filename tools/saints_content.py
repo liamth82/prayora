@@ -228,3 +228,22 @@ for _part in (_A, _B, _C, _D, _E):
         assert _md not in SAINTS, "duplicate date " + _md
         SAINTS[_md] = _x
 SAINTS = dict(sorted(SAINTS.items()))
+
+# Sharper painting searches after the first fetch (None: no public-domain painting exists, show none).
+QUERY_FIX = {
+ "01-02": "Saint Basil the Great icon", "01-13": None, "01-17": "Saint Anthony Abbot painting Zurbarán OR Velázquez",
+ "01-24": "Francis de Sales portrait painting 17th century", "01-27": "Angela Merici painting", "01-31": None,
+ "02-23": "Saint Polycarp martyrdom painting", "03-18": "Cyril of Jerusalem icon",
+ "04-07": "Jean-Baptiste de La Salle portrait Léger", "04-13": "Pope Martin I", "04-28": "Louis-Marie Grignion de Montfort portrait",
+ "05-13": None, "05-18": None, "05-25": "Venerable Bede painting", "05-27": "Augustine of Canterbury preaching Ethelbert",
+ "06-05": "Saint Boniface painting", "06-13": "Saint Anthony of Padua with the Christ Child Murillo", "06-17": None,
+ "06-26": "Saints John and Paul martyrs painting", "06-28": "Irenaeus of Lyon icon", "07-05": None, "07-09": None,
+ "07-13": "Saint Henry II Holy Roman Emperor painting", "07-30": "Peter Chrysologus", "08-01": "Alphonsus Liguori portrait painting",
+ "08-04": None, "09-03": "Saint Gregory the Great Zurbarán", "09-08": "Birth of the Virgin Murillo",
+ "09-17": "Robert Bellarmine portrait", "09-18": "Saint Joseph of Cupertino flight painting", "09-23": None,
+ "10-08": "Saint Bridget of Sweden painting", "11-02": "Souls in Purgatory painting", "11-03": "Martin de Porres painting",
+ "11-11": "Saint Martin and the Beggar El Greco", "12-14": "Saint John of the Cross Zurbarán",
+}
+for _md, _q in QUERY_FIX.items():
+    if _q: SAINTS[_md]["query"] = _q
+    else: SAINTS[_md].pop("query", None)
