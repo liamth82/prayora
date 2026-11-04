@@ -1,6 +1,9 @@
 import { GLORIA, HOURS } from './content';
 import type { Hour } from './content';
 import { PrayerLine, toLines } from './screens/PrayerSession';
+import { complineParts } from './compline';
+import { season } from './liturgy';
+import { COMPLINE_VOICE } from './voice';
 
 export function hourLines(x: Hour): PrayerLine[] {
   return [
@@ -13,6 +16,17 @@ export function hourLines(x: Hour): PrayerLine[] {
     { text: 'Let us bless the Lord.', secs: 4.5, label: 'Conclusion' },
     { text: 'Thanks be to God.', secs: 5 },
   ];
+}
+
+/** Everything the prayer session needs for an Hour. Compline is the full night office, with Liam's voice. */
+export type HourSession = { lines: PrayerLine[]; settle?: PrayerLine[]; rest?: PrayerLine[]; voice?: Record<string, number>; church: boolean; intro?: string };
+export function hourSession(x: Hour): HourSession {
+  if (x.id === 'compline') {
+    const c = complineParts(season().name === 'Eastertide');
+    return { lines: c.prayer, settle: c.settle, rest: c.rest, voice: COMPLINE_VOICE, church: true,
+      intro: 'The Church\'s prayer at the end of the day: a short examination, the night psalms, the Nunc dimittis and a hymn to Our Lady. About fifteen minutes. Lay the phone down if you like, and follow the pulse.' };
+  }
+  return { lines: hourLines(x), church: true };
 }
 
 const HAIL_MARY = 'Hail Mary, full of grace, the Lord is with thee. Blessed art thou among women, and blessed is the fruit of thy womb, Jesus. Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen.';
@@ -35,8 +49,8 @@ export const ANGELUS: PrayerLine[] = [
 ];
 
 /** What a bell calls you to: the Angelus, or one of the Hours. */
-export function bellPrayer(id: string): { title: string; subtitle: string; lines: PrayerLine[]; hourId?: string } | null {
-  if (id === 'angelus') return { title: 'The Angelus', subtitle: 'At the sound of the bell', lines: ANGELUS };
+export function bellPrayer(id: string): ({ title: string; subtitle: string; hourId?: string } & HourSession) | null {
+  if (id === 'angelus') return { title: 'The Angelus', subtitle: 'At the sound of the bell', lines: ANGELUS, church: true };
   const h = HOURS.find((x) => x.id === id);
-  return h ? { title: h.name, subtitle: h.sub, lines: hourLines(h), hourId: h.id } : null;
+  return h ? { title: h.name, subtitle: h.sub, hourId: h.id, ...hourSession(h) } : null;
 }

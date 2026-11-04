@@ -216,7 +216,7 @@ function Main() {
       {settingsOpen ? <View style={{ position: 'absolute', top: insets.top, left: 0, right: 0, bottom: 0 }}><Settings onClose={() => setSettingsOpen(false)} /></View> : null}
       {ringing && bellPrayer(ringing) ? (() => {
         const b = bellPrayer(ringing)!;
-        return <PrayerSession visible title={b.title} subtitle={b.subtitle} lines={b.lines}
+        return <PrayerSession visible title={b.title} subtitle={b.subtitle} lines={b.lines} settle={b.settle} rest={b.rest} voice={b.voice} church={b.church} intro={b.intro}
           onFinish={() => { if (b.hourId) { const k = 'prayed:' + todayKey(); load<string[]>(k, []).then((d) => save(k, d.includes(b.hourId!) ? d : [...d, b.hourId!])); } }}
           onClose={() => setRinging(null)} />;
       })() : null}

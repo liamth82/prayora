@@ -58,6 +58,14 @@
         {
           "faceIDPermission": "Ora uses Face ID to keep your private reflections private."
         }
+      ],
+      [
+        "expo-audio",
+        {
+          "microphonePermission": false,
+          "recordAudioAndroid": false,
+          "enableBackgroundPlayback": false
+        }
       ]
     ],
     "extra": {
