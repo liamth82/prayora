@@ -324,6 +324,28 @@ def apostolic():
         chapters.append({"title": title, "paras": ps})
     return chapters
 
+def benedict():
+    """The Rule of Saint Benedict, tr. Boniface Verheyen (d. 1923), CCEL plain text."""
+    L = open(os.path.join(RAW, "benedict_verheyen.txt"), encoding="utf-8", errors="replace").read().replace("\r\n", "\n").split("\n")
+    start = next(i for i, l in enumerate(L) if l.strip() == "PROLOGUE")
+    end = next(i for i, l in enumerate(L) if l.strip() == "Indexes")
+    chapters, cur, i = [], {"section": None, "title": "Prologue", "lines": []}, start + 1
+    while i < end:
+        s = L[i].strip()
+        m = re.match(r"^CHAPTER ([IVXLC]+)$", s)
+        if m:
+            chapters.append(cur)
+            j = i + 1
+            while not L[j].strip(): j += 1
+            title = []
+            while L[j].strip(): title.append(L[j].strip()); j += 1
+            cur = {"section": None, "title": f"{m.group(1)}. " + " ".join(title).rstrip("."), "lines": []}
+            i = j; continue
+        if not s.startswith("____"): cur["lines"].append(L[i])
+        i += 1
+    chapters.append(cur)
+    return [{"section": c["section"], "title": c["title"], "paras": [tidy(p) for p in paragraphs(c["lines"]) if tidy(p)]} for c in chapters]
+
 def devout():
     """Introduction to the Devout Life, CCEL plain text (Rivingtons, Library of Spiritual Works for English Catholics)."""
     L = open(os.path.join(RAW, "devout.txt"), encoding="utf-8", errors="replace").read().replace("\r\n", "\n").split("\n")
@@ -409,6 +431,9 @@ BOOKS = [
     dict(id="devout", title="Introduction to the Devout Life", author="Saint Francis de Sales", translator="Rivingtons edition (1876)", year="1609",
          blurb="Holiness for people with ordinary lives, written by the bishop of Geneva for a young wife at court: prayer, the sacraments, the virtues and the small temptations of every day.",
          source="Library of Spiritual Works for English Catholics, via CCEL", parse=devout, raw="devout.txt"),
+    dict(id="benedict", title="The Rule of Saint Benedict", author="Saint Benedict of Nursia", translator="Boniface Verheyen", year="c. 530",
+         blurb="The little rule for beginners that shaped Western monasticism and much of Europe: prayer and work, obedience, humility, hospitality and stability, in a prologue and seventy-three short chapters.",
+         source="Verheyen translation (Atchison, Kansas), via CCEL", parse=benedict, raw="benedict_verheyen.txt"),
 ]
 
 def main():

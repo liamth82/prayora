@@ -133,5 +133,23 @@
   "year": "413–426",
   "blurb": "Augustine's great answer to the fall of Rome: two cities, built by two loves, the love of self and the love of God.",
   "chapters": 496
+ },
+ {
+  "id": "devout",
+  "title": "Introduction to the Devout Life",
+  "author": "Saint Francis de Sales",
+  "translator": "Rivingtons edition (1876)",
+  "year": "1609",
+  "blurb": "Holiness for people with ordinary lives, written by the bishop of Geneva for a young wife at court: prayer, the sacraments, the virtues and the small temptations of every day.",
+  "chapters": 119
+ },
+ {
+  "id": "benedict",
+  "title": "The Rule of Saint Benedict",
+  "author": "Saint Benedict of Nursia",
+  "translator": "Boniface Verheyen",
+  "year": "c. 530",
+  "blurb": "The little rule for beginners that shaped Western monasticism and much of Europe: prayer and work, obedience, humility, hospitality and stability, in a prologue and seventy-three short chapters.",
+  "chapters": 74
  }
 ]
