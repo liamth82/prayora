@@ -31,7 +31,11 @@ def main():
                 out["prayer"] = c
                 out["prayerSource"] = "Collect of the day, Roman Missal of 1962"
         img = images.get(md)
-        if img:
+        path = os.path.join(ROOT, "saints", md + ".json")
+        prev = json.load(open(path)) if os.path.exists(path) else {}
+        if prev.get("image"):  # keep a painting (and its credit) once it has been published
+            out.update({k: prev[k] for k in ("image", "imageCredit", "imageRatio") if k in prev})
+        elif img:
             out["image"] = img["file"]
             artist = img.get("artist") or ""
             out["imageCredit"] = f"{artist + '. ' if artist else ''}{img['title'].rsplit('.', 1)[0]}. {img.get('license') or 'Public domain'}, via Wikimedia Commons."

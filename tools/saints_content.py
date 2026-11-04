@@ -156,6 +156,7 @@ SAINTS = {
 # 'always' shows the entry whatever the calendar data says (used for national feasts such as Newman in England and Wales).
 SAINTS["10-08"] = dict(name="Saint Bridget of Sweden", dates="1303–1373 · Sweden and Rome", efMatch="Bridget", calendars=["EF"],
   history="A Swedish noblewoman, wife and mother of eight, who after her husband's death founded the Order of the Most Holy Saviour and spent her last twenty-four years in Rome, praying and pleading for the reform of the Church.",
+  meditation="Bridget asked Christ how many blows He had suffered, and spent her life in gratitude for each one. Look at a crucifix today and thank Him for one wound in particular.",
   query="Saint Bridget of Sweden painting")
 
 EXTRA = {
@@ -212,3 +213,18 @@ EXTRA = {
 for _md, _x in EXTRA.items():
     if _md in SAINTS:
         SAINTS[_md].update(_x)
+
+# Fuller November and December entries, and January to September (written 4 November 2026).
+from saints_novdec_extra import EXTRA_NOVDEC
+for _md, _x in EXTRA_NOVDEC.items():
+    SAINTS[_md].update(_x)
+from saints_2027_janfeb import SAINTS_NEW as _A
+from saints_2027_marmay import SAINTS_NEW as _B
+from saints_2027_junjul import SAINTS_NEW as _C
+from saints_2027_aug import SAINTS_NEW as _D
+from saints_2027_sep import SAINTS_NEW as _E
+for _part in (_A, _B, _C, _D, _E):
+    for _md, _x in _part.items():
+        assert _md not in SAINTS, "duplicate date " + _md
+        SAINTS[_md] = _x
+SAINTS = dict(sorted(SAINTS.items()))
