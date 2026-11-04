@@ -12,12 +12,16 @@ KEYWORDS = []
 IDS_DONE = {"baltimore2": 14552, "baltimore_explained": 14554, "summa1": 17611, "summa12": 17897, "summa22": 18755, "summa3": 19950, "cityofgod1": 45304, "cityofgod2": 45305, "apostolic": 77576}
 # Round of 4 Nov 2026: Rule of St Benedict (Verheyen, d. 1923), Dark Night (David Lewis, d. 1895, ed. Zimmerman,
 # d. 1937), Little Flowers (Abby Langdon Alger, d. 1905), Introduction to the Devout Life (CCEL, 19th-c. translation).
-IDS = {"benedict_rule": 50040}
-ARCHIVE = {"darknight_lewis": "darknightofsoul00sain", "flowers_alger": "littleflowersofs00alge"}
-URLS = {"devout": ["https://ccel.org/ccel/d/desales/devout_life/cache/devout_life.txt",
+# Gutenberg #50040 turned out to be Doyle's 1948 translation (not UK public domain); use Verheyen (d. 1923) from CCEL.
+IDS = {}
+ARCHIVE = {}
+URLS_DONE = {"devout": ["https://ccel.org/ccel/d/desales/devout_life/cache/devout_life.txt",
                    "https://www.ccel.org/ccel/d/desales/devout_life/cache/devout_life.txt",
                    "https://ccel.org/ccel/desales/devout_life/cache/devout_life.txt",
                    "https://ccel.org/ccel/s/desales/devout_life/cache/devout_life.txt"]}
+URLS = {"benedict_verheyen": ["https://ccel.org/ccel/b/benedict/rule/cache/rule.txt",
+                              "https://www.ccel.org/ccel/b/benedict/rule/cache/rule.txt",
+                              "https://ccel.org/ccel/benedict/rule/cache/rule.txt"]}
 
 def fetch(url, timeout=120):
     return urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=timeout).read()
@@ -25,6 +29,7 @@ def fetch(url, timeout=120):
 os.makedirs(OUT, exist_ok=True)
 found = {}
 try:
+    if not KEYWORDS: raise RuntimeError("no catalogue search this round")
     cat = fetch("https://www.gutenberg.org/cache/epub/feeds/pg_catalog.csv", 300).decode("utf-8", "replace")
     for row in csv.DictReader(io.StringIO(cat)):
         if row.get("Language") != "en" or row.get("Type") != "Text": continue
