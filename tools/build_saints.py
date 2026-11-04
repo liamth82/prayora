@@ -24,7 +24,7 @@ def main():
     n = 0
     for md, s in SAINTS.items():
         out = {k: v for k, v in s.items() if k not in ("efMatch", "query", "calendars")}
-        out["match"] = [s["efMatch"].lower()] if s.get("efMatch") else [w.lower() for w in s["name"].replace("Saints ", "").replace("Saint ", "").replace("The ", "").split() if len(w) > 3][:2]
+        out["match"] = [m.lower() for m in s["match"]] if s.get("match") else [s["efMatch"].lower()] if s.get("efMatch") else [w.lower() for w in s["name"].replace("Saints ", "").replace("Saint ", "").replace("The ", "").split() if len(w) > 3][:2]
         if "prayer" not in out and s.get("efMatch"):
             c = ef_collect(md, s["efMatch"])
             if c:

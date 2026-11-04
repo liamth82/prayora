@@ -1,0 +1,48 @@
+06-01 | OF: Saint Justin Martyr [MEMORIAL] | EF: St. Angela Merici
+06-02 | OF: Saints Marcellinus and Peter, Martyrs [OPT_MEMORIAL] | EF: Feria IV after II Sunday after Pentecost
+06-03 | OF: Saints Charles Lwanga and Companions, Martyrs [MEMORIAL] | EF: Feria V after II Sunday after Pentecost
+06-04 | OF: Sacred Heart of Jesus [SOLEMNITY] | EF: Sacred Heart of Jesus
+06-05 | OF: Immaculate Heart of Mary [FEAST] | EF: St. Boniface
+06-09 | OF: Saint Ephrem, Deacon and Doctor [OPT_MEMORIAL] | EF: Feria IV after III Sunday after Pentecost
+06-10 | OF: Thursday of the 10th week of Ordinary Time [FERIA] | EF: St. Margaret of Scotland
+06-11 | OF: Saint Barnabas the Apostle [MEMORIAL] | EF: St. Barnabas
+06-12 | OF: Saturday of the 10th week of Ordinary Time [FERIA] | EF: St. John of San Fecundo
+06-14 | OF: Monday of the 11th week of Ordinary Time [FERIA] | EF: St. Basil the Great
+06-17 | OF: Thursday of the 11th week of Ordinary Time [FERIA] | EF: St. Gregory Barbarigo
+06-18 | OF: Friday of the 11th week of Ordinary Time [FERIA] | EF: St. Ephrem of Syria
+06-19 | OF: Saint Romuald, Abbot [OPT_MEMORIAL] | EF: St. Julia of Falconieri
+06-21 | OF: Saint Aloysius Gonzaga, Religious [MEMORIAL] | EF: St. Aloysius Gongzaga
+06-22 | OF: Saint Paulinus of Nola, Bishop/Saints John Fisher, Bishop and Thomas More, Martyrs [OPT_MEMORIAL] | EF: St. Paulinus of Nola
+06-23 | OF: Wednesday of the 12th week of Ordinary Time [FERIA] | EF: Vigil of the Nativity of St. John the Baptist
+06-24 | OF: Birth of John the Baptist [SOLEMNITY] | EF: Nativity of St. John the Baptist
+06-25 | OF: Friday of the 12th week of Ordinary Time [FERIA] | EF: St. William
+06-26 | OF: Saturday of the 12th week of Ordinary Time [FERIA] | EF: Sts. John & Paul
+06-28 | OF: Saint Irenaeus, Bishop and Martyr [MEMORIAL] | EF: Vigil of Sts. Peter & Paul
+06-29 | OF: Saints Peter and Paul, Apostles [SOLEMNITY] | EF: Sts. Peter & Paul
+06-30 | OF: First Martyrs of the Church of Rome [OPT_MEMORIAL] | EF: In Commemoratione Sancti Pauli Apostoli
+07-01 | OF: Thursday of the 13th week of Ordinary Time [FERIA] | EF: The Precious Blood of Our Lord Jesus Christ
+07-02 | OF: Friday of the 13th week of Ordinary Time [FERIA] | EF: Visitation of the Blessed Virgin Mary
+07-03 | OF: Saint Thomas the Apostle [FEAST] | EF: St. Irenaeus
+07-05 | OF: Saint Anthony Zaccaria, Priest [OPT_MEMORIAL] | EF: St. Anthony Mary Zaccariah
+07-06 | OF: Saint Maria Goretti, Virgin and Martyr [OPT_MEMORIAL] | EF: Feria III after VII Sunday after Pentecost
+07-07 | OF: Wednesday of the 14th week of Ordinary Time [FERIA] | EF: Sts. Cyril & Methodius
+07-08 | OF: Thursday of the 14th week of Ordinary Time [FERIA] | EF: St. Elizabeth of Portugal
+07-09 | OF: Saints Augustine Zhao Rong, Priest, and Companions, Martyrs [OPT_MEMORIAL] | EF: Feria VI after VII Sunday after Pentecost
+07-10 | OF: Saturday of the 14th week of Ordinary Time [FERIA] | EF: Seven Holy Brothers and Sts. Rufina & Secunda
+07-12 | OF: Monday of the 15th week of Ordinary Time [FERIA] | EF: St. John Gualbert
+07-13 | OF: Saint Henry, Bishop and Martyr [OPT_MEMORIAL] | EF: Feria III after VIII Sunday after Pentecost
+07-14 | OF: Saint Camillus de Lellis, Priest [OPT_MEMORIAL] | EF: St. Bonaventure
+07-15 | OF: Saint Bonaventure, Bishop and Doctor [MEMORIAL] | EF: St. Henry the Emperor
+07-16 | OF: Our Lady of Mount Carmel [OPT_MEMORIAL] | EF: Feria VI after VIII Sunday after Pentecost
+07-17 | OF: Saturday of the 15th week of Ordinary Time [FERIA] | EF: V Mass of the B. V. M. – Salve, Sancta Parens
+07-19 | OF: Monday of the 16th week of Ordinary Time [FERIA] | EF: St. Vincent de Paul
+07-20 | OF: Saint Apollinaris [OPT_MEMORIAL] | EF: St. Jerome Emiliani
+07-21 | OF: Saint Lawrence of Brindisi, Priest and Doctor [OPT_MEMORIAL] | EF: St. Laurence of Brindisi
+07-22 | OF: Saint Mary Magdalene [FEAST] | EF: St. Mary Magdalene
+07-23 | OF: Saint Bridget of Sweden, Religious, Patron of Europe [FEAST] | EF: St. Apollinaris
+07-24 | OF: Saint Charbel Makhlouf, Priest and Hermit [OPT_MEMORIAL] | EF: V Mass of the B. V. M. – Salve, Sancta Parens
+07-26 | OF: Saints Joachim and Anne [MEMORIAL] | EF: St. Anne, Mother of the Blessed Virgin
+07-28 | OF: Wednesday of the 17th week of Ordinary Time [FERIA] | EF: Sts. Nazarius & Celsus, St. Victor I & St. Innocent I
+07-29 | OF: Saint Martha [MEMORIAL] | EF: St. Martha
+07-30 | OF: Saint Peter Chrysologus, Bishop and Doctor [OPT_MEMORIAL] | EF: Feria VI after X Sunday after Pentecost
+07-31 | OF: Saint Ignatius of Loyola, Priest [MEMORIAL] | EF: St. Ignatius Loyola

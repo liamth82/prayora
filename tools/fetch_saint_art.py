@@ -8,10 +8,11 @@ from saints_content import SAINTS
 
 def main(out):
     os.makedirs(os.path.join(out, "img"), exist_ok=True)
-    images = {}
+    path = os.path.join(out, "images.json")
+    images = json.load(open(path)) if os.path.exists(path) else {}
     for md, s in SAINTS.items():
         q = s.get("query")
-        if not q: continue
+        if not q or md in images: continue  # keep paintings already chosen
         r = get({"action": "query", "format": "json", "generator": "search", "gsrsearch": q + " filetype:bitmap",
                  "gsrnamespace": 6, "gsrlimit": 10, "prop": "imageinfo", "iiprop": "url|extmetadata|mime|size", "iiurlwidth": 900})
         pages = sorted(r.get("query", {}).get("pages", {}).values(), key=lambda p: p.get("index", 99))

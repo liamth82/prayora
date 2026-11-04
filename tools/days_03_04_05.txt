@@ -1,0 +1,74 @@
+03-04 | OF: Saint Casimir [COMMEMORATION] | EF: Feria V after the III Sunday of Lent
+03-06 | OF: Saturday of the 3rd week of Lent [FERIA] | EF: Saturday after the III Sunday of Lent
+03-08 | OF: Saint John of God, Religious [COMMEMORATION] | EF: Feria II after the IV Sunday of Lent
+03-09 | OF: Saint Frances of Rome, Religious [COMMEMORATION] | EF: Feria III after the IV Sunday of Lent
+03-13 | OF: Saturday of the 4th week of Lent [FERIA] | EF: Saturday after the IV Sunday of Lent
+03-17 | OF: Saint Patrick, Bishop [COMMEMORATION] | EF: Feria IV of Passion Week
+03-18 | OF: Saint Cyril of Jerusalem, Bishop and Doctor [COMMEMORATION] | EF: Feria V of Passion Week
+03-19 | OF: Joseph, Husband of Mary [SOLEMNITY] | EF: Feria VI of Passion Week
+03-20 | OF: Saturday of the 5th week of Lent [FERIA] | EF: Saturday of Passion Week
+03-22 | OF: Monday of Holy Week [HOLY_WEEK] | EF: Feria II of Holy Week
+03-23 | OF: Tuesday of Holy Week [HOLY_WEEK] | EF: Feria III of Holy Week
+03-24 | OF: Wednesday of Holy Week [HOLY_WEEK] | EF: Feria IV of Holy Week
+03-25 | OF: Holy Thursday [TRIDUUM] | EF: Holy Thursday
+03-26 | OF: Good Friday [TRIDUUM] | EF: Good Friday
+03-27 | OF: Holy Saturday/Easter Vigil [TRIDUUM] | EF: Holy Saturday
+03-28 | OF: Easter Sunday [SOLEMNITY] | EF: Easter Sunday
+03-29 | OF: Easter Monday [SOLEMNITY] | EF: Monday in the Octave of Easter
+03-30 | OF: Easter Tuesday [SOLEMNITY] | EF: Tuesday in the Octave of Easter
+03-31 | OF: Easter Wednesday [SOLEMNITY] | EF: Wednesday in the Octave of Easter
+04-01 | OF: Easter Thursday [SOLEMNITY] | EF: Thursday in the Octave of Easter
+04-02 | OF: Easter Friday [SOLEMNITY] | EF: Friday in the Octave of Easter
+04-03 | OF: Easter Saturday [SOLEMNITY] | EF: Saturday in the Octave of Easter
+04-04 | OF: Divine Mercy Sunday [SOLEMNITY] | EF: Low Sunday
+04-05 | OF: Annunciation [SOLEMNITY] | EF: Annunciation of the Blessed Virgin Mary
+04-06 | OF: Tuesday of the 2nd week of Easter [FERIA] | EF: Tuesday after I Sunday after Easter
+04-07 | OF: Saint John Baptist de la Salle, Priest [MEMORIAL] | EF: Wednesday after I Sunday after Easter
+04-08 | OF: Thursday of the 2nd week of Easter [FERIA] | EF: Thursday after I Sunday after Easter
+04-09 | OF: Friday of the 2nd week of Easter [FERIA] | EF: Friday after I Sunday after Easter
+04-10 | OF: Saturday of the 2nd week of Easter [FERIA] | EF: IV Mass of the B. V. M. – Salve, Sancta Parens
+04-12 | OF: Monday of the 3rd week of Easter [FERIA] | EF: Monday after II Sunday after Easter
+04-13 | OF: Saint Martin I, Pope and Martyr [OPT_MEMORIAL] | EF: St. Hermenegild
+04-14 | OF: Wednesday of the 3rd week of Easter [FERIA] | EF: St. Justin
+04-15 | OF: Thursday of the 3rd week of Easter [FERIA] | EF: Thursday after II Sunday after Easter
+04-16 | OF: Friday of the 3rd week of Easter [FERIA] | EF: Friday after II Sunday after Easter
+04-17 | OF: Saturday of the 3rd week of Easter [FERIA] | EF: IV Mass of the B. V. M. – Salve, Sancta Parens
+04-19 | OF: Monday of the 4th week of Easter [FERIA] | EF: Monday after III Sunday after Easter
+04-20 | OF: Tuesday of the 4th week of Easter [FERIA] | EF: Tuesday after III Sunday after Easter
+04-21 | OF: Saint Anselm of Canterbury, Bishop and Doctor of the Church [OPT_MEMORIAL] | EF: St. Anselm
+04-22 | OF: Thursday of the 4th week of Easter [FERIA] | EF: Sts. Soter & Caius
+04-23 | OF: Saint George, Martyr/Saint Adalbert, Bishop and Martyr [OPT_MEMORIAL] | EF: Friday after III Sunday after Easter
+04-24 | OF: Saint Fidelis of Sigmaringen, Priest and Martyr [OPT_MEMORIAL] | EF: St. Fidelis of Sigmaringen
+04-26 | OF: Monday of the 5th week of Easter [FERIA] | EF: Sts. Cletus & Marcellinus
+04-27 | OF: Tuesday of the 5th week of Easter [FERIA] | EF: St. Peter Canisius
+04-28 | OF: Saint Peter Chanel, Priest and Martyr/Saint Louis Grignon de Montfort, Priest [OPT_MEMORIAL] | EF: St. Paul of the Cross
+04-29 | OF: Saint Catherine of Siena, Virgin and Doctor of The Church, Patron of Europe [MEMORIAL] | EF: St. Peter of Verona
+04-30 | OF: Saint Pius V, Pope [OPT_MEMORIAL] | EF: St. Catherine of Siena
+05-01 | OF: Saint Joseph the Worker [OPT_MEMORIAL] | EF: St. Joseph the Workman
+05-03 | OF: Saints Philip and James, Apostles [FEAST] | EF: The Minor Litanies – Rogations
+05-04 | OF: Tuesday of the 6th week of Easter [FERIA] | EF: St. Monica
+05-05 | OF: Wednesday of the 6th week of Easter [FERIA] | EF: Vigil of the Ascension
+05-06 | OF: Ascension of the Lord [SOLEMNITY] | EF: Ascension of the Lord
+05-07 | OF: None | EF: St. Stanislaus
+05-08 | OF: Saturday of the 6th week of Easter [FERIA] | EF: IV Mass of the B. V. M. – Salve, Sancta Parens
+05-10 | OF: Monday of the 7th week of Easter [FERIA] | EF: St. Antoninus
+05-11 | OF: Tuesday of the 7th week of Easter [FERIA] | EF: Sts. Philip & James
+05-12 | OF: Saints Nereus and Achilleus, Martyrs/Saint Pancras, Martyr [OPT_MEMORIAL] | EF: Sts. Nereus, Achilleus, Domitilla, & Pancras
+05-13 | OF: Our Lady of Fatima [OPT_MEMORIAL] | EF: St. Robert Bellarmine
+05-14 | OF: Saint Matthias the Apostle [FEAST] | EF: Feria VI after the Ascension
+05-15 | OF: Saturday of the 7th week of Easter [FERIA] | EF: Saturday after the Ascension
+05-16 | OF: Pentecost Sunday [SOLEMNITY] | EF: Pentecost Sunday
+05-17 | OF: Mary, Mother of The Church [MEMORIAL] | EF: Monday after Pentecost
+05-18 | OF: Saint John I, Pope and Martyr [OPT_MEMORIAL] | EF: Tuesday after Pentecost
+05-19 | OF: Wednesday of the 7th week of Ordinary Time [FERIA] | EF: Ember Wednesday of Pentecost
+05-20 | OF: Saint Bernardine of Siena, Priest [OPT_MEMORIAL] | EF: Thursday after Pentecost
+05-21 | OF: Saint Christopher Magallanes and Companions, Martyrs [OPT_MEMORIAL] | EF: Ember Friday of Pentecost
+05-22 | OF: Saint Rita of Cascia [OPT_MEMORIAL] | EF: Ember Saturday of Pentecost
+05-23 | OF: Trinity Sunday [SOLEMNITY] | EF: Trinity Sunday
+05-25 | OF: Saint Bede the Venerable, Priest and Doctor/Saint Gregory VII, Pope/Saint Mary Magdalene de Pazzi, Virgin [OPT_MEMORIAL] | EF: St. Gregory VII
+05-26 | OF: Saint Philip Neri, Priest [MEMORIAL] | EF: St. Philip Neri
+05-27 | OF: Saint Augustine of Canterbury, Bishop [OPT_MEMORIAL] | EF: Corpus Christi
+05-28 | OF: Friday of the 8th week of Ordinary Time [FERIA] | EF: St. Augustine of Canterbury
+05-29 | OF: Saturday of the 8th week of Ordinary Time [FERIA] | EF: St. Mary Magdalene de Pazzi
+05-30 | OF: Corpus Christi [SOLEMNITY] | EF: II Sunday after Pentecost
+05-31 | OF: Visitation of the Blessed Virgin Mary [FEAST] | EF: Queenship of the Blessed Virgin Mary

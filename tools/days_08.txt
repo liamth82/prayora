@@ -1,0 +1,24 @@
+08-02 | OF: Saint Eusebius of Vercelli, Bishop/Saint Peter Julian Eymard, Priest [OPT_MEMORIAL] | EF: St. Alphonsus Liguori
+08-04 | OF: Saint Jean Vianney (the Cure of Ars), Priest [MEMORIAL] | EF: St. Dominic
+08-05 | OF: Dedication of the Basilica of Saint Mary Major [OPT_MEMORIAL] | EF: Dedication of the Basilica of St. Mary Major
+08-06 | OF: Transfiguration [FEAST] | EF: Transfiguration of Our Lord
+08-07 | OF: Saint Sixtus II, Pope, and Companions, Martyrs/Saint Cajetan, Priest [OPT_MEMORIAL] | EF: St. Cajetan
+08-09 | OF: Saint Teresa Benedicta of The Cross (Edith Stein), Virgin and Martyr, Patron of Europe [OPT_MEMORIAL] | EF: Vigil of St. Lawrence
+08-10 | OF: Saint Lawrence of Rome, Deacon and Martyr [FEAST] | EF: St. Lawrence
+08-11 | OF: Saint Clare, Virgin [MEMORIAL] | EF: Feria IV after XII Sunday after Pentecost
+08-12 | OF: Saint Jane Frances de Chantal, Religious [OPT_MEMORIAL] | EF: St. Clare
+08-13 | OF: Saints Pontian, Pope and Hippolytus, Priest, Martyrs [OPT_MEMORIAL] | EF: Feria VI after XII Sunday after Pentecost
+08-14 | OF: Saint Maximilian Mary Kolbe, Priest and Martyr [MEMORIAL] | EF: Vigil of the Assumption
+08-15 | OF: The Assumption of the Blessed Virgin Mary [SOLEMNITY] | EF: Assumption of the Blessed Virgin Mary
+08-16 | OF: Saint Stephen of Hungary [OPT_MEMORIAL] | EF: St. Joachim, Father of the Blessed Virgin
+08-17 | OF: Tuesday of the 20th week of Ordinary Time [FERIA] | EF: St. Hyacinth
+08-19 | OF: Saint John Eudes, Priest [OPT_MEMORIAL] | EF: St. John Eudes
+08-20 | OF: Saint Bernard of Clairvaux, Abbot and Doctor of the Church [MEMORIAL] | EF: St. Bernard of Clairvaux
+08-21 | OF: Saint Pius X, Pope [MEMORIAL] | EF: St. Jane Frances de Chantal
+08-23 | OF: Saint Rose of Lima, Virgin [OPT_MEMORIAL] | EF: St. Philip Benizi
+08-24 | OF: Saint Bartholomew the Apostle [FEAST] | EF: St. Bartholomew
+08-25 | OF: Saint Louis/Saint Joseph of Calasanz, Priest [OPT_MEMORIAL] | EF: St. Louis IX
+08-27 | OF: Saint Monica [MEMORIAL] | EF: St. Joseph Calasance
+08-28 | OF: Saint Augustine of Hippo, Bishop and Doctor of the Church [MEMORIAL] | EF: St. Augustine
+08-30 | OF: Monday of the 22nd week of Ordinary Time [FERIA] | EF: St. Rose of Lima
+08-31 | OF: Tuesday of the 22nd week of Ordinary Time [FERIA] | EF: St. Raymond Nonnatus

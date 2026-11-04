@@ -1,0 +1,39 @@
+01-01 | OF: Mary, Mother of God [SOLEMNITY] | EF: Octave Day of Christmas
+01-02 | OF: Saints Basil the Great and Gregory Nazianzen, Bishops and Doctors [MEMORIAL] | EF: II Mass of the B. V. M. – Vultum Tuum
+01-03 | OF: Epiphany [SOLEMNITY] | EF: Holy Name of Jesus
+01-06 | OF: Wednesday after Epiphany [FERIA] | EF: Epiphany of the Lord
+01-07 | OF: Saint Raymond of Penyafort, Priest [OPT_MEMORIAL] | EF: Feria
+01-09 | OF: Saturday after Epiphany [FERIA] | EF: II Mass of the B. V. M. – Vultum Tuum
+01-10 | OF: Baptism of the Lord [FEAST] | EF: The Holy Family: Jesus, Mary & Joseph
+01-13 | OF: Saint Hilary of Poitiers, Bishop and Doctor [OPT_MEMORIAL] | EF: Commemoration of the Baptism of the Lord
+01-14 | OF: Thursday of the 1st week of Ordinary Time [FERIA] | EF: St. Hilary
+01-15 | OF: Friday of the 1st week of Ordinary Time [FERIA] | EF: St. Paul, the First Hermit
+01-16 | OF: Saturday of the 1st week of Ordinary Time [FERIA] | EF: St. Marcellus I
+01-20 | OF: Saints Fabian, Pope, and Sebastian, Martyrs [OPT_MEMORIAL] | EF: Sts. Fabian & Sebastian
+01-21 | OF: Saint Agnes, Virgin and Martyr [MEMORIAL] | EF: St. Agnes
+01-22 | OF: Saint Vincent, Deacon and Martyr [OPT_MEMORIAL] | EF: Sts. Vincent & Anastasius
+01-23 | OF: Saturday of the 2nd week of Ordinary Time [FERIA] | EF: St. Raymond of Peñafort
+01-25 | OF: Conversion of Saint Paul, Apostle [FEAST] | EF: Conversion of St. Paul
+01-26 | OF: Saints Timothy and Titus, Bishops [MEMORIAL] | EF: St. Polycarp
+01-27 | OF: Saint Angela Merici, Virgin [OPT_MEMORIAL] | EF: St. John Chrysostom
+01-28 | OF: Saint Thomas Aquinas, Priest and Doctor [MEMORIAL] | EF: St. Peter Nolasco
+01-29 | OF: Friday of the 3rd week of Ordinary Time [FERIA] | EF: St. Francis de Sales
+01-30 | OF: Saturday of the 3rd week of Ordinary Time [FERIA] | EF: St. Martina
+02-01 | OF: Monday of the 4th week of Ordinary Time [FERIA] | EF: St. Ignatius of Antioch
+02-02 | OF: Presentation of the Lord [FEAST] | EF: Purification of the Blessed Virgin Mary
+02-03 | OF: Saint Blase, Bishop Martyr and Saint Ansgar, Bishop [OPT_MEMORIAL] | EF: Feria IV after Sexagesimæ
+02-04 | OF: Thursday of the 4th week of Ordinary Time [FERIA] | EF: St. Andrew Corsini
+02-05 | OF: Saint Agatha, Virgin and Martyr [MEMORIAL] | EF: St. Agatha
+02-06 | OF: Saint Paul Miki and Companions, Martyrs [MEMORIAL] | EF: St. Titus
+02-08 | OF: Saint Jerome Emiliani and Saint Josephine Bakhita, Virgin [OPT_MEMORIAL] | EF: St. John of Matha
+02-09 | OF: Tuesday of the 5th week of Ordinary Time [FERIA] | EF: St. Cyril of Alexandria
+02-10 | OF: Ash Wednesday [FERIA] | EF: Ash Wednesday
+02-11 | OF: Our Lady of Lourdes [COMMEMORATION] | EF: Feria V after Ash Wednesday
+02-13 | OF: Saturday after Ash Wednesday [FERIA] | EF: Saturday after Ash Wednesday
+02-17 | OF: Seven Holy Founders of the Servite Order [COMMEMORATION] | EF: Ember Wednesday of Lent
+02-19 | OF: Friday of the 1st week of Lent [FERIA] | EF: Ember Friday of Lent
+02-20 | OF: Saturday of the 1st week of Lent [FERIA] | EF: Ember Saturday of Lent
+02-22 | OF: Chair of Saint Peter, Apostle [COMMEMORATION] | EF: Chair of St. Peter
+02-23 | OF: Saint Polycarp, Bishop and Martyr [COMMEMORATION] | EF: Feria III after the II Sunday of Lent
+02-24 | OF: Wednesday of the 2nd week of Lent [FERIA] | EF: St. Matthias
+02-27 | OF: Saturday of the 2nd week of Lent [FERIA] | EF: Saturday after the II Sunday of Lent

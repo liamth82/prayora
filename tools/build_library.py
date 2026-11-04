@@ -324,6 +324,42 @@ def apostolic():
         chapters.append({"title": title, "paras": ps})
     return chapters
 
+def devout():
+    """Introduction to the Devout Life, CCEL plain text (Rivingtons, Library of Spiritual Works for English Catholics)."""
+    L = open(os.path.join(RAW, "devout.txt"), encoding="utf-8", errors="replace").read().replace("\r\n", "\n").split("\n")
+    start = next(i for i, l in enumerate(L) if re.match(r"^\s*PART I\. COUNSELS", l))
+    end = next(i for i, l in enumerate(L) if l.strip() == "Indexes")
+    chapters, part, cur, i = [], None, None, start
+    PARTS = {"I": "Part I · Purifying the soul", "II": "Part II · Prayer and the sacraments", "III": "Part III · The practice of virtue",
+             "IV": "Part IV · Ordinary temptations", "V": "Part V · Renewing the soul"}
+    while i < end:
+        s = L[i].strip()
+        m = re.match(r"^PART ([IV]+)\. ", s)
+        if m:
+            part = PARTS[m.group(1)]
+            i += 1
+            while i < end and L[i].strip() and not L[i].strip().startswith("____"): i += 1  # rest of the long heading
+            continue
+        m = re.match(r"^CHAPTER ([IVXLC]+)\. (.*)$", s)
+        if m and not L[i].startswith("   "):
+            if cur: chapters.append(cur)
+            title = [m.group(2)]
+            while L[i + 1].strip() and not L[i + 1].startswith("   "): i += 1; title.append(L[i].strip())
+            t = " ".join(title).strip().rstrip(".")
+            t = t[0] + t[1:].lower() if t.isupper() else t
+            cur = {"section": part, "title": f"{m.group(1)}. {t}", "lines": []}
+            i += 1; continue
+        if s.startswith("____"): i += 1; continue
+        if cur is not None: cur["lines"].append(L[i])
+        i += 1
+    if cur: chapters.append(cur)
+    out = []
+    for c in chapters:
+        paras = [re.sub(r"\s*\[\d+\]", "", tidy(p)).replace(";—", "; ").replace(",—", ", ").replace("—", " — ").replace("  ", " ") for p in paragraphs(c["lines"])]
+        paras = [re.sub(r"^([A-Z])([A-Z]+)\b", lambda m: m.group(1) + m.group(2).lower(), p.strip()) for p in paras if p.strip()]
+        out.append({"section": c["section"], "title": c["title"], "paras": paras})
+    return out
+
 BOOKS = [
     dict(id="imitation", title="The Imitation of Christ", author="Thomas à Kempis", translator="William Benham", year="c. 1418",
          blurb="After the Bible, perhaps the most widely read book in Christian history. Four short books on the inner life, humility and the love of Jesus.",
@@ -370,6 +406,9 @@ BOOKS = [
     dict(id="cityofgod", title="The City of God", author="Saint Augustine of Hippo", translator="Marcus Dods", year="413–426",
          blurb="Augustine's great answer to the fall of Rome: two cities, built by two loves, the love of self and the love of God.",
          source="Project Gutenberg #45304–45305", parse=cityofgod, raw="cityofgod1.txt"),
+    dict(id="devout", title="Introduction to the Devout Life", author="Saint Francis de Sales", translator="Rivingtons edition (1876)", year="1609",
+         blurb="Holiness for people with ordinary lives, written by the bishop of Geneva for a young wife at court: prayer, the sacraments, the virtues and the small temptations of every day.",
+         source="Library of Spiritual Works for English Catholics, via CCEL", parse=devout, raw="devout.txt"),
 ]
 
 def main():
