@@ -6,10 +6,24 @@ import { useSettings } from '../settings';
 import { BASE, getDay, isoDate } from '../today';
 import { Panel, Sheet, Small, Sub, Title } from '../components/panels';
 import { chapterFor } from '../chapters';
+import { load, save, todayKey } from '../storage';
 import Reader, { ReaderChapter } from './Reader';
 
-type Source = { n: number; kind: 'bible' | 'library' | 'saint'; book: string; chapter: number; ref: string; text: string };
-type Msg = { role: 'user' | 'assistant'; content: string; sources?: Source[]; error?: boolean; retry?: string };
+type Source = { n: number; kind: 'bible' | 'library' | 'saint'; book: string; chapter: number; unit?: number; count?: number; ref: string; text: string };
+type Msg = { role: 'user' | 'assistant'; content: string; sources?: Source[]; error?: boolean; retry?: string; rated?: 'up' | 'down' };
+
+const DAILY = 20; // questions a day; the server holds the same line
+const LIMIT_MSG = `You've asked ${DAILY} questions today, which is Ask's daily limit. It opens again tomorrow. In the meantime, the readings and the Library are always there.`;
+
+/** An anonymous id for this install, used only to share out Ask's daily allowance fairly. */
+async function deviceId() {
+  let id = await load<string>('ask:device', '');
+  if (!id) {
+    id = Array.from({ length: 24 }, () => 'abcdefghijklmnopqrstuvwxyz0123456789'[Math.floor(Math.random() * 36)]).join('');
+    save('ask:device', id);
+  }
+  return id;
+}
 
 const STARTERS = [
   "Reflect with me on today's Gospel",
@@ -28,13 +42,21 @@ export default function Ask() {
   const [text, setText] = useState('');
   const [busy, setBusy] = useState(false);
   const [today, setToday] = useState<{ date: string; title: string; gospel?: string } | null>(null);
-  const [reader, setReader] = useState<ReaderChapter | null>(null);
+  const [reader, setReader] = useState<{ chapter: ReaderChapter; focus?: { unit: number; count: number } } | null>(null);
+  const [left, setLeft] = useState<number | null>(null);
+  const [rating, setRating] = useState<{ i: number; r: 'up' | 'down' } | null>(null);
+  const [note, setNote] = useState('');
+  const [sending, setSending] = useState(false);
+  const [sendErr, setSendErr] = useState('');
   const [saintSource, setSaintSource] = useState<Source | null>(null);
   const scroll = useRef<ScrollView>(null);
 
   useEffect(() => {
     const sub = Keyboard.addListener('keyboardDidShow', () => setTimeout(() => scroll.current?.scrollToEnd({ animated: true }), 60));
     return () => sub.remove();
+  }, []);
+  useEffect(() => {
+    load<{ day: string; n: number }>('ask:used', { day: '', n: 0 }).then((u) => setLeft(DAILY - (u.day === todayKey() ? u.n : 0)));
   }, []);
   useEffect(() => {
     const d = new Date();
@@ -56,15 +78,15 @@ export default function Ask() {
   }, 120);
 
   const ask = async (history: Msg[]) => {
-    const body = JSON.stringify({ messages: history.map(({ role, content }) => ({ role, content })), today });
+    const body = JSON.stringify({ messages: history.map(({ role, content }) => ({ role, content })), today, device: await deviceId() });
     let lastErr = '';
     for (let attempt = 0; attempt < 2; attempt++) {
       try {
         const r = await fetch(`${BASE}/api/ask`, { method: 'POST', headers: { 'content-type': 'application/json' }, body });
         const j = await r.json().catch(() => ({}));
-        if (r.ok && j.answer) return j as { answer: string; sources: Source[] };
+        if (r.ok && j.answer) return j as { answer: string; sources: Source[]; left?: number };
         lastErr = j.error || '';
-        if (r.status === 400) break;
+        if (r.status === 400 || r.status === 429) { if (j.limit) setLeft(0); break; }
       } catch { lastErr = ''; }
       await new Promise((res) => setTimeout(res, 1500));
     }
@@ -76,11 +98,21 @@ export default function Ask() {
     if (!question || busy) return;
     const base = msgs.filter((m) => !m.error);
     const history: Msg[] = [...base, { role: 'user', content: question }];
+    const used = await load<{ day: string; n: number }>('ask:used', { day: '', n: 0 });
+    const n = used.day === todayKey() ? used.n : 0;
+    if (n >= DAILY) {
+      setLeft(0); Keyboard.dismiss(); setText('');
+      setMsgs([...history, { role: 'assistant', content: LIMIT_MSG, error: true }]);
+      setTimeout(() => scroll.current?.scrollToEnd({ animated: true }), 80);
+      return;
+    }
     setMsgs(history);
     setText(''); setBusy(true); Keyboard.dismiss();
     setTimeout(() => scroll.current?.scrollToEnd({ animated: true }), 50);
     try {
       const j = await ask(history);
+      save('ask:used', { day: todayKey(), n: n + 1 });
+      setLeft(Math.min(DAILY - n - 1, typeof j.left === 'number' ? j.left : DAILY));
       setMsgs([...history, { role: 'assistant', content: j.answer, sources: j.sources }]);
       scrollToAnswer(history.length);
     } catch (e: any) {
@@ -99,7 +131,27 @@ export default function Ask() {
   const openSource = async (s: Source) => {
     if (s.kind === 'saint') { setSaintSource(s); return; }
     const c = await chapterFor(s.kind, s.book, s.chapter);
-    if (c) setReader(c);
+    if (c) setReader({ chapter: c, focus: s.unit != null ? { unit: s.unit, count: s.count ?? 1 } : undefined });
+  };
+
+  const sendFeedback = async () => {
+    if (!rating || sending) return;
+    const a = msgs[rating.i], q = msgs[rating.i - 1];
+    if (!a || !q) return;
+    setSending(true); setSendErr('');
+    try {
+      const r = await fetch(`${BASE}/api/feedback`, {
+        method: 'POST', headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ rating: rating.r, note: note.trim(), question: q.content, answer: a.content, sources: (a.sources ?? []).map((s) => `[${s.n}] ${s.ref}`) }),
+      });
+      if (!r.ok) throw new Error();
+      setMsgs((m) => m.map((x, k) => (k === rating.i ? { ...x, rated: rating.r } : x)));
+      setRating(null); setNote('');
+    } catch {
+      setSendErr("That didn't send. Please try again in a moment.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -154,9 +206,19 @@ export default function Ask() {
                   ))}
                 </View>
               ) : null}
+              {!m.error ? (
+                m.rated ? <Text style={st.thanks}>Thank you for your feedback.</Text> : (
+                  <View style={st.rate}>
+                    <Text style={st.rateQ}>Was this helpful?</Text>
+                    <Pressable onPress={() => { setRating({ i, r: 'up' }); setSendErr(''); }} hitSlop={8} accessibilityLabel="Helpful"><Text style={st.rateBtn}>Yes</Text></Pressable>
+                    <Pressable onPress={() => { setRating({ i, r: 'down' }); setSendErr(''); }} hitSlop={8} accessibilityLabel="Not helpful"><Text style={st.rateBtn}>No</Text></Pressable>
+                  </View>
+                )
+              ) : null}
             </View>
           ))
         )}
+        {msgs.length && left != null && left <= 5 && left > 0 ? <Text style={st.left}>{left === 1 ? 'One question left today' : `${left} questions left today`}</Text> : null}
         {busy ? <View style={st.thinking}><ActivityIndicator color={C.gold} /><Text style={st.thinkingText}>Searching the Scriptures and the saints…</Text></View> : null}
       </ScrollView>
 
@@ -171,7 +233,25 @@ export default function Ask() {
         </Pressable>
       </View>
 
-      {reader ? <Reader chapter={reader} loading={false} onClose={() => setReader(null)} /> : null}
+      {reader ? <Reader chapter={reader.chapter} focus={reader.focus} loading={false} onClose={() => setReader(null)} /> : null}
+      <Sheet visible={!!rating} onClose={() => setRating(null)} eyebrow="Ask" title={rating?.r === 'up' ? 'Glad it helped' : 'What was wrong?'}>
+        <View style={{ gap: 12 }}>
+          <View style={st.segRow}>
+            {(['up', 'down'] as const).map((r) => (
+              <Pressable key={r} onPress={() => rating && setRating({ ...rating, r })} style={[st.seg, rating?.r === r && st.segOn]}>
+                <Text style={[st.segText, rating?.r === r && { color: C.deep }]}>{r === 'up' ? 'Helpful' : 'Not helpful'}</Text>
+              </Pressable>
+            ))}
+          </View>
+          <TextInput style={st.note} value={note} onChangeText={setNote} multiline maxLength={1000} placeholderTextColor={C.inkFaint}
+            placeholder={rating?.r === 'up' ? 'Anything to add? (optional)' : 'A wrong source, something unclear, not faithful to Church teaching… (optional)'} />
+          <Text style={st.fineLeft}>This sends your question, Ask's answer and your note to the Ora team, without your name or anything that identifies you. Please don't include personal details.</Text>
+          {sendErr ? <Text style={[st.fineLeft, { color: C.rubric }]}>{sendErr}</Text> : null}
+          <Pressable onPress={sendFeedback} disabled={sending} style={[st.sendFb, sending && { opacity: 0.5 }]}>
+            {sending ? <ActivityIndicator color={C.deep} /> : <Text style={st.sendFbText}>Send</Text>}
+          </Pressable>
+        </View>
+      </Sheet>
       <Sheet visible={!!saintSource} onClose={() => setSaintSource(null)} eyebrow="Saints" title={saintSource?.ref.split(' · ')[0]}>
         <Text style={st.aText}>{saintSource?.text}</Text>
       </Sheet>
@@ -216,4 +296,17 @@ const st = StyleSheet.create({
   input: { flex: 1, fontFamily: F.body, fontSize: 15.5, color: C.ink, paddingVertical: 8 },
   send: { width: 38, height: 38, borderRadius: 19, backgroundColor: C.ink, alignItems: 'center', justifyContent: 'center' },
   sendText: { fontSize: 19, color: C.deep, fontWeight: '600', marginTop: -2 },
+  rate: { flexDirection: 'row', alignItems: 'center', gap: 16, marginTop: 12 },
+  rateQ: { flex: 1, fontFamily: F.bodyItalic, fontSize: 12.5, color: C.inkFaint },
+  rateBtn: { fontFamily: F.sc, fontSize: 12, color: C.gold },
+  thanks: { fontFamily: F.bodyItalic, fontSize: 12.5, color: C.inkFaint, marginTop: 12 },
+  left: { fontFamily: F.bodyItalic, fontSize: 12, color: C.inkFaint, textAlign: 'center' },
+  segRow: { flexDirection: 'row', gap: 8 },
+  seg: { flex: 1, borderRadius: 999, borderWidth: 1, borderColor: C.vellum3, paddingVertical: 9, alignItems: 'center' },
+  segOn: { backgroundColor: C.gold, borderColor: C.gold },
+  segText: { fontFamily: F.sc, fontSize: 12.5, color: C.ink },
+  note: { minHeight: 90, backgroundColor: C.vellum, borderRadius: 12, padding: 12, fontFamily: F.body, fontSize: 15, color: C.ink, textAlignVertical: 'top' },
+  fineLeft: { fontFamily: F.bodyItalic, fontSize: 12, lineHeight: 17, color: C.inkFaint },
+  sendFb: { backgroundColor: C.ink, borderRadius: 999, paddingVertical: 12, alignItems: 'center' },
+  sendFbText: { fontFamily: F.sc, fontSize: 13.5, color: C.deep, letterSpacing: 0.4 },
 });

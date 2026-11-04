@@ -35,9 +35,11 @@ type Page = { start: number; end: number };
  * then shows its own window onto that same layout, so verse numbers, drop caps and press-and-hold to
  * keep a passage all work exactly as they do in the flowing text.
  */
-export default function Reader({ chapter, loading, onClose, onPrev, onNext, nextLabel = 'Next chapter', finish }: {
+export default function Reader({ chapter, loading, onClose, onPrev, onNext, nextLabel = 'Next chapter', finish, focus }: {
   chapter: ReaderChapter | null; loading: boolean; onClose: () => void; onPrev?: () => void; onNext?: () => void;
   nextLabel?: string; finish?: { label: string; onPress: () => void };
+  /** Open at this verse or paragraph (index into units) and mark `count` units from it, e.g. a source Ask cited. */
+  focus?: { unit: number; count: number };
 }) {
   const insets = useSafeAreaInsets();
   const { width: W } = useWindowDimensions();
@@ -58,7 +60,8 @@ export default function Reader({ chapter, loading, onClose, onPrev, onNext, next
   const setP = (p: Partial<ReaderPrefs>) => { const n = { ...prefs, ...p }; setPrefs(n); save('reader:prefs', n); };
 
   // ---- measurement -------------------------------------------------------------------------------
-  const measureKey = chapter && pageH > 0 ? `${chapter.key}|${size}|${contentW}|${pageH}` : '';
+  const fu = focus && chapter && focus.unit >= 0 && focus.unit < chapter.units.length ? focus : undefined;
+  const measureKey = chapter && pageH > 0 ? `${chapter.key}|${size}|${contentW}|${pageH}|${fu ? fu.unit + ':' + fu.count : ''}` : '';
   const [paged, setPaged] = useState<{ key: string; pages: Page[] } | null>(null);
   const pages = paged && paged.key === measureKey ? paged.pages : null;
 
@@ -68,6 +71,7 @@ export default function Reader({ chapter, loading, onClose, onPrev, onNext, next
     let total = 0;
     let timer: ReturnType<typeof setTimeout> | null = null;
     const key = measureKey, chapterKey = chapter?.key ?? '', ph = pageH, step = line;
+    const focusId = fu ? (chapter?.mode === 'verses' ? 'vf' : 'p' + fu.unit) : '';
 
     const paginate = async () => {
       if (!key || ph <= 0) return;
@@ -84,7 +88,8 @@ export default function Reader({ chapter, loading, onClose, onPrev, onNext, next
       for (const b of boxes) if (b.bottom - cur > ph + 0.5 && b.top > cur) { cur = b.top; starts.push(cur); }
       const end = Math.max(total, boxes.length ? boxes[boxes.length - 1].bottom : 0);
       const ps = starts.map((st0, i) => ({ start: st0, end: i + 1 < starts.length ? starts[i + 1] : end }));
-      const saved = await load<number>('reader:pos:' + chapterKey, 0);
+      // open at the cited passage when there is one, otherwise where the reader last left off
+      const saved = focusId && layouts[focusId] ? layouts[focusId].y : await load<number>('reader:pos:' + chapterKey, 0);
       let p = 0;
       ps.forEach((pg, i) => { if (saved >= pg.start - 1) p = i; });
       pos.setValue(p); setPage(p); setPaged({ key, pages: ps });
@@ -148,6 +153,7 @@ export default function Reader({ chapter, loading, onClose, onPrev, onNext, next
   const turnable = { onPress: (e: any) => tapAt(e?.nativeEvent?.pageX ?? 0) };
 
   // ---- the chapter itself, rendered identically for measuring and for every page ------------------
+  const marked = (i: number) => !!fu && i >= fu.unit && i < fu.unit + Math.max(1, fu.count);
   const renderContent = (m: typeof measure | null) => {
     if (!chapter) return null;
     const L = (id: string) => (m ? { onLayout: m.layout(id) } : {});
@@ -161,18 +167,26 @@ export default function Reader({ chapter, loading, onClose, onPrev, onNext, next
           <View style={[st.ornament, { backgroundColor: T.accent }]} />
         </View>
         {chapter.mode === 'verses' ? (
-          <Text {...TL('v')} style={{ fontFamily: F.body, fontSize: size, lineHeight: line, color: T.ink }}>
-            {chapter.units.map((u, i) => (
-              <Text key={i} {...kp(u.text, chapter.sourceFor(u))} {...turnable}>
-                <Text style={{ fontFamily: F.sc, fontSize: size * 0.55, color: T.accent }}>{u.n}{' '}</Text>
-                {i === 0 ? <DropCap text={u.text} size={size} color={T.accent} /> : u.text}{'  '}
+          // With a cited passage, the verses break into two blocks at it, so its place on the page can be measured.
+          (fu && fu.unit > 0 ? [[0, fu.unit, 'v'], [fu.unit, chapter.units.length, 'vf']] as const : [[0, chapter.units.length, fu ? 'vf' : 'v']] as const)
+            .map(([a, b, id]) => (
+              <Text key={id} {...TL(id)} style={{ fontFamily: F.body, fontSize: size, lineHeight: line, color: T.ink, marginBottom: id === 'v' && fu ? Math.round(line * 0.4) : 0 }}>
+                {chapter.units.slice(a, b).map((u, j) => {
+                  const i = a + j;
+                  return (
+                    <Text key={i} {...kp(u.text, chapter.sourceFor(u))} {...turnable} style={marked(i) ? { backgroundColor: T.accent + '24' } : undefined}>
+                      <Text style={{ fontFamily: F.sc, fontSize: size * 0.55, color: T.accent }}>{u.n}{' '}</Text>
+                      {i === 0 ? <DropCap text={u.text} size={size} color={T.accent} /> : u.text}{'  '}
+                    </Text>
+                  );
+                })}
               </Text>
-            ))}
-          </Text>
+            ))
         ) : (
           chapter.units.map((u, i) => (
             <Text key={i} {...TL('p' + i)} {...kp(u.text, chapter.sourceFor(u))} {...turnable}
-              style={{ fontFamily: F.body, fontSize: size, lineHeight: line, color: T.ink, marginBottom: Math.round(line * 0.55) }}>
+              style={[{ fontFamily: F.body, fontSize: size, lineHeight: line, color: T.ink, marginBottom: Math.round(line * 0.55) },
+                marked(i) && { backgroundColor: T.accent + '24' }]}>
               {i === 0 ? <DropCap text={u.text} size={size} color={T.accent} /> : u.text}
             </Text>
           ))

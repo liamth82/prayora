@@ -2,8 +2,10 @@
 
 Each passage is small enough to cite exactly: three verses of Scripture, or one paragraph (split if long)
 of a classic. Writes api/_data/ask.json:
-  {"docs": [[kind, book, chapter, ref, text], ...], "books": {book: title}}
-kind is "bible", "library" or "saint". book/chapter let the app open the passage in its reader.
+  {"docs": [[kind, book, chapter, ref, text, unit, count], ...], "books": {book: title}}
+kind is "bible", "library" or "saint". book/chapter let the app open the passage in its reader; unit is the
+index of the first verse (Bible) or paragraph (Library) within the chapter and count how many it spans, so
+the reader can open at the cited place and mark it.
 
 Usage: python3 tools/build_ask_index.py
 """
@@ -43,7 +45,7 @@ def main():
                 ref = f"{name} {ci + 1}:{first}" + (f"–{last}" if last != first else "")
                 if len(b["chapters"]) == 1:
                     ref = f"{name} {first}" + (f"–{last}" if last != first else "")
-                docs.append(["bible", meta["id"], ci, ref, " ".join(f"{n} {t}" for n, t in group)])
+                docs.append(["bible", meta["id"], ci, ref, " ".join(f"{n} {t}" for n, t in group), i, len(group)])
 
     PART = {"summa1": "I", "summa12": "I-II", "summa22": "II-II", "summa3": "III"}
     for meta in json.load(open(os.path.join(ROOT, "library", "index.json"))):
@@ -54,7 +56,7 @@ def main():
                 # Aquinas: index his own answer and replies, never the objections he goes on to refute.
                 q = re.match(r"Question (\d+)", ch["title"])
                 art, whether = 0, ""
-                for para in ch["paras"]:
+                for pi, para in enumerate(ch["paras"]):
                     m = re.match(r"^Article (\d+)\. (.*)$", para)
                     if m:
                         art, whether = int(m.group(1)), m.group(2); continue
@@ -62,21 +64,21 @@ def main():
                         continue
                     ref = f"Summa Theologica {PART[meta['id']]}, Q. {q.group(1) if q else ci + 1}, Art. {art} · {whether}"[:160]
                     for piece in split_long(para):
-                        docs.append(["library", meta["id"], ci, ref, piece])
+                        docs.append(["library", meta["id"], ci, ref, piece, pi, 1])
                 continue
-            for para in ch["paras"]:
+            for pi, para in enumerate(ch["paras"]):
                 if meta["id"] in ("baltimore", "kinkead"):
                     m = re.match(r"^(\d+)\. ", para)
                     ref = f"{t['title']} · {ch['title']}" + (f" · Q. {m.group(1)}" if m else "")
                     if meta["id"] == "kinkead" and m:
                         continue  # the questions themselves are indexed once, from the Catechism
                     if len(para) >= 30:
-                        docs.append(["library", meta["id"], ci, ref[:160], para[:900]])
+                        docs.append(["library", meta["id"], ci, ref[:160], para[:900], pi, 1])
                     continue
                 for piece in split_long(para):
                     if len(piece) < 60:
                         continue
-                    docs.append(["library", meta["id"], ci, f"{t['title']} · {ch['title']}"[:160], piece])
+                    docs.append(["library", meta["id"], ci, f"{t['title']} · {ch['title']}"[:160], piece, pi, 1])
 
     for path in sorted(glob.glob(os.path.join(ROOT, "saints", "[0-9][0-9]-[0-9][0-9].json"))):
         s = json.load(open(path))
@@ -84,7 +86,7 @@ def main():
         for field, label in (("history", "Life"), ("life", "Life"), ("prayerTo", "Prayer to"), ("prayer", "Prayer"), ("meditation", "Meditation")):
             if s.get(field):
                 for piece in split_long(s[field]):
-                    docs.append(["saint", md, 0, f"{s['name']} · {label}", piece])
+                    docs.append(["saint", md, 0, f"{s['name']} · {label}", piece, 0, 1])
 
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w") as f:

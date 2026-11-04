@@ -1,5 +1,5 @@
-// POST /api/ask  { messages: [{ role: "user"|"assistant", content: string }], today?: { date, title, gospel } }
-//   -> { answer: string, sources: [{ n, kind, book, chapter, ref, text }] }
+// POST /api/ask  { messages: [{ role: "user"|"assistant", content: string }], today?: { date, title, gospel }, device?: string }
+//   -> { answer: string, sources: [{ n, kind, book, chapter, unit, count, ref, text }], left?: number }
 //
 // Ask answers questions of faith from Ora's own library only: the Douay-Rheims Bible, the classics in the
 // Library and the saints' entries. Claude searches that library with a tool, then answers, citing each claim.
@@ -9,6 +9,20 @@ const INDEX = require("./_data/ask.json");
 
 const MODEL = process.env.ASK_MODEL || "claude-sonnet-5";
 const MAX_ROUNDS = 4;
+const DAILY = Number(process.env.ASK_DAILY_LIMIT || 20); // questions per device (or address) per day
+
+// A light daily limit, kept in memory. Each server instance counts on its own and forgets on restart, so
+// this is a brake on runaway use rather than a hard quota; the app keeps its own count as well.
+const usage = new Map();
+function spend(key) {
+  const day = new Date().toISOString().slice(0, 10);
+  if (usage.size > 20000) usage.clear();
+  const u = usage.get(key);
+  const used = u && u.day === day ? u.n : 0;
+  if (used >= DAILY) return -1;
+  usage.set(key, { day, n: used + 1 });
+  return DAILY - used - 1;
+}
 
 // ---------------------------------------------------------------- search (BM25 over the passages)
 
@@ -157,6 +171,10 @@ module.exports = async (req, res) => {
   if (req.method !== "POST") { res.setHeader("Allow", "POST"); return res.status(405).json({ error: "Use POST." }); }
   const messages = clean(body.messages);
   if (!messages) return res.status(400).json({ error: "Please ask a question." });
+  const device = /^[A-Za-z0-9-]{8,64}$/.test(String(body.device || "")) ? "d:" + body.device
+    : "ip:" + String(req.headers["x-forwarded-for"] || "").split(",")[0].trim();
+  const left = spend(device);
+  if (left < 0) return res.status(429).json({ error: `You've asked ${DAILY} questions today, which is Ask's daily limit. It opens again tomorrow. In the meantime, the readings and the Library are always there.`, limit: true });
 
   const today = body.today && typeof body.today === "object"
     ? `\n\nToday is ${String(body.today.date || "").slice(0, 40)}: ${String(body.today.title || "").slice(0, 120)}.${body.today.gospel ? ` Today's Gospel is ${String(body.today.gospel).slice(0, 60)}.` : ""}`
@@ -202,9 +220,9 @@ module.exports = async (req, res) => {
     }).replace(/(\[\d+\])(\s*\1)+/g, "$1");
     const sources = order.map((i, n) => {
       const d = INDEX.docs[i];
-      return { n: n + 1, kind: d[0], book: d[1], chapter: d[2], ref: d[3], text: d[4].slice(0, 600) };
+      return { n: n + 1, kind: d[0], book: d[1], chapter: d[2], unit: d[5] || 0, count: d[6] || 1, ref: d[3], text: d[4].slice(0, 600) };
     });
-    return res.status(200).json({ answer: answer || "I couldn't find an answer to that in Ora's library.", sources });
+    return res.status(200).json({ answer: answer || "I couldn't find an answer to that in Ora's library.", sources, left });
   } catch (e) {
     console.error("ask failed", e && e.message, e && e.stack);
     return res.status(502).json({ error: "Ask couldn't answer just now. Please try again in a moment." });
