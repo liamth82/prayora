@@ -9,8 +9,15 @@ KEYWORDS_OLD = ["devout life", "little flowers", "unknowing", "spiritual combat"
             "revelations of divine love"]
 KEYWORDS_DONE = ["summa theologica", "catechism", "city of god", "apostolic fathers", "didache", "council of trent", "baltimore", "chrysostom", "homilies", "aquinas", "augustine", "cyprian", "ambrose", "gregory the great", "athanasius", "francis de sales", "liguori", "catholic doctrine", "christian doctrine"]
 KEYWORDS = []
-IDS = {"baltimore2": 14552, "baltimore_explained": 14554, "summa1": 17611, "summa12": 17897, "summa22": 18755, "summa3": 19950, "cityofgod1": 45304, "cityofgod2": 45305, "apostolic": 77576}
-ARCHIVE = {}
+IDS_DONE = {"baltimore2": 14552, "baltimore_explained": 14554, "summa1": 17611, "summa12": 17897, "summa22": 18755, "summa3": 19950, "cityofgod1": 45304, "cityofgod2": 45305, "apostolic": 77576}
+# Round of 4 Nov 2026: Rule of St Benedict (Verheyen, d. 1923), Dark Night (David Lewis, d. 1895, ed. Zimmerman,
+# d. 1937), Little Flowers (Abby Langdon Alger, d. 1905), Introduction to the Devout Life (CCEL, 19th-c. translation).
+IDS = {"benedict_rule": 50040}
+ARCHIVE = {"darknight_lewis": "darknightofsoul00sain", "flowers_alger": "littleflowersofs00alge"}
+URLS = {"devout": ["https://ccel.org/ccel/d/desales/devout_life/cache/devout_life.txt",
+                   "https://www.ccel.org/ccel/d/desales/devout_life/cache/devout_life.txt",
+                   "https://ccel.org/ccel/desales/devout_life/cache/devout_life.txt",
+                   "https://ccel.org/ccel/s/desales/devout_life/cache/devout_life.txt"]}
 
 def fetch(url, timeout=120):
     return urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=timeout).read()
@@ -54,3 +61,12 @@ for key, ident in ARCHIVE.items():
         open(os.path.join(OUT, key + ".txt"), "wb").write(fetch(f"https://archive.org/download/{ident}/{ident}_djvu.txt", 180)); print("ok", key, ident)
     except Exception as e:
         print("archive fail", key, e)
+for key, urls in URLS.items():
+    for url in urls:
+        try:
+            data = fetch(url, 180)
+            if len(data) > 50000 and b"<html" not in data[:500].lower():
+                open(os.path.join(OUT, key + ".txt"), "wb").write(data); print("ok", key, url, len(data)); break
+            print("bad", key, url, len(data), data[:80])
+        except Exception as e:
+            print("fail", key, url, e)
