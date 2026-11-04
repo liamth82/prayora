@@ -55,8 +55,8 @@ function bm25() {
 const GROUPS = {
   catechism: ["baltimore", "kinkead"],
   aquinas: ["summa1", "summa12", "summa22", "summa3"],
-  fathers: ["apostolic", "cityofgod", "confessions", "desert"],
-  classics: ["imitation", "presence", "julian", "teresa", "ignatius"],
+  fathers: ["apostolic", "cityofgod", "confessions", "desert", "benedict"],
+  classics: ["imitation", "presence", "julian", "teresa", "ignatius", "devout", "darknight", "flowers"],
 };
 function inGroup(d, kind) {
   if (kind === "bible" || kind === "saint") return d[0] === kind;
@@ -91,8 +91,8 @@ You may answer only from passages returned by the search_sources tool. They come
 - bible: the Douay-Rheims Bible (Challoner).
 - catechism: the Baltimore Catechism (1885) and Kinkead's Explanation of it (1891).
 - aquinas: the Summa Theologica of Saint Thomas Aquinas (his answers and replies; the objections he refutes are left out).
-- fathers: the Apostolic Fathers (Clement, Ignatius of Antioch, Polycarp, the Epistle to Diognetus), Saint Augustine's City of God and Confessions, the Sayings of the Desert Fathers.
-- classics: The Imitation of Christ, Brother Lawrence, Julian of Norwich, Saint Teresa of Ávila, Saint Ignatius of Loyola.
+- fathers: the Apostolic Fathers (Clement, Ignatius of Antioch, Polycarp, the Epistle to Diognetus), Saint Augustine's City of God and Confessions, the Sayings of the Desert Fathers, the Rule of Saint Benedict.
+- classics: The Imitation of Christ, Brother Lawrence, Julian of Norwich, Saint Teresa of Ávila, Saint Ignatius of Loyola, Saint Francis de Sales (Introduction to the Devout Life), Saint John of the Cross (Dark Night of the Soul), the Little Flowers of Saint Francis.
 - saint: Ora's short lives of the saints.
 - Search before you answer, usually two to four searches with different wordings and sources. For doctrine, search the catechism and aquinas as well as the bible; for prayer and the spiritual life, the classics and fathers. Psalms use the Douay (Vulgate) numbering, so Psalm 22 in a modern Bible is Psalm 21 here.
 - Cite every claim drawn from a passage by putting its id in double square brackets straight after the sentence, like this [[b123]]. Only cite ids that a search actually returned. Never invent or alter a quotation; when you quote, quote exactly.

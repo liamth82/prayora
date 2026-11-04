@@ -434,6 +434,12 @@ BOOKS = [
     dict(id="benedict", title="The Rule of Saint Benedict", author="Saint Benedict of Nursia", translator="Boniface Verheyen", year="c. 530",
          blurb="The little rule for beginners that shaped Western monasticism and much of Europe: prayer and work, obedience, humility, hospitality and stability, in a prologue and seventy-three short chapters.",
          source="Verheyen translation (Atchison, Kansas), via CCEL", parse=benedict, raw="benedict_verheyen.txt"),
+    dict(id="darknight", title="The Dark Night of the Soul", author="Saint John of the Cross", translator="David Lewis, revised by Benedict Zimmerman (1908)", year="c. 1585",
+         blurb="The poem of the soul's journey by night to union with God, and John's commentary on it: how God purifies the senses and then the spirit, and why the darkness is a gift.",
+         source="Thomas Baker, London, 1908, via archive.org", parse=lambda: [dict(c, paras=[re.sub(r"(?<!\.)\.\.(?=\n|$)", ".", x) for x in c["paras"]]) for c in __import__("library_ocr").darknight()], raw="darknight_lewis.txt"),
+    dict(id="flowers", title="The Little Flowers of Saint Francis", author="Brother Ugolino and the early Franciscans", translator="Abby Langdon Alger (1887)", year="14th century",
+         blurb="Fifty-three short stories of Francis and his first companions: the sermon to the birds, the wolf of Gubbio, perfect joy, and the simplicity of the early friars.",
+         source="Little, Brown and Company, Boston, 1898, via archive.org", parse=lambda: __import__("library_ocr").flowers(), raw="flowers_alger.txt"),
 ]
 
 def main():
